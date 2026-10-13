@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="cleaning_form_template" name="Cleaning Service Form">
+            <t t-call="website.layout">
+                <div class="wrap cleaning-bg-card">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 mt-5 mb-5">
+
+                                <div class="card shadow-lg border-0 rounded-4 cleaning-form-card">
+                                    <div class="card-body p-4">
+
+                                        <h2 class="text-center mb-4 fw-bold">
+                                            Book Cleaning Service
+                                        </h2>
+
+                                        <form action="/cleaning/submit" method="post">
+                                            <input type="hidden" name="csrf_token"
+                                                   t-att-value="request.csrf_token()"/>
+
+                                            <!-- Name -->
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold">Name</label>
+                                                <input type="text" name="partner_name"
+                                                       class="form-control form-control-lg"
+                                                       t-att-value="post.get('partner_name') if post else customer_name"
+                                                       placeholder="Enter your name"/>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-1">
+                                                    <label class="form-label">Mobile No.</label>
+                                                    <div class="input-group">
+                                                        <input type="tel"
+                                                               name="contact_number"
+                                                               class="form-control"
+                                                               t-att-value="post.get('contact_number') if post else partner.phone"
+                                                               placeholder="+1 234 567 8900"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <label class="form-label">Email</label>
+                                                    <div class="input-group">
+                                                        <input type="email"
+                                                               name="email_info"
+                                                               class="form-control"
+                                                               t-att-value="post.get('email_info') if post else partner.email"
+                                                               placeholder="you@example.com"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-semibold">Address</label>
+                                                    <input type="text"
+                                                           name="partner_address"
+                                                           class="form-control"
+                                                           t-att-value="post.get('partner_address') if post else partner.street"
+                                                           placeholder="Street address, building, apartment..."/>
+                                                </div>
+
+                                                <!-- City | ZIP -->
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="form-label">City</label>
+                                                        <input type="text" name="city_info" class="form-control"
+                                                               t-att-value="post.get('city_info') if post else partner.city"
+                                                               placeholder="City"/>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="form-label">ZIP / Postal Code</label>
+                                                        <input type="text" name="zipcode_info" class="form-control"
+                                                               t-att-value="post.get('zipcode_info') if post else partner.zip"
+                                                               placeholder="ZIP code"/>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3" id="state_wrapper">
+                                                        <label class="form-label">State / Province</label>
+                                                        <select name="state_info" class="form-select" id="state_select">
+                                                            <option value="">-- Select State --</option>
+                                                            <t t-foreach="states" t-as="st">
+                                                                <option t-att-value="st.id"
+                                                                        t-att-data-country-id="st.country_id.id"
+                                                                        t-att-selected="'selected' if (post and str(st.id) == post.get('state_info')) or (not post and partner.state_id and st.id == partner.state_id.id) else None">
+                                                                    <t t-esc="st.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="form-label">Country</label>
+                                                        <select name="country_info" class="form-select"
+                                                                id="country_select">
+                                                            <option value="">-- Select Country --</option>
+                                                            <t t-foreach="countries" t-as="c">
+                                                                <option t-att-value="c.id"
+                                                                        t-att-selected="'selected' if (post and str(c.id) == post.get('country_info')) or (not post and partner.country_id and c.id == partner.country_id.id) else None">
+                                                                    <t t-esc="c.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Service -->
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold">Service</label>
+                                                <select name="service_type_id" class="form-select form-select-lg">
+                                                    <t t-foreach="services" t-as="s"
+                                                       t-att-selected="'selected' if post and str(s.id) == post.get('service_type_id') else None">
+                                                        <option t-att-value="s.id">
+                                                            <t t-esc="s.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+
+                                            <!-- Row Layout -->
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-label">Floors</label>
+                                                    <input type="number" name="floor_count"
+                                                           t-att-value="post.get('floor_count') if post else ''"
+                                                           class="form-control"/>
+                                                </div>
+
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-label">Rooms</label>
+                                                    <input type="number" name="room_count"
+                                                           t-att-value="post.get('room_count') if post else ''"
+                                                           class="form-control"/>
+                                                </div>
+
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-label">Area (sqft)</label>
+                                                    <input type="number" name="area_sqft"
+                                                           t-att-value="post.get('area_sqft') if post else ''"
+                                                           class="form-control"/>
+                                                </div>
+                                            </div>
+
+                                            <!-- Shift + Slot + Date -->
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-label">Cleaning Shift</label>
+                                                    <select name="cleaning_shift_id" class="form-select"
+                                                            required="required">
+                                                        <option value="">Select Shift</option>
+                                                        <t t-foreach="shifts" t-as="shift">
+                                                            <option t-att-value="shift.id"
+                                                                    t-att-selected="'selected' if post and str(shift.id) == post.get('cleaning_shift_id') else None">
+                                                                <t t-esc="shift.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-label">Time Slot</label>
+                                                    <select name="shift_slot_id" class="form-select">
+                                                        <option value="">Select Time Slot</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-label">Preferred Date</label>
+
+                                                    <div class="preferred-date-wrapper">
+
+                                                        <input type="text"
+                                                               name="preferred_date"
+                                                               class="form-control preferred-date-input"
+                                                               t-att-value="post.get('preferred_date') if post else ''"
+                                                               required="1"
+                                                               placeholder="DD/MM/YYYY"/>
+
+                                                        <span class="calendar-trigger">
+                                                            <i class="fa fa-calendar"/>
+                                                        </span>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Recurring Section -->
+                                            <div class="border rounded-3 p-3 mt-3">
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input"
+                                                           type="checkbox"
+                                                           id="is_recurring"
+                                                           t-att-checked="'checked' if post and post.get('is_recurring') else None"
+                                                           name="is_recurring"/>
+                                                    <label class="form-check-label fw-semibold">
+                                                        Recurring Service
+                                                    </label>
+                                                </div>
+
+                                                <div id="recurring_fields"
+                                                     t-att-style="'display:block;' if post and post.get('is_recurring') else 'display:none;'">
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-6 mb-3">
+                                                            <label class="form-label">Repeat Every</label>
+                                                            <input type="number"
+                                                                   name="repeat_interval"
+                                                                   t-att-value="post.get('repeat_interval') if post else ''"
+                                                                   class="form-control"/>
+                                                        </div>
+
+                                                        <div class="col-md-6 mb-3">
+                                                            <label class="form-label">Type</label>
+                                                            <select name="recurring_type"
+                                                                    class="form-select">
+                                                                <option value="day"
+                                                                        t-att-selected="'selected' if post and post.get('recurring_type') == 'day' else None">
+                                                                    Daily
+                                                                </option>
+                                                                <option value="week"
+                                                                        t-att-selected="'selected' if post and post.get('recurring_type') == 'week' else None">
+                                                                    Weekly
+                                                                </option>
+                                                                <option value="month"
+                                                                        t-att-selected="'selected' if post and post.get('recurring_type') == 'month' else None">
+                                                                    Monthly
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6 mb-3">
+                                                            <label class="form-label">End Date</label>
+                                                            <div class="preferred-date-wrapper">
+                                                                <input type="text"
+                                                                       name="end_date"
+                                                                       class="form-control end-date-input"
+                                                                       t-att-value="post.get('end_date') if post else ''"
+                                                                       placeholder="DD/MM/YYYY"/>
+
+                                                                <span class="calendar-trigger end-calendar-trigger">
+                                                                    <i class="fa fa-calendar"/>
+                                                                </span>
+
+                                                            </div>
+                                                            <t t-if="error">
+                                                                <div class="text-danger mt-1">
+                                                                    <i class="fa fa-exclamation-circle me-1"/>
+                                                                    <t t-esc="error"/>
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Instructions -->
+                                            <div class="mt-3">
+                                                <label class="form-label">Instructions</label>
+                                                <textarea name="special_instructions" class="form-control" rows="3">
+                                                    <t t-esc="post.get('special_instructions') if post else ''"/>
+                                                </textarea>
+
+                                            </div>
+
+                                            <!-- Submit -->
+                                            <div class="text-center mt-4">
+                                                <button type="submit"
+                                                        class="btn btn-submit btn-lg px-5 rounded-pill">
+                                                    Submit Request
+                                                </button>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </t>
+        </template>
+
+        <template id="cleaning_thank_you" name="Cleaning Thank You Page">
+            <t t-call="website.layout">
+                <div class="container text-center mt-5 mb-5">
+
+                    <h1 class="text-success">Thank You!</h1>
+
+                    <p class="lead mt-3">
+                        Your cleaning service request has been submitted successfully.
+                    </p>
+
+                    <p>
+                        We will get back to you shortly.
+                    </p>
+
+                    <a href="/" class="btn btn-primary mt-4">
+                        Go to Homepage
+                    </a>
+
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

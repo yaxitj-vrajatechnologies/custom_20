@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_price_compare_root" name="Vendor Price Comparison" sequence="60"
+               web_icon="compare_vendor_price,static/description/icon.png"/>
+    <menuitem id="menu_price_enquiry" name="Purchase Enquiry"
+              parent="menu_price_compare_root"
+              action="action_price_enquiry" sequence="10"/>
+    <menuitem id="menu_price_quotation" name="Vendor Quotations"
+              parent="menu_price_compare_root"
+              action="action_price_quotation" sequence="20"/>
+</odoo>

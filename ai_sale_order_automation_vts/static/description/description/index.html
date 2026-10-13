@@ -1,0 +1,1866 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI SALE ORDER AUTOMATION THROUGH MCP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="margin:0; padding:0;">
+    <!-- Hero section start -->
+<section class="oe_container" style="padding:20px 0;color:#0f172a;font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+    <div class="container">
+        <div style="background-color:#ffffff;border:1px solid #e5e7eb;border-left:6px solid #2577f1;border-radius:20px;padding:15px;box-sizing:border-box;">
+
+            <table style="width:100%;border-collapse:collapse;border-spacing:0;">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top;padding:0;">
+                            <h1 style="color:#2577f1;font-size:32px;font-weight:900;line-height:1.25; font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+                                AI SALE ORDER AUTOMATION THROUGH MCP
+                            </h1>
+                        </td>
+                        <td style="vertical-align:top;text-align:right;padding:0;">
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Community
+                            </span>
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Enterprise
+                            </span>
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Odoo.sh
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+               The Auto Create Sale Order Through MCP module provides a complete solution for converting customer order documents into draft Odoo Sale Orders using AI. Instead of manually entering every order line, users can upload the customer document and let the AI analyze the order. The module uses Anthropic Claude to extract customer, product, and quantity information and connects with Odoo through the MCP server to find the customer, match products, apply mappings and create the Sale Order.
+            </p>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+               Customers can send orders in different formats, including scanned PDFs, images, handwritten order sheets, Excel files, email files and text documents. The module analyzes the document row by row, extracts ordered products and quantities, ignores rows that were not ordered, and displays the extracted information for review. Users can either review the extracted lines before creating the Sale Order or use the auto-create option to analyze the document and create the Sale Order in one workflow.
+            </p>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+               The module also improves product matching through Product Mapping. When a customer product is mapped to the correct Odoo product, the mapping is saved and reused for future orders, helping ensure consistent product matching.
+            </p>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+               Every run is fully logged with the extracted JSON, MCP creation response, processing status, error details, AI model information and total tokens consumed. Users can review and update extracted products and quantities when required. The Sale Order is always created as a draft and is never confirmed automatically.
+            </p>
+
+      <div style="text-align:center;">
+    
+    <a href="mailto:sales@vrajatechnologies.com?subject=AI%20SALE%20ORDER%20AUTOMATION%20THROUGH%20MCP"
+       style="display:inline-block;background-color:#2563eb;color:#ffffff !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+        <i class="fa fa-envelope" style="margin-right:6px;"></i> Submit Request
+    </a>
+
+    <a href="https://youtube.com/playlist?list=PLZ5SJb1L40hw&#038;si=fzF005IwNlQZ_vXh"
+       target="_blank"
+       rel="noopener"
+       style="display:inline-block;background-color:#b91c3b;color:#ffffff !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;box-shadow:0 8px 18px rgba(220,38,38,0.23);">
+        <i class="fa fa-youtube-play" style="margin-right:6px;"></i> Watch on YouTube
+    </a>
+
+    <a href="#TrendingApps"
+       style="display:inline-block;background-color:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8 !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+        <i class="fa fa-line-chart" style="margin-right:6px;"></i> Trending Apps
+    </a>
+
+</div>
+
+        </div>
+    </div>
+</section>
+    <!-- Hero section End -->
+
+<!-- Catagory section start -->
+    <section class="oe_container"
+        style=" color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:26px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:900px; margin:0 auto 20px; box-sizing:border-box;">
+                <span
+                    style="background-color:#eaf8e7; border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:8px 16px; line-height:1; margin-bottom:14px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                        style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    Vraja Technologies
+                </span>
+
+                <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0 0 12px; box-sizing:border-box;">
+                    End-to-end Odoo solutions for growing companies.
+                </h2>
+            </div>
+
+            <div class="row" style="box-sizing:border-box;">
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #138a27; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-exchange"
+                                            style="font-family:FontAwesome !important; font-size:40px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        EDI &amp; SWIFT/ACH Payment Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        End-to-end EDI automation, including X12, EDIFACT, XML standards, and financial
+                                        integrations such as SWIFT, ACH, and Fedwire.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                        X12</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                        / AS2</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                                        target="_blank"
+                                                        style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                X12</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                / AS2</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                                target="_blank"
+                                                style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #2563eb; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-shopping-cart"
+                                            style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Ecommerce Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Seamless integration with leading eCommerce platforms to sync products, orders,
+                                        inventory, and customer data in real time.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                        Sync</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                                        target="_blank"
+                                                        style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                Sync</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                                target="_blank"
+                                                style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #0f766e; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-truck"
+                                            style="font-family:FontAwesome !important; font-size:42px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Shipping Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Robust shipping connectors for global couriers, offering automated label
+                                        generation, tracking, and rate computation.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                        Rates</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                        Shipment</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                                        target="_blank"
+                                                        style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                Rates</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                Shipment</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                                target="_blank"
+                                                style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #d6863a; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-cubes"
+                                            style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Most Useful Apps for your ERP
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        A wide range of highly-rated Odoo modules designed to enhance automation,
+                                        improve productivity, and simplify business operations.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                                        target="_blank"
+                                                        style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                                target="_blank"
+                                                style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Catagory section End -->
+
+<!-- Tabs Section Start -->
+    <section class="oe_container"
+        style=" background-color: #f8fafc; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:32px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 7px; box-sizing:border-box;">
+                <span
+                    style="border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:6px 14px; line-height:1; margin-bottom:10px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                        style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    App Details
+                </span>
+
+                <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                    Explore the key features, workflow, and value of this Odoo module.
+                </h2>
+            </div>
+
+            <div style="border-radius:26px; padding:8px; box-sizing:border-box;">
+
+                <!-- Tabs Header -->
+                <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs"
+                    style="border:none; background-color:inherit !important; margin:0 0 10px; padding:0; box-sizing:border-box;">
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_features" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-arrow-circle-right"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Features</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_process" data-toggle="tab" data-bs-toggle="tab" aria-expanded="true"
+                            class="nav-link active"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-cogs"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Configuration</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_process_2" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-spinner"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Process</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_faqs" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-lightbulb-o"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">FAQs</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 0 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_support" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-comments-o"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Support</span>
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <div class="tab-content" style="box-sizing:border-box;">
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane" id="vt_features" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:14px 16px;box-sizing:border-box;">
+                            <div style="box-sizing:border-box;">
+                                <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf8e7;color:#138a27;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    AI-Powered Order Reading
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Automatically reads customer order documents, including handwritten and scanned forms, and extracts the customer, order reference, dates, delivery details, product references, descriptions, quantities, units and prices.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf2ff;color:#2563eb;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Multiple File Formats &amp; Multiple Files
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Upload images (JPG, JPEG, PNG), PDF, Excel (XLSX, XLSM, XLS), CSV, Outlook messages  (.msg) and OpenDocument text (.odt). Upload any number of files for one order and they are treated as one combined order.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#fff4e8;color:#d6863a;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Smart Row Handling &amp; Unit Conversion
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Only products with a real ordered quantity become Sale Order lines. Blank,zero and crossed-out rows are listed as Ignored Lines. Quantities are never invented.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eefdf7;color:#0f766e;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Automatic Customer &amp; Product Matching through MCP
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">The AI searches your live Odoo data through MCP to find the customer and match each product by internal reference first and by description second. It never fills a gap with a random or default product.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#f5f3ff;color:#7c3aed;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Guided Review &amp; One-Click Update
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Review every extracted line in a table, map or correct the Odoo product, edit the quantity, and apply all changes to the Sale Order with a single click on Update Sale Order. No duplicate lines are created.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#ecfeff;color:#0891b2;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Learning Product Mapping
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Every product you map or correct is saved and reused automatically on future orders. Each mapping also has a quantity multiplier for products that are sold in a different size than the one written on the customer document.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf8e7;color:#138a27;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Editable AI Prompts &amp; Customer Instructions
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Manage the extraction and creation prompts from one central menu, edit them on a single record, and add customer-specific instructions that are applied automatically whenever that customer is selected.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf2ff;color:#2563eb;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Two-Call AI Workflow (Extraction + Creation)
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">The order is processed in two separate AI calls. The first call reads the document and returns a structured JSON for verification. The second call takes that exact JSON and uses MCP to create the Sale Order in Odoo. You can check and correct the extracted data between the two calls, so nothing is created before you approve it.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#fff4e8;color:#d6863a;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    One-Click Direct Sale Order Creation
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Enable Auto-Create Sale Order and a single click on Analyze &amp; Create Sale Order runs both calls back to back. The document is read, the JSON is generated and the draft Sale Order is created in Odoo with no manual review in between. This suits trusted customers and repeat orders.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:0;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eefdf7;color:#0f766e;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Complete Logs &amp; Status Monitoring
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Track every run with extraction status, creation status, customer match status, extracted JSON, creation response, error messages, AI model used and token usage for both the extraction and the creation step.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Tab -->
+                    <div class="tab-pane show active" id="vt_process" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                    After installing the modules, the Odoo home screen shows the apps used by this solution. The highlighted app AI Dashboard.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/1.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                    Open AI Dashboard and click the Configuration menu at the top. Under AI Provider select Claude (Anthropic), then enter the Claude API Key, Claude Model and Max Tokens in the Claude (Anthropic) Settings section.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/2.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                    On the right side click on the login user and open My Preferences. Go to the Security tab and click &quot;Add API Key&quot; to create an Odoo API key.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/3.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">04</span>
+                                    In the New API Key window, enter the name &quot;MCP Key&quot; and select the scope &quot;MCP only&quot; with 1 Year validity. Then click &quot;Generate key&quot;. The MCP key is an Odoo API key. It lets the AI connect to your Odoo database to find the customer and products and create the sale order. It is not the Claude or OpenAI key.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/4.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">05</span>
+                                    Copy the generated API key from the &quot;API Key Ready&quot; window and click Done. The key is shown only once, so save it safely.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/5.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">06</span>
+                                    Open Settings and search &quot;odoo mcp&quot;. Paste the copied key into the Odoo MCP API Key field under MCP AI Automation, then click Save.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/6.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">07</span>
+                                    In Settings search &quot;mcp&quot; and tick &quot;Enable MCP Access&quot; under MCP Server Configuration. Then click &quot;Manage MCP Available Models&quot;.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/7.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">08</span>
+                                    In the MCP Models list, click &quot;New or Select Multiple Models&quot; at the top to add the required models and their rights.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/8.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:0; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">09</span>
+                                    In the Enable Models for MCP window, add sale.order, sale.order.line, res.partner and product.product. Under Access Settings tick Allow Read, Allow Create, Allow Update and Allow Delete, then click &quot;Enable Selected Models&quot;.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/9.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Tab -->
+                    <div class="tab-pane" id="vt_process_2" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                    Go back to the Odoo home screen and open the MCP SO Automation app.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/10.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                    Click the AI Prompt menu at the top. It contains two tabs: Extraction Prompt and Creation Prompt. The Extraction Prompt is used to generate JSON, while the Creation Prompt is used to create sale orders. These prompts are common to all records. You can edit them according to your requirements and save the changes. Click Restore Built-in Prompts to reset both prompts to their default text.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/11.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                    Click the Order Automation menu at the top and click &quot;New&quot; to create a new record.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/12.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">04</span>
+                                    Select the Customer and upload the order document using the Source Files button, or simply drag and drop the file into the upload area. If you want to create the sale order directly without review, enable Auto-Create Sale Order. The sale order will be created automatically after the analysis is completed. Then click Analyze with AI. The Creation Prompt and Extraction tab displays the prompt used for this record.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/13.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">05</span>
+                                    This is the uploaded customer order (PDF). It has two products, Paprika Doux and Menthe Douce, with their quantities and prices.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/14.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">06</span>
+                                    Click Ok on the confirmation message to start reading the document with AI.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/15.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">07</span>
+                                    After the analysis is completed, the state changes to Analyzed. The Extracted Lines tab displays the products identified from the document with valid quantities, while the Extraction JSON tab shows the JSON that will be sent to the AI for the next step of creating the sale order. Click Create Sale Order to create the order. If the analysis does not provide the expected results, click Reanalyze with AI to run the analysis again.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/16.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">08</span>
+                                    After the order is created, the state changes to Sale Order Created, and the created sale order, such as S00001, appears at the top. In the Extracted Lines tab, products successfully matched with Odoo products are marked Added to Sale Order in green, while unmatched products that do not exist in Odoo are marked Not Added in red. The Odoo Product field also shows which Odoo product was matched for each extracted line.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/17.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">09</span>
+                                    Click the S00001 button at the top to open the created sale order. You can verify the customer, It contains only the matched products with demanded quantity,
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/18.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">10</span>
+                                    Open the MCP Creation Response tab to see the details of the sale order creation. It shows the customer match, the matched products, the skipped products with the reason, and the created sale order.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/19.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">11</span>
+                                    For a &quot;Not Added&quot; line, click the Odoo Product field in the Extracted Lines tab and select the correct product which you want to map with odoo product. Then click &quot;Update Sale Order&quot; so sale order has been updated accordingly..
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/20.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">12</span>
+                                    Here, you can see that sale order S00001 has been updated successfully, and the selected product has been added to the order lines.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/21.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">13</span>
+                                    Click the Product Mapping menu at the top to view the saved mappings, which are created automatically at the time of updating the SO. You can also create a mapping manually by clicking New and defining the relationship between the extracted product name and the corresponding Odoo product. You can also configure the quantity based on the product packaging, ensuring the same product is matched automatically in future orders.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/22.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:0; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">14</span>
+                                    Open the Logs tab to see the tokens used for the extraction and the sale order creation. Total Tokens Used at the bottom shows the combined total.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="img/23.png" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQs Tab -->
+                    <div class="tab-pane" id="vt_faqs" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What does the Auto Create Sale Order Through MCP module do?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">It uses AI to read customer order documents and automatically create draft Sale Orders in Odoo. It saves hours of manual entry by extracting the customer, products and quantities from files such as PDFs, photos, Excel sheets and emails, and then matching them to your Odoo customers and products.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Which file types are supported?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Images (JPG, JPEG, PNG), PDF, Excel (XLSX, XLS), CSV, Outlook messages (.msg) and OpenDocument text (.odt). Any other file type is rejected with a clear message.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Can I upload more than one file for the same order?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes. You can upload any number of files on one record and they are treated as one combined order.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eefdf7; color:#0f766e; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Which AI does the module use?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">The module uses Anthropic Claude. You enter the Claude API Key and choose the model on the AI Configuration record of the AI Agent app.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#f5f3ff; color:#7c3aed; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Where do I enter my API keys?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">The Claude API Key is entered in the AI Configuration record in the AI Dashboard App, The Odoo MCP API Key is entered under Settings &gt; General Settings &gt; MCP AI Automation.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#ecfeff; color:#0891b2; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Why do I need an Odoo MCP API key?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">The AI connects to your Odoo database through the MCP endpoint to search for customers and products and create Sale Orders. The key must be an Odoo API key with the &quot;MCP only&quot; scope. An AI provider API key cannot be used in this field. Your Odoo address must also be configured in the web.base.url system parameter and be accessible to the AI service.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Does it work with handwritten order sheets?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes. The module can analyze photos and scanned documents visually and link handwritten quantities to their corresponding product rows. Unclear or unreadable handwriting is not guessed.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What happens to rows that have no quantity?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Rows without a quantity are not added to the Sale Order. They are displayed in the Ignored Lines tab so you can verify that every document row was processed.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Do I need to review the order before it is created?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">No. You can choose the workflow that suits you. Keep Auto-Create Sale Order disabled to analyze, review, and correct the extracted lines first. Enable it to analyze the document and create the Sale Order in a single workflow.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eefdf7; color:#0f766e; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What happens if the customer is not found?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">No Sale Order is created. The record displays Customer Not Found along with the relevant reason. You can select the correct customer on the record and run the process again.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#f5f3ff; color:#7c3aed; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What happens if a product cannot be matched?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">The product line is skipped and shown as Not Added. You can manually select the correct Odoo product and click Update Sale Order. The product mapping is saved for future orders.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#ecfeff; color:#0891b2; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What if the same product is written differently on different documents?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">You can map the customer product description to the correct Odoo product once. The saved mapping is reused when a similar description appears in future orders. Mappings can also be managed from the Product Mapping menu.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Can I change the AI instructions?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes. You can edit the common prompts from the AI Prompt menu, customize prompts for an individual automation record, or add customer-specific instructions from the customer form.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                How do I track API token usage?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Each record includes a Logs tab showing the input, output, and total tokens used during the extraction and Sale Order creation steps, along with the overall token usage for the record.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What happens if the AI call or Sale Order creation fails?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">The record moves to the Error state, and the error message and response are stored on the record. After correcting the issue, you can run the required step again.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eefdf7; color:#0f766e; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Do I need technical knowledge to use the module?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">No technical knowledge is required for daily use, such as uploading documents, analyzing orders, reviewing lines, and creating Sale Orders. Only the initial API key configuration requires administrator access.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#f5f3ff; color:#7c3aed; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Can I get a demo of the module before making a purchase?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes. To request a demo or test the module, please contact us at sales@vrajatechnologies.com.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:0; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#ecfeff; color:#0891b2; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                I would like to request a custom feature. What is the process?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">We are happy to customize the module according to your business requirements. Please contact us at sales@vrajatechnologies.com to discuss your requirements.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support Tab -->
+                    <div class="tab-pane" id="vt_support" role="tabpanel" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:22px;box-sizing:border-box;">
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:22px;padding:22px;box-sizing:border-box;">
+                                <div style="width:100%;background-color:#f8fbf8;border:1px solid #d9e7d7;border-radius:22px;padding:26px 28px;margin-bottom:18px;box-sizing:border-box;">
+                                    <div class="d-none d-lg-block">
+                                        <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:108px;vertical-align:top;padding:0 20px 0 0;box-sizing:border-box;">
+                                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;box-sizing:border-box;">
+                                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                        <h3 style="color:#123d73;font-size:27px;font-weight:900;line-height:1.2;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:8px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;margin:0 auto 16px;box-sizing:border-box;">
+                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                        </div>
+                                        <h3 style="color:#123d73;font-size:24px;font-weight:900;line-height:1.25;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:6px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin:0 -8px;box-sizing:border-box;">
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;box-sizing:border-box;">
+                                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Policy</div>
+                                                                <a href="https://vrajatechnologies.com/support-policy" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#fff9f2;border:1px solid #f2c487;border-radius:11px;padding:11px 10px;color:#d36c00!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/support-policy</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Scan for Support -->
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 10px;box-sizing:border-box;">Scan for Support</h4>
+                                                                                <div style="margin:8px 0 0;text-align:left;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:170px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Scan for Support</h4>
+                                                                <div style="width:100%;text-align:center;margin:0;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:150px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0 auto;box-sizing:border-box;">
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-qrcode" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tabs Section End -->
+
+<!-- Discover Trending Addons Section Start -->
+    <section class="oe_container"
+        style="color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding: 30px 20px 15px; box-sizing:border-box; margin:0; ;"
+        id="TrendingApps">
+        <div class="container" style="margin:0 auto; box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 10px; box-sizing:border-box;">
+                <span
+                    style="background-color:#eaf2ff; border-radius:999px; color:#2563eb; font-size:13px; font-weight:800; padding:8px 16px; margin-bottom:14px;">
+                    <i class="fa fa-cubes" style="font-family:FontAwesome !important; margin-right:6px;"></i>
+                    Discover Trending Apps
+                </span>
+            </div>
+
+            <div class="row" style="margin-left:-10px; margin-right:-10px; box-sizing:border-box;">
+                <!-- AI Product Recommendation Agent -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf2ff; color:#2563eb; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-cubes"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    AI Product Recommendation Agent
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">The AI Product Recommendation Agent uses AI to automatically identify and apply alternative and accessory products across your Odoo catalog. It supports OpenAI, Claude, and Gemini for intelligent product recommendations.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/product_ai_agent_vts" target="_blank"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Cashflow Intelligence Agent -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf8e7; color:#138a27; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-tachometer"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    AI Cashflow Intelligence Agent
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Cashflow AI analyzes real-time Odoo financial data using OpenAI, Claude, and Gemini. It provides cashflow insights, liquidity scoring, runway forecasts, and executive summaries.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/vraja_cashflow_ai" target="_blank"
+                                    style="background-color:#138a27 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Inventory Replenishment Agent -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#fff4e8; color:#d6863a; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-random"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    AI Inventory Replenishment Agent
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Inventory AI Agent analyzes stock, sales, and purchase data to identify replenishment needs. It provides AI-powered RFQ recommendations directly inside Odoo.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/inventory_ai_agent_vts" target="_blank"
+                                    style="background-color:#d6863a !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Bank Reconciliation Agent -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eef2ff; color:#4f46e5; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-key"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    AI Bank Reconciliation Agent
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">AI Bank Reconciliation automates bank transaction matching in Odoo using AI. It intelligently reconciles invoices, bills, and payments while providing clear classifications, real-time progress, and complete audit tracking.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/vraja_bank_reconciliation_ai" target="_blank"
+                                    style="background-color:#4f46e5 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Vendor Intelligence -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#ecfdf5; color:#0f766e; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-shopping-cart"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    AI Vendor Intelligence
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">AI Vendor Intelligence Agent analyzes supplier performance using AI. It provides vendor rankings, insights, and actionable recommendations directly in Odoo.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/vendor_ai_intelligence_vts" target="_blank"
+                                    style="background-color:#0f766e !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Dynamic Pricing Agent -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eefdf7; color:#0f8b6f; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-wrench"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    AI Dynamic Pricing Agent
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Dynamic Pricing with AI analyzes sales, stock, and competitor prices to suggest optimal product pricing. It automatically updates Odoo pricelists across customer segments while providing pricing insights and detailed run history.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/dynamic_pricing_with_ai" target="_blank"
+                                    style="background-color:#0f8b6f !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- Discover Shipping Addons Section End -->
+
+    <!-- Discover Shipping Addons Section End -->
+
+    <!-- CTA Section Start -->
+    <section class="oe_container"
+        style="background-color:#f7fbff; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:34px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+            <div
+                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:26px; padding:clamp(18px, 3.5vw, 30px); box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box; margin: 0px 9px;">
+                <div class="row align-items-center"
+                    style="margin-left:-12px; margin-right:-12px; box-sizing:border-box;">
+
+                    <div class="col-12 col-lg-7" style="padding:12px; box-sizing:border-box;">
+                        <table
+                            style="border-collapse:collapse; border-spacing:0; margin:0 0 12px; box-sizing:border-box;">
+                            <tr>
+                                <td style="vertical-align:middle; padding:0 10px 0 0; box-sizing:border-box;">
+                                    <span
+                                        style="color:#123d73; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; line-height:1; box-sizing:border-box;">
+                                        <i class="fa fa-check-circle"
+                                            style="font-family:FontAwesome !important; font-size:clamp(25px, 3.5vw, 33px);  margin-right:5px; vertical-align:middle;"></i>
+                                    </span>
+                                </td>
+                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                    <h2
+                                        style="color:#123d73; font-family:sans-serif !important; font-size:clamp(18px, 4.5vw, 28px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                                        Explore Before Purchase
+                                    </h2>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p
+                            style="color:#138a27; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.45; margin:0 0 12px; box-sizing:border-box;">
+                            Start with a free trial
+                        </p>
+
+                        <p
+                            style="color:#526b96; font-size:clamp(13px, 3.4vw, 15px); line-height:1.7; margin:0 0 18px; box-sizing:border-box;">
+                            Test the connector with your real workflows using our 15-day free trial. If you need help,
+                            our product experts will guide you throughout the trial.
+                        </p>
+
+                        <div class="row" style="margin-left:-7px; margin-right:-7px; box-sizing:border-box;">
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="mailto:sales@vrajatechnologies.com?subject=AI%20SALE%20ORDER%20AUTOMATION%20THROUGH%20MCP"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:55px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(37,99,235,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-calendar-check-o"
+                                        style="font-family:FontAwesome !important; font-size:17px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">Request Demo</span>
+                                </a>
+                            </div>
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="https://api.whatsapp.com/send/?phone=917359628466&amp;text&amp;type=phone_number&amp;app_absent=0"
+                                    target="_blank"
+                                    style="background-color:#13a579 !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:50px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(19,165,121,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-whatsapp"
+                                        style="font-family:FontAwesome !important; font-size:20px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">+91 73596 28466</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5" style="padding:12px; box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; height:100%; box-sizing:border-box;">
+                            <table
+                                style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                        style="width:62px; vertical-align:top; padding:0 15px 0 0; box-sizing:border-box;">
+                                        <div
+                                            style="background-color:#eaf2ff; color:#2563eb; border-radius:18px; width:52px; height:52px; line-height:52px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-check-square-o"
+                                                style="font-family:FontAwesome !important; font-size:24px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                            style="color:#123d73; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.35; margin:0 0 8px; box-sizing:border-box;">
+                                            Test the connector with your real workflows.
+                                        </h4>
+                                        <p
+                                            style="color:#526b96; font-size:13px; line-height:1.65; margin:0 0 12px; box-sizing:border-box;">
+                                            Our product experts will guide you during the trial to help you evaluate,
+                                            configure, and use the connector with confidence.
+                                        </p>
+                                        <div style="box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">15-Day
+                                                Trial</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Expert
+                                                Guidance</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Real
+                                                Workflow Testing</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section End -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

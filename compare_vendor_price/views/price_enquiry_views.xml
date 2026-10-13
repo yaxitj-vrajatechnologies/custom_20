@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_price_enquiry_form" model="ir.ui.view">
+            <field name="name">price.enquiry.form</field>
+            <field name="model">price.enquiry</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_send_rfq" string="Send RFQ" type="object"
+                                class="oe_highlight" invisible="state != 'draft' "/>
+                        <button name="action_compare" string="Compare Price" type="object"
+                                class="oe_highlight"
+                                invisible="state not in  ('rfq_sent','compared') or (state == 'compared' and not enable_recompare)  or not line_ids "/>
+                        <button name="action_create_po" string="Create PO" type="object"
+                                class="oe_highlight" invisible="state not in 'compared' or po_ids or not line_ids"/>
+                        <button name="action_reset_to_draft" string="Reset to Draft" type="object"
+                                invisible="state not in ('rfq_sent', 'compared')"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,rfq_sent,compared,po_created"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="PO Created" bg_color="text-bg-success"
+                                invisible="state != 'po_created'"/>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_vendors" type="object" class="oe_stat_button"
+                                    icon="group" invisible="vendor_count == 0">
+                                <field name="vendor_count" widget="statinfo" string="Vendors"/>
+                            </button>
+                            <button name="action_view_quotations" type="object" class="oe_stat_button"
+                                    icon="article" invisible="quotation_count == 0">
+                                <field name="quotation_count" widget="statinfo" string="Quotations"/>
+                            </button>
+                            <button name="action_view_po" type="object" class="oe_stat_button"
+                                    icon="shopping_cart" invisible="po_count == 0">
+                                <field name="po_count" widget="statinfo" string="POs"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" string="Enquiry No."/>
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date" readonly="state != 'draft'"/>
+                                <field name="requested_by" readonly="state != 'draft'"/>
+                                <field name="required_by_date" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="vendor_ids" widget="many2many_tags"
+                                       placeholder="Select the vendors you want to request quotes from..."
+                                       options="{'no_create': True}" required="1"
+                                       readonly="state != 'draft'"/>
+                                <field name="enable_recompare" invisible="state != 'compared'"
+                                       widget="boolean_toggle"/>
+                                <div class="mt-1 d-flex align-items-center flex-nowrap"
+                                     invisible="quotation_count == 0">
+                                    <i class="fa fa-check-circle text-success me-1"
+                                       invisible="quotation_received_count != quotation_count"/>
+                                    <i class="fa fa-clock-o text-warning me-1"
+                                       invisible="quotation_received_count == quotation_count"/>
+                                    <span class="text-nowrap">
+                                        <field name="quotation_received_count" readonly="1" nolabel="1"
+                                               class="oe_inline"/>
+                                        of
+                                        <field name="quotation_count" readonly="1" nolabel="1" class="oe_inline"/>
+                                        vendor quotations received
+                                    </span>
+                                </div>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Products" name="products">
+                                <field name="line_ids">
+                                    <list editable="bottom" create="state == 'draft'"
+                                          decoration-warning="expected_delivery_date and parent.required_by_date and expected_delivery_date > parent.required_by_date"
+                                          decoration-success="expected_delivery_date and parent.required_by_date and expected_delivery_date &lt;= parent.required_by_date">
+                                        <field name="product_id" readonly="parent.state != 'draft'" width="220px"/>
+                                        <field name="qty" string="Required Qty" readonly="parent.state != 'draft'"
+                                               width="120px"/>
+                                        <field name="winning_line_id" string="Vendor" width="180px"
+                                               invisible="parent.state not in ('compared', 'po_created')"/>
+                                        <field name="unit_price" string="Price" readonly="1" width="120px"
+                                               invisible="parent.state not in ('compared', 'po_created')"/>
+                                        <field name="has_lead_time" column_invisible="1"/>
+                                        <field name="lead_time" string="Lead Time (Days)" readonly="1" width="140px"
+                                               invisible="parent.state not in ('compared', 'po_created') or not has_lead_time"/>
+                                        <field name="expected_delivery_date" string="Lead Date" readonly="1"
+                                               width="140px"
+                                               invisible="parent.state not in ('compared', 'po_created')"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Vendor Quotations" name="quotations">
+                                <div class="alert alert-info" role="alert"
+                                     invisible="state not in ('rfq_sent', 'compared')">
+                                    Upload each vendor's filled sheet directly on their row
+                                    below (CSV only, one file per row)
+                                </div>
+                                <field name="quotation_ids">
+                                    <list editable="bottom" create="false" delete="false"
+                                          decoration-muted="state == 'draft'"
+                                          decoration-info="state == 'sent'"
+                                          decoration-success="state == 'received'">
+                                        <field name="vendor_id" readonly="1" width="160px"/>
+                                        <field name="state" widget="badge" readonly="1" width="120px"
+                                               decoration-muted="state == 'draft'"
+                                               decoration-info="state == 'sent'"
+                                               decoration-success="state == 'received'"/>
+                                        <field name="rfq_sent_date" readonly="1" width="140px"/>
+                                        <field name="valid_until" readonly="1" width="120px"/>
+                                        <field name="import_filename" string="File Name" width="220px"/>
+                                        <field name="import_file" filename="import_filename" string="Upload CSV"
+                                               options="{'accepted_file_extensions': '.csv'}"
+                                               readonly="parent.state == 'po_created'"
+                                               width="100px"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_price_enquiry_list" model="ir.ui.view">
+            <field name="name">price.enquiry.list</field>
+            <field name="model">price.enquiry</field>
+            <field name="arch" type="xml">
+                <list decoration-muted="state == 'draft'"
+                      decoration-info="state == 'rfq_sent'"
+                      decoration-warning="state == 'compared'"
+                      decoration-success="state == 'po_created'">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="requested_by"/>
+                    <field name="required_by_date"/>
+                    <field name="vendor_count" string="Vendors"/>
+                    <field name="quotation_received_count" string="Received"/>
+                    <field name="state" widget="badge"
+                           decoration-muted="state == 'draft'"
+                           decoration-info="state == 'rfq_sent'"
+                           decoration-warning="state == 'compared'"
+                           decoration-success="state == 'po_created'"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="action_price_enquiry" model="ir.actions.act_window">
+            <field name="name">Purchase Enquiry</field>
+            <field name="res_model">price.enquiry</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first purchase enquiry
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

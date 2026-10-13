@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_ai_sale_order_draft_form" model="ir.ui.view">
+        <field name="name">order.automation.form</field>
+        <field name="model">order.automation</field>
+        <field name="arch" type="xml">
+            <form string="AI Sale Order Draft">
+                <header>
+                    <button name="action_analyze"
+                            string="Analyze with AI"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state in ('done', 'analyzed','error') or auto_create_sale_order"
+                            confirm="This will call the AI to (re)read the uploaded files and replace the extracted JSON/lines below. Continue?"/>
+                    <button name="action_analyze"
+                            string="Re-Analyze with AI"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state not in ('analyzed', 'error')  or auto_create_sale_order"
+                            confirm="This will call the AI to (re)read the uploaded files and replace the extracted JSON/lines below. Continue?"/>
+                    <button name="action_analyze"
+                            string="Analyze &amp; Create Sale Order"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state == 'done' or not auto_create_sale_order"
+                            confirm="This will call the AI to read the uploaded files and, in the same step, immediately send the extracted JSON to Odoo via MCP to match and create the sale order - no manual review in between. Continue?"/>
+                    <button name="action_create_sale_order"
+                            string="Create Sale Order"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state not in ('analyzed', 'error') or not ai_raw_response or auto_create_sale_order"/>
+                    <button name="action_update_sale_order"
+                            string="Update Sale Order"
+                            type="object"
+                            class="btn-primary"
+                            invisible="not sale_order_id"
+                            confirm="This will apply the Odoo Product mapped on each Extracted Line to the linked sale order (updating existing lines or adding new ones), and save the mapping for future documents. Continue?"/>
+                    <button name="action_reset_instructions"
+                            string="Reset Instruction"
+                            type="object"
+                            class="btn-secondary"
+                            invisible="state not in ('draft', 'error')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,analyzed,done"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Created" bg_color="text-bg-success"
+                            invisible="creation_status != 'created'"/>
+                    <widget name="web_ribbon" title="Creation Failed" bg_color="text-bg-danger"
+                            invisible="creation_status != 'creation_failed'"/>
+                    <widget name="web_ribbon" title="Customer Not Found" bg_color="text-bg-danger"
+                            invisible="creation_status != 'customer_not_found'"/>
+                    <widget name="web_ribbon" title="No Products Matched" bg_color="text-bg-danger"
+                            invisible="creation_status != 'no_products_matched'"/>
+                    <widget name="web_ribbon" title="Ready to Create" bg_color="text-bg-success"
+                            invisible="creation_status or extraction_status != 'ready_to_create'"/>
+                    <widget name="web_ribbon" title="Needs Review" bg_color="text-bg-warning"
+                            invisible="creation_status or extraction_status != 'needs_review'"/>
+                    <widget name="web_ribbon" title="No Order Found" bg_color="text-bg-danger"
+                            invisible="creation_status or extraction_status != 'no_order_found'"/>
+
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_sale_order"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="description"
+                                invisible="not sale_order_id">
+                            <field name="sale_order_id" string="Sale Order"/>
+                        </button>
+                    </div>
+                    <div class="alert alert-danger" role="alert" invisible="not error_message">
+                        <field name="error_message" readonly="1" nolabel="1"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"
+                                   options="{'no_create': True}"
+                                   readonly="state == 'done'"
+                                   help="Optional: pick the customer here to skip AI customer lookup at creation time. Leave empty to let the AI find/match the customer itself via MCP when the sale order is created."/>
+                            <field name="detected_customer_name" readonly="1"
+                                   invisible="not detected_customer_name"/>
+                        </group>
+                        <group>
+                            <field name="auto_create_sale_order"
+                                   readonly="state == 'done'"/>
+                            <field name="use_selected_partner"
+                                   readonly="state == 'done'"/>
+                            <field name="ai_customer_match_status" widget="badge"
+                                   decoration-success="ai_customer_match_status == 'matched'"
+                                   decoration-danger="ai_customer_match_status == 'not_found'"
+                                   invisible="not ai_customer_match_status"/>
+                        </group>
+                    </group>
+                    <group string="Source Files">
+                        <field name="attachment_ids"
+                               widget="many2many_binary"
+                               nolabel="1"
+                               required="1"
+                               readonly="state == 'done'"/>
+                    </group>
+                    <notebook>
+                        <page string="Extracted Lines" name="lines">
+                            <p class="text-muted" invisible="not line_ids">
+                                All extracted products and their details are shown below. The exact JSON generated from
+                                these products is what gets sent to Odoo via MCP when creating the sale order.
+                                Map or correct the "Odoo Product" on any line, adjust the "Quantity" if needed,
+                                then click "Update Sale Order" to apply them to the sale order. "Source Quantity" is
+                                what the AI read from the document; "Quantity" is the quantity that is applied to
+                                the sale order line.
+                            </p>
+                            <field name="line_ids" create="0" delete="0">
+                                <list decoration-success="sale_order_status == 'added'"
+                                      decoration-danger="sale_order_status == 'not_added'"
+                                      decoration-muted="sale_order_status == 'pending'"
+                                      editable="bottom"
+                                      create="0"
+                                      delete="0">
+                                    <field name="line_number" optional="hide" readonly="1" width="60px"/>
+                                    <field name="source_reference" optional="show" readonly="1" width="110px"/>
+                                    <field name="source_description" readonly="1" width="280px"/>
+                                    <field name="source_quantity" readonly="1" width="90px"/>
+                                    <field name="quantity"
+                                           readonly="not parent.sale_order_id"
+                                           width="90px"/>
+                                    <field name="source_uom" optional="hide" readonly="1" width="90px"/>
+                                    <field name="document_unit_price" optional="show" readonly="1" width="100px"/>
+                                    <field name="odoo_product_id" optional="show" options="{'no_create': True}"
+                                           width="220px"/>
+                                    <field name="sale_order_line_id" optional="hide" readonly="1" width="120px"/>
+                                    <field name="sale_order_status" widget="badge" optional="show" readonly="1"
+                                           width="100px"
+                                           decoration-success="sale_order_status == 'added'"
+                                           decoration-danger="sale_order_status == 'not_added'"
+                                           decoration-muted="sale_order_status == 'pending'"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Ignored Lines" name="ignored_lines">
+                            <p class="text-muted" invisible="not ignored_line_ids">
+                                Rows the AI found in the document but excluded from
+                                the order (blank/zero quantity, crossed out).
+                            </p>
+                            <field name="ignored_line_ids" readonly="1">
+                                <list>
+                                    <field name="source_reference"/>
+                                    <field name="source_description"/>
+                                    <field name="quantity_raw"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Extraction JSON" name="ai_response">
+                            <p class="text-muted">
+                                Exact JSON returned by the extraction call - this
+                                is what gets passed, unmodified, to the MCP
+                                creation call.
+                            </p>
+                            <field name="ai_raw_response" readonly="1" nolabel="1"
+                                   widget="text"
+                                   placeholder="Run 'Analyze with AI' to see the extracted JSON for this draft."/>
+                        </page>
+                        <page string="Creation Prompt" name="creation_prompt">
+                            <p class="text-muted">
+                                Fetched from <strong>AI Prompt</strong> when this record was created, plus the
+                                customer-specific instructions of the selected customer (if any).
+                                Changes made here apply to this record only.
+                            </p>
+                            <field name="creation_instructions"
+                                   nolabel="1"
+                                   readonly="state == 'done'"
+                                   placeholder="Instructions sent to the AI when 'Create Sale Order' runs..."
+                                   style="min-height: 500px;"/>
+                        </page>
+                        <page string="MCP Creation Response" name="ai_create_response">
+                            <p class="text-muted">
+                                Response from the MCP call that matched customer/
+                                products in Odoo and created the sale order,
+                                including which lines were matched and which
+                                could not be matched.
+                            </p>
+                            <field name="ai_create_response" readonly="1" nolabel="1"
+                                   widget="text"
+                                   placeholder="Run 'Create Sale Order' to see the MCP response for this draft."/>
+                        </page>
+
+                        <page string="Logs" name="token_logs">
+                            <p class="text-muted">
+                                Token usage reported by OpenAI for each call made
+                                on this draft.
+                            </p>
+                            <group>
+                                <group string="Extraction Json">
+                                    <field name="llm_model_used" readonly="1"/>
+                                    <field name="extraction_input_tokens" readonly="1"/>
+                                    <field name="extraction_output_tokens" readonly="1"/>
+                                    <field name="extraction_total_tokens" readonly="1"/>
+                                </group>
+                                <group string="Sale Order Creation">
+                                    <field name="creation_input_tokens" readonly="1"/>
+                                    <field name="creation_output_tokens" readonly="1"/>
+                                    <field name="creation_total_tokens" readonly="1"/>
+                                </group>
+                            </group>
+                            <group string="Total Tokens Used">
+                                <field name="total_tokens" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter>
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </chatter>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ai_sale_order_draft_list" model="ir.ui.view">
+        <field name="name">order.automation.list</field>
+        <field name="model">order.automation</field>
+        <field name="arch" type="xml">
+            <list string="AI Sale Order Drafts" decoration-success="state == 'done'"
+                  decoration-danger="state == 'error'">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'done'"
+                       decoration-danger="state == 'error'"
+                       decoration-info="state == 'analyzed'"/>
+                <field name="ai_customer_match_status" widget="badge"
+                       decoration-success="ai_customer_match_status == 'matched'"
+                       decoration-danger="ai_customer_match_status == 'not_found'"/>
+                <field name="sale_order_id"/>
+                <field name="create_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_ai_sale_order_draft" model="ir.actions.act_window">
+        <field name="name">Order Automation</field>
+        <field name="res_model">order.automation</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smart_action">
+                Create a sale order from a photo, PDF or Excel file
+            </p>
+            <p>
+                Upload the document(s), click "Analyze with AI" to extract the
+                order as JSON, review the lines, then "Create Sale Order" to
+                match and create it in Odoo via MCP.
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_ai_sale_order_root"
+              name="MCP SO Automation"
+              sequence="5"
+              web_icon="ai_sale_order_automation_vts,static/description/icon.png"/>
+
+    <menuitem id="menu_ai_sale_order_drafts"
+              name="Order Automation"
+              parent="menu_ai_sale_order_root"
+              action="action_ai_sale_order_draft"
+              sequence="1"/>
+
+</odoo>

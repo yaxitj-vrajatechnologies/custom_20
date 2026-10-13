@@ -1,0 +1,63 @@
+<odoo>
+
+    <record id="whatsapp_res_config_settings_form_view" model="ir.ui.view">
+        <field name="name">res.config.settings.abandoned.cart</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="WhatsApp" string="WhatsApp" name="whatsapp"
+                     data-key="whatsapp" logo="/whatsapp/static/description/icon.png">
+                    <div class="app_settings_block">
+                        <h2>Abandoned Cart Reminder</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <group>
+                                        <field name="abandoned_cart_hours"/>
+                                    </group>
+                                    <div class="text-muted">
+                                        Send WhatsApp reminder after X hours.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2>Overdue Invoice</h2>
+
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <group columns="2" col="2">
+                                        <field name="user_ids" widget="many2many_tags"/>
+                                    </group>
+                                    <div class="text-muted mt8">
+                                        Notify Account Manager about Overdue Invoice
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="action_whatsapp_cart_settings" model="ir.actions.act_window">
+        <field name="name">WhatsApp Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="whatsapp_res_config_settings_form_view"/>
+        <field name="view_mode">form</field>
+        <field name="context">{'module' : 'whatsapp', 'bin_size': False}</field>
+    </record>
+
+    <menuitem
+            id="menu_whatsapp_config_settings"
+            name="Settings"
+            parent="whatsapp.whatsapp_configuration_menu"
+            action="action_whatsapp_cart_settings"
+            sequence="30"/>
+</odoo>

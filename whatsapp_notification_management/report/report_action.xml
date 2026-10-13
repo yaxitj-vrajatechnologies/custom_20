@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <record id="action_report_product_offer_pdf" model="ir.actions.report">
+            <field name="name">Product Offer Report</field>
+            <field name="model">festival.offer.vts</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">whatsapp_notification_management.report_product_pdf_template</field>
+            <field name="print_report_name">'Product Offer'</field>
+        </record>
+    </data>
+</odoo>

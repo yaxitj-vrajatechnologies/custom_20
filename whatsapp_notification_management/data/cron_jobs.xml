@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <record id="cron_send_overdue_invoice_notification" model="ir.cron">
+            <field name="name">Send Overdue Invoice Notification</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="state">code</field>
+            <field name="code">model.send_overdue_invoice_whatsapp()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="cron_send_abandoned_cart_notification" model="ir.cron">
+            <field name="name">Send Abandoned Cart Notification</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code">model.send_abandoned_cart_whatsapp_notification()</field>
+            <field name="interval_number">30</field>
+            <field name="interval_type">minutes</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="cron_send_offer_notification_to_customer" model="ir.cron">
+            <field name="name">Send Special Offer Notification</field>
+            <field name="model_id" ref="whatsapp_notification_management.model_festival_offer_vts"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_send_offer_notification()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="cron_send_product_launch_notification_to_customer" model="ir.cron">
+            <field name="name">Send Product Launch Notification</field>
+            <field name="model_id" ref="whatsapp_notification_management.model_festival_offer_vts"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_send_product_launch_notification()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="cron_send_personalized_product_price_to_customer" model="ir.cron">
+            <field name="name">Send Personalized Product Price Notification</field>
+            <field name="model_id" ref="whatsapp_notification_management.model_festival_offer_vts"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_send_personalized_pricelist_notification()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="cron_send_discount_coupon_notification" model="ir.cron">
+            <field name="name">Send Discount Coupons Notification</field>
+            <field name="model_id" ref="loyalty.model_loyalty_card"/>
+            <field name="state">code</field>
+            <field name="code">model.send_discount_coupon_notification()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

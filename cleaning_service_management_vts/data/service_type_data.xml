@@ -1,0 +1,65 @@
+<odoo>
+    <data noupdate="1">
+
+        <!-- Hospital -->
+        <record id="service_type_hospital_vts" model="service.type.vts">
+            <field name="name">Hospital</field>
+            <field name="description">High hygiene cleaning including ICU, waste disposal</field>
+            <field name="default_rate_per_sqft">10</field>
+            <field name="price_type">area_based</field>
+        </record>
+
+        <!-- Home -->
+        <record id="service_type_home_vts" model="service.type.vts">
+            <field name="name">Home</field>
+            <field name="description">Price Based on BHK</field>
+            <field name="default_rate_per_sqft">10</field>
+            <field name="price_type">area_based</field>
+        </record>
+
+        <!-- Office -->
+        <record id="service_type_office_vts" model="service.type.vts">
+            <field name="name">Office</field>
+            <field name="description">General office cleaning and maintenance</field>
+            <field name="default_rate_per_sqft">10</field>
+            <field name="price_type">area_based</field>
+        </record>
+
+        <!-- Hotel -->
+        <record id="service_type_hotel_vts" model="service.type.vts">
+            <field name="name">Hotel</field>
+            <field name="description">Room, lobby, and service area cleaning</field>
+            <field name="default_rate_per_sqft">8</field>
+            <field name="price_type">area_based</field>
+        </record>
+
+        <!-- Gym -->
+        <record id="service_type_gym_vts" model="service.type.vts">
+            <field name="name">Gym</field>
+            <field name="description">Equipment and floor sanitization</field>
+            <field name="default_rate_per_sqft">8</field>
+            <field name="price_type">area_based</field>
+        </record>
+
+        <!-- School -->
+        <record id="service_type_school_vts" model="service.type.vts">
+            <field name="name">School</field>
+            <field name="description">Classroom and washroom cleaning</field>
+            <field name="default_rate_per_sqft">6</field>
+            <field name="price_type">area_based</field>
+        </record>
+
+        <!-- Other -->
+        <record id="service_type_other_vts" model="service.type.vts">
+            <field name="name">Other</field>
+            <field name="description">Custom cleaning service</field>
+            <field name="default_fixed_price">3000</field>
+            <field name="price_type">fixed</field>
+        </record>
+
+        <record id="availability_checker_singleton" model="empl.availability.vts">
+            <field name="name">Check Availability</field>
+        </record>
+
+    </data>
+</odoo>

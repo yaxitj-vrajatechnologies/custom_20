@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="vraja_ai_log_sequence" model="ir.sequence">
+        <field name="name">Vraja AI Log Sequence</field>
+        <field name="code">vraja.ai.log</field>
+        <field name="prefix">AI/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="ir_cron_delete_old_vraja_ai_logs" model="ir.cron">
+        <field name="name">Delete Old AI Logs</field>
+        <field name="model_id" ref="model_vraja_ai_log"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_delete_old_ai_logs()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+</odoo>

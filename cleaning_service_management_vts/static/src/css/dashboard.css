@@ -1,0 +1,311 @@
+/* ═══════════════════════════════════════════
+   ROOT & LAYOUT
+═══════════════════════════════════════════ */
+.o_booking_dashboard.o_spa_root {
+    background-color: #f4f6fb;
+    min-height: 100%;
+    width: 100%;
+    padding: 28px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    overflow-y: auto;
+    height: 100%;
+}
+
+/* ═══════════════════════════════════════════
+   DASHBOARD TITLE (Top Left Heading)
+═══════════════════════════════════════════ */
+.o_booking_dashboard .o_dashboard_title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1f36;
+    letter-spacing: 0.3px;
+}
+
+/* ═══════════════════════════════════════════
+   PERIOD FILTER DROPDOWN (Last 7 Days / Month / Year)
+═══════════════════════════════════════════ */
+.o_booking_dashboard .form-select {
+    border-radius: 9px;
+    border: 2px solid #dde1ee;
+    font-size: 15px;
+    padding: 5px 25px 5px 7px;
+    color: #1a1f36;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.o_booking_dashboard .form-select:focus {
+    outline: none;
+    border-color: #4e73df;
+    box-shadow: 0 0 0 3px rgba(78,115,223,0.15);
+}
+
+/* ═══════════════════════════════════════════
+   KPI CARDS — Base Style
+   (Total, Draft, Under Review, Approved, Rejected, Revenue)
+═══════════════════════════════════════════ */
+.o_booking_dashboard .o_kpi_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 16px;
+    padding: 20px 20px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* KPI Card — Decorative Circle (top right background accent) */
+.o_booking_dashboard .o_kpi_card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+}
+
+/* KPI Card — Hover Lift Effect */
+.o_booking_dashboard .o_kpi_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.13);
+}
+
+/* KPI Card — Label (e.g. "DRAFT", "APPROVED") */
+.o_booking_dashboard .o_kpi_label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 6px;
+}
+
+/* KPI Card — Number Value */
+.o_booking_dashboard .o_kpi_value {
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* KPI Card — Right Side Icon */
+.o_booking_dashboard .o_kpi_icon {
+    font-size: 2.2rem;
+    opacity: 0.50;
+}
+
+/* ═══════════════════════════════════════════
+   KPI CARDS — Individual Colors
+═══════════════════════════════════════════ */
+
+/* Total Bookings — Blue */
+.o_booking_dashboard .kpi_total {
+    background: linear-gradient(135deg, #4e73df, #224abe);
+    color: #fff;
+}
+
+/* Draft — Steel Blue */
+.o_booking_dashboard .kpi_draft {
+    background: linear-gradient(135deg, #6c8ebf, #3a5f9e);
+    color: #fff;
+}
+
+/* Under Review — Orange */
+.o_booking_dashboard .kpi_review {
+    background: linear-gradient(135deg, #f6a623, #d4830a);
+    color: #fff;
+}
+
+/* Approved — Green */
+.o_booking_dashboard .kpi_approved {
+    background: linear-gradient(135deg, #1cc88a, #13855c);
+    color: #fff;
+}
+
+/* Rejected — Red */
+.o_booking_dashboard .kpi_rejected {
+    background: linear-gradient(135deg, #e74a3b, #be2617);
+    color: #fff;
+}
+
+/* Revenue — Cyan */
+.o_booking_dashboard .kpi_revenue {
+    background: linear-gradient(135deg, #36b9cc, #1a8a9a);
+    color: #fff;
+}
+
+/* ═══════════════════════════════════════════
+   CHART BOX — Wrapper for all 3 charts
+   (Booking Trend / Revenue by Service / Status Split)
+═══════════════════════════════════════════ */
+.o_booking_dashboard .o_chart_box {
+    background: #ffffff;
+    border: 1px solid #e8ecf4;
+    border-radius: 16px;
+    padding: 20px 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Chart Box — Section Title */
+.o_booking_dashboard .o_chart_box h5 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1f36;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f2f9;
+}
+
+/* ═══════════════════════════════════════════
+   TOP SERVICES CARDS — Indigo/Violet Theme
+═══════════════════════════════════════════ */
+.o_booking_dashboard .o_service_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    border: 1px solid #c4b5fd;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.o_booking_dashboard .o_service_card:hover {
+    transform: translateX(4px);
+    background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+    box-shadow: 0 4px 14px rgba(109, 40, 217, 0.15);
+}
+
+.o_booking_dashboard .o_service_name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4c1d95;
+}
+
+.o_booking_dashboard .o_service_count {
+    font-size: 20px;
+    font-weight: 700;
+    color: #6d28d9;
+}
+
+.o_booking_dashboard .o_service_icon {
+    font-size: 22px;
+    opacity: 0.45;
+    color: #6d28d9;
+}
+
+/* ═══════════════════════════════════════════
+   TOP CLEANERS CARDS — Amber/Gold Theme
+═══════════════════════════════════════════ */
+.o_booking_dashboard .o_cleaner_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+    border: 1px solid #fcd34d;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.o_booking_dashboard .o_cleaner_card:hover {
+    transform: translateX(4px);
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    box-shadow: 0 4px 14px rgba(217, 119, 6, 0.18);
+}
+
+.o_booking_dashboard .o_cleaner_name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #92400e;
+}
+
+.o_booking_dashboard .o_cleaner_count {
+    font-size: 20px;
+    font-weight: 700;
+    color: #d97706;
+}
+
+.o_booking_dashboard .o_cleaner_icon {
+    font-size: 22px;
+    opacity: 0.45;
+    color: #d97706;
+}
+
+/* ═══════════════════════════════════════════
+   STATUS BADGES — Inside Recent Bookings Table
+═══════════════════════════════════════════ */
+.o_booking_dashboard .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+}
+
+/* Badge — Draft */
+.o_booking_dashboard .o_badge_draft {
+    background: #e8f0fe;
+    color: #1a73e8;
+}
+
+/* Badge — Under Review */
+.o_booking_dashboard .o_badge_under_review {
+    background: #fff4e5;
+    color: #e65100;
+}
+
+/* Badge — Approved */
+.o_booking_dashboard .o_badge_approved {
+    background: #e6f4ea;
+    color: #137333;
+}
+
+/* Badge — Rejected */
+.o_booking_dashboard .o_badge_rejected {
+    background: #fdecea;
+    color: #b3261e;
+}
+
+/* ═══════════════════════════════════════════
+   CUSTOM SCROLLBAR
+═══════════════════════════════════════════ */
+.o_booking_dashboard::-webkit-scrollbar {
+    width: 6px;
+}
+
+.o_booking_dashboard::-webkit-scrollbar-track {
+    background: #f4f6fb;
+}
+
+.o_booking_dashboard::-webkit-scrollbar-thumb {
+    background: #d0d5e8;
+    border-radius: 10px;
+}
+
+.o_booking_dashboard::-webkit-scrollbar-thumb:hover {
+    background: #a0a8c8;
+}
+
+/* ═══════════════════════════════════════════
+   NOTIFICATION POPUP
+═══════════════════════════════════════════ */
+.o_notification_content {
+    white-space: pre-wrap !important;
+}

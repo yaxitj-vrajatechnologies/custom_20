@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- list VIEW -->
+    <record id="view_booking_request_list_vts" model="ir.ui.view">
+        <field name="name">booking.request.list</field>
+        <field name="model">booking.request</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="mobile"/>
+                <field name="area_sqft"/>
+                <field name="preferred_date"/>
+                <field name="pricing_type"/>
+                <field name="estimated_amount"/>
+                <field name="state" widget="badge" decoration-success="state == 'approved'"
+                       decoration-danger="state == 'rejected'"
+                       decoration-warning="state == 'under_review'" decoration-info="state == 'submitted'"
+                       decoration-muted="state == 'draft'"
+                       statusbar_visible="draft,submitted,under_review,approved,rejected"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- CALENDAR VIEW -->
+    <record id="view_booking_request_calendar_vts" model="ir.ui.view">
+        <field name="name">booking.request.calendar</field>
+        <field name="model">booking.request</field>
+        <field name="arch" type="xml">
+            <calendar string="Booking Calendar"
+                      date_start="preferred_date"
+                      color="state">
+
+                <field name="name"/>
+                <field name="service_type_id"/>
+                <field name="partner_id"/>
+                <field name="state"/>
+
+            </calendar>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_booking_request_form_vts" model="ir.ui.view">
+        <field name="name">booking.request.form</field>
+        <field name="model">booking.request</field>
+        <field name="arch" type="xml">
+            <form string="Cleaning Booking Request">
+
+                <!-- HEADER -->
+                <header>
+                    <button name="action_reset_to_draft" type="object"
+                            string="Reset to Draft"
+                            invisible="state != 'under_review'"/>
+
+                    <button name="action_review" type="object"
+                            string="Mark Review"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_approve" type="object"
+                            string="Approve"
+                            invisible="state != 'under_review'"
+                            class="btn-success"/>
+
+                    <button name="action_reject" type="object"
+                            string="Reject"
+                            invisible="state != 'under_review'"
+                            class="btn-danger"/>
+
+                    <button name="create_booked_invoice"
+                            type="object"
+                            string="Create Invoice"
+                            class="btn-primary"
+                            invisible="state != 'approved' or invoice_id"/>
+
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,under_review,approved,rejected"/>
+                </header>
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+
+                        <!-- Tasks Button -->
+                        <button name="action_booking_task"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-tasks"
+                                invisible="cln_task_count == 0">
+
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Tasks</span>
+                                <span class="o_stat_value">
+                                    <field name="cln_task_count"/>
+                                </span>
+                            </div>
+                        </button>
+
+                        <!-- Invoice Button -->
+                        <button name="action_view_invoice"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-file-text-o"
+                                invisible="invoice_count == 0">
+
+                            <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                        </button>
+
+                    </div>
+
+                    <!-- TITLE -->
+                    <div class="oe_title">
+                        <h2>
+                            <field name="name" readonly="1"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" widget="res_partner_many2one"
+                                   context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                                   readonly="state in ['under_review', 'approved']"/>
+                            <field name="mobile" readonly="state in ['under_review', 'approved']"/>
+                            <field name="email" readonly="state in ['under_review', 'approved']"/>
+                        </group>
+                        <group>
+                            <field name="assigned_manager_id"
+                                   readonly="state in ['under_review', 'approved']"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+
+                        <!-- 2. ADDRESS & SCHEDULE-->
+                        <page string="Service Details">
+                            <group>
+                                <group>
+                                    <field name="preferred_date" readonly="state == 'approved'" required="1"/>
+                                     <field name="service_type_id" required="1" readonly="state == 'approved'"/>
+                                     <field name="floor_count" readonly="state == 'approved'"/>
+                                    <field name="room_count" readonly="state == 'approved'"/>
+                                     <field name="area_sqft" readonly="state == 'approved'"/>
+                                    <field name="cleaning_shift_id" readonly="state == 'approved'" required="1"/>
+                                    <field name="shift_slot_id"
+                                           domain="[('shift_id', '=', cleaning_shift_id)]"
+                                           readonly="state == 'approved'"
+                                           invisible="not cleaning_shift_id"
+                                           options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                </group>
+                                <group>
+                                    <field name="approved_on" readonly="1"/>
+                                    <field name="rejected_on" readonly="1"/>
+                                    <field name="is_individual" readonly="state == 'approved'"/>
+                                    <field name="individual_id" invisible="not is_individual"
+                                           readonly="state == 'approved'"
+                                           domain="[('cleaning_shift_ids', 'in', [cleaning_shift_id])]"/>
+                                    <field name="cleaning_team_id"
+                                           domain="[('cleaning_shift_id', '=', cleaning_shift_id)]"
+                                           invisible="is_individual" readonly="state == 'approved'"/>
+                                    <button name="action_check_availability"
+                                            string="Cleaner Availability"
+                                            type="object"
+                                            class="btn btn-secondary btn-sm"
+                                            icon="fa-eye"
+                                            invisible="state != 'under_review'"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="special_instructions" readonly="state == 'approved'"/>
+                            </group>
+                        </page>
+
+                        <!-- 3. PRICING & RECURRING-->
+                        <page string="Pricing &amp; Recurrence">
+                            <group>
+                                <group>
+                                    <field name="pricing_type" readonly="state == 'approved'"/>
+                                    <field name="fixed_price" invisible="pricing_type != 'fixed'"
+                                           readonly="state == 'approved'"/>
+                                    <field name="rate_per_sqft" invisible="pricing_type != 'area_based'"
+                                           readonly="state == 'approved'"/>
+                                    <field name="estimated_amount" readonly="1"/>
+                                </group>
+
+                                <group>
+                                    <field name="is_recurring" readonly="state == 'approved'"/>
+                                    <label for="repeat_interval" string="Repeat Interval" invisible="not is_recurring"/>
+                                    <div class="o_row" invisible="not is_recurring">
+                                        <field name="repeat_interval" class="oe_inline me-2" nolabel="1"
+                                               readonly="state == 'approved'"/>
+                                        <field name="recurring_type" class="oe_inline"
+                                               readonly="state == 'approved'" nolabel="1"/>
+                                    </div>
+                                    <field name="end_date" invisible="not is_recurring" required="is_recurring"
+                                           readonly="state == 'approved'"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter>
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </chatter>
+            </form>
+        </field>
+    </record>
+
+    <record id="seq_booking_request" model="ir.sequence">
+        <field name="name">Booking Request</field>
+        <field name="code">cleaning.booking.request</field>
+        <field name="prefix">BR/</field>
+        <field name="padding">5</field>
+    </record>
+
+    <!-- ACTION-->
+    <record id="action_booking_request_menu_vts" model="ir.actions.act_window">
+        <field name="name">Booking Requests</field>
+        <field name="res_model">booking.request</field>
+        <field name="view_mode">list,form,calendar</field>
+    </record>
+
+    <!-- MENU -->
+    <menuitem id="menu_cleaning_root"
+              name="Cleaning Service"
+              web_icon="cleaning_service_management_vts,static/description/icon.png"
+              sequence="1"/>
+
+    <menuitem id="menu_booking_request"
+              name="Booking Requests"
+              parent="menu_cleaning_root"
+              action="action_booking_request_menu_vts"
+              sequence="10"/>
+
+</odoo>

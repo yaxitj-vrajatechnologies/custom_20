@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_ai_sale_order_draft" model="ir.sequence">
+            <field name="name">AI Sale Order Draft</field>
+            <field name="code">order.automation</field>
+            <field name="prefix">SO/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

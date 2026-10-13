@@ -1,0 +1,178 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Overdue Invoice Reminder -->
+
+        <record id="whatsapp_template_invoice_overdue" model="whatsapp.template">
+            <field name="name">Overdue Invoice Reminder</field>
+            <field name="template_name">overdue_invoice_reminder</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="template_type">utility</field>
+            <field name="phone_field">partner_id.phone</field>
+            <field name="header_type">document</field>
+            <field name="report_id" ref="account.account_invoices_without_payment"/>
+            <field name="body">Hello {{1}},
+This is a reminder that your invoice {{2}} for ${{3}} was due on {{4}}.
+
+Please take a moment to complete the payment when convenient.
+
+Thank you,
+{{5}} Team
+            </field>
+        </record>
+
+        <record id="whatsapp_template_invoice_overdue_account_manager" model="whatsapp.template">
+            <field name="name">Overdue Invoice Alert (Account Manager)</field>
+            <field name="template_name">account_manager_overdue_invoice_reminder</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="template_type">utility</field>
+            <field name="phone_field">partner_id.phone</field>
+            <field name="body">Hello {{1}},
+An invoice has become overdue.
+
+Customer: {{2}}
+Invoice Number: {{3}}
+Amount: ${{4}}
+Due Date: {{5}}
+
+Please follow up with the customer regarding this payment.
+
+Regards,
+{{6}} Team
+            </field>
+        </record>
+
+        <!-- Abandoned Cart Reminder -->
+
+        <record id="whatsapp_template_abandoned_cart" model="whatsapp.template">
+            <field name="name">Abandoned Cart Reminder</field>
+            <field name="template_name">abandoned_cart_reminder</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="template_type">utility</field>
+            <field name="phone_field">partner_id.phone</field>
+            <field name="body">Hello {{1}},
+
+🛒 It looks like you left some items in your cart worth ${{2}}.
+
+Your selected items are still waiting for you! Complete your purchase before they run out.
+
+Finish your order here:
+{{3}}
+
+We’ve saved your cart so you can continue shopping anytime.
+
+Thank you
+            </field>
+        </record>
+        <!-- Festival Offer -->
+
+        <record id="whatsapp_template_festival_offer" model="whatsapp.template">
+            <field name="name">Special Offers Discount</field>
+            <field name="template_name">special_offers_discount</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="template_type">marketing</field>
+            <field name="phone_field">phone</field>
+            <field name="header_type">document</field>
+            <field name="report_id" ref="whatsapp_notification_management.action_report_product_offer_pdf"/>
+            <field name="body">Hello {{1}},
+
+🎉 A special offer just for you!
+
+Enjoy an exclusive {{2}} discount on our {{3}}.
+
+Please check the attached document for full product details
+
+🗓 Offer Valid From: {{4}}
+🗓 Offer Ends On: {{5}}
+
+Don’t miss this limited-time festival offer. Grab your favorite products while the offer lasts!
+
+Thank you,
+Our Team
+
+            </field>
+        </record>
+
+        <!-- New Product Launch -->
+
+        <record id="whatsapp_template_product_launch" model="whatsapp.template">
+            <field name="name">New Product Launch</field>
+            <field name="template_name">new_product_launch</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="template_type">marketing</field>
+            <field name="phone_field">phone</field>
+            <field name="body">🚀 New Product Launch!
+
+Hello {{1}},
+
+We are excited to announce the launch of our new product:
+
+{{2}}.
+
+📝 Product Details:
+{{3}}
+
+📅 Launch Date: {{4}}
+
+Visit us to explore the product and grab yours early!
+
+Best Regards,
+{{5}} Team
+            </field>
+        </record>
+
+        <!-- Discount Coupon -->
+
+        <record id="whatsapp_template_discount_coupon" model="whatsapp.template">
+            <field name="name">Discount Coupon</field>
+            <field name="template_name">discount_coupon_offers</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="template_type">marketing</field>
+            <field name="phone_field">phone</field>
+
+            <field name="body">Hello {{1}},
+
+🎉 Great news! You have received an exclusive discount coupon.
+
+🏷️ Coupon Code: {{2}}
+💸 Discount: {{3}}% OFF
+
+Use this coupon to enjoy special savings on your purchase.
+
+⏳ Valid Until: {{4}}
+
+🛍️ Start shopping and redeem your coupon from:
+{{5}}
+
+Don't miss out on this limited-time offer. Enjoy your exclusive savings!</field>
+        </record>
+
+        <record id="whatsapp_template_personalized_product_price" model="whatsapp.template">
+            <field name="name">Personalized Product Price</field>
+            <field name="template_name">personalized_product_price_offers</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="template_type">marketing</field>
+            <field name="phone_field">phone</field>
+            <field name="body">Hello {{1}} 👋,
+
+🎉 Great news! We have unlocked a **special exclusive price** just for you!
+
+🔥 Featured Product: {{2}}
+💰 Your Exclusive Offer: {{3}}
+
+This limited-time offer is reserved **only for our valued customers like you**. Don’t miss the chance to
+grab this amazing deal before it expires!
+
+✨ Take advantage of this special price and enjoy premium quality at a fantastic value.
+
+🛍️ Shop Now:
+{{4}}
+
+If you have any questions, we’re always here to help.
+
+{{5}}
+
+Thank you for being a valued customer
+            </field>
+        </record>
+    </data>
+</odoo>

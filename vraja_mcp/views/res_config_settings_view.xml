@@ -1,0 +1,17 @@
+<odoo>
+    <record id="res_config_settings_view_form_mcp_ai_operations" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.mcp.ai.operations</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='integration']" position="inside">
+                <setting id="mcp_ai_operations_setting" string="MCP AI Automation"
+                         help="Use a newly created Odoo API key with the MCP-only scope. Do not paste an OpenAI key here.">
+                    <div class="content-group mt16">
+                        <field name="mcp_ai_operations_api_key" password="True"/>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

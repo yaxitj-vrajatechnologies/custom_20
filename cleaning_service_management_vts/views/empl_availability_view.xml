@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_availability_checker_form_vts" model="ir.ui.view">
+        <field name="name">empl.availability.vts.form</field>
+        <field name="model">empl.availability.vts</field>
+        <field name="arch" type="xml">
+            <form string="Check Availability" create="false" edit="true" duplicate="false" delete="false">
+                <sheet>
+
+                    <div style="background: white;border: 1px solid #e0e0e0;border-radius: 10px;
+                        padding: 16px 24px;margin-bottom: 16px;">
+                        <div style="display: flex;align-items: center;justify-content: space-between;
+                            margin-bottom: 16px;border-bottom: 1px solid #e8eaf6;padding-bottom: 10px;">
+                            <div style="font-size: 15px;font-weight: 700;color: #714B67;text-transform: uppercase;letter-spacing: 1px;
+                            ">Search Criteria
+                            </div>
+
+                            <button name="action_check_cleaner_availability"
+                                    type="object"
+                                    string="Check Availability"
+                                    class="btn btn-primary"
+                                    style="padding: 8px 24px;font-size: 14px;font-weight: 600;"/>
+                        </div>
+
+                        <!-- Fields Row: Date | Shift | Time Slot -->
+                        <div style="display: flex;gap: 24px;align-items: flex-end;">
+                            <!-- Date -->
+                            <div style="flex: 1;">
+                                <label for="check_date"
+                                       style="font-size: 12px;font-weight: 600;color: #555;display: block;margin-bottom: 4px;">
+                                    Date
+                                </label>
+                                <field name="check_date" nolabel="1" style="width:100%;" required="1"/>
+                            </div>
+
+                            <!-- Shift -->
+                            <div style="flex: 1;">
+                                <label for="cleaning_shift_id" style="font-size: 12px;font-weight: 600;color: #555;
+                                    display: block;margin-bottom: 4px;">Shift
+                                </label>
+                                <field name="cleaning_shift_id" nolabel="1" style="width:100%;"/>
+                            </div>
+
+                            <div style="flex: 1;">
+                                <!-- Time Slot -->
+                                <label for="shift_slot_id" style="font-size: 12px;font-weight: 600;
+                                    color: #555;display: block;margin-bottom: 4px;">Time Slot
+                                </label>
+                                <field name="shift_slot_id"
+                                       nolabel="1"
+                                       options="{'no_create': True, 'no_open': True}"
+                                       style="width:100%;"/>
+                            </div>
+                        </div>
+                        <field name="result_summary"
+                               nolabel="1" readonly="1" widget="text"
+                               style="background:transparent; border:none; color:#2e7d32; font-weight:500;"
+                                invisible="not available_employee_ids and not available_team_ids"/>
+                    </div>
+
+                    <!-- ── Results Tabs ── -->
+                    <notebook invisible="not result_summary">
+
+                        <page string="Available Employees" name="available_employees">
+                            <field name="available_employee_ids" readonly="1" nolabel="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="job_id" string="Position"/>
+                                    <field name="mobile_phone" string="Mobile"/>
+                                    <field name="cleaning_shift_ids"
+                                           widget="many2many_tags"
+                                           string="Assigned Shifts"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <page string="Available Teams" name="available_teams">
+                            <field name="available_team_ids" readonly="1" nolabel="1">
+                                <list>
+                                    <field name="name" string="Team Name"/>
+                                    <field name="cleaning_shift_id" string="Shift"/>
+                                    <field name="employee_ids"
+                                           widget="many2many_tags"
+                                           string="Team Members"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_availability_checker_vts" model="ir.actions.act_window">
+        <field name="name">Check Availability</field>
+        <field name="res_model">empl.availability.vts</field>
+        <field name="view_mode">form</field>
+        <field name="res_id" ref="availability_checker_singleton"/>
+    </record>
+
+    <menuitem id="menu_availability_checker_vts"
+              name="Check Availability"
+              parent="menu_cleaning_configuration_vts"
+              action="action_availability_checker_vts"
+              sequence="9"/>
+
+</odoo>

@@ -1,0 +1,89 @@
+<odoo>
+    <data noupdate="1">
+        <record id="email_booking_request_approve_template_vts" model="mail.template">
+            <field name="name">Booking Confirmation Email</field>
+            <field name="model_id" ref="cleaning_service_management_vts.model_booking_request"/>
+            <field name="subject">Cleaning Booking Approved {{ object.name }}</field>
+            <field name="email_from">{{ user.company_id.email }}</field>
+            <field name="email_to">{{object.email}}</field>
+            <field name="body_html" type="html">
+                <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+
+                    <p>
+                        Dear <strong t-out="object.partner_id.name or ''"></strong>,
+                    </p>
+
+                    <p>
+                        We’re pleased to inform you that your
+                        <strong>cleaning booking has been approved</strong>.
+                    </p>
+
+                    <p>
+                        <strong>Booking Details:</strong>
+                    </p>
+
+                    <table style="width:100%; border-collapse: collapse;">
+
+                        <tr>
+                            <td>
+                                <strong>Reference:</strong>
+                            </td>
+                            <td t-out="object.name or ''"></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong>Service:</strong>
+                            </td>
+                            <td t-out="object.service_type_id.name or ''"></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong>Date:</strong>
+                            </td>
+                            <td t-out="object.preferred_date or ''"></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong>Area:</strong>
+                            </td>
+                            <td>
+                                <span t-out="object.area_sqft or 0"></span>
+                                sq.ft
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </field>
+        </record>
+        <record id="email_booking_request_notify_to_manager" model="mail.template">
+            <field name="name">New Booking Request - Manager Notification</field>
+            <field name="model_id" ref="cleaning_service_management_vts.model_booking_request"/>
+            <field name="subject">
+                New Booking Request: {{ object.name or '' }}
+            </field>
+            <field name="email_from">{{ user.company_id.email or '' }}</field>
+            <field name="email_to">{{ object.assigned_manager_id.email or '' }}</field>
+            <field name="body_html" type="html">
+                <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+                    <p>
+                        Hello <strong t-out="object.assigned_manager_id.name or ''"/>,
+                    </p>
+                    <p>
+                        You have been assigned a new booking request for review.
+                    </p>
+                    <p>
+                        <strong>Reference:</strong>
+                        <span t-out="object.name or ''"/>
+                    </p>
+                    <p>
+                        Please log in to review the request.
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

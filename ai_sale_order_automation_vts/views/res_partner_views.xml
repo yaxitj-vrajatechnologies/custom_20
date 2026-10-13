@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_ai_order_instruction" model="ir.ui.view">
+        <field name="name">res.partner.form.ai.order.instruction</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="AI Order Instructions" name="ai_order_instructions">
+                    <p class="text-muted">
+                        Customer-specific instructions for the Sale Order Automation. When this customer
+                        is selected on an automation record, this text is added to that record's
+                        Creation Prompt.
+                    </p>
+                    <field name="ai_order_instruction"
+                           nolabel="1"
+                           placeholder="e.g. This customer writes quantities in boxes of 12. The PO number is in the top right corner..."/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

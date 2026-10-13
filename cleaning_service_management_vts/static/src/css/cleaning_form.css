@@ -1,0 +1,137 @@
+.cleaning-bg-card {
+    background-image: url('/cleaning_service_management_vts/static/src/img/cleaning-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.cleaning-bg-card .card-body {
+    backdrop-filter: blur(6px);
+}
+
+.cleaning-form-card {
+    background: rgb(19 141 186);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #fbc02d, #f9a825);
+    border: none;
+    color: #333;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #f9a825, #f57f17);
+    color: #222;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.btn-submit {
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+
+
+
+/* Wrapper */
+.preferred-date-wrapper {
+    position: relative;
+}
+
+/* Input */
+.preferred-date-input {
+
+    height: 40px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #fff !important;
+    transition: all 0.2s ease;
+}
+
+/* Focus */
+.preferred-date-input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.15rem rgba(13,110,253,.15);
+}
+
+/* Calendar icon inside input */
+.calendar-trigger {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+    font-size: 16px;
+    z-index: 10;
+    transition: color 0.2s ease;
+}
+
+/* Hover */
+.calendar-trigger:hover {
+    color: #0d6efd;
+}
+
+/* Datepicker popup */
+.ui-datepicker {
+    z-index: 9999 !important;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    font-size: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Header */
+.ui-datepicker-header {
+    background: #fff;
+    border: none;
+    margin-bottom: 8px;
+}
+
+/* Calendar cells */
+.ui-datepicker-calendar td a {
+    border-radius: 8px;
+    text-align: center;
+    padding: 6px;
+    transition: all 0.15s ease;
+}
+
+/* Hover date */
+.ui-datepicker-calendar td a:hover {
+    background: #0d6efd !important;
+    color: #fff !important;
+}
+
+/* Today */
+.ui-datepicker-today a {
+    background: #dbeafe !important;
+    color: #0d6efd !important;
+    border: none !important;
+}
+
+/* Disabled dates */
+.ui-datepicker-unselectable span {
+    background: #f1f3f5 !important;
+    color: #adb5bd !important;
+    border-radius: 8px;
+    opacity: 1;
+    cursor: not-allowed !important;
+}
+
+/* Active selected date */
+.ui-datepicker-current-day a {
+    background: #0d6efd !important;
+    color: white !important;
+}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="vraja_ai_config_default" model="vraja.ai.config">
+            <field name="openai_api_key"></field>
+        </record>
+    </data>
+
+    <record id="view_vraja_ai_config_form" model="ir.ui.view">
+        <field name="name">vraja.ai.config.form</field>
+        <field name="model">vraja.ai.config</field>
+        <field name="arch" type="xml">
+            <form string="AI Configuration" create="False">
+                <sheet>
+
+                    <!-- ══════════════════════════════════════════════════
+                         SECTION 1: AI Provider Selector (Radio Buttons)
+                         Changing this radio immediately shows / hides the
+                         relevant credential block below via 'invisible'.
+                    ══════════════════════════════════════════════════ -->
+                    <group string="AI Provider">
+                        <field
+                            name="ai_provider"
+                            widget="radio"
+                            options="{'horizontal': true}"
+                            nolabel="1"
+                        />
+                    </group>
+
+                    <separator/>
+
+                    <!-- ══════════════════════════════════════════════════
+                         SECTION 2: OpenAI Configuration
+                         Visible only when ai_provider = 'openai'.
+                    ══════════════════════════════════════════════════ -->
+                    <group string="OpenAI Settings"
+                           invisible="ai_provider != 'openai'">
+                        <field name="openai_api_key"
+                               password="True"
+                               placeholder="sk-…"
+                               help="Your OpenAI API key. Starts with 'sk-'."/>
+                        <field name="llm_model"
+                               string="OpenAI Model"/>
+                    </group>
+
+                    <!-- ══════════════════════════════════════════════════
+                         SECTION 3: Claude (Anthropic) Configuration
+                         Visible only when ai_provider = 'claude'.
+
+                         Claude Messages API:
+                           Endpoint : POST https://api.anthropic.com/v1/messages
+                           Auth     : x-api-key header  (NOT Bearer token)
+                           Version  : anthropic-version: 2023-06-01
+                         Ref: https://docs.anthropic.com/en/api/overview
+                    ══════════════════════════════════════════════════ -->
+                    <group string="Claude (Anthropic) Settings"
+                           invisible="ai_provider != 'claude'">
+                        <field name="claude_api_key"
+                               password="True"
+                               placeholder="sk-ant-…"
+                               help="Your Anthropic API key. Obtain from&#10;https://platform.claude.com/settings/keys"/>
+                        <field name="claude_llm_model"
+                               string="Claude Model"/>
+                        <field name="claude_max_tokens"/>
+                    </group>
+
+                    <!-- ══════════════════════════════════════════════════
+                         SECTION 4: Google Gemini Configuration
+                         Visible only when ai_provider = 'gemini'.
+                    ══════════════════════════════════════════════════ -->
+                    <group string="Google Gemini Settings"
+                           invisible="ai_provider != 'gemini'">
+                        <field name="gemini_api_key"
+                               password="True"
+                               placeholder="AIzaSy..."
+                               help="Your Google Gemini API key."/>
+                        <field name="gemini_llm_model"
+                               string="Gemini Model"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_vraja_ai_config" model="ir.actions.act_window">
+        <field name="name">AI Configuration</field>
+        <field name="res_model">vraja.ai.config</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_vraja_ai_config_form"/>
+        <field name="res_id" ref="vraja_ai_config_default"/>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_vraja_ai_configuration_root"
+              name="Configuration"
+              parent="vraja_ai.menu_vraja_ai_root"
+              action="action_vraja_ai_config"
+              sequence="10"/>
+
+</odoo>
+

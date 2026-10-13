@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_product_pdf_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-if="o.exists()">
+                        <t t-call="web.external_layout">
+                            <div style="text-align:center;font-weight:bold;font-size:20px;margin-bottom:15px;">
+                                <h2>Product List</h2>
+                            </div>
+
+                            <!-- Debug: Show current selection mode -->
+                            <div style="margin-bottom: 15px; padding: 5px; background-color: #f0f0f0;">
+                                <strong>Products Details</strong>
+                                <!--                                <span t-esc="o.select_product_opr or 'No Mode Selected'"/>-->
+                            </div>
+
+                            <div class="page">
+                                <!-- INCLUDE PRODUCTS -->
+                                <t t-if="o.select_product_opr == 'include_product'">
+                                    <t t-if="o.product_ids">
+                                        <t t-foreach="o.product_ids" t-as="product">
+                                            <div>
+                                                <span t-esc="product.name"/>
+                                            </div>
+                                            <hr/>
+                                        </t>
+                                    </t>
+                                </t>
+
+                                <!-- EXCLUDE PRODUCTS -->
+                                <t t-elif="o.select_product_opr == 'exclude_product'">
+                                    <t t-set="excluded_ids" t-value="o.product_ids and o.product_ids.ids or []"/>
+                                    <t t-set="domain"
+                                       t-value="[('id', 'not in', excluded_ids)] if excluded_ids else []"/>
+                                    <t t-set="all_products" t-value="env['product.product'].search(domain)"/>
+
+                                    <t t-if="all_products">
+                                        <t t-foreach="all_products" t-as="product">
+                                            <div>
+                                                <span t-esc="product.name"/>
+                                            </div>
+                                            <hr/>
+                                        </t>
+                                    </t>
+                                </t>
+
+                                <!-- ALL PRODUCTS -->
+                                <t t-elif="o.select_product_opr == 'all_product'">
+                                    <t t-set="all_products" t-value="env['product.product'].search([])"/>
+                                    <t t-if="all_products">
+                                        <div>All Products</div>
+                                    </t>
+                                </t>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

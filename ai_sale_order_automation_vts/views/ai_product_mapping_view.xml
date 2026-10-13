@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_ai_product_mapping_list_vts" model="ir.ui.view">
+        <field name="name">ai.product.mapping.list</field>
+        <field name="model">ai.product.mapping</field>
+        <field name="arch" type="xml">
+            <list string="AI Product Mappings" editable="bottom">
+                <field name="source_product_name"/>
+                <field name="product_id" options="{'no_create': True}"/>
+                <field name="quantity"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ai_product_mapping_form" model="ir.ui.view">
+        <field name="name">ai.product.mapping.form</field>
+        <field name="model">ai.product.mapping</field>
+        <field name="arch" type="xml">
+            <form string="AI Product Mapping">
+                <sheet>
+                    <group>
+                        <field name="source_product_name"/>
+                        <field name="product_id" options="{'no_create': True}"/>
+                        <field name="quantity"/>
+                    </group>
+                    <p class="text-muted">
+                        Quantity = how many units of the Odoo Product make up ONE unit of the
+                        Extracted Product Name. Example: the document says "Soap 5kg", the Odoo
+                        product is "Soap 2.5kg" and Quantity is 2 - an ordered quantity of 1
+                        becomes 2 on the sale order.
+                    </p>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ai_product_mapping_vts" model="ir.actions.act_window">
+        <field name="name">Product Mapping</field>
+        <field name="res_model">ai.product.mapping</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smart_action">
+                No product mappings yet
+            </p>
+            <p>
+                A product mapping links a product name/description as it
+                appears on a customer document to the matching Odoo
+                product. Mappings are saved automatically from the
+                "Extracted Lines" tab of an Order Automation record when
+                you map/correct a product and click "Update Sale Order",
+                and are then reused by the AI on future documents so the
+                same product is matched correctly every time. Set the
+                Quantity to multiply the ordered quantity when the mapped
+                product is a different size than the one on the document.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_ai_product_mapping"
+              name="Product Mapping"
+              parent="menu_ai_sale_order_root"
+              action="action_ai_product_mapping_vts"
+              sequence="2"/>
+
+</odoo>

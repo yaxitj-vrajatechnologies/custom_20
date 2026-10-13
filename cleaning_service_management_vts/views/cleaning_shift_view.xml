@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    LIST VIEW   -->
+    <record id="view_cleaning_shift_list_vts" model="ir.ui.view">
+        <field name="name">cleaning.shift.vts.list</field>
+        <field name="model">cleaning.shift.vts</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" width="25px"/>
+                <field name="start_time" widget="float_time" width="25px"/>
+                <field name="end_time" widget="float_time" width="25px"/>
+                <field name="duration_hours" width="25px"/>
+            </list>
+        </field>
+    </record>
+
+    <!--    FORM VIEW   -->
+    <record id="view_cleaning_shift_form_vts" model="ir.ui.view">
+        <field name="name">cleaning.shift.vts.form</field>
+        <field name="model">cleaning.shift.vts</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <group>
+                        <field name="name"/>
+                        <field name="note"/>
+                    </group>
+
+                    <group>
+                        <group string="Timing">
+                            <field name="start_time" widget="float_time"/>
+                            <field name="end_time" widget="float_time"/>
+                            <field name="duration_hours" readonly="1"/>
+                        </group>
+                        <group string="Slot Settings">
+                            <field name="slot_duration" widget="radio" options="{'horizontal': true}"/>
+                            <field name="slot_interval"/>
+                            <field name="slot_gap"/>
+                        </group>
+                    </group>
+
+                    <!-- Generate Button -->
+                    <button string="Generate Slots"
+                            name="action_generate_slots"
+                            type="object"
+                            class="btn-primary"/>
+
+                    <!-- Slots List -->
+                    <separator string="Generated Slots"/>
+
+                    <field name="slot_ids" readonly="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="slot_start_time" widget="float_time"/>
+                            <field name="slot_end_time" widget="float_time"/>
+                            <button name="unlink"
+                                    type="object"
+                                    icon="fa-trash"
+                                    aria-label="Delete"
+                                    confirm="Are you sure you want to delete this slot?"/>
+                        </list>
+                    </field>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    ACTION   -->
+    <record id="action_cleaning_shift_vts" model="ir.actions.act_window">
+        <field name="name">Shifts &amp; Slots</field>
+        <field name="res_model">cleaning.shift.vts</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!--    MENU   -->
+    <menuitem id="menu_cleaning_shift_vts"
+              name="Shifts &amp; Slots"
+              parent="menu_cleaning_configuration_vts"
+              action="action_cleaning_shift_vts"
+              sequence="20"/>
+</odoo>

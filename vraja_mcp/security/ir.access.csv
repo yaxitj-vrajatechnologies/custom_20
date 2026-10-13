@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_mcp_operation,access.mcp.operation,mcp.operation,base.group_everyone,crud,
+access_mcp_operation_message,access.mcp.operation.message,mcp.operation.message,base.group_everyone,crud,

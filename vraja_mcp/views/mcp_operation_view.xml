@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_mcp_ai_operation" model="ir.actions.act_window">
+        <field name="name">AI Operations</field>
+        <field name="res_model">mcp.operation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!--Form View -->
+    <record id="view_mcp_ai_operation_form" model="ir.ui.view">
+        <field name="name">mcp.ai.operation.form</field>
+        <field name="model">mcp.operation</field>
+        <field name="arch" type="xml">
+            <form string="MCP AI Chat" class="mcp_chat_form">
+                <sheet>
+                    <div class="mcp_chat_shell">
+                        <aside class="mcp_chat_sidebar">
+                            <div class="mcp_chat_brand">
+                                <span class="mcp_chat_brand_mark">✦</span>
+                                <div>
+                                    <strong>MCP Assistant</strong>
+                                    <small>Odoo-aware AI</small>
+                                </div>
+                            </div>
+                            <div class="mcp_chat_settings">
+                                <h4>Chat settings</h4>
+                                <div class="mcp_chat_field">
+                                    <label for="model_id">Odoo model</label>
+                                    <field name="model_id" options="{'no_create': True}"
+                                           context="{'list_view_ref': 'vraja_mcp.view_mcp_enabled_model_list_picker'}"
+                                           required="1" class="mcp_chat_input"/>
+                                </div>
+                                <div class="mcp_chat_field" id="mcp_chat_operation_field">
+                                    <label for="operation">Operation</label>
+                                    <field name="operation" required="1" class="mcp_chat_input"/>
+                                </div>
+                            </div>
+                            <div class="mcp_chat_permissions" invisible="not model_id">
+                                <h4>Allowed operations
+                                    <span class="mcp_chat_permissions_hint">access rights for this model</span>
+                                </h4>
+                                <div class="mcp_chat_permission_row" data-permission="read">
+                                    <span class="mcp_chat_permission_label">
+                                        <i class="oi" data-icon="visibility" aria-hidden="true"/>
+                                        Read
+                                    </span>
+                                    <field name="allow_read" readonly="1" nolabel="1"
+                                           class="mcp_chat_permission_value"/>
+                                </div>
+                                <div class="mcp_chat_permission_row" data-permission="create">
+                                    <span class="mcp_chat_permission_label">
+                                        <i class="oi" data-icon="add" aria-hidden="true"/>
+                                        Create
+                                    </span>
+                                    <field name="allow_create" readonly="1" nolabel="1"
+                                           class="mcp_chat_permission_value"/>
+                                </div>
+                                <div class="mcp_chat_permission_row" data-permission="write">
+                                    <span class="mcp_chat_permission_label">
+                                        <i class="oi" data-icon="edit" aria-hidden="true"/>
+                                        Update
+                                    </span>
+                                    <field name="allow_write" readonly="1" nolabel="1"
+                                           class="mcp_chat_permission_value"/>
+                                </div>
+                                <div class="mcp_chat_permission_row" data-permission="unlink">
+                                    <span class="mcp_chat_permission_label">
+                                        <i class="oi" data-icon="delete" aria-hidden="true"/>
+                                        Delete
+                                    </span>
+                                    <field name="allow_unlink" readonly="1" nolabel="1"
+                                           class="mcp_chat_permission_value"/>
+                                </div>
+                            </div>
+                        </aside>
+                        <main class="mcp_chat_main">
+                            <div class="mcp_chat_intro" invisible="message_ids">
+                                <span class="mcp_chat_avatar">✦</span>
+                                <div>
+                                    <h2>How can I help with Odoo?</h2>
+                                    <p>Choose a model and an operation, then describe the task you want
+                                        completed.
+                                    </p>
+                                </div>
+                            </div>
+                            <field name="message_ids" nolabel="1" readonly="1" class="mcp_chat_history">
+                                <kanban create="0" delete="0" can_open="false" class="mcp_chat_history_kanban">
+                                    <field name="role"/>
+                                    <field name="content"/>
+                                    <field name="create_date"/>
+                                    <field name="total_tokens"/>
+                                    <field name="attachment_ids"/>
+                                    <templates>
+                                        <t t-name="card">
+                                            <div t-attf-class="mcp_chat_message mcp_chat_#{record.role.raw_value}">
+                                                <span class="mcp_chat_avatar">
+                                                    <t t-out="record.role.raw_value == 'user' ? 'You' : '✦'"/>
+                                                </span>
+                                                <div class="mcp_chat_bubble">
+                                                    <div class="mcp_chat_bubble_header">
+                                                        <span class="mcp_chat_sender">
+                                                            <t t-out="record.role.raw_value == 'user' ? 'You' : 'MCP Assistant'"/>
+                                                        </span>
+                                                        <span class="mcp_chat_time">
+                                                            <field name="create_date" widget="datetime"/>
+                                                        </span>
+                                                    </div>
+                                                    <div class="mcp_chat_message_content">
+                                                        <field name="content"/>
+                                                    </div>
+                                                    <div class="mcp_chat_message_attachments"
+                                                         t-if="record.attachment_ids.raw_value.length">
+                                                        <field name="attachment_ids" widget="many2many_binary"/>
+                                                    </div>
+                                                    <div class="mcp_chat_message_tokens"
+                                                         t-if="record.role.raw_value == 'assistant' and record.total_tokens.raw_value">
+                                                        Total Token Used:
+                                                        <field name="total_tokens"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                            <div class="mcp_chat_composer">
+                                <label for="ai_prompt">Message</label>
+                                <field name="ai_prompt" nolabel="1"
+                                       placeholder="Ask the assistant to read, create, update, or delete Odoo data…"
+                                       widget="text" options="{}" class="o_field_text"/>
+
+                                <div class="mcp_chat_composer_attachments">
+                                    <field name="attachment_ids" widget="many2many_binary" nolabel="1"/>
+                                </div>
+
+                                <div class="mcp_chat_composer_footer">
+                                    <span class="mcp_chat_composer_hint">The assistant remembers every message above,
+                                        including the previous response, and uses it for follow-up updates.
+                                    </span>
+                                    <button name="action_run_ai_operation"
+                                            type="object"
+                                            class="btn-primary mcp_chat_run"
+                                            disabled="disabled">
+                                        <i class="oi" data-icon="send" aria-hidden="true"/>
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
+                            <!--                            <div class="mt-3" invisible="not document_json">-->
+                            <!--                                <label class="o_form_label">Validated document JSON</label>-->
+                            <!--                                <field name="document_json" nolabel="1" readonly="1" widget="text"/>-->
+                            <!--                            </div>-->
+                        </main>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Tree View -->
+    <record id="view_mcp_ai_operation_list" model="ir.ui.view">
+        <field name="name">mcp.ai.operation.list</field>
+        <field name="model">mcp.operation</field>
+        <field name="arch" type="xml">
+            <list string="AI Operation">
+                <field name="model_id"/>
+                <field name="operation"/>
+            </list>
+        </field>
+    </record>
+
+    <!--Search View-->
+    <record id="view_mcp_ai_operation_search" model="ir.ui.view">
+        <field name="name">mcp.ai.operation.search</field>
+        <field name="model">mcp.operation</field>
+        <field name="arch" type="xml">
+            <search string="Search chats">
+                <field name="ai_prompt" string="Message"/>
+                <field name="response" string="Response"/>
+                <field name="model_id"/>
+                <separator/>
+                <filter string="Group by model" name="group_model" context="{'group_by': 'model_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!--Menu Items -->
+    <menuitem id="menu_mcp_automation_root"
+              name="MCP Assistant"
+              sequence="70"
+              web_icon="vraja_mcp,static/description/icon.png"
+              groups="mcp_server.group_mcp_user"/>
+
+    <menuitem id="menu_mcp_ai_operations"
+              name="AI Operations"
+              parent="menu_mcp_automation_root"
+              action="action_mcp_ai_operation"
+              sequence="10"
+              groups="mcp_server.group_mcp_user"/>
+</odoo>

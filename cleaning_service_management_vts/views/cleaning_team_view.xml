@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- LIST VIEW -->
+    <record id="view_cleaning_team_list" model="ir.ui.view">
+        <field name="name">cleaning.team.list</field>
+        <field name="model">cleaning.team.vts</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="cleaning_shift_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_cleaning_team_form" model="ir.ui.view">
+        <field name="name">cleaning.team.form</field>
+        <field name="model">cleaning.team.vts</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="cleaning_shift_id" required="1"/>
+                    </group>
+
+                    <group>
+                        <field name="employee_ids" widget="many2many_tags" required="1" domain="[('cleaning_shift_ids', 'in', [cleaning_shift_id])]"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Booked Requests">
+                            <field name="booked_request_ids">
+                                <list create='false' edit='false'>
+                                    <field name="name"/>
+                                    <field name="partner_id"/>
+                                    <field name="service_type_id"/>
+                                    <field name="cleaning_team_id"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <page string="Notes">
+                            <group>
+                                <field name="note"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cleaning_team" model="ir.actions.act_window">
+        <field name="name">Cleaning Teams</field>
+        <field name="res_model">cleaning.team.vts</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_cleaning_team"
+              name="Cleaning Teams"
+              parent="menu_cleaning_configuration_vts"
+              action="action_cleaning_team"
+              sequence="20"/>
+
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_booking_dashboard" model="ir.actions.client">
+        <field name="name">Booking Dashboard</field>
+        <field name="tag">booking_dashboard</field>
+    </record>
+
+    <menuitem id="menu_booking_dashboard"
+              name="Dashboard"
+              parent="menu_cleaning_root"
+              action="action_booking_dashboard"
+              sequence="1"/>
+
+</odoo> 

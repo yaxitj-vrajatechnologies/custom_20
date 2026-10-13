@@ -1,0 +1,69 @@
+<odoo>
+    <data>
+        <record id="loyalty_card_form_view_inherit" model="ir.ui.view">
+            <field name="name">loyalty.card.form.view.inherit</field>
+            <field name="model">loyalty.card</field>
+            <field name="inherit_id" ref="loyalty.loyalty_card_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="Notification Reminder">
+                        <group>
+                            <group>
+                                <label for="loyalty_notify_value" string="Notify Before"/>
+                                <div class="o_row">
+                                    <field name="loyalty_notify_value" nolabel="1"
+                                    invisible="loyalty_notify_unit == 'custom'"/>
+                                    <field name="notify_custom_date"  invisible="loyalty_notify_unit != 'custom'"/>
+                                    <field name="loyalty_notify_unit" nolabel="1"/>
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <!-- Root Menu -->
+        <menuitem
+                id="menu_discount_loyalty_root"
+                name="Discount and Coupon"
+                parent="whatsapp.whatsapp_menu_main"
+                sequence="5"
+        />
+        <!-- Programs Menu -->
+        <menuitem
+                id="menu_loyalty_programs_custom"
+                name="Programs"
+                parent="menu_discount_loyalty_root"
+                action="loyalty.loyalty_program_discount_loyalty_action"
+                sequence="10"
+        />
+        <!-- Coupons Menu -->
+        <record id="loyalty_card_action_custom" model="ir.actions.act_window">
+            <field name="name">Coupons</field>
+            <field name="res_model">loyalty.card</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('program_id', '!=', False)]</field>
+            <field name="context">{'create': False}</field>
+        </record>
+        <menuitem
+                id="menu_loyalty_cards_custom"
+                name="Coupons"
+                parent="menu_discount_loyalty_root"
+                action="whatsapp_notification_management.loyalty_card_action_custom"
+                sequence="20"
+        />
+
+        <!--   Product PriceList menu-->
+        <menuitem
+                id="menu_product_pricelist_root"
+                name="Product PriceList"
+                parent="whatsapp.whatsapp_menu_main"
+                action="product.product_pricelist_action2"
+                sequence="4"
+        />
+    </data>
+</odoo>

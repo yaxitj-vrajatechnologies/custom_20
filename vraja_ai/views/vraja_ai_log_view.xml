@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ── List View ───────────────────────────────────── -->
+    <record id="vraja_ai_log_list" model="ir.ui.view">
+        <field name="name">vraja.ai.log.list</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="arch" type="xml">
+            <list string="AI Logs"
+                  decoration-success="status == 'success'"
+                  decoration-danger="status == 'failed'">
+                <field name="name" width="250"/>
+                <field name="run_date" width="160"/>
+                <field name="vraja_common_log_store" width="180"/>
+                <field name="status" widget="badge" width="100"
+                       decoration-success="status == 'success'"
+                       decoration-danger="status == 'failed'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Form View ──────────────────────────────────────── -->
+    <record id="vraja_ai_log_form" model="ir.ui.view">
+        <field name="name">vraja.ai.log.form</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="arch" type="xml">
+            <form string="AI Log" create="false" edit="false">
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Search View ──────────────────────────────────────── -->
+    <record id="vraja_common_ai_log_search" model="ir.ui.view">
+        <field name="name">vraja.ai.log.search</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="arch" type="xml">
+            <search string="AI Logs">
+                <field name="name" string="Reference"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ── Action ──────────────────────────────────────── -->
+    <record id="vraja_ai_log_action_vts" model="ir.actions.act_window">
+        <field name="name">AI Logs</field>
+        <field name="res_model">vraja.ai.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <!-- ── Menu ────────────────────────────────────────── -->
+    <menuitem
+            id="vraja_ai_log_menu"
+            name="AI Logs"
+            parent="menu_vraja_ai_root"
+            action="vraja_ai_log_action_vts"
+            sequence="5"/>
+
+</odoo>

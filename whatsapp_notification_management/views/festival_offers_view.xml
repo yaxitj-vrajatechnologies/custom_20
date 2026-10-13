@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_festival_offers_vts" model="ir.actions.act_window">
+        <field name="name">Offers</field>
+        <field name="res_model">festival.offer.vts</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click new to create festival offer.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_festival_offer_list_vts" model="ir.ui.view">
+        <field name="name">festival.offer.vts.list</field>
+        <field name="model">festival.offer.vts</field>
+        <field name="arch" type="xml">
+            <list string="Offers">
+                <field name="name"/>
+                <field name="offer_type"/>
+                <field name="whatsapp_template_id"/>
+                <field name="partner_category_ids" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_festival_offer_form_vts" model="ir.ui.view">
+        <field name="name">festival.offer.vts.form</field>
+        <field name="model">festival.offer.vts</field>
+        <field name="arch" type="xml">
+            <form string="Festival Offer">
+
+                <header>
+
+                    <button name="send_offer_notification"
+                            string="Send Notification"
+                            type="object"
+                            class="btn-primary"
+                            invisible="status != 'running' or offer_type != 'other'"/>
+
+                    <button name="action_reset_to_draft"
+                            string="Reset to Draft"
+                            type="object"
+                            invisible="state == 'draft' or status == 'draft'"/>
+
+                    <button name="action_offer_expire"
+                            string="Expire"
+                            type="object"
+                            invisible="status != 'running' or offer_type != 'other'"/>
+
+                    <button name="send_product_launch_notification"
+                            string="Send Notification"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'draft' or offer_type != 'product_launch'"/>
+
+                    <button name="send_personalized_product_price_to_customer"
+                            string="Send Notification"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'draft' or offer_type != 'personalized_pricelist'"/>
+
+
+                    <field name="status" widget="statusbar" readonly="1" invisible="offer_type != 'other'"/>
+                    <field name="state" widget="statusbar" readonly="1" invisible="offer_type == 'other'"/>
+                </header>
+                <sheet>
+                    <group>
+                        <div>
+                            <h2>
+                                <field name="name" required="1"
+                                       placeholder="Festival Offers / Personalized Product Pricelist / Product launching"/>
+                            </h2>
+                        </div>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="offer_type" required="1"/>
+                        </group>
+
+                    </group>
+                    <group>
+
+                        <group>
+                            <separator string="Details"/>
+                            <field name="starting_offer_date" invisible="offer_type != 'other'"/>
+                            <field name="ending_offer_date" required="1" invisible="offer_type != 'other'"/>
+                            <field name="select_product_opr" required="1" invisible="offer_type != 'other'"/>
+                            <field name="product_ids" widget="many2many_tags"
+                                   invisible="offer_type == 'personalized_pricelist' or select_product_opr == 'all_product' or not 'select_product_opr'"/>
+                            <field name="launch_date" invisible="offer_type != 'product_launch'" required="1"/>
+                            <field name="description" invisible="offer_type != 'product_launch'"/>
+                            <field name="custom_notify_date" required="1"
+                                   invisible="offer_type != 'personalized_pricelist'"/>
+                            <div style="display:flex; align-items:center;">
+                                <group>
+                                    <field name="offer_discount" invisible="offer_type != 'other'"/>
+                                </group>
+                            </div>
+                        </group>
+
+                        <group>
+                            <separator string="Customers"/>
+                            <field name="partner_category_ids" widget="many2many_tags" required="1"/>
+                            <field name="whatsapp_template_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Repetition" invisible="offer_type != 'other'">
+                            <group>
+                                <group>
+                                    <group>
+                                        <label for="number_of_repetitions" string="Repeat Every"/>
+                                        <div class="o_row">
+                                            <field name="number_of_repetitions" nolabel="1" required="1"
+                                                   readonly="status in ('expired')"/>
+                                            <field name="repeat_unit" nolabel="1" required="1"
+                                                   readonly="status in ('expired')"/>
+                                        </div>
+                                    </group>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Reminder Settings" invisible="offer_type != 'product_launch'">
+                            <group>
+                                <group>
+                                    <group>
+                                        <label for="notify_before" string="Notify Before"/>
+                                        <div class="o_row">
+                                            <field name="notify_before" nolabel="1" required="1"
+                                                   readonly="status in ('expired')"
+                                                   invisible="notify_unit == 'custom'"/>
+                                            <field name="notify_custom_date"
+                                                   invisible="notify_unit != 'custom'"
+                                                   readonly="status in ('expired')"/>
+                                            <field name="notify_unit" nolabel="1" required="1"
+                                                   readonly="status in ('expired')"/>
+                                        </div>
+                                    </group>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_festival_offers_vts"
+              name="Offers"
+              parent="whatsapp.whatsapp_menu_main"
+              action="action_festival_offers_vts"
+              sequence="2"/>
+</odoo>

@@ -1,0 +1,144 @@
+/* ===== Shell layout ===== */
+.mcp_chat_form .o_form_sheet_bg { background: #f7f7f8; }
+.mcp_chat_form .o_form_sheet { max-width: 1400px; padding: 0 !important; background: transparent; box-shadow: none; }
+.mcp_chat_shell { display: flex; min-height: calc(100vh - 180px); overflow: hidden; background: #fff; border: 1px solid #e5e5e7; border-radius: 14px; }
+
+/* ===== Sidebar ===== */
+.mcp_chat_sidebar { flex: 0 0 280px; padding: 20px; color: #f4f4f5; background: #34343b; }
+.mcp_chat_brand { display: flex; gap: 10px; align-items: center; margin-bottom: 24px; color: #fff; }
+.mcp_chat_brand small { display: block; color: #b4b4ba; font-size: 11px; }
+.mcp_chat_brand_mark, .mcp_chat_avatar { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 30px; height: 30px; color: #fff; background: #10a37f; border-radius: 8px; }
+.mcp_chat_sidebar > .btn { display: block; width: 100%; margin: 0 0 9px; text-align: left; }
+.mcp_chat_sidebar_note { margin: 22px 0; color: #b4b4ba; font-size: 12px; }
+.mcp_chat_sidebar kbd { padding: 2px 4px; color: #e4e4e7; border: 1px solid #5f5f68; border-radius: 3px; }
+.mcp_chat_settings, .mcp_chat_permissions { padding-top: 16px; margin-top: 16px; border-top: 1px solid #48484f; }
+.mcp_chat_sidebar h4 { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 14px; color: #e4e4e7; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.mcp_chat_permissions_hint { color: #a1a1aa; font-size: 10px; font-weight: 500; text-transform: none; letter-spacing: 0; }
+
+/* --- Chat settings fields (model / operation / agent) --- */
+.mcp_chat_field { margin-bottom: 14px; }
+.mcp_chat_sidebar .mcp_chat_field > label { display: block; margin: 0 0 6px; color: #e4e4e7; font-size: 12px; font-weight: 600; }
+.mcp_chat_sidebar .mcp_chat_field .o_field_widget,
+.mcp_chat_sidebar .mcp_chat_field.o_field_widget { display: block; width: 100%; }
+
+/* Cover every kind of input Odoo can render here: text input, select, autocomplete, tags */
+.mcp_chat_sidebar .mcp_chat_field input,
+.mcp_chat_sidebar .mcp_chat_field select,
+.mcp_chat_sidebar .mcp_chat_field .o_input,
+.mcp_chat_sidebar .mcp_chat_field .o-autocomplete--input,
+.mcp_chat_sidebar .mcp_chat_field .o_field_many2one_selection,
+.mcp_chat_sidebar .mcp_chat_field .o_field_selection {box-sizing: border-box;width: 100% !important;min-height: 36px;padding: 6px 10px !important;
+    color: #fafafa !important;background: #3f3f47 !important;background-image: none !important;border: 1px solid #5f5f68 !important;
+    border-radius: 6px !important;font-size: 13px;appearance: none;-webkit-appearance: none;}
+.mcp_chat_sidebar .mcp_chat_field input::placeholder { color: #b4b4ba !important; opacity: 1; }
+.mcp_chat_sidebar .mcp_chat_field input:focus,
+.mcp_chat_sidebar .mcp_chat_field select:focus { outline: none; border-color: #10a37f !important; box-shadow: 0 0 0 2px rgba(16,163,127,.35); }
+
+/* Selection <select> arrow must stay visible against the dark background */
+.mcp_chat_sidebar .mcp_chat_field select {background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d4d4d8'><path d='M4 6l4 4 4-4z'/></svg>") !important;background-repeat: no-repeat !important;
+    background-position: right 10px center !important;padding-right: 28px !important;}
+
+/* Many2one dropdown caret / clear icon */
+.mcp_chat_sidebar .mcp_chat_field .o_dropdown_button,
+.mcp_chat_sidebar .mcp_chat_field .fa-caret-down,
+.mcp_chat_sidebar .mcp_chat_field .o_input_dropdown .fa,
+.mcp_chat_sidebar .mcp_chat_field .o-autocomplete .fa { color: #d4d4d8 !important; }
+
+/* Many2one "required, empty" red outline should still be legible on dark bg */
+.mcp_chat_sidebar .mcp_chat_field .o_field_invalid input,
+.mcp_chat_sidebar .mcp_chat_field .o_field_invalid select { border-color: #f87171 !important; }
+
+/* Odoo renders the autocomplete dropdown list in a floating layer (outside the
+   dark sidebar), keep it readable regardless of where it mounts. */
+.o-autocomplete--dropdown-menu, .o_field_many2one .dropdown-menu, .dropdown-menu.show {color: #1f1f1f;background: #fff;}
+
+/* ===== Allowed operations (access rights) ===== */
+.mcp_chat_permission_row {display: flex;align-items: center;justify-content: space-between;gap: 10px;min-height: 32px;padding: 4px 0;}
+.mcp_chat_permission_label {display: flex;align-items: center;gap: 8px;color: #e4e4e7;font-size: 13px;font-weight: 600;}
+.mcp_chat_permission_label .fa,
+.mcp_chat_permission_label .oi {display: inline-flex;align-items: center;justify-content: center;width: 20px;height: 20px;
+    color: #b4b4ba;font-size: 11px;background: #3f3f47;border-radius: 5px;}
+.mcp_chat_permission_value { flex: 0 0 auto; }
+.mcp_chat_permission_value .o_field_widget,
+.mcp_chat_permission_value input[type="checkbox"] {position: absolute;width: 1px;height: 1px;overflow: hidden;opacity: 0;clip: rect(0 0 0 0);}
+.mcp_chat_permission_badge {display: inline-flex;align-items: center;gap: 5px;padding: 3px 10px;color: #fff;font-size: 11px;font-weight: 700;
+    letter-spacing: .02em;text-transform: uppercase;white-space: nowrap;border-radius: 999px;}
+.mcp_chat_permission_badge::before {content: "";width: 6px;height: 6px;background: currentColor;border-radius: 50%;}
+.mcp_chat_permission_badge.is-allowed { background: rgba(16,163,127,.18); color: #34d399; }
+.mcp_chat_permission_badge.is-denied { background: rgba(248,113,113,.14); color: #f87171; }
+.mcp_chat_permissions_legend { display: flex; gap: 8px; margin: 14px 0 0; }
+.mcp_chat_permissions_legend .mcp_chat_permission_badge { font-size: 10px; opacity: .85; }
+
+/* ===== Main chat column ===== */
+.mcp_chat_main { display: flex; flex: 1; flex-direction: column; justify-content: center; max-width: 900px; min-width: 0; padding: 36px; margin: 0 auto; }
+.mcp_chat_intro { display: flex; gap: 15px; align-items: center; align-self: center; margin-bottom: 32px; }
+.mcp_chat_intro h2 { margin: 0 0 4px; font-size: 24px; font-weight: 600; }
+.mcp_chat_intro p { margin: 0; color: #6b7280; }
+
+.mcp_chat_history { display: block; width: 100%; max-height: 56vh; margin-bottom: 22px; overflow-y: auto; }
+.mcp_chat_history .o_kanban_renderer,
+.mcp_chat_history .o_kanban_renderer.o_kanban_ungrouped {display: flex !important;flex-direction: column !important;grid-template-columns: none !important;
+    min-height: 0;background: transparent;}
+.mcp_chat_history .o_kanban_record {display: block !important;grid-column: 1 / -1 !important;width: 100% !important;max-width: 100% !important;min-height: 0;
+    padding: 0;margin: 0;background: transparent;border: 0;box-shadow: none;}
+
+.mcp_chat_message { display: flex; gap: 12px; align-items: flex-start; width: 100%; margin: 0 0 18px; }
+.mcp_chat_bubble { flex: 1; max-width: 100%; padding: 14px 16px; background: #f4f4f5; border-radius: 4px 14px 14px; }
+.mcp_chat_bubble_header { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.mcp_chat_sender { font-weight: 600; }
+.mcp_chat_time { flex: 0 0 auto; color: #9ca3af; font-size: 11px; }
+.mcp_chat_message_content { white-space: pre-wrap; word-break: break-word; cursor: text; user-select: text; }
+
+.mcp_chat_composer textarea.mcp_chat_locked {opacity: 0.6;cursor: not-allowed;background: #f4f4f5;}
+.mcp_chat_composer [name='attachment_ids'].mcp_chat_locked {opacity: 0.6;pointer-events: none;}
+.mcp_chat_history .o_kanban_record { cursor: text; user-select: text; }
+.mcp_chat_no_open {display: block;color: inherit;cursor: text;text-decoration: none;}
+
+.mcp_chat_user { flex-direction: row-reverse; }
+.mcp_chat_user .mcp_chat_avatar { color: #27272a; background: #e4e4e7; font-size: 10px; font-weight: 700; }
+.mcp_chat_user .mcp_chat_bubble { color: #fff; background: #10a37f; border-radius: 14px 4px 14px 14px; }
+.mcp_chat_user .mcp_chat_sender { color: #dcfce7; }
+.mcp_chat_user .mcp_chat_time { color: rgba(255,255,255,.75); }
+
+.mcp_chat_message_tokens { margin-top: 10px; padding-top: 8px; color: #71717a; font-size: 11px; font-weight: 500; border-top: 1px dashed rgba(0,0,0,.1); }
+.mcp_chat_user .mcp_chat_message_tokens { color: rgba(255,255,255,.75); border-top-color: rgba(255,255,255,.25); }
+.mcp_chat_composer { position: relative; width: 100%; padding: 12px; background: #fff; border: 1px solid #d4d4d8; border-radius: 14px; box-shadow: 0 4px 18px rgba(0,0,0,.06); transition: border-color .15s ease, box-shadow .15s ease; }
+.mcp_chat_composer:focus-within { border-color: #10a37f; box-shadow: 0 4px 18px rgba(0,0,0,.06), 0 0 0 3px rgba(16,163,127,.14); }
+
+/* ---- Whole-composer drag-and-drop highlight (mcp_composer_dragdrop.js) ---- */
+.mcp_chat_composer.mcp_composer_dragover {border-color: #10a37f;border-style: dashed;background: rgba(16,163,127,.05);box-shadow: 0 4px 18px rgba(0,0,0,.06), 0 0 0 3px rgba(16,163,127,.18);}
+.mcp_chat_composer.mcp_composer_dragover::after {content: "Drop files to attach";position: absolute;inset: 0;z-index: 1;display: flex;align-items: center;
+    justify-content: center;color: #10a37f;font-size: 13px;font-weight: 600;background: rgba(255,255,255,.85);border-radius: 12px;pointer-events: none;}
+.mcp_chat_composer > label { padding: 0 4px; color: #71717a; font-size: 12px; font-weight: 600; }
+.mcp_chat_composer .o_field_text { width: 100%; min-height: 48px; max-height: 240px; padding: 8px 4px; border: 0; resize: vertical; box-shadow: none; }
+.mcp_chat_composer .o_field_text:focus { outline: 0; }
+
+/* ---- Attachments row (its own line, above the footer) ---- */
+.mcp_chat_composer_attachments { padding: 2px 4px 0; }
+.mcp_chat_composer_attachments .o_field_widget { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.mcp_chat_composer_attachments .o_attachment,
+.mcp_chat_composer_attachments .oe_attachment {display: inline-flex; align-items: center; gap: 6px;padding: 4px 10px; font-size: 12px; color: #3f3f46;
+    background: #f4f4f5; border: 1px solid #e4e4e7; border-radius: 999px;}
+.mcp_chat_composer_attachments button {display: inline-flex; align-items: center; justify-content: center;width: 30px; height: 30px; padding: 0;
+    font-size: 0; line-height: 0;color: #52525b;background: #fff; border: 1px dashed #d4d4d8; border-radius: 999px;}
+.mcp_chat_composer_attachments button .fa,
+.mcp_chat_composer_attachments button .oi,
+.mcp_chat_composer_attachments button i {font-size: 16px; line-height: normal;   /* icon glyph is drawn via ::before content, so this restores it independently of the button's own font-size:0 */}
+.mcp_chat_composer_attachments button:hover { color: #10a37f; border-color: #10a37f; background: rgba(16,163,127,.06); }
+
+/* ---- Hint + Send row ---- */
+.mcp_chat_composer_footer {display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;gap: 10px; padding: 8px 4px 2px; margin-top: 6px;
+    color: #71717a; font-size: 12px;border-top: 1px solid #f0f0f1;}
+.mcp_chat_composer_hint { flex: 1 1 260px; min-width: 0; line-height: 1.4; }
+.mcp_chat_composer_footer .mcp_chat_run {flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 18px; border-radius: 999px; font-weight: 600; font-size: 13px;
+}
+.mcp_chat_composer_footer .mcp_chat_run .fa,
+.mcp_chat_composer_footer .mcp_chat_run .oi { font-size: 14px; }
+.mcp_chat_composer_footer .mcp_chat_run:not(:disabled) {color: #fff;background-color: #10a37f;border-color: #10a37f;}
+.mcp_chat_composer_footer .mcp_chat_run:not(:disabled):hover {background-color: #0d8c6d;border-color: #0d8c6d;}
+.mcp_chat_composer_footer .mcp_chat_run:disabled,
+.mcp_chat_composer_footer .mcp_chat_run.mcp_chat_run_disabled {cursor: not-allowed;opacity: .45;background-color: #10a37f;border-color: #10a37f;}
+
+@media (max-width: 900px) { .mcp_chat_sidebar { flex-basis: 220px; } .mcp_chat_main { padding: 22px; } }
+@media (max-width: 700px) { .mcp_chat_shell { display: block; } .mcp_chat_sidebar { min-height: auto; } .mcp_chat_settings, .mcp_chat_permissions { display: block; } .mcp_chat_main { min-height: 500px; } }

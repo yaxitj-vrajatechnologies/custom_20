@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ===================== LIST VIEW ===================== -->
+    <record id="view_vendor_pricelist_update_list" model="ir.ui.view">
+        <field name="name">vendor.pricelist.update.list</field>
+        <field name="model">vendor.pricelist.update</field>
+        <field name="arch" type="xml">
+            <list string="Vendor Pricelist AI Updates" decoration-danger="state == 'error'"
+                  decoration-success="state == 'applied'" decoration-info="state == 'ai_done'">
+                <field name="reference_id"/>
+                <field name="name"/>
+                <field name="vendor_id"/>
+                <field name="generated_date"/>
+                <field name="matched_count"/>
+                <field name="unmatched_count"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'applied'"
+                       decoration-danger="state == 'error'"
+                       decoration-info="state == 'ai_done'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ===================== FORM VIEW ===================== -->
+    <record id="view_vendor_pricelist_update_form" model="ir.ui.view">
+        <field name="name">vendor.pricelist.update.form</field>
+        <field name="model">vendor.pricelist.update</field>
+        <field name="arch" type="xml">
+            <form string="AI Vendor Pricelist Update">
+                <header>
+                    <button name="action_generate_pricelist_file" string="Generate Pricelist File"
+                            type="object" class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_run_ai_analysis" string="Run AI Analysis"
+                            type="object" class="oe_highlight"
+                            invisible="state not in ('file_generated', 'error')"/>
+                    <button name="action_apply_all" string="Apply to Vendor Pricelist"
+                            type="object" class="oe_highlight"
+                            confirm="This will create/update Vendor Pricelist lines for the matched products, and for any unmatched product rows where you've set an Action and a Product. Continue?"
+                            invisible="state not in ('ai_done', 'applied')"/>
+                    <button name="action_run_ai_analysis" string="Re-run AI Analysis"
+                            type="object"
+                            invisible="state != 'ai_done'"/>
+                    <button name="action_reset_to_draft" string="Reset to Draft"
+                            type="object"
+                            invisible="state not in ('file_generated','error', 'ai_done', 'applied')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,file_generated,ai_done,applied"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Applied" bg_color="text-bg-success"
+                            invisible="state != 'applied'"/>
+                    <widget name="web_ribbon" title="AI Error" bg_color="text-bg-danger"
+                            invisible="state != 'error'"/>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference_id" readonly="1"/>
+                        </h1>
+                        <field name="name" placeholder="e.g. Q3 2026 Price Update"
+                               readonly="state != 'draft'"/>
+                    </div>
+
+                    <group>
+                        <group string="Vendor" name="vendor_info">
+                            <field name="vendor_id" readonly="state != 'draft'"/>
+                        </group>
+                        <group string="Details" name="overview_info" required="1">
+                             <field name="company_id" groups="base.group_multi_company" readonly="state != 'draft'"/>
+                            <field name="generated_date" readonly="1" invisible="not generated_date"/>
+                        </group>
+                    </group>
+
+                    <group string="Files" name="files">
+                        <group>
+                            <field name="pricelist_filename" invisible="1"/>
+                            <field name="pricelist_file" filename="pricelist_filename" readonly="1"
+                                   string="Current Vendor Pricelist"/>
+                        </group>
+                        <group>
+                            <field name="vendor_filename" invisible="1"/>
+                            <field name="vendor_file" filename="vendor_filename"
+                                   readonly="state == 'applied'"/>
+                        </group>
+                        <group string="Ai Response">
+                            <field name="ai_result_filename" invisible="1"/>
+                            <field name="ai_result_file" filename="ai_result_filename" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Product Matching" name="product_matching">
+                            <field name="line_ids" readonly="1"
+                                   domain="[('matched', '=', True)]"
+                                   context="{'default_matched': True}">
+                                <list string="Product Matching" editable="bottom"
+                                      decoration-muted="not matched" decoration-success="matched">
+                                    <field name="matched" widget="boolean_toggle"/>
+                                    <field name="vendor_id" optional="show"/>
+                                    <field name="product_tmpl_id"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                    <field name="quantity" optional="show"/>
+                                    <field name="uom_id"/>
+                                    <field name="price"/>
+                                    <field name="apply_state" widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Unmatched Products" name="unmatched_products">
+                            <div class="alert alert-info" role="alert">
+                                Use <strong>Action</strong> to resolve each row: choose
+                                <strong>Map with Existing</strong>
+                                to reuse an already-existing
+                                product as-it-is, or
+                                <strong>Create New Product</strong>
+                                to duplicate the selected
+                                existing product, renamed to this row's Product Name. Once <strong>Action</strong> and
+                                <strong>Product</strong>
+                                are set, clicking <strong>Apply to Vendor Pricelist</strong> will
+                                create/update the Vendor Pricelist line for it.
+                            </div>
+                            <field name="unmatched_line_ids" readonly="state not in ('ai_done', 'applied')"
+                                   context="{'default_matched': False}">
+                                <list string="Unmatched Products" editable="bottom" create="0">
+                                    <field name="product_name" readonly="1" width="250px"/>
+                                    <field name="vendor_id" readonly="1" optional="show" width="150px"/>
+                                    <field name="date_start" readonly="1" width="120px"/>
+                                    <field name="date_end" readonly="1" width="120px"/>
+                                    <field name="quantity" readonly="1" optional="show" width="90px"/>
+                                    <field name="uom_id" width="80px"/>
+                                    <field name="price" readonly="1" width="100px"/>
+                                    <field name="unmatched_action" width="150px"/>
+                                    <field name="product_id"
+                                           required="unmatched_action"
+                                           readonly="not unmatched_action"
+                                           placeholder="Select a product..."
+                                           options="{'no_create': True, 'no_create_edit': True}" width="250px"/>
+                                    <field name="apply_state" widget="badge" readonly="1" width="120px"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="AI Prompt" name="ai_prompt">
+                            <field name="prompt" nolabel="1" readonly="state == 'applied'"/>
+                        </page>
+                        <page string="Error" name="error" invisible="state != 'error'">
+                            <field name="error_message" readonly="1" widget="text"/>
+                        </page>
+                        <page string="Log">
+                            <group>
+                                <group>
+                                    <field name="ai_run_date"/>
+                                    <field name="pricelist_line_count" readonly="1" invisible="not generated_date"/>
+                                    <field name="matched_count"/>
+                                    <field name="unmatched_count"/>
+                                </group>
+                                <group>
+                                    <field name="ai_total_tokens"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ===================== ACTION ===================== -->
+    <record id="action_vendor_pricelist_update" model="ir.actions.act_window">
+        <field name="name">AI Vendor Pricelist Update</field>
+        <field name="res_model">vendor.pricelist.update</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Vendor Pricelist AI Update
+            </p>
+            <p>
+                Select a vendor, generate their current pricelist file, upload the price file
+                they sent back, and let AI match and extract the new prices.
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_vendor_pricelist_root"
+              name="Pricelist Management"
+              web_icon="ai_vendor_pricelist_update_vts,static/description/icon.png"
+              sequence="10"/>
+
+    <!-- ===================== MENU ===================== -->
+    <menuitem id="menu_vendor_pricelist_update"
+              name="AI Vendor Pricelist Update"
+              parent="menu_vendor_pricelist_root"
+              action="action_vendor_pricelist_update"
+              sequence="100"/>
+
+</odoo>

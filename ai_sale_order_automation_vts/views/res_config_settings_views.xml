@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ai.sale.order.creator</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='integration']" position="after">
+                <div class="app_settings_block" data-string="MCP AI Automation"
+                     string="MCP AI Automation" data-key="vraja_mcp">
+                    <h2>Odoo MCP AI Automation Key</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="ai_sale_order_mcp_api_key"/>
+                                <div class="text-muted">
+                                    Generate this from <strong>My Profile → Account Security → New API Key</strong>,
+                                    with scope set to <strong>"MCP only"</strong> — this is what lets the AI
+                                    connect to this Odoo instance's MCP server to look up and create records.
+                                    This is an <strong>Odoo</strong> API key, not your OpenAI key; pasting an
+                                    OpenAI key here will not work.
+                                </div>
+                                <div class="content-group mt16">
+                                    <field name="ai_sale_order_mcp_api_key" password="True"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

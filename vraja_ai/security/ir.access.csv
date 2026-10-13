@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_vraja_ai_config_user,vraja.ai.config.user,vraja.ai.config,base.group_user,crud,
+access_vraja_ai_card_user,vraja.ai.card.user,vraja.ai.card,base.group_user,crud,
+access_vraja_ai_log,access.vraja.ai.log,vraja.ai.log,base.group_user,crud,
+access_vraja_ai_log_line,access.vraja.ai.log.line,vraja.ai.log.line,base.group_user,crud,

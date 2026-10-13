@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_vraja_ai_dashboard" model="ir.actions.act_window">
+        <field name="name">AI Dashboard</field>
+        <field name="res_model">vraja.ai.card</field>
+        <field name="view_mode">kanban</field>
+    </record>
+
+    <menuitem
+            id="menu_vraja_ai_root"
+            name="AI Dashboard"
+            sequence="1"
+            web_icon="vraja_ai,static/description/icon.png"
+    />
+
+    <menuitem id="menu_vraja_ai_dashboard" name="Dashboard" parent="menu_vraja_ai_root"
+              action="action_vraja_ai_dashboard" sequence="1"/>
+
+    <record id="view_vraja_ai_card_kanban" model="ir.ui.view">
+        <field name="name">vraja.ai.card.kanban</field>
+        <field name="model">vraja.ai.card</field>
+        <field name="arch" type="xml">
+
+            <kanban class="o_kanban_mobile" create="0">
+
+                <field name="vraja_common_card_name"/>
+                <field name="vraja_common_card_description"/>
+                <field name="vraja_common_card_active"/>
+
+                <templates>
+
+                    <t t-name="card">
+
+                        <div class="oe_kanban_global_click o_kanban_card p-3 d-flex flex-column"
+                             style="min-height: 200px;">
+
+                            <!-- Title -->
+                            <div class="mb-1">
+                                <h3 class="mb-0">
+                                    <field name="vraja_common_card_name"/>
+                                </h3>
+                            </div>
+
+                            <!-- Description grows to push footer down -->
+                            <div class="text-muted" style="flex: 1;">
+                                <field name="vraja_common_card_description"/>
+                            </div>
+
+                            <!-- Bottom bar: [ Review ] [ Active/Inactive ] [ Logs ] — full width capsule buttons -->
+                            <div class="mt-3" style="display: flex; gap: 6px; width: 100%;">
+
+                                <!-- Review -->
+                                <button type="object" name="action_review_dashboard"
+                                        icon="fa-eye"
+                                        class="btn btn-sm btn-primary rounded-pill"
+                                        style="width: 33.33%; text-align: center;">
+                                    Review
+                                </button>
+
+                                <!-- Active -->
+                                <button t-if="record.vraja_common_card_active.raw_value"
+                                        type="object"
+                                        name="action_toggle_active"
+                                        class="btn btn-sm btn-success rounded-pill"
+                                        style="width: 33.33%; text-align: center;">
+                                    <span class="fa fa-play-circle me-1"/>Active
+                                </button>
+
+                                <!-- Inactive -->
+                                <button t-if="!record.vraja_common_card_active.raw_value"
+                                        type="object"
+                                        name="action_toggle_active"
+                                        class="btn btn-sm btn-secondary rounded-pill"
+                                        style="width: 33.33%; text-align: center;">
+                                    <span class="fa fa-pause-circle me-1"/>Inactive
+                                </button>
+
+                                <!-- Logs -->
+                                <button type="object" name="action_log_view"
+                                        icon="fa-list-alt"
+                                        class="btn btn-sm btn-secondary rounded-pill"
+                                        style="width: 33.33%; text-align: center;">
+                                    Logs
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </t>
+
+                </templates>
+
+            </kanban>
+
+        </field>
+    </record>
+
+</odoo>

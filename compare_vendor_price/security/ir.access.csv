@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_price_enquiry,price.enquiry,price.enquiry,base.group_user,crud,
+access_price_enquiry_line,price.enquiry.line,price.enquiry.line,base.group_user,crud,
+access_price_quotation,price.quotation,price.quotation,base.group_user,crud,
+access_price_quotation_line,price.quotation.line,price.quotation.line,base.group_user,crud,

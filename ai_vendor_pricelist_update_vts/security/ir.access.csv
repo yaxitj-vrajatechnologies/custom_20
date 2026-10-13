@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_vendor_pricelist_update,vendor.pricelist.update,vendor.pricelist.update,base.group_user,crud,
+access_vendor_pricelist_update_line,vendor.pricelist.update.line,vendor.pricelist.update.line,base.group_user,crud,
+access_ai_prompt_vts,ai.prompt.vts,ai.prompt.vts,base.group_user,crud,

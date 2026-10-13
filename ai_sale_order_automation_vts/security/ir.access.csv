@@ -1,0 +1,6 @@
+id,name,model_id,group_id/id,operation,domain
+access_order_automation,access.order.automation,order.automation,base.group_user,crud,
+access_ai_sale_order_draft_line,access.ai.sale.order.draft.line,ai.sale.order.draft.line,base.group_user,crud,
+access_ai_sale_order_draft_ignored_line,access.ai.sale.order.draft.ignored.line,ai.sale.order.draft.ignored.line,base.group_user,crud,
+access_ai_prompt,access.ai.prompt,ai.prompt,base.group_user,crud,
+access_ai_product_mapping,access.ai.product.mapping,ai.product.mapping,base.group_user,crud,

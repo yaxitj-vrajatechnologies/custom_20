@@ -1,0 +1,7 @@
+.o_m2m_dragdrop_active {
+    outline: 2px dashed var(--o-brand-primary, #714B67);
+    outline-offset: 2px;
+    background-color: rgba(113, 75, 103, 0.06);
+    transition: background-color 0.15s ease-in-out;
+    border-radius: 4px;
+}

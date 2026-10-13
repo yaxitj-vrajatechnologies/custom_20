@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_cleaning_service_type_list_vts" model="ir.ui.view">
+        <field name="name">service.type.vts.list</field>
+        <field name="model">service.type.vts</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" width="20"/>
+                <field name="price_type" width="20"/>
+                <field name="default_fixed_price" width="20"/>
+                <field name="default_rate_per_sqft" width="20"/>
+                <field name="description" width="20"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cleaning_service_type_form_vts" model="ir.ui.view">
+        <field name="name">service.type.vts.form</field>
+        <field name="model">service.type.vts</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="price_type" required="1"/>
+                            <field name="description"/>
+                        </group>
+
+                        <group>
+                            <field name="default_fixed_price" invisible="price_type != 'fixed'"/>
+                            <field name="default_rate_per_sqft" invisible="price_type != 'area_based'"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cleaning_service_type_vts" model="ir.actions.act_window">
+        <field name="name">Service Types</field>
+        <field name="res_model">service.type.vts</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_cleaning_configuration_vts"
+              name="Configuration"
+              parent="menu_cleaning_root"
+              sequence="100"/>
+
+    <!-- Service Type Menu -->
+    <menuitem id="menu_cleaning_service_type_vts"
+              name="Service Types"
+              parent="menu_cleaning_configuration_vts"
+              action="action_cleaning_service_type_vts"
+              sequence="10"/>
+</odoo>
