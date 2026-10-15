@@ -30,7 +30,7 @@ class AccountMove(models.Model):
             ('move_type', '=', 'out_invoice'),
             ('state', '=', 'posted'),
             ('payment_state', '!=', 'paid'),
-            # ('notification_sent', '!=', True),
+            ('notification_sent', '!=', True),
             ('invoice_date_due', '<', date.today())
         ])
 

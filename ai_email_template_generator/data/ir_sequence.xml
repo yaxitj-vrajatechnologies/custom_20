@@ -1,0 +1,11 @@
+<odoo>
+    <data noupdate="1">
+        <record id="seq_ai_email_tmpl_log" model="ir.sequence">
+            <field name="name">AI Email Template Log</field>
+            <field name="code">ai.email.tmpl.log</field>
+            <field name="prefix">AILOG/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

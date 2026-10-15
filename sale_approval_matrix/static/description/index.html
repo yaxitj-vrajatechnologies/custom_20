@@ -1,0 +1,1849 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sales Margin &amp; Quotation Approval</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="margin:0; padding:0;">
+<!-- Hero section start -->
+<section class="oe_container"
+         style="padding:20px 0;color:#0f172a;font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+    <div class="container">
+        <div style="background-color:#ffffff;border:1px solid #e5e7eb;border-left:6px solid #2577f1;border-radius:20px;padding:15px;box-sizing:border-box;">
+
+            <table style="width:100%;border-collapse:collapse;border-spacing:0;">
+                <tbody>
+                <tr>
+                    <td style="vertical-align:top;padding:0;">
+                        <h1 style="color:#2577f1;font-size:32px;font-weight:900;line-height:1.25; font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+                            Sales Margin &amp; Quotation Approval
+                        </h1>
+                    </td>
+                    <td style="vertical-align:top;text-align:right;padding:0;">
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Community
+                            </span>
+                        <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Enterprise
+                            </span>
+                        <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Odoo.sh
+                            </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+                Sales Approval Matrix is an Odoo add-on for the Sales module that automates the quotation approval
+                process based on configurable revenue and margin criteria. Instead of relying on manual checks, the
+                module evaluates each quotation&#039;s untaxed revenue and overall margin percentage against a
+                configurable approval matrix. Based on the matching rule, the quotation is classified into one of three
+                approval zones—Green, Yellow, or Red. The assigned zone is clearly displayed on the quotation form using
+                color-coded banners and highlighted order lines, allowing users to quickly identify the approval status.
+            </p>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+                When a quotation falls into the Yellow or Red approval zone, the module enforces an approval workflow
+                before the quotation can proceed. The salesperson must submit an approval request, after which a Sales
+                Manager is notified through activities and chatter messages. The manager can review the quotation and
+                either approve or reject the request, with the decision and reason recorded in the quotation&#039;s
+                history for complete traceability.
+            </p>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+                Until the required approval is granted, the module prevents users from sending the quotation by email or
+                confirming the sales order. This ensures that quotations with low margins or higher business risk cannot
+                be finalized without proper authorization. Additionally, the entire approval mechanism can be enabled or
+                disabled through the company settings, allowing organizations to adopt or bypass the approval process
+                without affecting the standard Sales workflow.
+            </p>
+
+            <div style="text-align:center;">
+
+                <a href="mailto:sales@vrajatechnologies.com?subject=Sales%20Margin%20%26amp%3B%20Quotation%20Approval"
+                   style="display:inline-block;background-color:#2563eb;color:#ffffff !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+                    <i class="fa fa-envelope" style="margin-right:6px;"></i> Submit Request
+                </a>
+
+                <a href="#TrendingApps"
+                   style="display:inline-block;background-color:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8 !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+                    <i class="fa fa-line-chart" style="margin-right:6px;"></i> Trending Apps
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Hero section End -->
+
+<!-- Catagory section start -->
+<section class="oe_container"
+         style=" color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:26px 0; box-sizing:border-box;">
+    <div class="container" style="box-sizing:border-box;">
+
+        <div class="text-center" style="max-width:900px; margin:0 auto 20px; box-sizing:border-box;">
+                <span
+                        style="background-color:#eaf8e7; border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:8px 16px; line-height:1; margin-bottom:14px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                       style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    Vraja Technologies
+                </span>
+
+            <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0 0 12px; box-sizing:border-box;">
+                End-to-end Odoo solutions for growing companies.
+            </h2>
+        </div>
+
+        <div class="row" style="box-sizing:border-box;">
+            <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:2px solid #138a27; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                    <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                        <tr>
+                            <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                <div
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                    <i class="fa fa-exchange"
+                                       style="font-family:FontAwesome !important; font-size:40px; line-height:1; vertical-align:middle;"></i>
+                                </div>
+                            </td>
+
+                            <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                    EDI &amp; SWIFT/ACH Payment Integrations
+                                </h3>
+
+                                <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                    End-to-end EDI automation, including X12, EDIFACT, XML standards, and financial
+                                    integrations such as SWIFT, ACH, and Fedwire.
+                                </p>
+
+                                <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                    <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                        <tr>
+                                            <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                            style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                        X12</span>
+                                                <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                                <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                                <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                        / AS2</span>
+                                            </td>
+                                            <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                                   target="_blank"
+                                                   style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                    More Apps
+                                                    <i class="fa fa-angle-right"
+                                                       style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                    <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                    style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                X12</span>
+                                        <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                        <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                        <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                / AS2</span>
+                                    </div>
+                                    <div style="text-align:left; box-sizing:border-box;">
+                                        <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                           target="_blank"
+                                           style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                            More Apps
+                                            <i class="fa fa-angle-right"
+                                               style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:2px solid #2563eb; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                    <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                        <tr>
+                            <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                <div
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                    <i class="fa fa-shopping-cart"
+                                       style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                </div>
+                            </td>
+
+                            <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                    Ecommerce Integrations
+                                </h3>
+
+                                <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                    Seamless integration with leading eCommerce platforms to sync products, orders,
+                                    inventory, and customer data in real time.
+                                </p>
+
+                                <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                    <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                        <tr>
+                                            <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                            style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                        Sync</span>
+                                                <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                                <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                            </td>
+                                            <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                                   target="_blank"
+                                                   style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                    More Apps
+                                                    <i class="fa fa-angle-right"
+                                                       style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                    <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                    style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                Sync</span>
+                                        <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                        <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                        <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                    </div>
+                                    <div style="text-align:left; box-sizing:border-box;">
+                                        <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                           target="_blank"
+                                           style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                            More Apps
+                                            <i class="fa fa-angle-right"
+                                               style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:2px solid #0f766e; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                    <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                        <tr>
+                            <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                <div
+                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                    <i class="fa fa-truck"
+                                       style="font-family:FontAwesome !important; font-size:42px; line-height:1; vertical-align:middle;"></i>
+                                </div>
+                            </td>
+
+                            <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                    Shipping Integrations
+                                </h3>
+
+                                <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                    Robust shipping connectors for global couriers, offering automated label
+                                    generation, tracking, and rate computation.
+                                </p>
+
+                                <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                    <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                        <tr>
+                                            <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                            style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                        Rates</span>
+                                                <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                                <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                                <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                        Shipment</span>
+                                            </td>
+                                            <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                                   target="_blank"
+                                                   style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                    More Apps
+                                                    <i class="fa fa-angle-right"
+                                                       style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                    <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                    style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                Rates</span>
+                                        <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                        <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                        <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                Shipment</span>
+                                    </div>
+                                    <div style="text-align:left; box-sizing:border-box;">
+                                        <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                           target="_blank"
+                                           style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                            More Apps
+                                            <i class="fa fa-angle-right"
+                                               style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:2px solid #d6863a; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                    <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                        <tr>
+                            <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                <div
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                    <i class="fa fa-cubes"
+                                       style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                </div>
+                            </td>
+
+                            <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                    Most Useful Apps for your ERP
+                                </h3>
+
+                                <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                    A wide range of highly-rated Odoo modules designed to enhance automation,
+                                    improve productivity, and simplify business operations.
+                                </p>
+
+                                <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                    <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                        <tr>
+                                            <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                            style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                                <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                                <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                            </td>
+                                            <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                                   target="_blank"
+                                                   style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                    More Apps
+                                                    <i class="fa fa-angle-right"
+                                                       style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                    <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                    style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                        <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                        <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                        <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                    </div>
+                                    <div style="text-align:left; box-sizing:border-box;">
+                                        <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                           target="_blank"
+                                           style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                            More Apps
+                                            <i class="fa fa-angle-right"
+                                               style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Catagory section End -->
+
+<!-- Tabs Section Start -->
+<section class="oe_container"
+         style=" background-color: #f8fafc; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:32px 0; box-sizing:border-box;">
+    <div class="container" style="box-sizing:border-box;">
+
+        <div class="text-center" style="max-width:1100px; margin:0 auto 7px; box-sizing:border-box;">
+                <span
+                        style="border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:6px 14px; line-height:1; margin-bottom:10px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                       style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    App Details
+                </span>
+
+            <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                Explore the key features, workflow, and value of this Odoo module.
+            </h2>
+        </div>
+
+        <div style="border-radius:26px; padding:8px; box-sizing:border-box;">
+
+            <!-- Tabs Header -->
+            <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs"
+                style="border:none; background-color:inherit !important; margin:0 0 10px; padding:0; box-sizing:border-box;">
+
+                <li class="nav-item"
+                    style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                    <a href="#vt_features" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                       class="nav-link"
+                       style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                        <i class="fa fa-arrow-circle-right"
+                           style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                        <span style="color:#123d73;">Features</span>
+                    </a>
+                </li>
+
+                <li class="nav-item"
+                    style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                    <a href="#vt_process" data-toggle="tab" data-bs-toggle="tab" aria-expanded="true"
+                       class="nav-link active"
+                       style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                        <i class="fa fa-cogs"
+                           style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                        <span style="color:#123d73;">Process</span>
+                    </a>
+                </li>
+
+                <li class="nav-item"
+                    style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                    <a href="#vt_faqs" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                       class="nav-link"
+                       style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                        <i class="fa fa-lightbulb-o"
+                           style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                        <span style="color:#123d73;">FAQs</span>
+                    </a>
+                </li>
+
+                <li class="nav-item"
+                    style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 0 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                    <a href="#vt_support" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                       class="nav-link"
+                       style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                        <i class="fa fa-comments-o"
+                           style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                        <span style="color:#123d73;">Support</span>
+                    </a>
+                </li>
+
+
+            </ul>
+            <div class="tab-content" style="box-sizing:border-box;">
+
+                <!-- Features Tab -->
+                <div class="tab-pane" id="vt_features" style="box-sizing:border-box;">
+                    <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:14px 16px;box-sizing:border-box;">
+                        <div style="box-sizing:border-box;">
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#eaf8e7;color:#138a27;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Instant Visual Warnings
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                Color-coded banners and highlighted order lines clearly identify
+                                                quotations and products that require managerial approval, allowing sales
+                                                teams to recognize potential risks at a glance.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#eaf2ff;color:#2563eb;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Standardized approval process
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                The module automatically classifies every quotation into the appropriate
+                                                approval zone (Green, Yellow, or Red) using a configurable revenue and
+                                                margin matrix, ensuring that consistent approval rules are applied
+                                                across all sales quotations.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#fff4e8;color:#d6863a;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Fully Configurable Matrix
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                Revenue ranges, margin ranges, and their corresponding approval zones
+                                                can be easily configured from the Approval Matrix. Update the approval
+                                                policy at any time to align with changing business requirements or
+                                                pricing strategies.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#eefdf7;color:#0f766e;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Built-In Approval Workflow
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                Salespeople request approval with one click, managers approve or reject
+                                                with a reason, and a status bar shows exactly where each quotation
+                                                stands — no chasing people down over email or chat.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#f5f3ff;color:#7c3aed;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Automatic manager notifications
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                As soon as an approval request is submitted, the assigned Sales Manager
+                                                receives an activity notification with all the relevant quotation
+                                                details, enabling faster review and decision-making.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#ecfeff;color:#0891b2;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Full Audit Trail
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                Every request, approval, and rejection is logged in the chatter with who
+                                                did it, when, and why — giving you a complete history without needing
+                                                separate tracking.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#eaf8e7;color:#138a27;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Restricted to the Right People
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                Only Sales Managers can approve or reject quotations, enforced both in
+                                                the interface and behind the scenes, so approval authority can&#039;t be
+                                                bypassed.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#eaf2ff;color:#2563eb;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Company-level configuration
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                Enable or disable the entire Sales Approval process from the company
+                                                settings without affecting the standard Sales workflow.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#fff4e8;color:#d6863a;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Improved pricing governance
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                Ensures low-margin and high-risk quotations receive appropriate
+                                                managerial review before reaching customers.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:0;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                            <div style="background-color:#eefdf7;color:#0f766e;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                <i class="fa fa-arrow-circle-right"
+                                                   style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                            <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                Reduced Manual Calculations
+                                            </h4>
+                                            <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">
+                                                The module automatically calculates quotation revenue and overall margin
+                                                percentage before determining the applicable approval rule.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Tab -->
+                <div class="tab-pane show active" id="vt_process" style="box-sizing:border-box;">
+                    <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                After installing the module navigate to Settings &gt; Sales, the Approval Matrix section
+                                contains a single checkbox — &quot;Sales Approval Matrix&quot; — that enables or
+                                disables the entire feature for the company. When enabled, quotations are checked
+                                against the Revenue/Margin Approval Matrix and require manager approval when they fall
+                                outside the safe range.
+                                When this checkbox is unchecked, quotations behave exactly as if the module were not
+                                installed — no zone is calculated, no banners are shown, and Send/Confirm are never
+                                blocked.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/1.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                The below image represents the Sales Approval Matrix used by the module. The approval
+                                rules are configured based on this matrix, and during module installation, all approval
+                                matrix records are automatically created according to the combinations shown in the
+                                chart. This serves as the default approval logic for the Sales Approval workflow.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/2.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                From Sales &gt; Configuration &gt; Approval Matrix this view lists all Approval
+                                Matrix records available in the module. Each record specifies the revenue range, margin
+                                percentage range, and the corresponding approval zone (Red, Yellow, or Green). Users can
+                                add/update approval matrix rules whenever required.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/3.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                            <br/>
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                A final configuration is required for the **Sales/Approval Managers** who will receive approval requests when a salesperson's margin falls below the defined limit. You can configure one or multiple managers here.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/3_1.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">04</span>
+                                Here we have create a quotation,this quotation has a margin of 9.62%, which places it in
+                                the Red approval zone based on the configured Approval Matrix. As a result, a &quot;Manager
+                                Review Required&quot; banner is displayed at the top of the quotation, indicating that
+                                managerial approval must be obtained before the quotation can be sent to the customer or
+                                confirmed. The Untaxed Amount and Margin values shown at the bottom of the quotation are
+                                used to determine the applicable approval zone. The approval status on the right is
+                                &quot;Not Requested,&quot; indicating that the approval request has not yet been
+                                initiated.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/4.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">05</span>
+                                The Approval Matrix tab provides a consolidated view of the approval details for the
+                                quotation. The Calculated Result section displays the automatically determined Approval
+                                Zone (Red) and the Overall Margin % (9.62%), based on the quotation values. The Approval
+                                Record section shows the current Approval Status as Not Requested, indicating that the
+                                approval process has not yet been initiated.
+                                You cannot send or confirm the quotation until it has been approved by the Sales
+                                Manager.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/5.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">06</span>
+                                If the quotation is sent before the required approval is obtained, the system displays
+                                an error message indicating that an approval request must be submitted first.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/6.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">07</span>
+                                The salesperson clicks Request Approval to initiate the approval process. Once the
+                                request is submitted, an activity notification is automatically assigned to the sales
+                                manager, prompting them to review the quotation and either approve or reject the
+                                request.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/7.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">08</span>
+                                After clicking Request Approval, the approval status changes to Pending Approval. An
+                                activity is automatically assigned to the sales manager, containing the quotation&#039;s
+                                Revenue, Margin, and Approval Zone details for review. At the same time, the Approve and
+                                Reject buttons become available to the sales manager, enabling them to review and take
+                                action on the approval request immediately.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/8.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">09</span>
+                                This dialog allows the Sales Manager to reject a quotation by providing a mandatory
+                                rejection reason. Once confirmed, the rejection reason is recorded in the quotation's
+                                history,
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/11.1.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">10</span>
+                                The sales manager reviews the quotation, rejects the approval request, and provides the
+                                reason &quot;Margin is too Low.&quot; The rejection reason, along with the name of the
+                                user who rejected the request and the date and time of the action, is automatically
+                                recorded and displayed in the Approval Record section for future reference.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/9.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">11</span>
+                                The salesperson updates the cost of one of the product lines, increasing the quotation&#039;s
+                                overall margin to 20%. The Untaxed Amount, Margin, and approval calculation are updated
+                                automatically, causing the quotation to move from the Red approval zone to the Yellow
+                                approval zone based on the configured Approval Matrix. After updating the quotation, the
+                                salesperson clicks Request Approval again to initiate a new approval request. Quotations
+                                that fall within the Green approval zone do not require approval and can be sent to the
+                                customer or confirmed directly without going through the approval process.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/10.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">12</span>
+                                After the salesperson submits the updated quotation by clicking Request Approval again,
+                                the Approval Status changes back to Pending Approval. A new activity is automatically
+                                assigned to the sales manager, displaying the updated quotation details, including the
+                                Approval Zone Yellow, so the request can be reviewed based on the revised margin and
+                                approval criteria. The sales manager reviews the approval request and either approves or
+                                rejects the quotation based on the configured approval criteria and the quotation
+                                details.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/11.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">13</span>
+                                The sales manager approves the quotation after reviewing the request. Once approved, the
+                                Approval Status changes to Approved, and the Send and Confirm buttons become available,
+                                allowing the salesperson to proceed with sending the quotation to the customer or
+                                confirming the sales order.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/12.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:0; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                            <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                            style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">14</span>
+                                After the quotation is approved, it can be confirmed and is converted into a Sales
+                                Order. Once confirmed, the Create Invoice button becomes available, has per the standard
+                                odoo workflow.
+                            </p>
+                            <div style="margin:14px 0; box-sizing:border-box;"><img src="img/13.png"
+                                                                                    class="img img-fluid"
+                                                                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQs Tab -->
+                <div class="tab-pane" id="vt_faqs" style="box-sizing:border-box;">
+                    <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; box-sizing:border-box;">
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            What is the purpose of the Sales Approval Matrix module?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            The Sales Approval Matrix module automatically determines whether a sales
+                                            quotation requires approval based on its Revenue and Overall Margin %. It
+                                            categorizes quotations into Red, Yellow, or Green approval zones according
+                                            to the configured Approval Matrix.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            How is the approval zone calculated?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            The approval zone is calculated using the quotation&#039;s Untaxed Amount
+                                            (Revenue) and Overall Margin %. The system compares these values against the
+                                            configured Approval Matrix and automatically assigns the appropriate
+                                            approval zone.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            Does the module create approval rules automatically?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            Yes. When the module is installed, it automatically creates all default
+                                            Approval Matrix records based on the predefined approval chart. These
+                                            records can be modified or extended later according to business
+                                            requirements.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#eefdf7; color:#0f766e; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            Can new approval rules be added?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            Yes. Sales Manager can create, edit, or delete Approval Matrix records at
+                                            any time to match their organization&#039;s approval policies.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#f5f3ff; color:#7c3aed; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            Which approval zones require approval?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            Only quotations that fall into the Red or Yellow approval zones require
+                                            approval before they can be sent to the customer or confirmed.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#ecfeff; color:#0891b2; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            What happens if a quotation falls into the Green zone?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            Quotations in the Green approval zone do not require approval. They can be
+                                            sent to the customer and confirmed directly using the standard Odoo Sales
+                                            workflow.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            What happens if a user tries to send a quotation before approval?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            The system prevents the action and displays a validation message instructing
+                                            the user to request approval before the quotation can be sent or
+                                            confirmed.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            Can the Sales Manager provide a reason when rejecting a quotation?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            Yes. When rejecting a request, the sales manager can enter a rejection
+                                            reason, which is stored along with the reviewer, date, and time in the
+                                            Approval Record.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            What happens if the quotation is modified after being rejected?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            If the quotation is updated and its revenue or margin changes, the approval
+                                            zone is recalculated automatically. The salesperson can then submit a new
+                                            approval request based on the updated quotation.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#eefdf7; color:#0f766e; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            Who is the point of contact for technical support or bug-related queries?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            You can reach us via <b>https://vrajatechnologies.com/helpdesk</b></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:0; box-sizing:border-box;">
+                            <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                        <div
+                                                style="background-color:#f5f3ff; color:#7c3aed; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-comments-o"
+                                               style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                            Can I get a demo of the module before making a purchase?
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">
+                                            Yes, to test this module please contact us at
+                                            sales@vrajatechnologies.com</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support Tab -->
+
+                    <!-- Support Tab -->
+                    <div class="tab-pane" id="vt_support" role="tabpanel" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:22px;box-sizing:border-box;">
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:22px;padding:22px;box-sizing:border-box;">
+                                <div style="width:100%;background-color:#f8fbf8;border:1px solid #d9e7d7;border-radius:22px;padding:26px 28px;margin-bottom:18px;box-sizing:border-box;">
+                                    <div class="d-none d-lg-block">
+                                        <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:108px;vertical-align:top;padding:0 20px 0 0;box-sizing:border-box;">
+                                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;box-sizing:border-box;">
+                                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                        <h3 style="color:#123d73;font-size:27px;font-weight:900;line-height:1.2;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:8px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;margin:0 auto 16px;box-sizing:border-box;">
+                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                        </div>
+                                        <h3 style="color:#123d73;font-size:24px;font-weight:900;line-height:1.25;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:6px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin:0 -8px;box-sizing:border-box;">
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;box-sizing:border-box;">
+                                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Policy</div>
+                                                                <a href="https://vrajatechnologies.com/support-policy" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#fff9f2;border:1px solid #f2c487;border-radius:11px;padding:11px 10px;color:#d36c00!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/support-policy</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Scan for Support -->
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 10px;box-sizing:border-box;">Scan for Support</h4>
+                                                                                <div style="margin:8px 0 0;text-align:left;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:170px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Scan for Support</h4>
+                                                                <div style="width:100%;text-align:center;margin:0;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:150px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0 auto;box-sizing:border-box;">
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-qrcode" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Tabs Section End -->
+
+<!-- Discover Trending Addons Section Start -->
+<section class="oe_container"
+         style="color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding: 30px 20px 15px; box-sizing:border-box; margin:0; ;"
+         id="TrendingApps">
+    <div class="container" style="margin:0 auto; box-sizing:border-box;">
+
+        <div class="text-center" style="max-width:1100px; margin:0 auto 10px; box-sizing:border-box;">
+                <span
+                        style="background-color:#eaf2ff; border-radius:999px; color:#2563eb; font-size:13px; font-weight:800; padding:8px 16px; margin-bottom:14px;">
+                    <i class="fa fa-cubes" style="font-family:FontAwesome !important; margin-right:6px;"></i>
+                    Discover Trending Apps
+                </span>
+        </div>
+
+        <div class="row" style="margin-left:-10px; margin-right:-10px; box-sizing:border-box;">
+            <!-- Advanced Sales Dashboard -->
+            <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                    <div class="row align-items-center">
+                        <div class="col-auto" style="padding-right:0;">
+                            <div
+                                    style="background-color:#eaf2ff; color:#2563eb; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                <i class="fa fa-shopping-cart"
+                                   style="font-family:FontAwesome !important; font-size:20px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col" style="min-width:0;">
+                            <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                Advanced Sales Dashboard
+                            </h4>
+                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Sales Dashboard is an
+                                advanced Odoo module that provides a centralized, real-time overview of your sales
+                                performance through interactive KPIs, charts, and analytics. Monitor revenue,
+                                profitability, orders, invoices, deliveries, and key business trends from a single
+                                dashboard.</p>
+                        </div>
+
+                        <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                            <a href="https://apps.odoo.com/apps/modules/19.0/sales_dashboard_vts" target="_blank"
+                               style="background-color:#2563eb !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                View App
+                                <i class="fa fa-angle-right"
+                                   style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Demand Forecasting &amp; Smart Inventory Replenishment with Overstock &amp; Deadstock Analysis for Odoo -->
+            <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                    <div class="row align-items-center">
+                        <div class="col-auto" style="padding-right:0;">
+                            <div
+                                    style="background-color:#eaf8e7; color:#138a27; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                <i class="fa fa-envelope"
+                                   style="font-family:FontAwesome !important; font-size:20px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col" style="min-width:0;">
+                            <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                Advanced Demand Forecasting &amp; Smart Inventory Replenishment with Overstock &amp;
+                                Deadstock Analysis for Odoo
+                            </h4>
+                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Advanced Demand
+                                Forecasting and Automated Stock Replenishment intelligently forecasts inventory
+                                requirements using historical demand and automates replenishment to maintain optimal
+                                stock levels. Reduce stockouts, minimize excess inventory, and streamline procurement
+                                with data-driven planning.</p>
+                        </div>
+
+                        <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                            <a href="https://apps.odoo.com/apps/modules/19.0/forecasting_auto_replenishment"
+                               target="_blank"
+                               style="background-color:#138a27 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                View App
+                                <i class="fa fa-angle-right"
+                                   style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Sales &amp; Shipping Management -->
+            <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                    <div class="row align-items-center">
+                        <div class="col-auto" style="padding-right:0;">
+                            <div
+                                    style="background-color:#fff4e8; color:#d6863a; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                <i class="fa fa-truck"
+                                   style="font-family:FontAwesome !important; font-size:20px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col" style="min-width:0;">
+                            <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                Advanced Sales &amp; Shipping Management
+                            </h4>
+                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Enhance Odoo Sales and
+                                Delivery with automated shipping charge calculations, customer-specific discounts, and
+                                integrated payment recording. Monitor sales performance through an interactive dashboard
+                                with real-time KPIs, smart filters, and actionable insights.</p>
+                        </div>
+
+                        <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                            <a href="https://apps.odoo.com/apps/modules/19.0/advanced_sales_shipping_management_vts"
+                               target="_blank"
+                               style="background-color:#d6863a !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                View App
+                                <i class="fa fa-angle-right"
+                                   style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auto Export Shipment -->
+            <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                    <div class="row align-items-center">
+                        <div class="col-auto" style="padding-right:0;">
+                            <div
+                                    style="background-color:#eef2ff; color:#4f46e5; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                <i class="fa fa-cloud-upload"
+                                   style="font-family:FontAwesome !important; font-size:20px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col" style="min-width:0;">
+                            <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                Auto Export Shipment
+                            </h4>
+                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Auto Export Shipment
+                                automates shipment creation by exporting delivery orders to the selected shipping
+                                carrier immediately after Sales Order confirmation. Reduce manual processing, accelerate
+                                dispatch operations, and keep carrier shipment details synchronized with Odoo.</p>
+                        </div>
+
+                        <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                            <a href="https://apps.odoo.com/apps/modules/19.0/auto_export_shipment" target="_blank"
+                               style="background-color:#4f46e5 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                View App
+                                <i class="fa fa-angle-right"
+                                   style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Subscription Management -->
+            <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                    <div class="row align-items-center">
+                        <div class="col-auto" style="padding-right:0;">
+                            <div
+                                    style="background-color:#ecfdf5; color:#0f766e; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                <i class="fa fa-shopping-bag"
+                                   style="font-family:FontAwesome !important; font-size:20px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col" style="min-width:0;">
+                            <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                Enhanced Subscription Management
+                            </h4>
+                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Enhance Odoo
+                                Subscriptions with automated upsell and downgrade management featuring accurate prorated
+                                billing and credit note generation. Eliminate manual calculations and ensure fair,
+                                error-free billing for mid-cycle subscription changes.</p>
+                        </div>
+
+                        <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                            <a href="https://apps.odoo.com/apps/modules/19.0/sales_subscription_extension"
+                               target="_blank"
+                               style="background-color:#0f766e !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                View App
+                                <i class="fa fa-angle-right"
+                                   style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sale Product Quantity Warhehouse/Location Wise -->
+            <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                    <div class="row align-items-center">
+                        <div class="col-auto" style="padding-right:0;">
+                            <div
+                                    style="background-color:#eefdf7; color:#0f8b6f; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                <i class="fa fa-map-marker"
+                                   style="font-family:FontAwesome !important; font-size:20px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col" style="min-width:0;">
+                            <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                Sale Product Quantity Warhehouse/Location Wise
+                            </h4>
+                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">In This Module Show the
+                                Available Quantity of Product on Multiple warehouses/Multiple Location(All Warehouses)
+                                while placing the sales order in Odoo.</p>
+                        </div>
+
+                        <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                            <a href="https://apps.odoo.com/apps/modules/19.0/check_product_stock_vts" target="_blank"
+                               style="background-color:#0f8b6f !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                View App
+                                <i class="fa fa-angle-right"
+                                   style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- Discover Shipping Addons Section End -->
+
+<!-- Discover Shipping Addons Section End -->
+
+<!-- CTA Section Start -->
+<section class="oe_container"
+         style="background-color:#f7fbff; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:34px 0; box-sizing:border-box;">
+    <div class="container" style="box-sizing:border-box;">
+        <div
+                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:26px; padding:clamp(18px, 3.5vw, 30px); box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box; margin: 0px 9px;">
+            <div class="row align-items-center"
+                 style="margin-left:-12px; margin-right:-12px; box-sizing:border-box;">
+
+                <div class="col-12 col-lg-7" style="padding:12px; box-sizing:border-box;">
+                    <table
+                            style="border-collapse:collapse; border-spacing:0; margin:0 0 12px; box-sizing:border-box;">
+                        <tr>
+                            <td style="vertical-align:middle; padding:0 10px 0 0; box-sizing:border-box;">
+                                    <span
+                                            style="color:#123d73; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; line-height:1; box-sizing:border-box;">
+                                        <i class="fa fa-check-circle"
+                                           style="font-family:FontAwesome !important; font-size:clamp(25px, 3.5vw, 33px);  margin-right:5px; vertical-align:middle;"></i>
+                                    </span>
+                            </td>
+                            <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                <h2
+                                        style="color:#123d73; font-family:sans-serif !important; font-size:clamp(18px, 4.5vw, 28px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                                    Explore Before Purchase
+                                </h2>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p
+                            style="color:#138a27; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.45; margin:0 0 12px; box-sizing:border-box;">
+                        Start with a free trial
+                    </p>
+
+                    <p
+                            style="color:#526b96; font-size:clamp(13px, 3.4vw, 15px); line-height:1.7; margin:0 0 18px; box-sizing:border-box;">
+                        Test the connector with your real workflows using our 15-day free trial. If you need help,
+                        our product experts will guide you throughout the trial.
+                    </p>
+
+                    <div class="row" style="margin-left:-7px; margin-right:-7px; box-sizing:border-box;">
+
+                        <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                            <a href="mailto:sales@vrajatechnologies.com?subject=Sales%20Margin%20%26amp%3B%20Quotation%20Approval"
+                               style="background-color:#2563eb !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:55px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(37,99,235,0.20); box-sizing:border-box; width:100%;">
+                                <i class="fa fa-calendar-check-o"
+                                   style="font-family:FontAwesome !important; font-size:17px; margin-right:8px; vertical-align:middle;"></i>
+                                <span style="vertical-align:middle;">Request Demo</span>
+                            </a>
+                        </div>
+
+                        <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                            <a href="https://api.whatsapp.com/send/?phone=917359628466&amp;text&amp;type=phone_number&amp;app_absent=0"
+                               target="_blank"
+                               style="background-color:#13a579 !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:50px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(19,165,121,0.20); box-sizing:border-box; width:100%;">
+                                <i class="fa fa-whatsapp"
+                                   style="font-family:FontAwesome !important; font-size:20px; margin-right:8px; vertical-align:middle;"></i>
+                                <span style="vertical-align:middle;">+91 73596 28466</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-5" style="padding:12px; box-sizing:border-box;">
+                    <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; height:100%; box-sizing:border-box;">
+                        <table
+                                style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td
+                                        style="width:62px; vertical-align:top; padding:0 15px 0 0; box-sizing:border-box;">
+                                    <div
+                                            style="background-color:#eaf2ff; color:#2563eb; border-radius:18px; width:52px; height:52px; line-height:52px; text-align:center; box-sizing:border-box;">
+                                        <i class="fa fa-check-square-o"
+                                           style="font-family:FontAwesome !important; font-size:24px; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h4
+                                            style="color:#123d73; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.35; margin:0 0 8px; box-sizing:border-box;">
+                                        Test the connector with your real workflows.
+                                    </h4>
+                                    <p
+                                            style="color:#526b96; font-size:13px; line-height:1.65; margin:0 0 12px; box-sizing:border-box;">
+                                        Our product experts will guide you during the trial to help you evaluate,
+                                        configure, and use the connector with confidence.
+                                    </p>
+                                    <div style="box-sizing:border-box;">
+                                            <span
+                                                    style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">15-Day
+                                                Trial</span>
+                                        <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Expert
+                                                Guidance</span>
+                                        <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Real
+                                                Workflow Testing</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CTA Section End -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

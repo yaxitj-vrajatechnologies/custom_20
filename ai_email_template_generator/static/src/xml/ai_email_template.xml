@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="ai_email_template_generator.AiCardSelector">
+        <div class="o_ai_cards">
+            <div class="o_ai_card"
+                 t-att-class="{'o_ai_card_selected': this.isSelected('text_only')}"
+                 t-on-click="() => this.selectCard('text_only')">
+                <div class="o_ai_card_icon o_ai_card_icon_text">
+                    <i class="oi" data-icon="format_align_left"/>
+                </div>
+                <div class="o_ai_card_content">
+                    <div class="o_ai_card_title">Text Only</div>
+                    <div class="o_ai_card_desc">
+                        AI writes a new section (headline, paragraph, button)
+                        and adds it to your existing template layout.
+                        Best when you've already picked a design.
+                    </div>
+                </div>
+            </div>
+            <div class="o_ai_card"
+                 t-att-class="{'o_ai_card_selected': this.isSelected('full_design')}"
+                 t-on-click="() => this.selectCard('full_design')">
+                <div class="o_ai_card_icon o_ai_card_icon_design">
+                   <i class="oi" data-icon="brush"/>
+                </div>
+                <div class="o_ai_card_content">
+                    <div class="o_ai_card_title">Full Design</div>
+                    <div class="o_ai_card_desc">
+                        AI redesigns the entire email — colors, layout,
+                        text and structure. Best when you want a
+                        complete refresh.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

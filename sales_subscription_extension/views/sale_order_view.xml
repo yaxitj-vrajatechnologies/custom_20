@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_sale_order_inherit_form_view_vts" model="ir.ui.view">
+        <field name="name">sale.order.form.view.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_primary_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='prepare_upsell_order']" position="after">
+                <button string="Downgrade" name="action_downgrade_order" type="object"
+                        invisible="not is_subscription or subscription_state not in ['3_progress', '4_paused'] or state != 'sale'"
+                        data-hotkey="e"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="after">
+                <field name="subscription_state"
+                       widget="badge"
+                       class="float-end"
+                       invisible="subscription_state != '8_downgrade'"
+                       decoration-warning="subscription_state == '8_downgrade'"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_credit_note"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="description"
+                        invisible="not move_id">
+                    <field name="credit_note_count" widget="statinfo" string="CreditNote"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

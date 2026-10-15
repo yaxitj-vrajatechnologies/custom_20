@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mailing_mailing_form_ai_button" model="ir.ui.view">
+        <field name="name">mailing.mailing.form.ai.generate.button</field>
+        <field name="model">mailing.mailing</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"/>
+        <field name="arch" type="xml">
+            <button name="action_test" position="after">
+                <button name="action_open_ai_generate_wizard"
+                        type="object"
+                        string="Generate with AI"
+                        class="btn-secondary"
+                        data-hotkey="g"/>
+            </button>
+        </field>
+    </record>
+
+    <menuitem id="ai_configuration_menu"
+                name="AI Configuration"
+                parent="mass_mailing.mass_mailing_menu_root"
+                sequence="10"/>
+</odoo>
+
+

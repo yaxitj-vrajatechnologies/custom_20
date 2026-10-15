@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_approval_matrix" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.approval.matrix</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='sale_management']" position="inside">
+                <block title="Approval Matrix" name="approval_matrix_setting_container">
+                    <setting string="Sales Approval Matrix"
+                             help="Require manager approval on quotations based on the Revenue / Margin Approval Matrix. When disabled, quotations are not checked against the matrix and no approval is required."
+                             id="approval_matrix_setting">
+                        <field name="approval_matrix_enabled"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

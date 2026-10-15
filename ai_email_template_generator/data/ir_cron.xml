@@ -1,0 +1,13 @@
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_delete_ai_email_logs" model="ir.cron">
+            <field name="name">Delete AI Email Logs Older Than 15 Days</field>
+            <field name="model_id" ref="model_ai_email_tmpl_log"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_delete_old_logs()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_approval_matrix" model="ir.ui.view">
+        <field name="name">sale.order.form.approval.matrix</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Workflow buttons + status bar in the header -->
+            <xpath expr="//header" position="inside">
+                <field name="approval_zone" invisible="1"/>
+                <button name="action_request_approval" type="object"
+                        string="Request Approval"
+                        class="btn-primary"
+                        invisible="approval_zone == 'green' or approval_state in ('pending','approved')"/>
+                <button name="action_approve_quotation" type="object"
+                        string="Approve"
+                        class="btn-success"
+                        invisible="approval_state != 'pending'"
+                        groups="sales_team.group_sale_manager"/>
+                <button name="action_reject_quotation" type="object"
+                        string="Reject"
+                        class="btn-danger"
+                        invisible="approval_state != 'pending'"
+                        groups="sales_team.group_sale_manager"/>
+            </xpath>
+
+            <!-- Approval state badge in main sheet -->
+            <xpath expr="//div[@class='oe_title']" position="after">
+                <div class="mb-3 text-end">
+                    <field name="approval_state" widget="badge"
+                           decoration-success="approval_state == 'approved'"
+                           decoration-warning="approval_state == 'pending'"
+                           decoration-muted="approval_state == 'draft'"/>
+                </div>
+            </xpath>
+
+            <xpath expr="//sheet" position="before">
+                <!-- Red "Manager Review Required" banner: matrix zone is Red -->
+                <div class="alert alert-danger" role="alert"
+                     invisible="not show_manager_review_banner">
+                    <strong>Manager Review Required</strong> &#8212;
+                    based on the revenue and margin combination for this quotation
+                    (margin<field name="total_margin_percent" readonly="1" class="oe_inline"/>%),
+                    this falls in the Red zone. It must be approved by a manager before it
+                    can be sent or confirmed.
+                </div>
+                <!-- Yellow "Manager Approval Required" banner: matrix zone is Yellow -->
+                <div class="alert alert-warning" role="alert"
+                     invisible="not show_yellow_review_banner">
+                    <strong>Manager Approval Required</strong> &#8212;
+                    based on the revenue and margin combination for this quotation
+                    (margin<field name="total_margin_percent" readonly="1" class="oe_inline"/>%),
+                    this falls in the Yellow zone. Manager approval is required before it
+                    can be sent or confirmed.
+                </div>
+            </xpath>
+
+            <!-- Amber / red highlighting on order lines -->
+            <xpath expr="//field[@name='order_line']/list" position="attributes">
+                <attribute name="decoration-warning">line_risk_flag == 'amber'</attribute>
+                <attribute name="decoration-danger">line_risk_flag == 'red'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list" position="inside">
+                <field name="line_risk_flag" column_invisible="1"/>
+            </xpath>
+
+            <!-- Approval details tab -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Approval Matrix" name="approval_matrix_page">
+                    <group>
+                        <group string="Calculated Result">
+                            <field name="approval_zone"/>
+                            <field name="total_margin_percent"/>
+                        </group>
+                        <group string="Approval Record">
+                            <field name="approval_state" readonly="1"/>
+                            <field name="approval_manager_id" readonly="1"/>
+                            <field name="approval_date" readonly="1"/>
+                        </group>
+                    </group>
+                    <group invisible="not approval_reject_reason">
+                        <field name="approval_reject_reason" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

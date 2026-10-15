@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_ai_provider_config_user,ai.provider.config.user,ai.provider.config,base.group_user,cru,
+access_ai_email_generate_wizard_user,ai.email.generate.wizard.user,ai.email.generate.wizard,base.group_user,crud,
+access_ai_email_tmpl_log,ai.email.tmpl.log,ai.email.tmpl.log,base.group_user,crud,

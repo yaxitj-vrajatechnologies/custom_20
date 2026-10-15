@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_approval_matrix_reject_wizard_form" model="ir.ui.view">
+        <field name="name">approval.matrix.reject.wizard.form</field>
+        <field name="model">approval.matrix.reject.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reject Quotation">
+                <group>
+                    <field name="sale_order_id" invisible="1"/>
+                    <field name="reason" placeholder="Explain why this quotation is being rejected..."/>
+                </group>
+                <footer>
+                    <button name="action_confirm_reject" type="object"
+                            string="Confirm Rejection" class="btn-danger"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_team_view_form_approval_matrix" model="ir.ui.view">
+        <field name="name">crm.team.view.form.approval.matrix</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Add our field near the team leader / membership info. If this
+                 specific anchor doesn't exist in your version, this simply
+                 falls back to appending at the end of the first <group>. -->
+            <field name="user_id" position="after">
+                <field name="approval_manager_ids" widget="many2many_tags"
+                       groups="sales_team.group_sale_manager"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

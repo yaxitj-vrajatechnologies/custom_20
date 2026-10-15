@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_ai_email_generate_wizard_form" model="ir.ui.view">
+        <field name="name">ai.email.generate.wizard.form</field>
+        <field name="model">ai.email.generate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Email Template using AI" class="o_ai_generate_wizard">
+
+                <!-- ═══════════════════════════════════════════ -->
+                <!--  HEADER BANNER                              -->
+                <!-- ═══════════════════════════════════════════ -->
+                <div class="o_ai_hero">
+                    <div class="o_ai_hero_left">
+                        <div class="o_ai_hero_icon">
+                            <i class="oi" data-icon="wand_stars"/>
+                        </div>
+                        <div class="o_ai_hero_text">
+                            <h2>AI Email Generator</h2>
+                            <p>Describe your campaign and let AI do the heavy lifting.</p>
+                        </div>
+                    </div>
+                    <div class="o_ai_provider_badge">
+                        <span class="o_ai_provider_label">Active Provider</span>
+                        <span class="o_ai_provider_value">
+                            <field name="active_provider_display" readonly="1" nolabel="1"/>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="o_ai_progress_note o_ai_error_note" invisible="state != 'failed'">
+                    Something went wrong while generating the template. Please check your AI
+                    provider configuration and try again.
+                </div>
+
+                <!-- hidden fields -->
+                <field name="mailing_id" invisible="1"/>
+                <field name="state" invisible="1"/>
+
+                <!-- ═══════════════════════════════════════════ -->
+                <!--  INPUT SECTION  (visible only in draft)     -->
+                <!-- ═══════════════════════════════════════════ -->
+                <div class="o_ai_body">
+
+                    <!-- PROMPT -->
+                    <div class="o_ai_section">
+                        <div class="o_ai_section_header">
+                           <i class="oi" data-icon="edit_square"/>
+                            <span>Campaign Prompt</span>
+                        </div>
+                        <field name="prompt"
+                               nolabel="1"
+                               placeholder="e.g. 30% off VIP exclusive sale for loyal customers, festive Diwali tone, include coupon code SAVE30, valid till 31 Oct"
+                               class="o_ai_prompt_field"/>
+                        <div class="o_ai_prompt_tips">
+                            <span class="o_ai_tip_title">
+                               <i class="oi" data-icon="lightbulb"/>
+                                Tips for a great prompt:
+                            </span>
+                            <ul class="o_ai_tip_list">
+                                <li>Mention the <b>offer or purpose</b> (e.g. "30% off", "new product launch")
+                                </li>
+                                <li>Describe the <b>tone</b> (e.g. "festive", "professional", "friendly")
+                                </li>
+                                <li>Include <b>audience</b> context (e.g. "VIP members", "new subscribers")
+                                </li>
+                                <li>Add any <b>specific details</b> like coupon codes, dates, or product names
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- GENERATION TYPE -->
+                    <div class="o_ai_section">
+                        <div class="o_ai_section_header">
+                            <i class="oi" data-icon="tune"/>
+                            <span>Generation Type</span>
+                        </div>
+                        <field name="output_type" nolabel="1" widget="ai_card_selector"/>
+                    </div>
+
+                </div>
+
+                <!-- PREVIEW SECTION -->
+                <div class="o_ai_preview_outer" invisible="state != 'done'">
+                    <div class="o_ai_preview_header">
+                        <i class="oi" data-icon="visibility"/>
+                        <b>Preview Generated Template</b>
+                        <span class="o_ai_preview_hint">
+                            Review below. Confirm to apply it to your mailing, or go back to regenerate.
+                        </span>
+                    </div>
+                    <div class="o_ai_preview_frame_wrap">
+                        <field name="preview_html" widget="html" nolabel="1" readonly="1"/>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════ -->
+                <!--  FOOTER BUTTONS                             -->
+                <!-- ═══════════════════════════════════════════ -->
+                <footer>
+                    <button name="action_generate_template" type="object"
+                            string="Generate Template" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button string="Generating..." class="btn-primary"
+                            disabled="1" invisible="state != 'running'"/>
+
+                    <button name="action_confirm_template" type="object"
+                            string="Apply to Mailing" class="btn-primary"
+                            invisible="state != 'done'"/>
+                    <button name="action_regenerate" type="object"
+                            string="Regenerate" class="btn-secondary"
+                            invisible="state != 'done'"/>
+                    <button string="Close" special="cancel" class="btn-secondary"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+</odoo>

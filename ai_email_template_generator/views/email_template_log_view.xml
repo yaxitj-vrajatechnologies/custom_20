@@ -1,0 +1,75 @@
+<odoo>
+    <record id="view_ai_email_generate_log_tree" model="ir.ui.view">
+        <field name="name">ai.email.generate.log.tree</field>
+        <field name="model">ai.email.tmpl.log</field>
+        <field name="arch" type="xml">
+            <list create="False" decoration-success="state == 'success'" decoration-danger="state == 'failed'">
+                <field name="name"/>
+                <field name="create_date" string="Date"/>
+                <field name="mailing_id"/>
+                <field name="provider"/>
+                <field name="llm_model" optional="hide"/>
+                <field name="output_type" optional="hide"/>
+                <field name="total_tokens" sum="Total"/>
+                <field name="state" widget="badge" decoration-success="state == 'success'"
+                       decoration-danger="state == 'failed'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ai_email_generate_log_form" model="ir.ui.view">
+        <field name="name">ai.email.generate.log.form</field>
+        <field name="model">ai.email.tmpl.log</field>
+        <field name="arch" type="xml">
+            <form create="False">
+                <sheet>
+                    <div class="oe_title">
+                        <h2 style="margin: 0;">
+                            <field name="name" readonly="1"/>
+                        </h2>
+
+                        <div class="text-muted">
+                            <field name="create_date" readonly="1"/>
+                        </div>
+                    </div>
+
+                    <group>
+                        <group string="Details">
+                            <field name="mailing_id"/>
+                            <field name="output_type"/>
+                            <field name="state"
+                                   widget="badge"
+                                   decoration-success="state == 'success'"
+                                   decoration-danger="state == 'failed'"/>
+                        </group>
+                        <group string="Provider Information">
+                            <field name="provider" readonly="1"/>
+                            <field name="llm_model" readonly="1"/>
+                            <field name="total_tokens"/>
+                        </group>
+                    </group>
+
+                    <group string="Message">
+                        <field name="log_message"/>
+                    </group>
+
+                    <!--                    <group string="Generated Template" invisible="state != 'success'">-->
+                    <!--                        <field name="generated_html" widget="ace" nolabel="1"/>-->
+                    <!--                    </group>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ai_email_generate_log" model="ir.actions.act_window">
+        <field name="name">AI Log</field>
+        <field name="res_model">ai.email.tmpl.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_ai_email_generate_log"
+              name="AI Log"
+              parent="ai_email_template_generator.ai_configuration_menu"
+              action="action_ai_email_generate_log"
+              sequence="100"/>
+</odoo>

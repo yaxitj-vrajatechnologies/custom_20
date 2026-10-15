@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_approval_matrix_line_list" model="ir.ui.view">
+        <field name="name">approval.matrix.line.list</field>
+        <field name="model">approval.matrix.line</field>
+        <field name="arch" type="xml">
+            <list string="Approval Matrix" editable="bottom"
+                  decoration-danger="zone == 'red'"
+                  decoration-warning="zone == 'yellow'"
+                  decoration-success="zone == 'green'">
+                <field name="sequence" widget="handle"/>
+                <field name="revenue_from" width="150"/>
+                <field name="revenue_to" width="150"/>
+                <field name="margin_from" width="150"/>
+                <field name="margin_to" width="150"/>
+                <field name="zone"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_approval_matrix_line_form" model="ir.ui.view">
+        <field name="name">approval.matrix.line.form</field>
+        <field name="model">approval.matrix.line</field>
+        <field name="arch" type="xml">
+            <form string="Approval Matrix Line">
+                <sheet>
+                    <group>
+                        <group string="Revenue Band">
+                            <field name="revenue_from"/>
+                            <field name="revenue_to"/>
+                        </group>
+                        <group string="Margin Band (%)">
+                            <field name="margin_from"/>
+                            <field name="margin_to"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="zone" widget="radio"/>
+                        <field name="sequence"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_approval_matrix_line" model="ir.actions.act_window">
+        <field name="name">Approval Matrix</field>
+        <field name="res_model">approval.matrix.line</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define your Revenue x Margin approval bands here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_approval_matrix_line"
+              name="Approval Matrix"
+              parent="sale.menu_sale_config"
+              action="action_approval_matrix_line"
+              sequence="60"/>
+
+</odoo>

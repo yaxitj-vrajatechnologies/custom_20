@@ -1,6 +1,6 @@
 <odoo>
-<!--    <data noupdate="1">-->
-        <!-- Overdue Invoice Reminder -->
+    <data noupdate="1">
+         Overdue Invoice Reminder
 
         <record id="whatsapp_template_invoice_overdue" model="whatsapp.template">
             <field name="name">Overdue Invoice Reminder</field>
@@ -23,9 +23,9 @@ Thank you,
         <record id="whatsapp_template_invoice_overdue_account_manager" model="whatsapp.template">
             <field name="name">Overdue Invoice Alert (Account Manager)</field>
             <field name="template_name">account_manager_overdue_invoice_reminder</field>
-            <field name="model_id" ref="base.model_res_users"/>
+            <field name="model_id" ref="base.model_res_partner"/>
             <field name="template_type">utility</field>
-            <field name="phone_field">partner_id.phone</field>
+            <field name="phone_field">phone</field>
             <field name="body">Hello {{1}},
 An invoice has become overdue.
 
@@ -174,5 +174,5 @@ If you have any questions, we’re always here to help.
 Thank you for being a valued customer
             </field>
         </record>
-<!--    </data>-->
+    </data>
 </odoo>
