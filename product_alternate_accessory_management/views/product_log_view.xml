@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- LOG TREE VIEW -->
+        <record id="view_product_log_tree" model="ir.ui.view">
+            <field name="name">product.log.vts.list</field>
+            <field name="model">product.log.vts</field>
+            <field name="arch" type="xml">
+                <list create="false">
+                    <field name="name"/>
+                    <field name="relation_type"/>
+                    <field name="product_id"/>
+                    <field name="message"/>
+                    <field name="create_date"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- LOG FORM VIEW -->
+        <record id="view_product_log_form" model="ir.ui.view">
+            <field name="name">product.log.vts.form</field>
+            <field name="model">product.log.vts</field>
+            <field name="arch" type="xml">
+                <form string="Product Log" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="relation_type"/>
+                                <field name="product_id"/>
+                            </group>
+                            <group>
+
+                                <field name="company_id"/>
+                                <field name="create_date"/>
+                                <field name="message"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Log Lines">
+                                <field name="log_line_ids" readonly="1">
+                                    <list decoration-danger="operation_type == 'remove'"
+                                          decoration-success="operation_type == 'add'">
+                                        <field name="relation_type"/>
+                                        <field name="operation_type"/>
+                                        <field name="product_id"/>
+                                        <field name="related_product_id"/>
+                                        <field name="message"/>
+                                    </list>
+
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="relation_type"/>
+                                                    <field name="operation_type"/>
+                                                    <field name="product_id"/>
+                                                    <field name="related_product_id"/>
+                                                </group>
+                                                <group>
+                                                    <field name="message"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- LOG LINE TREE VIEW -->
+        <record id="view_product_log_line_tree" model="ir.ui.view">
+            <field name="name">product.log.line.vts.tree</field>
+            <field name="model">product.log.line.vts</field>
+            <field name="arch" type="xml">
+                <list decoration-danger="operation_type == 'remove'" decoration-success="operation_type == 'add'"
+                      create="false">
+                    <field name="log_id"/>
+                    <field name="relation_type"/>
+                    <field name="operation_type"/>
+                    <field name="product_id"/>
+                    <field name="related_product_id"/>
+                    <field name="message"/>
+                    <field name="create_date"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- LOG LINE FORM VIEW -->
+        <record id="view_product_log_line_form" model="ir.ui.view">
+            <field name="name">product.log.line.vts.form</field>
+            <field name="model">product.log.line.vts</field>
+            <field name="arch" type="xml">
+                <form string="Product Log Line" create="false" edit="false">
+                    <sheet>
+                        <group readonly="1">
+                            <group>
+                                <field name="log_id"/>
+                                <field name="relation_type"/>
+                                <field name="operation_type"/>
+                            </group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="related_product_id"/>
+                                <field name="message"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <chatter reload_on_post="True"/>
+                </form>
+            </field>
+        </record>
+
+        <!-- ACTIONS -->
+        <record id="action_product_log" model="ir.actions.act_window">
+            <field name="name">Log Book</field>
+            <field name="res_model">product.log.vts</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Product logs will display here
+                </p>
+            </field>
+        </record>
+
+        <record id="action_product_log_line" model="ir.actions.act_window">
+            <field name="name">Log Line</field>
+            <field name="res_model">product.log.line.vts</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Error logs will display here
+                </p>
+            </field>
+        </record>
+
+    </data>
+
+    <!-- SEQUENCE -->
+    <data noupdate="1">
+        <record id="product_log_sequence_vts" model="ir.sequence">
+            <field name="name">Product Log Sequence</field>
+            <field name="code">product.log.vts</field>
+            <field name="prefix">PL</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+
+    <!-- SEPARATOR MENU -->
+    <menuitem id="menu_product_log_root"
+              name="Product Log History"
+              parent="stock.menu_stock_inventory_control"
+              sequence="120"/>
+
+    <!-- CHILD MENUS -->
+    <menuitem id="menu_product_log"
+              name="Log Book"
+              parent="menu_product_log_root"
+              action="action_product_log"
+              sequence="1"/>
+
+    <menuitem id="menu_product_log_line"
+              name="Log Line"
+              parent="menu_product_log_root"
+              action="action_product_log_line"
+              sequence="2"/>
+
+</odoo>

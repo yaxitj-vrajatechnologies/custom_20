@@ -3,7 +3,7 @@
     # App information
     'name': 'Cleaning Service Management & Online Booking | Cleaning Service Booking & Staff Management',
     'category': 'Website',
-    'version': '19.0.1.0',
+    'version': '20.0.1.0',
     'summary': '''The Cleaning Service Management module provides a complete solution for managing cleaning service bookings, staff scheduling, and customer communication directly within Odoo.
             The module includes an online booking form on your website where customers can submit cleaning service requests with their preferred date, shift, and time slot. Logged-in customers have their details automatically filled in, making the booking process quick and convenient.
             It also supports recurring cleaning services where customers can schedule regular cleanings on a daily, weekly, or monthly basis. The system automatically validates the end date based on the selected interval to ensure accurate scheduling.
@@ -62,8 +62,6 @@
         ],
 
         'web.assets_frontend': [
-            'cleaning_service_management_vts/static/src/lib/jquery-ui/jquery-ui.css',
-            'cleaning_service_management_vts/static/src/lib/jquery-ui/jquery-ui.js',
             'cleaning_service_management_vts/static/src/css/cleaning_form.css',
             'cleaning_service_management_vts/static/src/js/cleaning_form.js',
         ],

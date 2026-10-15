@@ -83,7 +83,7 @@
                                                                 <option t-att-value="st.id"
                                                                         t-att-data-country-id="st.country_id.id"
                                                                         t-att-selected="'selected' if (post and str(st.id) == post.get('state_info')) or (not post and partner.state_id and st.id == partner.state_id.id) else None">
-                                                                    <t t-esc="st.name"/>
+                                                                    <t t-out="st.name"/>
                                                                 </option>
                                                             </t>
                                                         </select>
@@ -97,7 +97,7 @@
                                                             <t t-foreach="countries" t-as="c">
                                                                 <option t-att-value="c.id"
                                                                         t-att-selected="'selected' if (post and str(c.id) == post.get('country_info')) or (not post and partner.country_id and c.id == partner.country_id.id) else None">
-                                                                    <t t-esc="c.name"/>
+                                                                    <t t-out="c.name"/>
                                                                 </option>
                                                             </t>
                                                         </select>
@@ -112,7 +112,7 @@
                                                     <t t-foreach="services" t-as="s"
                                                        t-att-selected="'selected' if post and str(s.id) == post.get('service_type_id') else None">
                                                         <option t-att-value="s.id">
-                                                            <t t-esc="s.name"/>
+                                                            <t t-out="s.name"/>
                                                         </option>
                                                     </t>
                                                 </select>
@@ -152,7 +152,7 @@
                                                         <t t-foreach="shifts" t-as="shift">
                                                             <option t-att-value="shift.id"
                                                                     t-att-selected="'selected' if post and str(shift.id) == post.get('cleaning_shift_id') else None">
-                                                                <t t-esc="shift.name"/>
+                                                                <t t-out="shift.name"/>
                                                             </option>
                                                         </t>
                                                     </select>
@@ -170,7 +170,7 @@
 
                                                     <div class="preferred-date-wrapper">
 
-                                                        <input type="text"
+                                                        <input type="date"
                                                                name="preferred_date"
                                                                class="form-control preferred-date-input"
                                                                t-att-value="post.get('preferred_date') if post else ''"
@@ -178,7 +178,10 @@
                                                                placeholder="DD/MM/YYYY"/>
 
                                                         <span class="calendar-trigger">
-                                                            <i class="fa fa-calendar"/>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                 height="16" viewBox="0 0 16 16" fill="currentColor">
+                                                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                                            </svg>
                                                         </span>
 
                                                     </div>
@@ -231,21 +234,24 @@
                                                         <div class="col-md-6 mb-3">
                                                             <label class="form-label">End Date</label>
                                                             <div class="preferred-date-wrapper">
-                                                                <input type="text"
+                                                                <input type="date"
                                                                        name="end_date"
                                                                        class="form-control end-date-input"
                                                                        t-att-value="post.get('end_date') if post else ''"
                                                                        placeholder="DD/MM/YYYY"/>
 
                                                                 <span class="calendar-trigger end-calendar-trigger">
-                                                                    <i class="fa fa-calendar"/>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                         height="16" viewBox="0 0 16 16"
+                                                                         fill="currentColor">
+                                                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                                                    </svg>
                                                                 </span>
-
                                                             </div>
                                                             <t t-if="error">
                                                                 <div class="text-danger mt-1">
                                                                     <i class="fa fa-exclamation-circle me-1"/>
-                                                                    <t t-esc="error"/>
+                                                                    <t t-out="error"/>
                                                                 </div>
                                                             </t>
                                                         </div>
@@ -257,9 +263,8 @@
                                             <div class="mt-3">
                                                 <label class="form-label">Instructions</label>
                                                 <textarea name="special_instructions" class="form-control" rows="3">
-                                                    <t t-esc="post.get('special_instructions') if post else ''"/>
+                                                    <t t-out="post.get('special_instructions') if post else ''"/>
                                                 </textarea>
-
                                             </div>
 
                                             <!-- Submit -->

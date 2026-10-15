@@ -17,11 +17,11 @@ class HrEmployee(models.Model):
     def _compute_task_count(self):
         for emp in self:
             emp.task_count = self.env['project.task'].search_count([
-                ('user_ids', 'in', emp.id)
+                ('user_ids', 'in', emp.user_id.ids)
             ])
 
     def action_view_tasks(self):
         self.ensure_one()
         action = self.env["ir.actions.actions"]._for_xml_id("project.act_project_project_2_project_task_all")
-        action['domain'] = [('user_ids', 'in', self.id)]
+        action['domain'] = [('user_ids', 'in', self.user_id.ids)]
         return action

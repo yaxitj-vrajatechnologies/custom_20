@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record id="product_rule_categories" model="product.rule.vts">
+            <field name="name">Same Categories</field>
+            <field name="code">category</field>
+            <field name="rule_type">alternative</field>
+        </record>
+
+        <record id="product_rule_price_vts" model="product.rule.vts">
+            <field name="name">Similar Price</field>
+            <field name="code">price</field>
+            <field name="rule_type">alternative</field>
+        </record>
+
+        <record id="product_rule_brand" model="product.rule.vts">
+            <field name="name">Same Brand</field>
+            <field name="code">brand</field>
+            <field name="rule_type">both</field>
+        </record>
+
+        <record id="product_rule_attributes" model="product.rule.vts">
+            <field name="name">Same Attributes</field>
+            <field name="code">attributes</field>
+            <field name="rule_type">alternative</field>
+        </record>
+
+        <record id="product_in_stock_rule" model="product.rule.vts">
+            <field name="name">Only In Stock Products</field>
+            <field name="code">in_stock</field>
+            <field name="rule_type">both</field>
+        </record>
+
+        <record id="product_tags_rule" model="product.rule.vts">
+            <field name="name">Same Tags</field>
+            <field name="code">tags</field>
+            <field name="rule_type">both</field>
+        </record>
+    </data>
+</odoo>

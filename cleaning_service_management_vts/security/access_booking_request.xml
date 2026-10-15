@@ -10,18 +10,8 @@
         <field name="implied_ids" eval="[(4, ref('cleaning_service_management_vts.group_cleaning_manager'))]"/>
     </record>
 
-    <record id="booking_request_manager_rule" model="ir.rule">
-        <field name="name">Manager Own Records</field>
-        <field name="model_id" ref="model_booking_request"/>
-        <field name="domain_force">[('assigned_manager_id', '=', user.id)]</field>
-        <field name="groups" eval="[(4, ref('cleaning_service_management_vts.group_cleaning_manager'))]"/>
-    </record>
-
-    <record id="booking_request_admin_rule" model="ir.rule">
-        <field name="name">Admin All Records</field>
-        <field name="model_id" ref="model_booking_request"/>
-        <field name="domain_force">[(1, '=', 1)]</field>
-        <field name="groups" eval="[(4, ref('cleaning_service_management_vts.group_cleaning_admin'))]"/>
+    <record id="base.group_system" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('cleaning_service_management_vts.group_cleaning_admin'))]"/>
     </record>
 
 </odoo>

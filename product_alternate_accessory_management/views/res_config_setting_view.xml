@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_auto_linking_product" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.auto.linking.product</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="40"/>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Alternate Product Link"
+                     string="Alternate Product Linking"
+                     name="product_alternate_accessory_management"
+                     logo="/product_alternate_accessory_management/static/description/product.png">
+                    <block title="Alternate Product Rule" name="alternative_product_selection_block">
+                        <setting id="alternative_product_selection"
+                                 title="Alternative Product Based On Selection"
+                                 help="Select criteria (e.g., Category, Brand) for alternative products.">
+                            <field name="main_rule_ids" widget="many2many_tags"
+                                   options="{'no_create': True, 'no_create_edit': True}"/>
+
+                        </setting>
+                    </block>
+                    <block>
+                        <setting id="other_product_rule_selection"
+                                 title="Alternative Product other rules" invisible="not main_rule_ids"
+                                 help="Choose how alternative products should be suggested based on additional criteria.">
+                            <field name="other_rule_ids" widget="many2many_tags"
+                                   options="{'no_create': True, 'no_create_edit': True}"/>
+
+                        </setting>
+                    </block>
+                    <block>
+                        <setting id="price_range_setting"
+                                 title="Price Range Configuration"
+                                 invisible="not show_price_range or not main_rule_ids">
+                            <div class="fw-bold mb-1">
+                                Price Range Configuration
+                            </div>
+                            <div class="text-muted mb-2">
+                                Set the allowed price variation range (in %) for suggesting alternative products with similar pricing.
+                            </div>
+
+                            <div class="content-group">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="min_price_range"/>
+                                        <field name="min_price_range" required="1" widget="percentage"/>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <label for="max_price_range"/>
+                                        <field name="max_price_range" required="1" widget="percentage"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

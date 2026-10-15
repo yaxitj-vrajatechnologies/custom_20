@@ -1,7 +1,11 @@
 /** @odoo-module **/
 
 import {registry} from "@web/core/registry";
-import {Component, onWillStart, useState, useRef, onMounted} from "@odoo/owl";
+import * as owl from "@odoo/owl";
+import {Component, onWillStart, onMounted} from "@odoo/owl";
+
+// Odoo 20: useRef/useState may not exist in @odoo/owl any more
+const useState = owl.useState || ((obj) => (owl.proxy ? owl.proxy(obj) : obj));
 import {useService} from "@web/core/utils/hooks";
 
 class BookingDashboard extends Component {
@@ -9,10 +13,23 @@ class BookingDashboard extends Component {
         this.orm = useService("orm");
         this.action = useService("action");
 
-        this.revenueChartRef = useRef("revenueChart");
-        this.statusChartRef = useRef("statusChart");
-        this.trendChartRef = useRef("trendChart");
-
+        const getCanvas = (name) =>
+            document.querySelector(`.o_booking_dashboard canvas.${name}`);
+        this.revenueChartRef = {
+            get el() {
+                return getCanvas("o_revenue_chart");
+            }
+        };
+        this.statusChartRef = {
+            get el() {
+                return getCanvas("o_status_chart");
+            }
+        };
+        this.trendChartRef = {
+            get el() {
+                return getCanvas("o_trend_chart");
+            }
+        };
         this.revenueChart = null;
         this.statusChart = null;
         this.trendChart = null;
@@ -126,13 +143,24 @@ class BookingDashboard extends Component {
             data: {
                 labels: data.map(d => d.service),
                 datasets: [{
-                    label: "Revenue (%)",
-                    data: data.map(d => d.percent),
+                    label: "Revenue",
+                    data: data.map(d => d.amount),
                     backgroundColor: "#4e73df",
                     borderRadius: 6
                 }]
             },
-            options: {responsive: true, maintainAspectRatio: false, scales: {y: {beginAtZero: true, max: 100}}}
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {y: {beginAtZero: true}},
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => `${ctx.parsed.y} (${data[ctx.dataIndex].percent}%)`,
+                        },
+                    },
+                },
+            }
         });
     }
 

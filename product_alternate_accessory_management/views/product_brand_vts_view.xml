@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- PRODUCT BRAND FORM VIEW -->
+    <record id="product_brand__vts_form_view" model="ir.ui.view">
+        <field name="name">product.brand.form.view</field>
+        <field name="model">product.brand.vts</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Brand Name" nolabel="1" required="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="short_description"/>
+                    </group>
+                    <notebook>
+                        <page string="Details">
+                            <group>
+                                <field name="detailed_description"/>
+                            </group>
+                        </page>
+                        <page string="Products">
+                            <field name="product_tmpl_ids">
+                                <list create="0" edit="0" delete="0">
+                                    <field name="name"/>
+                                    <field name="default_code"/>
+                                    <field name="categ_id"/>
+                                    <field name="list_price"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- PRODUCT BRAND TREE VIEW -->
+    <record id="view_product_brand_list_view" model="ir.ui.view">
+        <field name="name">product.brand.vts.list</field>
+        <field name="model">product.brand.vts</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="short_description"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+    <record id="action_product_brand_vts" model="ir.actions.act_window">
+        <field name="name">Product Brand</field>
+        <field name="res_model">product.brand.vts</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- MENUITEM-->
+    <menuitem id="menu_product_brand_vts"
+              name="Product Brand"
+              parent="stock.menu_stock_inventory_control"
+              action="action_product_brand_vts"
+              sequence="115"/>
+</odoo>

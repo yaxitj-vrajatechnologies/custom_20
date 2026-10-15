@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record id="unlink_log_book_record" model="ir.cron">
+            <field name="name">Delete Log Records</field>
+            <field name="model_id" ref="product_alternate_accessory_management.model_product_log_vts"/>
+            <field name="state">code</field>
+            <field name="code">model.unlink_log_books()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>

@@ -60,59 +60,55 @@ class AccountMove(models.Model):
 
             partner = invoice.partner_id
 
-            if not partner.phone:
-                continue
-
             # -------------------
             # Send Notification to Customer
             # -------------------
-            attachment = invoice.generate_invoice_pdf_report()
+            if template and partner.phone:
+                attachment = invoice.generate_invoice_pdf_report()
 
-            partner = invoice.partner_id
+                composer = self.env['whatsapp.composer'].create({
+                    'res_model': 'account.move',
+                    'res_ids': str([invoice.id]),
+                    'wa_template_id': template.id,
 
-            composer = self.env['whatsapp.composer'].create({
-                'res_model': 'account.move',
-                'res_ids': str([invoice.id]),
-                'wa_template_id': template.id,
+                    # Template variables
+                    'free_text_1': partner.name or '',
+                    'free_text_2': invoice.name or '',
+                    'free_text_3': f"{invoice.amount_total:,.2f}",
+                    'free_text_4': invoice.invoice_date_due.strftime('%d-%m-%Y') if invoice.invoice_date_due else '',
+                    'free_text_5': self.env.company.name or '',
 
-                # Template variables
+                    # Attachment
+                    'attachment_id': attachment.id
+                })
 
-                'free_text_1': partner.name or '',
-                'free_text_2': invoice.name or '',
-                'free_text_3': f"{invoice.amount_total:,.2f}",
-                'free_text_4': invoice.invoice_date_due.strftime('%d-%m-%Y') if invoice.invoice_date_due else '',
-                'free_text_5': self.env.company.name or '',
-
-                # Attachment
-                'attachment_id': attachment.id
-            })
-
-            composer.action_send_whatsapp_template()
+                composer.action_send_whatsapp_template()
 
             # -------------------
             # Send Notification to Account Managers
+            # The manager template is attached to res.partner, so the message goes to
+            # the manager's own phone and not to the invoice customer's phone.
             # -------------------
+            if manager_template:
+                for manager in account_managers or []:
 
-            for manager in account_managers:
+                    if not manager.partner_id.phone:
+                        continue
 
-                phone = manager.partner_id.phone
-                if not phone:
-                    continue
+                    manager_composer = self.env['whatsapp.composer'].create({
+                        'res_model': 'res.partner',
+                        'res_ids': str([manager.partner_id.id]),
+                        'wa_template_id': manager_template.id,
 
-                manager_composer = self.env['whatsapp.composer'].create({
-                    'res_model': 'account.move',
-                    'res_ids': str([invoice.id]),
-                    'wa_template_id': manager_template.id,
+                        # Template variables
+                        'free_text_1': manager.name or '',
+                        'free_text_2': partner.name or '',
+                        'free_text_3': invoice.name or '',
+                        'free_text_4': f"{invoice.amount_total:,.2f}",
+                        'free_text_5': invoice.invoice_date_due.strftime('%d-%m-%Y') if invoice.invoice_date_due else '',
+                        'free_text_6': self.env.company.name or '',
+                    })
 
-                    # Template variables
-                    'free_text_1': manager.name or '',
-                    'free_text_2': partner.name or '',
-                    'free_text_3': invoice.name or '',
-                    'free_text_4': f"{invoice.amount_total:,.2f}",
-                    'free_text_5': invoice.invoice_date_due.strftime('%d-%m-%Y') if invoice.invoice_date_due else '',
-                    'free_text_6': self.env.company.name or '',
-                })
-
-                manager_composer.action_send_whatsapp_template()
+                    manager_composer.action_send_whatsapp_template()
 
             invoice.sudo().write({'notification_sent': True})

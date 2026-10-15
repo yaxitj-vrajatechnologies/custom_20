@@ -442,7 +442,7 @@ class FestivalOffersVTS(models.Model):
 
             for partner in partners:
 
-                pricelist = partner.specific_property_product_pricelist
+                pricelist = partner.specific_property_product_pricelist or partner.property_product_pricelist
                 if not pricelist:
                     continue
 

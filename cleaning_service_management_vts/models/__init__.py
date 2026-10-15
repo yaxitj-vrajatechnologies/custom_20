@@ -8,4 +8,3 @@ from . import booking_dashboard_vts
 from . import account_move
 from . import cleaning_holiday_vts
 from . import empl_availability_vts
-from . import hr_timesheet_stop_timer_confirmation_wizard

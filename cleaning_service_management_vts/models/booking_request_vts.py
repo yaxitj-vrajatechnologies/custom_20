@@ -214,11 +214,6 @@ class CleaningBookingRequest(models.Model):
         self.cleaning_team_id = False
         self.individual_id = False
 
-    @api.onchange('state_id')
-    def _onchange_state_id(self):
-        if self.state_id:
-            self.country_id = self.state_id.country_id
-
             # OTHERS METHOD
 
     @api.depends('pricing_type', 'fixed_price', 'area_sqft', 'rate_per_sqft')
@@ -383,14 +378,17 @@ class CleaningBookingRequest(models.Model):
             if employee.user_id:
                 user_ids.append(employee.user_id.id)
                 continue
-            action = employee.action_create_user()
-            ctx = action.get('context', {})
+            login = employee.work_email or employee.work_contact_id.email
+            if not login:
+                raise ValidationError(_(
+                    "Employee '%s' has no Work Email. Please set an email on the employee "
+                    "so a user can be created for the cleaning task.", employee.name))
 
             user = self.env['res.users'].with_context(no_reset_password=True).create({
-                'name': ctx.get('default_name'),
-                'login': ctx.get('default_login'),
-                'phone': ctx.get('default_phone') or False,
-                'partner_id': ctx.get('default_partner_id'),
+                'name': employee.name,
+                'login': login,
+                'phone': employee.work_phone or False,
+                'partner_id': employee.work_contact_id.id or False,
             })
 
             employee.user_id = user.id

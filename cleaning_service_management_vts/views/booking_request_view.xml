@@ -85,7 +85,7 @@
                         <button name="action_booking_task"
                                 type="object"
                                 class="oe_stat_button"
-                                icon="fa-tasks"
+                                icon="tasks"
                                 invisible="cln_task_count == 0">
 
                             <div class="o_field_widget o_stat_info">
@@ -100,12 +100,11 @@
                         <button name="action_view_invoice"
                                 type="object"
                                 class="oe_stat_button"
-                                icon="fa-file-text-o"
+                                icon="description"
                                 invisible="invoice_count == 0">
 
                             <field name="invoice_count" widget="statinfo" string="Invoices"/>
                         </button>
-
                     </div>
 
                     <!-- TITLE -->
@@ -135,10 +134,10 @@
                             <group>
                                 <group>
                                     <field name="preferred_date" readonly="state == 'approved'" required="1"/>
-                                     <field name="service_type_id" required="1" readonly="state == 'approved'"/>
-                                     <field name="floor_count" readonly="state == 'approved'"/>
+                                    <field name="service_type_id" required="1" readonly="state == 'approved'"/>
+                                    <field name="floor_count" readonly="state == 'approved'"/>
                                     <field name="room_count" readonly="state == 'approved'"/>
-                                     <field name="area_sqft" readonly="state == 'approved'"/>
+                                    <field name="area_sqft" readonly="state == 'approved'"/>
                                     <field name="cleaning_shift_id" readonly="state == 'approved'" required="1"/>
                                     <field name="shift_slot_id"
                                            domain="[('shift_id', '=', cleaning_shift_id)]"
@@ -160,7 +159,7 @@
                                             string="Cleaner Availability"
                                             type="object"
                                             class="btn btn-secondary btn-sm"
-                                            icon="fa-eye"
+                                            icon="visibility"
                                             invisible="state != 'under_review'"/>
                                 </group>
                             </group>
@@ -197,11 +196,7 @@
                         </page>
                     </notebook>
                 </sheet>
-                <chatter>
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </chatter>
+                <chatter/>
             </form>
         </field>
     </record>

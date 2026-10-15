@@ -5,11 +5,11 @@
 
     <!-- HEADER -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="o_dashboard_title mb-0"><t t-esc="state.title"/></h2>
-        <select t-on-change="onChangePeriod" class="form-select w-auto">
-            <option value="7d" t-att-selected="state.period === '7d'    ? 'selected' : false">Last 7 Days</option>
-            <option value="month" t-att-selected="state.period === 'month' ? 'selected' : false">This Month</option>
-            <option value="year" t-att-selected="state.period === 'year'  ? 'selected' : false">This Year</option>
+        <h2 class="o_dashboard_title mb-0"><t t-out="this.state.title"/></h2>
+        <select t-on-change="this.onChangePeriod" class="form-select w-auto">
+            <option value="7d" t-att-selected="this.state.period === '7d'    ? 'selected' : false">Last 7 Days</option>
+            <option value="month" t-att-selected="this.state.period === 'month' ? 'selected' : false">This Month</option>
+            <option value="year" t-att-selected="this.state.period === 'year'  ? 'selected' : false">This Year</option>
         </select>
     </div>
 
@@ -19,7 +19,7 @@
         <div class="col-6 col-md-2">
             <div class="o_kpi_card kpi_total" t-on-click="() => this.openBookings(false)">
                 <div><div class="o_kpi_label">Total</div>
-                    <div class="o_kpi_value"><t t-esc="state.data.total"/></div></div>
+                    <div class="o_kpi_value"><t t-out="this.state.data.total"/></div></div>
                 <i class="fa fa-calendar o_kpi_icon"/>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="col-6 col-md-2">
             <div class="o_kpi_card kpi_draft" t-on-click="() => this.openBookings('draft')">
                 <div><div class="o_kpi_label">New Request</div>
-                    <div class="o_kpi_value"><t t-esc="state.data.draft"/></div></div>
+                    <div class="o_kpi_value"><t t-out="this.state.data.draft"/></div></div>
                 <i class="fa fa-file-text o_kpi_icon"/>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="col-6 col-md-2">
             <div class="o_kpi_card kpi_review" t-on-click="() => this.openBookings('under_review')">
                 <div><div class="o_kpi_label">Under Review</div>
-                    <div class="o_kpi_value"><t t-esc="state.data.under_review"/></div></div>
+                    <div class="o_kpi_value"><t t-out="this.state.data.under_review"/></div></div>
                 <i class="fa fa-search o_kpi_icon"/>
             </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="col-6 col-md-2">
             <div class="o_kpi_card kpi_approved" t-on-click="() => this.openBookings('approved')">
                 <div><div class="o_kpi_label">Approved</div>
-                    <div class="o_kpi_value"><t t-esc="state.data.approved"/></div></div>
+                    <div class="o_kpi_value"><t t-out="this.state.data.approved"/></div></div>
                 <i class="fa fa-check o_kpi_icon"/>
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="col-6 col-md-2">
             <div class="o_kpi_card kpi_rejected" t-on-click="() => this.openBookings('rejected')">
                 <div><div class="o_kpi_label">Rejected</div>
-                    <div class="o_kpi_value"><t t-esc="state.data.rejected"/></div></div>
+                    <div class="o_kpi_value"><t t-out="this.state.data.rejected"/></div></div>
                 <i class="fa fa-times o_kpi_icon"/>
             </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="col-6 col-md-2">
             <div class="o_kpi_card kpi_revenue">
                 <div><div class="o_kpi_label">Revenue</div>
-                    <div class="o_kpi_value">$<t t-esc="state.data.total_revenue"/></div></div>
+                    <div class="o_kpi_value">$<t t-out="this.state.data.total_revenue"/></div></div>
                 <i class="fa fa-dollar o_kpi_icon"/>
             </div>
         </div>
@@ -73,7 +73,7 @@
             <div class="o_chart_box">
                 <h5 class="mb-3">Booking Trend</h5>
                 <div style="position:relative; height:230px;">
-                    <canvas t-ref="trendChart"/>
+                    <canvas class="o_trend_chart"/>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
             <div class="o_chart_box">
                 <h5 class="mb-3">Revenue by Service</h5>
                 <div style="position:relative; height:230px;">
-                    <canvas t-ref="revenueChart"/>
+                    <canvas class="o_revenue_chart"/>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
             <div class="o_chart_box">
                 <h5 class="mb-3">Status Split</h5>
                 <div style="position:relative; height:230px;">
-                    <canvas t-ref="statusChart"/>
+                    <canvas class="o_status_chart"/>
                 </div>
             </div>
         </div>
@@ -104,14 +104,14 @@
         <div class="col-12 col-md-6">
             <div class="o_chart_box">
                 <h5 class="mb-3">Top Services</h5>
-                <t t-if="!state.serviceStats.length">
+                <t t-if="!this.state.serviceStats.length">
                     <div class="text-muted">No service data available</div>
                 </t>
-                <t t-foreach="state.serviceStats" t-as="s" t-key="s.service">
+                <t t-foreach="this.state.serviceStats" t-as="s" t-key="s.service">
                     <div class="o_service_card mb-2" t-on-click="() => this.openServiceBookings(s.service)">
                         <div class="o_service_left">
-                            <div class="o_service_name"><t t-esc="s.service"/></div>
-                            <div class="o_service_count"><t t-esc="s.count"/>
+                            <div class="o_service_name"><t t-out="s.service"/></div>
+                            <div class="o_service_count"><t t-out="s.count"/>
                                 bookings</div>
                         </div>
                         <i class="fa fa-cube o_service_icon"/>
@@ -123,15 +123,15 @@
         <div class="col-12 col-md-6">
             <div class="o_chart_box">
                 <h5 class="mb-3">Top Cleaners</h5>
-                <t t-if="!state.topCleaners.length">
+                <t t-if="!this.state.topCleaners.length">
                     <div class="text-muted">No cleaner data available</div>
                 </t>
                 <!-- Top Cleaners -->
-                <t t-foreach="state.topCleaners" t-as="c" t-key="c.name">
+                <t t-foreach="this.state.topCleaners" t-as="c" t-key="c.name">
                     <div class="o_cleaner_card mb-2">
                         <div class="o_service_left">
-                            <div class="o_cleaner_name"><t t-esc="c.name"/></div>
-                            <div class="o_cleaner_count"><t t-esc="c.count"/>
+                            <div class="o_cleaner_name"><t t-out="c.name"/></div>
+                            <div class="o_cleaner_count"><t t-out="c.count"/>
                                 Tasks Completed</div>
                         </div>
                         <i class="fa fa-user o_cleaner_icon"/>

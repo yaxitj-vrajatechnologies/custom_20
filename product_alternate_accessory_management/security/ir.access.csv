@@ -1,0 +1,6 @@
+id,name,model_id,group_id/id,operation,domain
+access_product_brand_vts,product.brand.vts,product.brand.vts,base.group_user,crud,
+access_product_log_vts,product.log.vts,product.log.vts,base.group_user,crud,
+access_product_log_line_vts,product.log.line.vts,product.log.line.vts,base.group_user,crud,
+access_product_rule_vts,product.rule.vts,product.rule.vts,base.group_user,crud,
+access_product_accessory_vts,product.accessory.vts,product.accessory.vts,base.group_user,crud,

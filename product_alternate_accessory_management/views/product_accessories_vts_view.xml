@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+         <!-- PRODUCT ACCESSORIES TREE VIEW -->
+        <record id="view_product_accessory_category_list" model="ir.ui.view">
+            <field name="name">product.accessory.category.list</field>
+            <field name="model">product.accessory.vts</field>
+            <field name="arch" type="xml">
+                <list editable="bottom">
+                    <field name="category_id"/>
+                    <field name="accessory_category_ids"
+                           widget="many2many_tags"/>
+                    <field name="accessory_product_rule_ids"
+                           widget="many2many_tags" domain="[('rule_type', 'in', ('accessory', 'both'))]" options="{'no_create': True, 'no_create_edit': True}"/>
+                </list>
+            </field>
+        </record>
+
+        <!--  ACTION  -->
+        <record id="action_product_accessory_vts" model="ir.actions.act_window">
+            <field name="name">Accessory Product Rules </field>
+            <field name="res_model">product.accessory.vts</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+         <!-- MENUITEM -->
+        <menuitem id="menu_product_accessory_vts"
+                  name="Accessory Product Rules"
+                  parent="stock.menu_stock_inventory_control"
+                  action="action_product_accessory_vts"
+                  sequence="110"/>
+    </data>
+</odoo>

@@ -36,11 +36,20 @@ class CleaningController(http.Controller):
         from odoo.exceptions import ValidationError
         from dateutil.relativedelta import relativedelta
 
+        def _parse_date(value):
+            if not value:
+                return False
+            for fmt in ('%Y-%m-%d', '%d/%m/%Y'):
+                try:
+                    return datetime.strptime(value, fmt).date()
+                except ValueError:
+                    continue
+            raise ValidationError("Invalid date format.")
+
         try:
             is_recurring = True if post.get('is_recurring') else False
-            preferred_date = datetime.strptime(post.get('preferred_date'), '%d/%m/%Y').date() if post.get(
-                'preferred_date') else False
-            end_date = datetime.strptime(post.get('end_date'), '%d/%m/%Y').date() if post.get('end_date') else False
+            preferred_date = _parse_date(post.get('preferred_date'))
+            end_date = _parse_date(post.get('end_date'))
             repeat_interval = int(post.get('repeat_interval')) if post.get('repeat_interval') else 1
             recurring_type = post.get('recurring_type')
 

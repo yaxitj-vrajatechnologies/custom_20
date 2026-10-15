@@ -64,15 +64,16 @@ class BookingDashboard(models.Model):
     @api.model
     def get_service_analysis(self, period='month'):
         domain = self._get_period_domain(period)
+        bookings = self.env['booking.request'].search(domain)
 
-        data = self.env['booking.request'].read_group(
-            domain=domain,
-            fields=['service_type_id'],
-            groupby=['service_type_id']
-        )
+        counts = {}
+        for b in bookings:
+            if b.service_type_id:
+                name = b.service_type_id.name
+                counts[name] = counts.get(name, 0) + 1
 
-        return [{'service': d['service_type_id'][1],'count': d['service_type_id_count'],}
-            for d in data if d.get('service_type_id')]
+        return [{'service': name, 'count': count}
+                for name, count in sorted(counts.items(), key=lambda x: x[1], reverse=True)]
 
     # ─── REVENUE BAR CHART ────────────────────────────────────
     @api.model
