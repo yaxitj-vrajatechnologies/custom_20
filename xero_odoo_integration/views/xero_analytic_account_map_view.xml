@@ -1,0 +1,54 @@
+<odoo>
+    <record id="view_xero_analytic_account_map_list" model="ir.ui.view">
+        <field name="name">xero.analytic.account.map.list</field>
+        <field name="model">xero.analytic.account.map</field>
+        <field name="arch" type="xml">
+            <list string="Xero Analytic Account Mapping" editable="bottom">
+                <field name="xero_instance_id"/>
+                <field name="xero_analytic_plan_id"/>
+                <field name="xero_analytic_acc_id"/>
+                <field name="xero_analytic_acc_name"/>
+                <field name="analytic_plan_id"/>
+                <field name="analytic_account_id"/>
+                <button name="action_analytic_account_mapping" string="View" type="object" class="oe_link"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_xero_analytic_account_form" model="ir.ui.view">
+        <field name="name">xero.analytic.account.map.form</field>
+        <field name="model">xero.analytic.account.map</field>
+        <field name="arch" type="xml">
+            <form string="Xero Analytic Account Mapping">
+                <sheet>
+                    <group>
+                        <field name="xero_instance_id" readonly="1"/>
+                        <field name="xero_analytic_acc_id" readonly="1"/>
+                        <field name="xero_analytic_acc_name" readonly="1"/>
+                        <field name="analytic_account_id" readonly="1"/>
+                        <field name="xero_analytic_plan_id" readonly="1"/>
+                        <field name="analytic_plan_id" readonly="1"/>
+                        <field name="xero_response" widget="text" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_xero_analytic_account_map_filter" model="ir.ui.view">
+        <field name="name">xero.analytic.account.map.search</field>
+        <field name="model">xero.analytic.account.map</field>
+        <field name="arch" type="xml">
+            <search string="Search Xero Analytic Account Map">
+                <field name="xero_analytic_acc_name"
+                   string="Analytic Account"
+                   filter_domain="['|','|',('xero_analytic_acc_id','ilike', self),('xero_analytic_acc_name','ilike', self),('analytic_account_id.name','ilike', self),]"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_xero_analytic_account_mapping" model="ir.actions.act_window">
+        <field name="name">Analytic Account</field>
+        <field name="res_model">xero.analytic.account.map</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>
+

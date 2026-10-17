@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="xero_account_move_inherit_form_vts" model="ir.ui.view">
+        <field name="name">xero.account.move.form.inherit.vts</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="xero_move" string="Xero Details">
+                    <group col="2">
+                        <group string="Invoice">
+                            <field name="xero_instance_id" readonly="1"/>
+                            <field name="xero_ref_id" readonly="1"/>
+                            <field name="xr_invoice_num" readonly="1"/>
+                            <field name="xr_move_type" readonly="1"/>
+
+                        </group>
+                        <group string="Configuration">
+                            <field name="is_skip_transaction"/>
+                            <field name="is_consolidated_invoice" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_xero_invoice_filter" model="ir.ui.view">
+        <field name="name">invoice.xero.filter.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='ref']" position="before">
+                <field name="xr_invoice_num"/>
+            </xpath>
+
+            <xpath expr="//filter[@name='group_by_company']" position="after">
+                <separator/>
+                <filter string="Xero Instance" name="group_by_xero_instance"
+                        context="{'group_by':'xero_instance_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

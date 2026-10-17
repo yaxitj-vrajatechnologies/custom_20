@@ -1,0 +1,2 @@
+id,name,model_id,group_id/id,operation,domain
+access_vraja_dp_batch,access.vraja.dp.batch,vraja.dp.batch,base.group_user,crud,

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_qbo_partner_map_form" model="ir.ui.view">
+        <field name="name">qbo.partner.map.vts.form</field>
+        <field name="model">qbo.partner.map.vts</field>
+        <field name="arch" type="xml">
+            <form string="Quickbooks Partner Map">
+                <sheet>
+                    <group>
+                        <field name="quickbook_instance_id" readonly="1"/>
+                        <field name="quickbook_id" readonly="1"/>
+                        <field name="quick_name" readonly="1"/>
+                        <field name="partner_id"/>
+                        <field name="company_id"/>
+                        <field name="qbo_response" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_qbo_partner_map_filter" model="ir.ui.view">
+        <field name="name">qbo.partner.map.vts.search</field>
+        <field name="model">qbo.partner.map.vts</field>
+        <field name="arch" type="xml">
+            <search string="Search QuickBooks Partner Map">
+                <field name="partner_id"
+                       string="Customer"
+                       filter_domain="['|', '|', ('quickbook_id', 'ilike', self),
+                           ('quick_name', 'ilike', self),('partner_id.name', 'ilike', self)]"/>
+            </search>
+        </field>
+    </record>   
+
+    <!-- List view -->
+    <record id="view_qbo_partner_map_list" model="ir.ui.view">
+        <field name="name">qbo.partner.map.vts.list</field>
+        <field name="model">qbo.partner.map.vts</field>
+        <field name="arch" type="xml">
+            <list string="Quickbooks Partner Map" editable="bottom">
+                <field name="quickbook_instance_id" readonly="1"/>
+                <field name="quickbook_id" readonly="1"/>
+                <field name="quick_name" readonly="1"/>
+                <field name="partner_id"/>
+                <button name="partner_mapping_view" type="object" string="View" class="btn btn-link"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- Action view -->
+    <record id="action_qbo_partner_map" model="ir.actions.act_window">
+        <field name="name">Quickbooks Partner Map</field>
+        <field name="res_model">qbo.partner.map.vts</field>
+        <field name="view_mode">list</field>
+    </record>
+    <record id="action_qbo_account" model="ir.actions.act_window">
+        <field name="name">Quickbooks Account</field>
+        <field name="res_model">qbo.account.vts</field>
+        <field name="view_mode">list</field>
+    </record>
+    <record id="action_qbo_taxes" model="ir.actions.act_window">
+        <field name="name">Quickbooks Taxes</field>
+        <field name="res_model">qbo.taxes.vts</field>
+        <field name="view_mode">list</field>
+    </record>
+    <record id="action_qbo_payment_terms" model="ir.actions.act_window">
+        <field name="name">Quickbooks Payment Terms</field>
+        <field name="res_model">qbo.payment.terms.vts</field>
+        <field name="view_mode">list</field>
+    </record>
+    <record id="action_qbo_payment_method_map" model="ir.actions.act_window">
+        <field name="name">Quickbooks Payment Method</field>
+        <field name="res_model">qbo.payment.method.vts</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_qbo_payment_method_list"/>
+    </record>
+
+
+    <!-- Menu item -->
+
+    <menuitem id="main_mapping_menu" name="Mapping" parent="quickbooks_common_connector_vts.menu_quickbooks_root"/>
+
+
+    <menuitem id="menu_qbo_partner_map"
+              name="Customers"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="action_qbo_partner_map" sequence="1"/>
+
+    <menuitem id="menu_qbo_account"
+              name="Accounts"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="action_qbo_account" sequence="1"/>
+
+    <menuitem id="menu_qbo_taxes"
+              name="Taxes"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="action_qbo_taxes" sequence="1"/>
+
+     <menuitem id="menu_qbo_payment_terms"
+              name="Payment Terms"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="action_qbo_payment_terms" sequence="1"/>
+
+    <menuitem id="menu_qbo_payment_method"
+              name="Payment Method"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="action_qbo_payment_method_map" sequence="1"/>
+</odoo>

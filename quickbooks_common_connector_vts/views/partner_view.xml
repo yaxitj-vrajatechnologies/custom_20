@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_partner_qk_inherit_form_view_vts" model="ir.ui.view">
+        <field name="name">qk.res.partner.form.view.inherit.vts</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="quickbook_api" string="Quickbooks">
+                    <group>
+                        <field name="qck_instance_id" readonly="1"/>
+                        <field name="qk_customer_type" readonly="1"/>
+                        <field name="qbk_id" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_res_partner_filter_inherit" model="ir.ui.view">
+        <field name="name">res.partner.filter.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='inactive']" position="after">
+                <separator/>
+                <filter string="Quickbook Customers" name="quickbook_partners"
+                        domain="[('qbk_id', '!=', False)]"/>
+            </xpath>
+            <xpath expr="//filter[@name='group_country']" position="after">
+                <separator/>
+                <filter string="Quickbook Customers" name="group_by_Quickbook"
+                        context="{'group_by':'qck_instance_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

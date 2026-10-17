@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="xero_connect_form_view" model="ir.ui.view">
+        <field name="name">xero.connect.form</field>
+        <field name="model">xero.connect</field>
+        <field name="arch" type="xml">
+            <form string="Xero Connect">
+                <header>
+                    <button name="action_connect_xero"
+                            string="Connect"
+                            type="object"
+                            class="oe_highlight" invisible="state != 'connecting'"/>
+                    <button name="refresh_xero_access_token"
+                            string="Refresh Token"
+                            type="object"
+                            class="oe_highlight" invisible="state != 'connected'"/>
+                    <button name="reconnect_with_xero"
+                            string="Disconnect"
+                            type="object"
+                            class="oe_highlight" invisible="state not in ['connected','failed']"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_xero_customer" type="object" class="oe_stat_button" icon="person">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Customer</span>
+                                <span class="o_stat_value">
+                                    <field name="xero_customer_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <!--                        <button name="action_xero_vendor"-->
+                        <!--                                type="object"-->
+                        <!--                                class="oe_stat_button"-->
+                        <!--                                icon="fa-truck">-->
+                        <!--                            <div class="o_field_widget o_stat_info">-->
+                        <!--                                <span class="o_stat_text">Vendor</span>-->
+                        <!--                                <span class="o_stat_value">-->
+                        <!--                                    <field name="xero_vendor_count"/>-->
+                        <!--                                </span>-->
+                        <!--                            </div>-->
+                        <!--                        </button>-->
+                        <button name="action_xero_account"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="book">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Accounts</span>
+                                <span class="o_stat_value">
+                                    <field name="xero_account_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_xero_taxes"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="attach_money">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Taxes</span>
+                                <span class="o_stat_value">
+                                    <field name="xero_taxes_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_xero_product"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="shopping_cart">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Products</span>
+                                <span class="o_stat_value">
+                                    <field name="xero_product_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_xero_invoice"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="description">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Invoice</span>
+                                <span class="o_stat_value">
+                                    <field name="xero_invoice_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_xero_bill"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="account_balance">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Bills</span>
+                                <span class="o_stat_value">
+                                    <field name="xero_bill_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_xero_payment"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="credit_card">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Payments</span>
+                                <span class="o_stat_value">
+                                    <field name="xero_payment_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_xero_purchase_order"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="local_shipping">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Purchase Order</span>
+                                <span class="o_stat_value">
+                                    <field name="xero_purchase_order_count"/>
+                                </span>
+                            </div>
+                        </button>
+
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="xero_company_id" invisible="state != 'connected'"/>
+                            <field name="company_id" required="1"/>
+                            <field name="country_id" invisible="1"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="credentials" string="Credentials">
+                            <group>
+                                <group>
+                                    <field name="client_id" required="1" readonly="state == 'connected'"/>
+                                    <field name="client_secret" required="1" readonly="state == 'connected'"/>
+                                    <field name="access_token" invisible="1"/>
+                                    <field name="refresh_token" invisible="1"/>
+                                    <field name="reason" readonly="1"/>
+
+                                </group>
+                                <group>
+                                    <field name="redirect_url" required="1" readonly="state == 'connected'"/>
+                                    <field name="login_auth_url" required="1" readonly="state == 'connected'"/>
+                                    <field name="auth_token_url" required="1" readonly="state == 'connected'"/>
+                                    <field name="xero_base_url" readonly="state == 'connected'"/>
+                                    <field name="tenant_id" invisible="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="import_configuration" string="Import Configuration">
+                            <group>
+                                <separator string="Creation Process"/>
+                                <group>
+                                    <field name="xero_customer_creation"/>
+                                    <field name="xero_product_creation"/>
+                                    <field name="xero_account_creation"/>
+                                </group>
+                                <group>
+                                    <field name="xero_analytic_creation"/>
+                                    <field name="xero_contact_group_creation"/>
+                                    <field name="xero_tax_creation"/>
+                                </group>
+                            </group>
+
+                            <!-- Auto Import -->
+                            <group>
+                                <separator string="Auto Import"/>
+
+                                <group>
+                                    <field name="auto_import_invoice_bill"/>
+                                </group>
+                                <group>
+                                    <field name="auto_import_payment"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="export_configuration" string="Export Configuration">
+                            <group>
+                                <group>
+                                    <field name="auto_update_invoice_bill"/>
+                                    <field name="auto_invoice_bill_export"/>
+                                </group>
+                                <group>
+                                    <field name="auto_payment_export"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="consolidated_invoices" string="Consolidated Configuration">
+                            <group>
+                                <group>
+                                    <field name="consolidated_invoice"/>
+                                </group>
+                                <group>
+                                    <field name="partner_id" invisible="not consolidated_invoice" required="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter reload_on_post="True"/>
+            </form>
+        </field>
+    </record>
+
+    <!--  action for buttons  -->
+    <record id="action_xero_customer_id" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">xero.partner.map</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_xero_partner_map_list"/>
+        <field name="domain">[('xero_instance_id', '=', active_id)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Xero Customer / Vendor will display here
+            </p>
+        </field>
+    </record>
+
+    <!--kanban view-->
+    <record id="xero_connect_kanban" model="ir.ui.view">
+        <field name="name">xero.connect.kanban</field>
+        <field name="model">xero.connect</field>
+        <field name="arch" type="html">
+            <kanban class="oe_background_grey o_kanban_dashboard o_account_kanban">
+                <field name="name"/>
+                <templates>
+                    <t t-name="card">
+                        <!-- Main clickable card -->
+                        <div t-attf-class="oe_kanban_global_click" style="border-radius: 10px;">
+                            <!-- Card Header -->
+                            <div class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <span>&#160;&#160;</span>
+                                        <a type="object" name="action_xero_open_instance_view_form">
+                                            <field name="name"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Customer Card Content -->
+                            <div class="container o_kanban_card_content">
+                                <div class="row mt10">
+                                    <div class="col-12 d-flex justify-content-center gap-4">
+                                        <div class="col-4 border-right text-center">
+                                            <a name="%(xero_odoo_integration.action_xero_customer_id)d"
+                                               type="action"
+                                               class="d-flex flex-column align-items-center">
+                                                <span title="Customers">
+                                                    <i class="oi oi-fw" data-icon="groups" style="font-size: 48px;"/>
+                                                </span>
+                                                <span class="text-muted">Customer</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-4 border-right text-center">
+                                            <a name="action_xero_payment"
+                                               type="object"
+                                               class="d-flex flex-column align-items-center">
+                                                <span title="Payments">
+                                                   <i class="oi oi-fw" data-icon="credit_card" style="font-size: 48px;"/>
+                                                </span>
+                                                <span class="text-muted">Payments</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-4 border-right text-center">
+                                            <a name="action_xero_invoice"
+                                               type="object"
+                                               class="d-flex flex-column align-items-center">
+                                                <span title="Invoices">
+                                                   <i class="oi oi-fw" data-icon="description" style="font-size: 48px;"/>
+                                                </span>
+                                                <span class="text-muted">Invoice</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
+                                <div>
+                                    <button name="action_import_operation"
+                                            type="object" class="btn btn-primary"
+                                            t-attf-style="border-radius:12px;">
+                                        <span>
+                                            <i class="oi oi-fw" data-icon="arrow_forward" aria-hidden="true"/>
+                                            Operations
+                                        </span>
+                                    </button>
+                                </div>
+                                <div>
+                                    <button name="action_xero_logs_view"
+                                            type="object" class="btn btn-primary"
+                                            t-attf-style="border-radius:12px;">
+                                        <span>
+                                            <i class="oi oi-fw" data-icon="description" aria-hidden="true"/>
+                                            Logs
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_xero_connect_tree" model="ir.ui.view">
+        <field name="name">xero.connect.list</field>
+        <field name="model">xero.connect</field>
+        <field name="arch" type="xml">
+            <list string="Xero Instance">
+                <field name="name"/>
+                <field name="client_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- menus action -->
+    <record id="action_xero_connect" model="ir.actions.act_window">
+        <field name="name">Xero Instance</field>
+        <field name="res_model">xero.connect</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <!-- menus -->
+    <menuitem id="main_menu_root"
+              name="Xero"
+              web_icon="xero_odoo_integration,static/description/icon.png"
+              sequence="1"/>
+
+    <menuitem id="main_connection_menu"
+              name="Xero Instance"
+              action="action_xero_connect"
+              parent="main_menu_root"
+              sequence="1"/>
+
+    <menuitem id="main_mapping_menu"
+              name="Mapping"
+              parent="xero_odoo_integration.main_menu_root"
+              sequence="2"/>
+
+    <menuitem id="process_menu"
+              name="Queue"
+              parent="xero_odoo_integration.main_menu_root"
+              sequence="3"/>
+
+    <menuitem id="invoice_process_menu"
+              name="Invoice Queue"
+              parent="process_menu"
+              action="action_xero_invoice_queue"
+              sequence="1"/>
+
+    <menuitem id="creditnote_process_menu"
+              name="Credit Note Queue"
+              parent="process_menu"
+              action="action_xero_creditnote_queue"
+              sequence="2"/>
+
+    <menuitem id="xero_partner_mapping_menu"
+              name="Customers"
+              parent="main_mapping_menu"
+              action="action_xero_partner_mapping"
+              sequence="1"/>
+
+    <menuitem id="xero_contact_group_menu"
+              name="Contact Group"
+              parent="main_mapping_menu"
+              action="action_xero_contact_group_mapping"
+              sequence="2"/>
+
+    <menuitem id="xero_account_mapping_menu"
+              name="Accounts"
+              parent="main_mapping_menu"
+              action="action_xero_account_mapping"
+              sequence="3"/>
+
+    <menuitem id="xero_analytic_account_menu"
+              name="Analytic Account"
+              parent="main_mapping_menu"
+              action="action_xero_analytic_account_mapping"
+              sequence="4"/>
+
+    <menuitem id="xero_tax_mapping_menu"
+              name="Taxes"
+              parent="main_mapping_menu"
+              action="action_xero_tax_mapping"
+              sequence="5"/>
+
+    <menuitem id="xero_product_mapping_menu"
+              name="Products"
+              parent="main_mapping_menu"
+              action="action_xero_product_mapping"
+              sequence="6"/>
+
+</odoo>

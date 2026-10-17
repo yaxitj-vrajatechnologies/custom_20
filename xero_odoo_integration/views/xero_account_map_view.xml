@@ -1,0 +1,56 @@
+<odoo>
+    <record id="view_xero_account_map_list" model="ir.ui.view">
+        <field name="name">xero.account.map.list</field>
+        <field name="model">xero.account.map</field>
+        <field name="arch" type="xml">
+            <list string="Xero Account Mapping" editable="bottom">
+                <field name="xero_instance_id"/>
+                <field name="xero_account_id"/>
+                <field name="xero_account_code"/>
+                <field name="xero_account_name"/>
+                <field name="account_id"/>
+                <button name="action_account_mapping"
+                    string="View"
+                    type="object"
+                    class="oe_link"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_xero_account_map_form" model="ir.ui.view">
+        <field name="name">xero.account.map.form</field>
+        <field name="model">xero.account.map</field>
+        <field name="arch" type="xml">
+            <form string="Xero Account Mapping">
+                <sheet>
+                    <group>
+                        <field name="xero_instance_id" readonly="1"/>
+                        <field name="xero_account_id" readonly="1"/>
+                        <field name="xero_account_name" readonly="1"/>
+                        <field name="xero_account_code" readonly="1"/>
+                        <field name="account_id" readonly="1"/>
+                        <field name="xero_response" widget="text" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="view_xero_account_map_filter" model="ir.ui.view">
+        <field name="name">xero.account.map.search</field>
+        <field name="model">xero.account.map</field>
+        <field name="arch" type="xml">
+            <search string="Search Xero Account Map">
+                <field name="xero_account_name"
+                   string="Account"
+                   filter_domain="['|','|',('xero_account_id','ilike', self),('xero_account_name','ilike', self),('account_id.name','ilike', self)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_xero_account_mapping" model="ir.actions.act_window">
+        <field name="name">Accounts</field>
+        <field name="res_model">xero.account.map</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

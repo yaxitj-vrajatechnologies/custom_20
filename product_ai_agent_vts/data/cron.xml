@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_product_alt_acc_ai_generate_excel" model="ir.cron">
+        <field name="name">Product AI — Auto Generate Excel</field>
+        <field name="model_id" ref="product_ai_agent_vts.model_vraja_ai_card"/>
+        <field name="state">code</field>
+        <field name="code">model.action_cron_product_ai_generate_excel()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="ir_cron_product_alt_acc_run_ai_analysis" model="ir.cron">
+        <field name="name">Product AI — Auto Run AI Analysis</field>
+        <field name="model_id" ref="product_ai_agent_vts.model_vraja_ai_card"/>
+        <field name="state">code</field>
+        <field name="code">model.action_cron_product_ai_run_analysis()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

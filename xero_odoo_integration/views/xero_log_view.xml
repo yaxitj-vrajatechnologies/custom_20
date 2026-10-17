@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!--log tree view-->
+        <record id="view_xero_log_list_view" model="ir.ui.view">
+            <field name="name">xero.log.vts.list</field>
+            <field name="model">xero.log.vts</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Process Detail" create='false'>
+                    <field name="name"/>
+                    <field name="xero_operation_type"/>
+                    <field name="xero_operation_name"/>
+                    <field name="xero_operation_message"/>
+                    <field name="create_date"/>
+                </list>
+            </field>
+        </record>
+
+        <!--  xero logs from views  -->
+        <record id="view_xero_log_form_view" model="ir.ui.view">
+            <field name="name">xero.log.vts.form</field>
+            <field name="model">xero.log.vts</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Process Detail" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="xero_operation_name"/>
+                                <field name="xero_operation_type"/>
+                            </group>
+                            <group>
+                                <field name="create_date"/>
+                                <field name="company_id"/>
+                                <field name="xero_instance_id"/>
+                                <field name="xero_operation_message"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Xero Process Detail Line" name="process_detail_line">
+                                <field name="xero_operation_line_ids" readonly="1">
+                                    <list decoration-danger="fault_operation==True"
+                                          decoration-success="fault_operation==False">
+                                        <field name="company_id"/>
+                                        <field name="xero_instance_id"/>
+                                        <field name="fault_operation"/>
+                                        <field name="xero_operation_message"/>
+                                    </list>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="xero_operation_type"/>
+                                                    <field name="xero_operation_name"/>
+                                                    <field name="company_id"/>
+                                                    <field name="xero_instance_id"/>
+                                                </group>
+                                                <group>
+                                                    <field name="fault_operation"/>
+                                                    <field name="xero_operation_message"/>
+                                                </group>
+                                            </group>
+                                            <notebook>
+                                                <page name="request" string="Request Data">
+                                                    <field name="process_request_message" widget="ace"
+                                                    />
+                                                </page>
+                                                <page string="Response Data" name="response">
+                                                    <field name="process_response_message" widget="ace"
+                                                    />
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter reload_on_post="True"/>
+                </form>
+            </field>
+        </record>
+
+        <!-- log line tree view-->
+        <record id="xero_log_line_tree_view" model="ir.ui.view">
+            <field name="name">xero.log.line</field>
+            <field name="model">xero.log.vts.line</field>
+            <field name="arch" type="xml">
+                <list string="Process Detail Line" create='false'>
+                    <field name="xero_operation_id"/>
+                    <field name="xero_operation_type"/>
+                    <field name="xero_operation_name"/>
+                    <field name="xero_operation_message"/>
+                    <field name="create_date"/>
+                </list>
+            </field>
+        </record>
+        <record id="view_xero_log_line_form_view" model="ir.ui.view">
+            <field name="name">xero.log.line</field>
+            <field name="model">xero.log.vts.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Process Detail Line" create="false" edit="false">
+                    <sheet>
+                        <group readonly="1">
+                            <group>
+                                <field name="xero_operation_id"/>
+                                <field name="xero_operation_name"/>
+                                <field name="xero_operation_type"/>
+                                <field name="company_id"/>
+                                <field name="xero_instance_id"/>
+                            </group>
+                            <group>
+                                <field name="xero_operation_message"/>
+                                <field name="process_request_message"/>
+                                <field name="process_response_message"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <chatter reload_on_post="True"/>
+                </form>
+            </field>
+        </record>
+        <!-- action log-->
+        <record id="action_xero_log" model="ir.actions.act_window">
+            <field name="name">Xero Log</field>
+            <field name="res_model">xero.log.vts</field>
+            <field name="view_id" ref="view_xero_log_list_view"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Xero Process Logs will display here
+                </p>
+            </field>
+        </record>
+
+        <!-- action log line-->
+        <record id="action_xero_log_line" model="ir.actions.act_window">
+            <field name="name">Xero Log Line</field>
+            <field name="res_model">xero.log.vts.line</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Xero Process Log Lines will display here
+                </p>
+            </field>
+            <field name="domain">[('fault_operation', '=', True)]</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id="xero_log_sequence" model="ir.sequence">
+            <field name="name">Xero log sequence</field>
+            <field name="code">xero.log.vts</field>
+            <field name="padding">5</field>
+            <field name="prefix">Process-</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+
+    <!-- Log Menu & it's Items -->
+    <menuitem id="xero_log_menu"
+              name="Logs"
+              parent="xero_odoo_integration.main_menu_root"
+              sequence="4"/>
+
+    <menuitem id="menu_xero_log"
+              name="Log Book"
+              parent="xero_odoo_integration.xero_log_menu"
+              sequence="1"
+              action="action_xero_log"/>
+
+    <menuitem id="menu_xero_log_line"
+              name="Log Book Line"
+              parent="xero_odoo_integration.xero_log_menu"
+              sequence="2"
+              action="action_xero_log_line"/>
+</odoo>
+
+

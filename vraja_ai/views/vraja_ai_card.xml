@@ -52,10 +52,9 @@
 
                                 <!-- Review -->
                                 <button type="object" name="action_review_dashboard"
-                                        icon="fa-eye"
                                         class="btn btn-sm btn-primary rounded-pill"
                                         style="width: 33.33%; text-align: center;">
-                                    Review
+                                    <span class="oi me-1" data-icon="visibility"/>Review
                                 </button>
 
                                 <!-- Active -->
@@ -64,7 +63,7 @@
                                         name="action_toggle_active"
                                         class="btn btn-sm btn-success rounded-pill"
                                         style="width: 33.33%; text-align: center;">
-                                    <span class="fa fa-play-circle me-1"/>Active
+                                    <span class="oi me-1" data-icon="play_circle"/>Active
                                 </button>
 
                                 <!-- Inactive -->
@@ -73,15 +72,14 @@
                                         name="action_toggle_active"
                                         class="btn btn-sm btn-secondary rounded-pill"
                                         style="width: 33.33%; text-align: center;">
-                                    <span class="fa fa-pause-circle me-1"/>Inactive
+                                    <span class="oi me-1" data-icon="pause_circle"/>Inactive
                                 </button>
 
                                 <!-- Logs -->
                                 <button type="object" name="action_log_view"
-                                        icon="fa-list-alt"
                                         class="btn btn-sm btn-secondary rounded-pill"
                                         style="width: 33.33%; text-align: center;">
-                                    Logs
+                                    <span class="oi me-1" data-icon="list_alt"/>Logs
                                 </button>
 
                             </div>

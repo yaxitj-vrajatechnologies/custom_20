@@ -1,0 +1,12 @@
+id,name,model_id,group_id/id,operation,domain
+access_quickbooks_connect,access.quickbooks.connect,quickbooks.connect,,crud,
+access_quickbooks_company_vts,access.quickbooks.company.vts,quickbooks.company.vts,,crud,
+access_quickbooks_operations,access.quickbooks.operations,quickbooks.operations,,crud,
+access_qbo_partner_map_vts,access.qbo.partner.map.vts,qbo.partner.map.vts,,rud,
+access_qbo_account_vts,access.qbo.account.vts,qbo.account.vts,,rud,
+access_qbo_taxes_vts,access.qbo.taxes.vts,qbo.taxes.vts,,rud,
+access_qbo_payment_terms_vts,access.qbo.payment.terms.vts,qbo.payment.terms.vts,,rud,
+access_quickbooks_log_vts,access.quickbooks.log.vts,quickbooks.log.vts,,crud,
+access_quickbooks_log_vts_line,access.quickbooks.log.vts.line,quickbooks.log.vts.line,,crud,
+access_quickbooks_scope,access.quickbooks.scope,quickbooks.scope,,crud,
+access_qbo_payment_method_vts,access.qbo.payment.method.vts,qbo.payment.method.vts,,crud,

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Xero Operations Form-->
+        <record id="xero_operations_form_view" model="ir.ui.view">
+            <field name="name">Xero Import Operations Form View</field>
+            <field name="model">xero.operations</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_customers'">
+                            <b>Notes: Import Customers Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Customers from Xero using API with applied filters.</li>
+                                <li>Associated contact groups were also imported and linked to the respective customers.</li>
+                                 <li>
+                                    <b>Date Filter :</b>
+                                    Only Customers created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.
+                                </li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_accounts'">
+                            <b>Notes: Import Charts Of Accounts Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Charts of Account from Xero using API.</li>
+                                <li>Fetched Analytic Accounts from Xero using API.</li>
+                                <li>Fetched Taxes from Xero using API.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_products'">
+                            <b>Notes: Import Product Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Products from Xero using API.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_invoice'">
+                            <b>Notes: Import Invoice Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Invoice and Bills from Xero using API.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_creditnote'">
+                            <b>Notes: Import Credit Note Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Credit Note from Xero using API.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_prepayment'">
+                            <b>Notes: Import Pre Payment Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Pre Payment from Xero using API.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_overpayment'">
+                            <b>Notes: Import Over Payment Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Over Payment from Xero using API.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_purchase_order'">
+                            <b>Notes: Import Purchase Order Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Purchase Order from Xero using API.</li>
+                            </ul>
+                        </p>
+                         <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_payment'">
+                            <b>Notes: Import Payment Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Payment from Xero using API.</li>
+                            </ul>
+                        </p>
+                        <br/>
+                        <group col="2">
+                            <group>
+                                <field name="xero_instance_id" invisible="1"/>
+                                <field name="xero_operations" widget="radio"/>
+                                <field name="import_operations" widget="radio"/>
+                            </group>
+                            <group invisible="import_operations != 'import_customers'">
+                                <field name="import_from_date"/>
+                                <field name="import_to_date"/>
+                            </group>
+                        </group>
+                        <footer>
+                            <button string="Execute" class="oe_highlight" type="object"
+                                    name="execute_import_process_from_xero"/>
+                            <button string="Cancel" class="oe_highlight" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

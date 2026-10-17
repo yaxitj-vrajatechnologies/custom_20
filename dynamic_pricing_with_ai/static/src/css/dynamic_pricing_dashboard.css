@@ -1,0 +1,164 @@
+/* ============================================================
+   Dynamic Pricing AI Dashboard — Odoo 18/19 Compatible CSS
+   Path: dynamic_pricing_with_ai/static/src/css/dynamic_pricing_dashboard.css
+   ============================================================ */
+
+/* ── Wrapper scoping — avoids touching Odoo's OWL components ── */
+.dp-dashboard-wrapper {
+    font-family: var(--font-family-sans-serif, 'Segoe UI', sans-serif);
+}
+
+/* ── Status bar override if needed ── */
+.dp-status-bar {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    padding: 12px 16px;
+}
+
+/* ── Decision badges ── */
+.dp-badge-increase {
+    background: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #a3cfbb;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+
+.dp-badge-decrease {
+    background: #f8d7da;
+    color: #842029;
+    border: 1px solid #f1aeb5;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+
+.dp-badge-hold {
+    background: #fff3cd;
+    color: #664d03;
+    border: 1px solid #ffecb5;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+
+.dp-badge-skip {
+    background: #f0f0f0;
+    color: #6c757d;
+    border: 1px solid #ddd;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+
+/* ── Confidence badges ── */
+.dp-conf-high   { background: #d1e7dd; color: #0f5132; }
+.dp-conf-medium { background: #fff3cd; color: #664d03; }
+.dp-conf-low    { background: #f8d7da; color: #842029; }
+
+.dp-conf-high,
+.dp-conf-medium,
+.dp-conf-low {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+
+/* ── Factor signal tags ── */
+.dp-tag {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    display: inline-block;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+
+.dp-tag.demand     { background: #e8f5e9; color: #1b5e20; border: 1px solid #a5d6a7; }
+.dp-tag.inventory  { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
+.dp-tag.competitor { background: #ede7f6; color: #311b92; border: 1px solid #ce93d8; }
+.dp-tag.customer   { background: #e0f7fa; color: #006064; border: 1px solid #80deea; }
+.dp-tag.seasonal   { background: #fce4ec; color: #880e4f; border: 1px solid #f48fb1; }
+.dp-tag.margin     { background: #f3e5f5; color: #4a148c; border: 1px solid #ce93d8; }
+
+/* ── Product tag pills in selector ── */
+.dp-product-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #d0e9ff;
+    color: #0d6efd;
+    font-size: 0.82em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid #a8d4ff;
+}
+
+.dp-pricelist-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #e2d9f3;
+    color: #6f42c1;
+    font-size: 0.82em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid #c5b3e6;
+}
+
+/* ── Step result table ── */
+.dp-results-table th {
+    background: #212529;
+    color: #fff;
+    border-color: #343a40;
+    border-top: none;
+    white-space: nowrap;
+}
+
+.dp-results-table td {
+    vertical-align: middle;
+    border-top: none;
+}
+
+/* ── Info panel ── */
+.dp-info-panel {
+    background: #f0f4ff;
+    border: 1px solid #d0d9f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: #2c3e7a;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .dp-results-table {
+        font-size: 12px;
+    }
+}

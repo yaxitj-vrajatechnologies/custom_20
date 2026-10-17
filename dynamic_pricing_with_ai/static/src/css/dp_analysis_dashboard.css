@@ -1,0 +1,1103 @@
+/* =========================================================
+   Dynamic Pricing AI — Analysis Dashboard
+   File: dynamic_pricing_with_ai/static/src/css/dp_analysis_dashboard.css
+   ========================================================= */
+
+/* ── Reset / Shell ────────────────────────────────────────── */
+.dpad-shell {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f4f6fb;
+    min-height: 100vh;
+    padding: 0 0 60px;
+    color: #1e2b3c;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.dpad-header {
+    background: linear-gradient(135deg, #1a2f5a 0%, #0f4c8a 60%, #1565c0 100%);
+    color: #fff;
+    padding: 24px 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 20px rgba(21, 101, 192, .35);
+}
+
+.dpad-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dpad-header__icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(255, 255, 255, .15);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.dpad-header__kicker {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .65);
+    margin-bottom: 2px;
+}
+
+.dpad-header__title {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: rgba(255, 255, 255, .65);
+    line-height: 1.2;
+}
+
+.dpad-header__sub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, .75);
+    margin: 0;
+}
+
+/* Header controls */
+.dpad-header__controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.dpad-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dpad-control-group > label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .65);
+}
+
+.dpad-pill-group {
+    display: flex;
+    gap: 2px;
+    background: rgba(255, 255, 255, .12);
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.dpad-pill-btn {
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, .8);
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+}
+
+.dpad-pill-btn:hover {
+    background: rgba(255, 255, 255, .18);
+    color: #fff;
+}
+
+.dpad-pill-btn.active {
+    background: #fff;
+    color: #1565c0;
+    font-weight: 600;
+}
+
+.dpad-date-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.dpad-date-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dpad-date-field > label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .65);
+}
+
+.dpad-date-field > input {
+    border: 1px solid rgba(255, 255, 255, .3);
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+.dpad-date-field > input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.dpad-refresh-btn {
+    background: rgba(255, 255, 255, .18);
+    border: 1px solid rgba(255, 255, 255, .3);
+    color: #fff;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s;
+}
+
+.dpad-refresh-btn:hover {
+    background: rgba(255, 255, 255, .3);
+}
+
+/* ── Loading / Error States ───────────────────────────────── */
+.dpad-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    gap: 16px;
+    color: #6b7a99;
+}
+
+.dpad-state__spinner {
+    width: 44px;
+    height: 44px;
+    border: 3px solid #e0e7ef;
+    border-top-color: #1565c0;
+    border-radius: 50%;
+    animation: dpad-spin .7s linear infinite;
+}
+
+@keyframes dpad-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.dpad-state--error {
+    color: #c62828;
+}
+
+.dpad-state--error i {
+    font-size: 32px;
+}
+
+/* ── KPI Row ──────────────────────────────────────────────── */
+.dpad-kpi-row {
+    display: flex;
+    gap: 16px;
+    padding: 24px 32px 0;
+    flex-wrap: wrap;
+}
+
+.dpad-kpi {
+    flex: 1;
+    min-width: 180px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+    border-left: 4px solid transparent;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.dpad-kpi:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .1);
+}
+
+.dpad-kpi--cyan {
+    border-left-color: #00bcd4;
+}
+
+.dpad-kpi--blue {
+    border-left-color: #1565c0;
+}
+
+.dpad-kpi--green {
+    border-left-color: #2e7d32;
+}
+
+.dpad-kpi--orange {
+    border-left-color: #e65100;
+}
+
+.dpad-kpi--pink {
+    border-left-color: #c2185b;
+}
+
+.dpad-kpi--purple {
+    border-left-color: #6a1b9a;
+}
+
+.dpad-kpi__icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.dpad-kpi--cyan .dpad-kpi__icon {
+    background: #e0f7fa;
+    color: #00838f;
+}
+
+.dpad-kpi--blue .dpad-kpi__icon {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.dpad-kpi--green .dpad-kpi__icon {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.dpad-kpi--orange .dpad-kpi__icon {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.dpad-kpi--pink .dpad-kpi__icon {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+.dpad-kpi--purple .dpad-kpi__icon {
+    background: #f3e5f5;
+    color: #6a1b9a;
+}
+
+.dpad-kpi__value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1e2b3c;
+    line-height: 1.1;
+}
+
+.dpad-kpi__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7a99;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-top: 2px;
+}
+
+.dpad-kpi__sub {
+    font-size: 12px;
+    color: #8d99ae;
+    margin-top: 4px;
+}
+
+/* ── Alert Banner ─────────────────────────────────────────── */
+.dpad-alert-banner {
+    margin: 20px 32px 0;
+    background: #fff8e1;
+    border: 1px solid #ffcc02;
+    border-radius: 12px;
+    padding: 12px 20px;
+}
+
+.dpad-alert-banner__inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #6d4c00;
+}
+
+.dpad-alert-chip {
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dpad-alert-chip--red {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.dpad-alert-chip--orange {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.dpad-alert-chip--blue {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* ── Tabs ─────────────────────────────────────────────────── */
+.dpad-tabs {
+    display: flex;
+    gap: 0;
+    padding: 20px 32px 0;
+    border-bottom: 2px solid #e0e7ef;
+    margin: 0 0 0;
+}
+
+.dpad-tab {
+    border: none;
+    background: transparent;
+    color: #6b7a99;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color .15s, border-color .15s;
+    white-space: nowrap;
+}
+
+.dpad-tab:hover {
+    color: #1565c0;
+}
+
+.dpad-tab.active {
+    color: #1565c0;
+    border-bottom-color: #1565c0;
+}
+
+/* ── Tab Content ─────────────────────────────────────────── */
+.dpad-tab-content {
+    padding: 24px 32px;
+}
+
+/* ── Section headings ────────────────────────────────────── */
+.dpad-section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e2b3c;
+    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dpad-section-title i {
+    font-size: 15px;
+    color: #1565c0;
+}
+
+/* ── Filter Bar ──────────────────────────────────────────── */
+.dpad-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.dpad-search-input {
+    border: 1px solid #d1d9e6;
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 13px;
+    width: 240px;
+    outline: none;
+    transition: border-color .15s;
+    background: #fff;
+}
+
+.dpad-search-input:focus {
+    border-color: #1565c0;
+}
+
+.dpad-filter-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.dpad-chip {
+    border: 1px solid #d1d9e6;
+    background: #fff;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7a99;
+    cursor: pointer;
+    transition: all .15s;
+}
+
+.dpad-chip:hover {
+    border-color: #1565c0;
+    color: #1565c0;
+}
+
+.dpad-chip.active {
+    background: #1565c0;
+    border-color: #1565c0;
+    color: #fff;
+}
+
+.dpad-chip--red.active {
+    background: #c62828;
+    border-color: #c62828;
+}
+
+.dpad-chip--orange.active {
+    background: #e65100;
+    border-color: #e65100;
+}
+
+.dpad-chip--blue.active {
+    background: #0277bd;
+    border-color: #0277bd;
+}
+
+.dpad-result-count {
+    /*margin-left: auto;*/
+    font-size: 12px;
+    color: #8d99ae;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ── Tables ───────────────────────────────────────────────── */
+.dpad-table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid #e0e7ef;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .05);
+}
+
+.dpad-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.dpad-table thead th {
+    background: #f8faff;
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: #6b7a99;
+    border-bottom: 1px solid #e0e7ef;
+    white-space: nowrap;
+}
+
+.dpad-th-right {
+    text-align: right !important;
+}
+
+.dpad-th-center {
+    text-align: center !important;
+}
+
+.dpad-table tbody tr {
+    border-bottom: 1px solid #f0f4fb;
+    transition: background .12s;
+}
+
+.dpad-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.dpad-table tbody tr:hover {
+    background: #f8faff;
+}
+
+.dpad-row-alert {
+    background: #fffde7 !important;
+}
+
+.dpad-row-alert:hover {
+    background: #fff9c4 !important;
+}
+
+.dpad-table tbody td {
+    padding: 10px 14px;
+    vertical-align: middle;
+}
+
+.dpad-td-right {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.dpad-td-center {
+    text-align: center;
+}
+
+.dpad-td-muted {
+    color: #8d99ae;
+    font-size: 12px;
+}
+
+.dpad-td-product {
+    max-width: 220px;
+}
+
+.dpad-product-name {
+    font-weight: 600;
+    color: #1e2b3c;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.dpad-empty-row {
+    text-align: center;
+    padding: 40px !important;
+    color: #8d99ae;
+}
+
+/* ── Colour helpers ──────────────────────────────────────── */
+.dpad-positive {
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+.dpad-negative {
+    color: #c62828;
+    font-weight: 600;
+}
+
+.dpad-neutral {
+    color: #6b7a99;
+}
+
+.dpad-warning {
+    color: #e65100;
+    font-weight: 600;
+}
+
+/* ── AI badge & price ────────────────────────────────────── */
+.dpad-ai-price {
+    font-weight: 700;
+    color: #1565c0;
+}
+
+.dpad-ai-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #1565c0, #7b1fa2);
+    color: #fff;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.dpad-margin-delta {
+    font-size: 11px;
+    margin-left: 4px;
+}
+
+/* ── Stock badges ────────────────────────────────────────── */
+.dpad-stock-badge {
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.dpad-stock-badge--out {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.dpad-stock-badge--low {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.dpad-stock-badge--in {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.dpad-stock-badge--over {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.dpad-qty-label {
+    font-size: 11px;
+    color: #8d99ae;
+    margin-top: 2px;
+}
+
+/* ── Alert flags in table ────────────────────────────────── */
+.dpad-alert-flags {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.dpad-flag {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    cursor: default;
+}
+
+.dpad-flag--red {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.dpad-flag--orange {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.dpad-flag--blue {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* ── Decision badge ──────────────────────────────────────── */
+.dpad-decision {
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.dpad-decision--increase {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.dpad-decision--decrease {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.dpad-decision--hold {
+    background: #f3f4f6;
+    color: #6b7a99;
+}
+
+.dpad-decision--skip {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+/* ── AI Impact section ───────────────────────────────────── */
+.dpad-impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    margin-top: 0;
+}
+
+.dpad-impact-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e0e7ef;
+    padding: 18px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+    transition: box-shadow .15s;
+}
+
+.dpad-impact-card:hover {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .1);
+}
+
+.dpad-impact-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    gap: 8px;
+}
+
+.dpad-impact-card__name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e2b3c;
+    flex: 1;
+    line-height: 1.3;
+}
+
+.dpad-impact-card__segment {
+    font-size: 11px;
+    color: #8d99ae;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.dpad-impact-card__prices {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.dpad-impact-price {
+    text-align: center;
+    flex: 1;
+    min-width: 80px;
+}
+
+.dpad-impact-price__label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: #8d99ae;
+    margin-bottom: 2px;
+}
+
+.dpad-impact-price__value {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e2b3c;
+}
+
+.dpad-impact-price__value--ai {
+    color: #1565c0;
+}
+
+.dpad-impact-arrow {
+    font-size: 18px;
+    color: #8d99ae;
+    flex-shrink: 0;
+}
+
+.dpad-impact-card__metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 10px 0;
+    border-top: 1px solid #f0f4fb;
+    border-bottom: 1px solid #f0f4fb;
+}
+
+.dpad-impact-metric {
+    text-align: center;
+}
+
+.dpad-impact-metric__label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #8d99ae;
+    margin-bottom: 3px;
+}
+
+.dpad-impact-metric__value {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.dpad-impact-card__reason {
+    font-size: 12px;
+    color: #5a6a80;
+    line-height: 1.5;
+    font-style: italic;
+    padding: 8px 10px;
+    background: #f8faff;
+    border-radius: 8px;
+    border-left: 3px solid #1565c0;
+}
+
+/* ── Segment Performance ─────────────────────────────────── */
+.dpad-seg-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dpad-seg-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #1565c0;
+    flex-shrink: 0;
+}
+
+/* ── Run History ─────────────────────────────────────────── */
+.dpad-run-history {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dpad-run-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e0e7ef;
+    padding: 18px 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+}
+
+.dpad-run-card__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.dpad-run-card__date {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e2b3c;
+    flex: 1;
+}
+
+.dpad-run-success {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.dpad-run-failed {
+    display: inline-block;
+    background: #ffebee;
+    color: #c62828;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.dpad-applied-badge {
+    background: #e3f2fd;
+    color: #1565c0;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dpad-run-card__stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.dpad-run-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dpad-run-stat > span {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #8d99ae;
+}
+
+.dpad-run-stat > strong {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e2b3c;
+}
+
+.dpad-run-stat.dpad-positive > strong {
+    color: #2e7d32;
+}
+
+.dpad-run-stat.dpad-negative > strong {
+    color: #c62828;
+}
+
+/* ── Alerts Panel ────────────────────────────────────────── */
+.dpad-alerts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.dpad-alert-panel {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e0e7ef;
+    padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+}
+
+.dpad-alert-panel__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.dpad-alert-panel__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.dpad-alert-panel--red .dpad-alert-panel__icon {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.dpad-alert-panel--orange .dpad-alert-panel__icon {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.dpad-alert-panel--yellow .dpad-alert-panel__icon {
+    background: #fffde7;
+    color: #f9a825;
+}
+
+.dpad-alert-panel--blue .dpad-alert-panel__icon {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.dpad-alert-panel__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e2b3c;
+}
+
+.dpad-alert-panel__count {
+    font-size: 11px;
+    color: #8d99ae;
+}
+
+.dpad-alert-panel__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dpad-alert-panel__list li {
+    font-size: 12px;
+    color: #3d4d65;
+    padding: 5px 8px;
+    background: #f8faff;
+    border-radius: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dpad-alert-panel__empty {
+    font-size: 12px;
+    color: #8d99ae;
+    text-align: center;
+    padding: 12px 0;
+}
+
+/* ── Empty states ────────────────────────────────────────── */
+.dpad-empty {
+    padding: 48px 24px;
+    text-align: center;
+    color: #8d99ae;
+    font-size: 14px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px dashed #d1d9e6;
+}
+
+/* ── Analysis button in kanban ───────────────────────────── */
+.dp-analysis-card-button {
+    background: linear-gradient(135deg, #1565c0, #7b1fa2);
+    color: #fff !important;
+    font-weight: 600;
+    border: none;
+    transition: opacity .15s;
+}
+
+.dp-analysis-card-button:hover {
+    opacity: .88;
+    color: #fff !important;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .dpad-header {
+        padding: 18px 20px;
+    }
+
+    .dpad-kpi-row {
+        padding: 16px 20px 0;
+    }
+
+    .dpad-tabs {
+        padding: 16px 20px 0;
+    }
+
+    .dpad-tab-content {
+        padding: 16px 20px;
+    }
+
+    .dpad-alert-banner {
+        margin: 16px 20px 0;
+    }
+
+    .dpad-impact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dpad-alerts-grid {
+        grid-template-columns: 1fr;
+    }
+}

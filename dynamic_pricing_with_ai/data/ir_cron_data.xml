@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="ir_cron_dp_run_analysis" model="ir.cron">
+        <field name="name">Dynamic Pricing AI — Process Batches</field>
+        <field name="model_id" ref="vraja_ai.model_vraja_ai_card"/>
+        <field name="state">code</field>
+        <field name="code">model.action_cron_dp_run_analysis()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+        <field name="active">False</field>
+    </record>
+
+    <record id="ir_cron_dp_auto_trigger" model="ir.cron">
+        <field name="name">Dynamic Pricing AI — Auto Analysis</field>
+        <field name="model_id" ref="vraja_ai.model_vraja_ai_card"/>
+        <field name="state">code</field>
+        <field name="code">model.action_cron_dp_schedule_trigger()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

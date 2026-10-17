@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="xero_account_payment_inherit_form_vts" model="ir.ui.view">
+        <field name="name">xero.account.payment.form.inherit.vts</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='memo']" position="after"/>
+            <group>
+                <separator string="Xero Details"/>
+                <group>
+                    <field name="xero_instance_id" readonly="1"/>
+                    <field name="xero_payment_type" readonly="1"/>
+                    <field name="xero_payment_id" readonly="1"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="xero_account_payment_search_view_vts" model="ir.ui.view">
+    <field name="name">account.payment.search.xero.vts</field>
+    <field name="model">account.payment</field>
+    <field name="inherit_id" ref="account.view_account_payment_search"/>
+    <field name="arch" type="xml">
+
+        <xpath expr="//filter[@name='outbound_filter']" position="after">
+         <separator string="Xero"/>
+            <filter string="Xero Payments"
+                    name="xero_payment"
+                    domain="[('xero_payment_type','in',
+                        ('RECBATCH','ACCRECPAYMENT','PAYBATCH','ACCPAYPAYMENT'))]"/>
+
+            <filter string="Xero Overpayments"
+                    name="xero_overpayment"
+                    domain="[('xero_payment_type','in',
+                        ('RECEIVE-OVERPAYMENT','SPEND-OVERPAYMENT'))]"/>
+
+            <filter string="Xero Prepayments"
+                    name="xero_prepayment"
+                    domain="[('xero_payment_type','in',
+                        ('RECEIVE-PREPAYMENT','SPEND-PREPAYMENT'))]"/>
+        </xpath>
+        <xpath expr="//filter[@name='journal']" position="after">
+                <filter string="Xero Payment Type"
+                        name="group_by_xero_type"
+                        context="{'group_by': 'xero_payment_type'}"/>
+        </xpath>
+    </field>
+</record>
+
+</odoo>

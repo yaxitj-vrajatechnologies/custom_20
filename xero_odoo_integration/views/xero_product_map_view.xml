@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+   <record id="view_xero_product_map_list" model="ir.ui.view">
+        <field name="name">xero.product.map.list</field>
+        <field name="model">xero.product.map</field>
+        <field name="arch" type="xml">
+            <list string="Xero Product Mapping" editable="bottom">
+                <field name="xero_instance_id"/>
+                <field name="xero_product_id"/>
+                <field name="xero_product_name"/>
+                <field name="product_id"/>
+                <button name="action_product_mapping"
+                    string="View"
+                    type="object"
+                    class="oe_link"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_xero_product_map_form" model="ir.ui.view">
+        <field name="name">xero.product.map.form</field>
+        <field name="model">xero.product.map</field>
+        <field name="arch" type="xml">
+            <form string="Xero Product Mapping">
+                <sheet>
+                    <group>
+                        <field name="xero_instance_id" readonly="1"/>
+                        <field name="xero_product_id" readonly="1"/>
+                        <field name="xero_product_name" readonly="1"/>
+                        <field name="product_id" readonly="1"/>
+                        <field name="xero_response" widget="text" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_xero_product_map_filter" model="ir.ui.view">
+        <field name="name">xero.product.map.search</field>
+        <field name="model">xero.product.map</field>
+        <field name="arch" type="xml">
+            <search string="Search Xero Product Map">
+                <field name="xero_product_name"
+                   string="Product"
+                   filter_domain="['|','|',('xero_product_id','ilike', self),('xero_product_name','ilike', self),('product_id.name','ilike', self)]"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_xero_product_mapping" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">xero.product.map</field>
+        <field name="view_mode">list</field>
+    </record>
+
+</odoo>

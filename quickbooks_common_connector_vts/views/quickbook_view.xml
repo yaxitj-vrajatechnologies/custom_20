@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="quickbooks_connect_form_view" model="ir.ui.view">
+        <field name="name">quickbooks.connect.form</field>
+        <field name="model">quickbooks.connect</field>
+        <field name="arch" type="xml">
+            <form string="QuickBooks Connect">
+                <header>
+                    <button name="action_connect_quickbooks"
+                            string="Connect"
+                            type="object"
+                            class="oe_highlight" invisible="state != 'connecting'"/>
+                    <button name="refresh_access_token"
+                            string="Refresh Token"
+                            type="object"
+                            class="oe_highlight" invisible="state != 'connected'"/>
+                    <button name="reconnect_quickbook"
+                            string="Reconnect"
+                            type="object"
+                            class="oe_highlight" invisible="state not in ['connected','failed']"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_qck_customer"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-user">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Customer</span>
+                                <span class="o_stat_value">
+                                    <field name="qck_customer_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_qck_account"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-book">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Accounts</span>
+                                <span class="o_stat_value">
+                                    <field name="qck_account_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_qck_taxes"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-dollar">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Taxes</span>
+                                <span class="o_stat_value">
+                                    <field name="qck_taxes_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_qck_payment_terms"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-credit-card">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Payment Terms</span>
+                                <span class="o_stat_value">
+                                    <field name="qck_payment_term_count"/>
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="qk_company_id" invisible="state != 'connected'"/>
+                            <field name="company_id" required="1"/>
+                            <field name="country_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="credentials" string="Credentials">
+                            <group>
+                                <group>
+                                    <field name="client_id" required="1" readonly="state == 'connected'"/>
+                                    <field name="client_secret" required="1" readonly="state == 'connected'"/>
+                                    <field name="access_token" invisible="1"/>
+                                    <field name="refresh_token" invisible="1"/>
+                                    <field name="reason" readonly="1"/>
+                                    <field name="qbk_scope_ids" widget="many2many_checkboxes"
+                                           readonly="state == 'connected'"/>
+                                </group>
+                                <group>
+                                    <field name="redirect_url" required="1" readonly="state == 'connected'"/>
+                                    <field name="environment" readonly="state == 'connected'"/>
+                                    <field name="auth_token_url" readonly="state == 'connected'"/>
+                                    <field name="quickbook_base_url" readonly="state == 'connected'"/>
+                                    <field name="realm_id" invisible="1"/>
+                                    <field name="auto_send_fail_transaction"/>
+                                    <field name="email_send_transaction" invisible="not auto_send_fail_transaction"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="import_configuration" string="Import Configuration">
+                            <group>
+                                <group>
+                                    <field name="customer_creation"/>
+                                    <field name="account_creation"/>
+                                </group>
+                                <group>
+                                    <field name="payment_term_creation"/>
+                                    <field name="taxes_creation"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_quickbook_customer_id" model="ir.actions.act_window">
+        <field name="name">Quickbook Customer</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_id" ref="base.view_partner_tree"/>
+        <field name="domain">[('qck_instance_id', '=', active_id)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Quickbooks Customer will display here
+            </p>
+        </field>
+    </record>
+
+    <record id="action_quickbook_account_moves" model="ir.actions.act_window">
+        <field name="name">Quickbooks Invoice / Bills</field>
+        <field name="res_model">account.move</field>
+        <field name="domain">[('qck_instance_id', '=', active_id)]
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                QuickBooks Invoice / Bills linked to this instance will display here.
+            </p>
+        </field>
+    </record>
+    <record id="action_quickbook_payments" model="ir.actions.act_window">
+        <field name="name">QuickBooks Payments</field>
+        <field name="res_model">account.payment</field>
+        <field name="domain">[('qck_instance_id', '=', active_id)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                All QuickBooks customer and vendor payments will display here.
+            </p>
+        </field>
+    </record>
+
+    <!--kanban view-->
+    <record id="quickbooks_connect_kanban" model="ir.ui.view">
+        <field name="name">quickbooks.connect.kanban</field>
+        <field name="model">quickbooks.connect</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_account_kanban">
+                <field name="name"/>
+                <templates>
+                    <t t-name="card">
+                        <div t-attf-class="oe_kanban_global_click" style="border-radius: 10px;">
+                            <div t-attf-class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <span>&#160;&#160;</span>
+                                        <a type="object" name="action_quickbook_open_instance_view_form">
+                                            <field name="name"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_content fa-2x">
+                                <div class="row mt10">
+                                    <div class="col-4 border-right text-center">
+                                        <a name="%(quickbooks_common_connector_vts.action_quickbook_customer_id)d"
+                                           type="action"
+                                           class="d-flex flex-column align-items-center">
+                                            <span class="fa-stack fa-lg" title="Customers">
+                                                <i class="fa fa-square-o fa-stack-2x"/>
+                                                <i class="fa fa-users fa-stack-1x"/>
+                                            </span>
+                                            <span class="text-muted">Customer</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 border-right text-center">
+                                        <a name="%(quickbooks_common_connector_vts.action_quickbook_account_moves)d"
+                                           type="action"
+                                           class="d-flex flex-column align-items-center">
+                                            <span class="fa-stack fa-lg" title="Invoice/Bill">
+                                                <i class="fa fa-square-o fa-stack-2x"/>
+                                                <i class="fa fa-file-text-o fa-stack-1x"/>
+                                            </span>
+                                            <span class="text-muted">Invoice/Bill</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 border-right text-center">
+                                        <a name="%(quickbooks_common_connector_vts.action_quickbook_payments)d"
+                                           type="action"
+                                           class="d-flex flex-column align-items-center">
+                                            <span class="fa-stack fa-lg" title="Payments">
+                                                <i class="fa fa-square-o fa-stack-2x"/>
+                                                <i class="fa fa-credit-card fa-stack-1x"/>
+                                            </span>
+                                            <span class="text-muted">Payments</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
+                                    <div>
+                                        <button name="action_import_operation"
+                                                type="object" class="btn btn-primary"
+                                                t-attf-style="border-radius:12px;">
+                                            <span>
+                                                <i class="fa fa-hand-o-right fa-1x" aria-hidden="true"/>
+                                                Operations
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button name="action_logs_view"
+                                                type="object" class="btn btn-primary"
+                                                t-attf-style="border-radius:12px;">
+                                            <span>
+                                                <i class="fa fa-file-text-o fa-1x" aria-hidden="true"/>
+                                                Logs
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_quickbooks_connect_tree" model="ir.ui.view">
+        <field name="name">quickbooks.connect.tree</field>
+        <field name="model">quickbooks.connect</field>
+        <field name="arch" type="xml">
+            <list string="QuickBooks Connections">
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="environment"/>
+                <field name="qk_company_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="email_template_quickbooks_failed_export" model="mail.template">
+        <field name="name">QuickBooks Failed Export Email Report</field>
+        <field name="model_id" ref="quickbooks_common_connector_vts.model_quickbooks_connect"/>
+        <field name="email_from">{{object.company_id.email}}</field>
+        <field name="email_to">{{object.email_send_transaction}}</field>
+        <field name="subject">QuickBooks Export Failure Report</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>Please find attached a list of records that failed to export to QuickBooks.</p>
+                <p>Regards</p>
+            </div>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="action_quickbooks_connect" model="ir.actions.act_window">
+        <field name="name">QuickBooks Connect</field>
+        <field name="res_model">quickbooks.connect</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_quickbooks_root" name="QuickBooks online"
+              web_icon="quickbooks_common_connector_vts,static/description/icon.png"/>
+
+    <menuitem id="menu_quickbooks_connect"
+              name="QuickBooks Connect"
+              parent="menu_quickbooks_root"
+              action="action_quickbooks_connect"/>
+
+</odoo>

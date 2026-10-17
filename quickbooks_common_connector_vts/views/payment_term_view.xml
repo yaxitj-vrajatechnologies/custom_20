@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_payment_term_filter_inherit" model="ir.ui.view">
+        <field name="name">payment_term.filter.inherit</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="account.view_payment_term_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[1]" position="after">
+                <filter string="Quickbook Terms" name="quickbook_payment_term"
+                        domain="[('qck_instance_id', '!=', False)]"/>
+                <filter string="Quickbook Terms" name="group_by_Quickbook" context="{'group_by':'qck_instance_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

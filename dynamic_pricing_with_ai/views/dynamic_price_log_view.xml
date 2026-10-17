@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="dynamic_pricing_ai_log_form_view" model="ir.ui.view">
+        <field name="name">vraja.ai.log.form.dynamic.pricing</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_ai_log_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form" position="inside">
+                <sheet invisible="vraja_common_log_store != 'dynamic_pricing'">
+
+                    <!-- ══════════════════════════════════════════════
+                         HERO HEADER BANNER
+                    ══════════════════════════════════════════════ -->
+                    <div style="
+                        background: linear-gradient(135deg, #1a1f5e 0%, #2d3494 50%, #4459c8 100%);
+                        border-radius: 16px;
+                        padding: 28px 32px;
+                        margin-bottom: 24px;
+                        position: relative;
+                        overflow: hidden;
+                        box-shadow: 0 8px 32px rgba(68,89,200,0.25);
+                    ">
+                        <!-- decorative circles -->
+                        <div style="
+                            position:absolute; top:-40px; right:-40px;
+                            width:200px; height:200px; border-radius:50%;
+                            background:rgba(255,255,255,0.04);
+                        "/>
+                        <div style="
+                            position:absolute; bottom:-60px; right:100px;
+                            width:140px; height:140px; border-radius:50%;
+                            background:rgba(255,255,255,0.06);
+                        "/>
+
+                        <div class="d-flex align-items-center" style="position:relative; z-index:1;">
+                            <!-- Icon -->
+                            <div style="
+                                background: rgba(255,255,255,0.12);
+                                border: 1.5px solid rgba(255,255,255,0.2);
+                                border-radius: 14px;
+                                width: 60px; height: 60px;
+                                display: flex; align-items: center; justify-content: center;
+                                margin-right: 20px; flex-shrink: 0;
+                            ">
+                                <span class="oi oi-fw" data-icon="bar_chart" style="font-size:26px; color:#fff;"/>
+                            </div>
+
+                            <!-- Title block -->
+                            <div style="flex:1;">
+                                <div style="
+                                    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+                                    color: rgba(255,255,255,0.55); text-transform: uppercase;
+                                    margin-bottom: 4px;
+                                ">Dynamic Pricing AI · Run Log
+                                </div>
+                                <h1 style="
+                                    color: #ffffff; font-size: 22px; font-weight: 700;
+                                    margin: 0 0 6px 0; line-height: 1.2;
+                                ">
+                                    <field name="name" style="color:#fff;"/>
+                                </h1>
+                                <div class="d-flex align-items-center gap-3" style="flex-wrap:wrap;">
+                                    <span style="color:rgba(255,255,255,0.65); font-size:13px;">
+                                        <span class="oi oi-fw me-1" data-icon="calendar_month"/>
+                                        <field name="run_date" style="color:rgba(255,255,255,0.75); font-size:13px;"/>
+                                    </span>
+                                    <span style="color:rgba(255,255,255,0.3);">|</span>
+                                    <span style="color:rgba(255,255,255,0.65); font-size:13px;">
+                                        <span class="oi oi-fw me-1" data-icon="sell"/>
+                                        <field name="vraja_common_log_store"
+                                               style="color:rgba(255,255,255,0.75); font-size:13px;"/>
+                                    </span>
+                                    <span style="color:rgba(255,255,255,0.3);">|</span>
+                                    <span style="color:rgba(255,255,255,0.65); font-size:13px;">
+                                        <span class="oi oi-fw me-1" data-icon="rocket_launch"/>
+                                        <field name="ai_provider"
+                                               style="color:rgba(255,255,255,0.75); font-size:13px;"/>
+                                    </span>
+                                    <span style="color:rgba(255,255,255,0.3);">|</span>
+                                    <span style="color:rgba(255,255,255,0.65); font-size:13px;">
+                                        <span class="oi oi-fw me-1" data-icon="memory"/>
+                                        <field name="ai_llm_model"
+                                               style="color:rgba(255,255,255,0.75); font-size:13px;"/>
+                                    </span>
+                                    <span style="color:rgba(255,255,255,0.3);">|</span>
+                                    <field name="status" widget="badge"/>
+                                </div>
+                            </div>
+
+                            <!-- Applied badge top-right -->
+                            <div style="text-align:right; flex-shrink:0;">
+                                <div invisible="not dp_applied" style="
+                                    background: rgba(39,174,96,0.18);
+                                    border: 1.5px solid rgba(39,174,96,0.5);
+                                    border-radius: 20px; padding: 6px 16px;
+                                    color: #6effa8; font-size: 12px; font-weight: 600;
+                                    display: inline-flex; align-items: center; gap: 6px;
+                                ">
+                                    <span class="oi oi-fw" data-icon="check_circle"/>
+                                    Applied to Pricelists
+                                </div>
+                                <div invisible="dp_applied" style="
+                                    background: rgba(255,255,255,0.06);
+                                    border: 1.5px solid rgba(255,255,255,0.15);
+                                    border-radius: 20px; padding: 6px 16px;
+                                    color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 600;
+                                    display: inline-flex; align-items: center; gap: 6px;
+                                ">
+                                    <span class="oi oi-fw" data-icon="schedule"/>
+                                    Not Applied
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══════════════════════════════════════════════
+                         STATUS ALERTS
+                    ══════════════════════════════════════════════ -->
+                    <div invisible="status != 'success'" style="
+                        background: linear-gradient(90deg,#e8faf0,#f5fff9);
+                        border-left: 4px solid #27ae60; border-radius: 10px;
+                        padding: 14px 18px; margin-bottom: 16px;
+                        display: flex; align-items: center; gap: 12px;
+                        box-shadow: 0 2px 8px rgba(39,174,96,0.1);
+                    ">
+                        <span class="oi oi-fw fs-5" data-icon="check_circle" style="color:#27ae60;"/>
+                        <span style="color:#1a5c34; font-weight:600; font-size:14px;">
+                            Dynamic pricing analysis completed successfully.
+                        </span>
+                    </div>
+
+                    <div invisible="status != 'partial'" style="
+                        background: linear-gradient(90deg,#fffbec,#fffef5);
+                        border-left: 4px solid #f39c12; border-radius: 10px;
+                        padding: 14px 18px; margin-bottom: 16px;
+                        display: flex; align-items: center; gap: 12px;
+                        box-shadow: 0 2px 8px rgba(243,156,18,0.1);
+                    ">
+                        <span class="oi oi-fw fs-5" data-icon="warning" style="color:#f39c12;"/>
+                        <span style="color:#7a4f00; font-weight:600; font-size:14px;">
+                            Some products were skipped during processing.
+                        </span>
+                    </div>
+
+                    <div invisible="status != 'failed'" style="
+                        background: linear-gradient(90deg,#fff0f0,#fff5f5);
+                        border-left: 4px solid #e74c3c; border-radius: 10px;
+                        padding: 14px 18px; margin-bottom: 16px;
+                        display: flex; align-items: center; gap: 12px;
+                        box-shadow: 0 2px 8px rgba(231,76,60,0.1);
+                    ">
+                        <span class="oi oi-fw fs-5" data-icon="cancel" style="color:#e74c3c;"/>
+                        <span style="color:#7a1a1a; font-weight:600; font-size:14px;">
+                            AI request failed while processing pricing recommendations.
+                        </span>
+                    </div>
+
+                    <!-- ══════════════════════════════════════════════
+                         KPI STAT CARDS
+                    ══════════════════════════════════════════════ -->
+                    <div invisible="dp_total_products == 0">
+
+                        <!-- Section label -->
+                        <div style="
+                            font-size:13px; font-weight:700; letter-spacing:2px;
+                            text-transform:uppercase; color:#8a94a6;
+                            margin-bottom:12px; margin-top:4px;
+                        ">
+                            <span class="oi oi-fw me-2" data-icon="pie_chart"/>AI Decision Summary
+                        </div>
+
+                        <div class="row g-3 mb-4">
+
+                            <!-- Total Products -->
+                            <div class="col-md-3">
+                                <div style="
+                                    background: linear-gradient(145deg,#f0f4ff,#e8eeff);
+                                    border: 1px solid #c8d4f8; border-radius: 14px;
+                                    padding: 18px 16px; text-align:center;
+                                    box-shadow: 0 4px 12px rgba(68,89,200,0.1);
+                                ">
+                                    <div style="
+                                        background:#4459c8; border-radius:10px;
+                                        width:36px; height:36px; margin:0 auto 10px;
+                                        display:flex; align-items:center; justify-content:center;
+                                    ">
+                                        <span class="oi oi-fw" data-icon="deployed_code" style="color:#fff; font-size:16px;"/>
+                                    </div>
+                                    <div style="font-size:26px; font-weight:800; color:#2d3494; line-height:1;">
+                                        <field name="dp_total_products" readonly="1"/>
+                                    </div>
+                                    <div style="font-size:11px; color:#6b7a9e; font-weight:600; margin-top:4px; text-transform:uppercase; letter-spacing:.5px;">
+                                        Total Products
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Increased -->
+                            <div class="col-md-3">
+                                <div style="
+                                    background: linear-gradient(145deg,#edfff5,#d8f8e8);
+                                    border: 1px solid #a3e4be; border-radius: 14px;
+                                    padding: 18px 16px; text-align:center;
+                                    box-shadow: 0 4px 12px rgba(39,174,96,0.1);
+                                ">
+                                    <div style="
+                                        background:#27ae60; border-radius:10px;
+                                        width:36px; height:36px; margin:0 auto 10px;
+                                        display:flex; align-items:center; justify-content:center;
+                                    ">
+                                        <span class="oi oi-fw" data-icon="arrow_upward" style="color:#fff; font-size:16px;"/>
+                                    </div>
+                                    <div style="font-size:26px; font-weight:800; color:#1a7a40; line-height:1;">
+                                        <field name="dp_increase_count" readonly="1"/>
+                                    </div>
+                                    <div style="font-size:11px; color:#2e7d4f; font-weight:600; margin-top:4px; text-transform:uppercase; letter-spacing:.5px;">
+                                        Increased
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Decreased -->
+                            <div class="col-md-3">
+                                <div style="
+                                    background: linear-gradient(145deg,#fff2f2,#ffe0e0);
+                                    border: 1px solid #f5b8b8; border-radius: 14px;
+                                    padding: 18px 16px; text-align:center;
+                                    box-shadow: 0 4px 12px rgba(231,76,60,0.1);
+                                ">
+                                    <div style="
+                                        background:#e74c3c; border-radius:10px;
+                                        width:36px; height:36px; margin:0 auto 10px;
+                                        display:flex; align-items:center; justify-content:center;
+                                    ">
+                                        <span class="oi oi-fw" data-icon="arrow_downward" style="color:#fff; font-size:16px;"/>
+                                    </div>
+                                    <div style="font-size:26px; font-weight:800; color:#a52a2a; line-height:1;">
+                                        <field name="dp_decrease_count" readonly="1"/>
+                                    </div>
+                                    <div style="font-size:11px; color:#c0392b; font-weight:600; margin-top:4px; text-transform:uppercase; letter-spacing:.5px;">
+                                        Decreased
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tokens Used -->
+                            <div class="col-md-3">
+                                <div style="
+                                    background: linear-gradient(145deg,#f5f0ff,#ede0ff);
+                                    border: 1px solid #c9b0f5; border-radius: 14px;
+                                    padding: 18px 16px; text-align:center;
+                                    box-shadow: 0 4px 12px rgba(124,58,237,0.1);
+                                ">
+                                    <div style="
+                                        background:#7c3aed; border-radius:10px;
+                                        width:36px; height:36px; margin:0 auto 10px;
+                                        display:flex; align-items:center; justify-content:center;
+                                    ">
+                                        <span class="oi oi-fw" data-icon="bolt" style="color:#fff; font-size:16px;"/>
+                                    </div>
+                                    <div style="font-size:26px; font-weight:800; color:#4c1d95; line-height:1;">
+                                        <field name="dp_total_tokens" readonly="1"/>
+                                    </div>
+                                    <div style="font-size:11px; color:#6d28d9; font-weight:600; margin-top:4px; text-transform:uppercase; letter-spacing:.5px;">
+                                        Tokens Used
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ══════════════════════════════════════════════
+                         RUN INFO + PRICELIST ROW
+                    ══════════════════════════════════════════════ -->
+                    <div class="row g-3 mb-4">
+
+                        <!-- Run Information card -->
+                        <div class="col-md-6">
+                            <div style="
+                                background:#fff; border:1px solid #e8ecf4;
+                                border-radius:14px; padding:20px 22px;
+                                box-shadow:0 2px 10px rgba(0,0,0,0.04);
+                                height:100%;
+                            ">
+                                <div style="
+                                    font-size:12px; font-weight:700; letter-spacing:2px;
+                                    text-transform:uppercase; color:#8a94a6; margin-bottom:14px;
+                                    border-bottom:1px solid #f0f2f7; padding-bottom:10px;
+                                ">
+                                    <span class="oi oi-fw me-2" data-icon="info" style="color:#4459c8;"/>
+                                    Run Information
+                                </div>
+                                <group>
+                                    <field name="run_date"/>
+                                    <field name="vraja_common_log_store"/>
+                                    <field name="status" widget="badge"/>
+                                    <field name="ai_provider"/>
+                                    <field name="ai_llm_model"/>
+                                    <field name="dp_applied" widget="boolean_toggle"/>
+                                    <field name="dp_pricelists_updated"/>
+                                </group>
+                            </div>
+                        </div>
+
+                        <!-- Execution Log card -->
+                        <div class="col-md-6">
+                            <div style="
+                                background:#1a1f2e; border:1px solid #2d3450;
+                                border-radius:10px; padding:15px 17px;
+                                box-shadow:0 2px 10px rgba(0,0,0,0.15);
+                                display:flex; flex-direction:column;
+                                min-height:200px; max-height:400px;
+                            ">
+                                <div style="
+                                    font-size:11px; font-weight:700; letter-spacing:2px;
+                                    text-transform:uppercase; color:#5a6a8a; margin-bottom:14px;
+                                    border-bottom:1px solid #2d3450; padding-bottom:10px;
+                                    flex-shrink:0;
+                                ">
+                                    <span class="oi oi-fw me-2" data-icon="terminal" style="color:#4ade80;"/>
+                                    Execution Log
+                                </div>
+                                <div style="
+                                    flex:1; overflow-y:auto; overflow-x:hidden;
+                                    background:#111827;
+                                    border-radius:8px;
+                                    border:1px solid #1f2d40;
+                                    padding:10px;
+                                    scrollbar-width:thin;
+                                    scrollbar-color:#2d3450 #111827;
+                                ">
+                                    <field name="dp_log_message" nolabel="1" style="
+                                        background:transparent !important;
+                                        color:#86efac !important;
+                                        font-family: 'Courier New', monospace !important;
+                                        font-size:13px !important;
+                                        border:none !important;
+                                        padding:0 !important;
+                                        white-space:pre-wrap !important;
+                                        word-break:break-word !important;
+                                        width:100% !important;
+                                        min-height:unset !important;
+                                        resize:none !important;
+                                    "/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ══════════════════════════════════════════════
+                         PRICING ANALYSIS TABLE
+                    ══════════════════════════════════════════════ -->
+                    <div invisible="dp_total_products == 0" style="
+                        background:#fff; border:1px solid #e8ecf4;
+                        border-radius:16px; overflow:hidden;
+                        box-shadow:0 4px 20px rgba(0,0,0,0.06);
+                    ">
+                        <!-- Table header bar -->
+                        <div style="
+                            background: linear-gradient(90deg, #1a1f5e, #2d3494);
+                            padding: 16px 22px;
+                            display: flex; align-items: center; justify-content: space-between;
+                        ">
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <span class="oi oi-fw" data-icon="table_chart" style="color:#8899ff; font-size:16px;"/>
+                                <span style="color:#fff; font-weight:700; font-size:14px; letter-spacing:.3px;">
+                                    Pricing Analysis Results
+                                </span>
+                            </div>
+                            <span style="
+                                background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.7);
+                                font-size:12px; font-weight:600; border-radius:20px;
+                                padding:3px 12px; border:1px solid rgba(255,255,255,0.15);
+                            ">
+                                <field name="dp_total_products" readonly="1"/>
+                                Products
+                            </span>
+                        </div>
+
+                        <!-- Table content -->
+                        <div style="padding:0;">
+                            <field name="line_ids" nolabel="1" readonly="1">
+                                <list
+                                        decoration-muted="dp_status == 'skipped'"
+                                        decoration-danger="dp_status == 'failed'"
+                                        limit="10"
+                                        class="o_list_table_no_header_bg"
+                                >
+                                    <field name="dp_product_name" string="Product" width="200"/>
+                                    <field name="dp_segment_name" string="Segment" width="120"/>
+                                    <field name="dp_old_price" string="Current Price" width="120"/>
+                                    <field name="dp_ai_suggested_price" string="AI Price" width="120"/>
+                                    <field name="dp_decision" string="Decision"
+                                           widget="badge" width="100"
+                                           decoration-success="dp_decision == 'increase'"
+                                           decoration-danger="dp_decision == 'decrease'"
+                                           decoration-info="dp_decision == 'hold'"
+                                           decoration-warning="dp_decision == 'skip'"/>
+                                    <field name="dp_margin_before" string="Margin Before (%)" width="130"/>
+                                    <field name="dp_margin_after" string="Margin After (%)" width="130"/>
+                                    <field name="dp_status" string="Status"
+                                           widget="badge" width="90"
+                                           decoration-success="dp_status == 'success'"
+                                           decoration-warning="dp_status == 'skipped'"
+                                           decoration-danger="dp_status == 'failed'"/>
+                                </list>
+                            </field>
+                        </div>
+                    </div>
+
+                </sheet>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record id="dynamic_pricing_ai_log_search_view" model="ir.ui.view">
+        <field name="name">vraja.ai.log.search.dynamic.pricing</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_common_ai_log_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="Dynamic Pricing AI"
+                        name="filter_dynamic_pricing_ai"
+                        domain="[('vraja_common_log_store','=','dynamic_pricing')]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

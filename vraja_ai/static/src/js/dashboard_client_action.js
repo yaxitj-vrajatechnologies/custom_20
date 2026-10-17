@@ -1,17 +1,21 @@
 /** @odoo-module **/
 
 import {registry} from "@web/core/registry";
-import {Component, onMounted, useState} from "@odoo/owl";
+import * as owl from "@odoo/owl";
 import {useService} from "@web/core/utils/hooks";
+
+const {Component, onMounted} = owl;
+// Odoo 20 (Owl 3): useState hata hai, uski jagah proxy hai
+const makeState = owl.useState || owl.proxy;
 
 export class VrajaAIDashboard extends Component {
 
     setup() {
         this.orm = useService("orm");
 
-        this.state = useState({
+        this.state = makeState({
             store: false,
-            cardId: this.props.action?.params?.card_id,
+            cardId: this.props?.action?.params?.card_id,
         });
 
         onMounted(async () => {
@@ -44,13 +48,11 @@ export class VrajaAIDashboard extends Component {
 
             if (target && icon) {
                 target.addEventListener("show.bs.collapse", function () {
-                    icon.classList.remove("fa-chevron-up");
-                    icon.classList.add("fa-chevron-down");
+                    icon.setAttribute("data-icon", "expand_more");
                 });
 
                 target.addEventListener("hide.bs.collapse", function () {
-                    icon.classList.remove("fa-chevron-down");
-                    icon.classList.add("fa-chevron-up");
+                    icon.setAttribute("data-icon", "expand_less");
                 });
             }
         });

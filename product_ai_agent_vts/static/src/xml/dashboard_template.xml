@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="vraja_ai_dashboard_product_template_vts"
+       t-inherit="vraja_ai_dashboard_template"
+       t-inherit-mode="extension">
+
+        <xpath expr="//div[@id='dashboard_template_common_app_vts']" position="inside">
+            <div t-if="this.state.store === 'product_alt_acc'" style="height:calc(100vh - 100px); overflow-y:auto;">
+                 <div t-if="!this.state.ready"
+                      class="d-flex justify-content-center align-items-center"
+                      style="height:100vh;">
+                    <div class="text-center text-muted">
+                       <span class="spinner-border mb-3" role="status"/>
+                        <div>Loading dashboard...</div>
+                    </div>
+                </div>
+                <h1 class="mb-4">AI Dashboard — Product Alternate &amp; Accessory</h1>
+                <div t-if="this.state.ready">
+
+                    <!-- Global message -->
+                    <div t-if="this.state.message" t-attf-class="alert alert-{{ this.state.messageType }} mb-3">
+                        <t t-out="this.state.message"/>
+                    </div>
+
+                    <!-- Loading -->
+                    <div t-if="this.state.loading" class="d-flex align-items-center gap-2 px-3 py-2 mb-3 rounded"
+                         style="background:#fff8e1; border:1px solid #ffe082; color:#7a6000; width:fit-content;">
+                        <span class="spinner-border spinner-border-sm" role="status"/>
+                        <span style="font-size:14px; font-weight:500;">Please wait, processing...</span>
+                    </div>
+
+                    <!-- STATUS BAR — always visible at top                  -->
+                    <div class="d-flex align-items-center justify-content-between mb-4 p-3"
+                         style="background:white; border-radius:10px; border:1px solid #dee2e6; box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+
+                        <!-- Left — Icon + Title + Products + Date in one line -->
+                        <div class="d-flex align-items-center gap-3">
+                           <span class="oi" data-icon="smart_toy" style="font-size:1.6rem; color:#4472C4;"/>
+                            <div>
+                                <div class="fw-bold" style="font-size:15px; color:#2c3e7a;">
+                                    AI Product Alternate &amp; Accessory
+                                </div>
+                                <div class="d-flex align-items-center gap-2 mt-1">
+                                    <span style="font-size:12px; color:#4472C4; font-weight:600;">
+                                       <i class="oi me-1" data-icon="view_in_ar"/>
+                                        <t t-out="this.state.selectedProducts.length"/>
+                                        Products Selected
+                                    </span>
+                                    <span style="color:#dee2e6;">|</span>
+                                    <span style="font-size:12px; color:#444;">
+                                        <i class="oi me-1" data-icon="schedule"/>
+                                        <t t-if="this.state.productData and this.state.productData.product_ai_analyzed_on"
+                                           t-out="this.state.productData.product_ai_analyzed_on"/>
+                                        <span t-else="">Not analysed yet</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right — Status Badge -->
+                        <div>
+                            <span t-if="this.state.productData and this.state.productData.product_ai_status === 'idle'"
+                                  style="display:inline-flex; align-items:center; gap:6px;background:#f0f0f0;
+                                  color:#6c757d;padding:8px 18px; border-radius:20px;font-size:13px; font-weight:600; border:1px solid #ddd;">
+                                <i class="oi" data-icon="remove_circle"/>Idle
+                            </span>
+                            <span t-if="this.state.productData and this.state.productData.product_ai_status === 'running'"
+                                  style="display:inline-flex; align-items:center; gap:6px;background:#fff8e1; color:#856404;
+                                         padding:8px 18px; border-radius:20px;font-size:13px; font-weight:600; border:1px solid #ffe082;">
+                                <i class="spinner-border spinner-border-sm" role="status"/>Running
+                            </span>
+                            <span t-if="this.state.productData and this.state.productData.product_ai_status === 'done'"
+                                  style="display:inline-flex; align-items:center; gap:6px;background:#d1e7dd; color:#0f5132;
+                                         padding:8px 18px; border-radius:20px;font-size:13px; font-weight:600; border:1px solid #a3cfbb;">
+                                <i class="oi oi-filled" data-icon="check_circle"/>Done
+                            </span>
+                            <span t-if="this.state.productData and this.state.productData.product_ai_status === 'error'"
+                                  style="display:inline-flex; align-items:center; gap:6px;background:#f8d7da; color:#842029;
+                                         padding:8px 18px; border-radius:20px;font-size:13px; font-weight:600; border:1px solid #f1aeb5;">
+                                <i class="oi" data-icon="error"/>Error
+                            </span>
+                        </div>
+                    </div>
+                    <!-- STEP 1 -->
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-header d-flex justify-content-between align-items-center dashboard-toggle"
+                             data-bs-toggle="collapse" data-bs-target="#product_ai_step1_section"
+                             style="cursor:pointer;">
+                            <strong><span class="oi me-2" data-icon="info"/>Step 1 — About This Module</strong>
+                            <i class="oi toggle-icon" data-icon="expand_more"/>
+                        </div>
+                        <div id="product_ai_step1_section" class="collapse">
+                            <div class="card-body p-4">
+                                <div>
+                                    <div style="font-size:20px; font-weight:700; margin-bottom:4px;">
+                                        AI Product Alternate &amp; Accessory Linking
+                                    </div>
+                                    <div style="font-size:14px; opacity:0.85;">
+                                            Automate product relationship management inside Odoo using Artificial Intelligence
+                                    </div>
+                                    <br/>
+                                </div>
+                                <!-- Feature Cards -->
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-3">
+                                        <div class="p-3 h-100 rounded text-center"
+                                             style="background:#f0f4ff; border:1px solid #d0d9f5;">
+                                            <div style="font-size:1.8rem; color:#4472C4; margin-bottom:8px;">
+                                              <span class="oi" data-icon="lightbulb"/>
+                                            </div>
+                                            <div style="font-weight:600; font-size:15px; color:#2c3e7a; margin-bottom:4px;">AI Powered</div>
+                                            <div class="text-muted" style="font-size:14px;">Uses OpenAI to intelligently analyse your product catalog</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="p-3 h-100 rounded text-center"
+                                             style="background:#f0fff4; border:1px solid #a3cfbb;">
+                                            <div style="font-size:1.8rem; color:#27ae60; margin-bottom:8px;"><span class="oi" data-icon="swap_horiz"/></div>
+                                            <div style="font-weight:600; font-size:15px; color:#1a6e3c; margin-bottom:4px;">Alternatives</div>
+                                            <div class="text-muted" style="font-size:14px;">Suggests products customers would buy instead</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="p-3 h-100 rounded text-center"
+                                             style="background:#fff8f0; border:1px solid #f5cba7;">
+                                            <div style="font-size:1.8rem; color:#e67e22; margin-bottom:8px;"><span class="oi" data-icon="shopping_cart"/></div>
+                                            <div style="font-weight:600; font-size:15px; color:#935200; margin-bottom:4px;">Accessories</div>
+                                            <div class="text-muted" style="font-size:14px;">Suggests products customers buy together</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="p-3 h-100 rounded text-center"
+                                             style="background:#fdf0ff; border:1px solid #e0b0f5;">
+                                            <div style="font-size:1.8rem; color:#8e44ad; margin-bottom:8px;"><span class="oi" data-icon="history"/></div>
+                                            <div style="font-weight:600; font-size:15px; color:#5b2c7a; margin-bottom:4px;">Sales History</div>
+                                            <div class="text-muted" style="font-size:14px;">Uses past sales data as strongest matching signal</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- How It Works Steps -->
+                                <div class="mb-4">
+                                    <div class="fw-semibold mb-3"
+                                         style="font-size:14px; color:#2c3e7a;"><span class="oi me-2" data-icon="format_list_numbered"/>
+                                        How It
+                                        Works</div>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <div class="d-flex align-items-center gap-2 px-3 py-2 rounded"
+                                             style="background:#f8f9fa; border:1px solid #dee2e6; font-size:13px;">
+                                            <span style="background:#4472C4; color:white; border-radius:50%;width:22px; height:22px; display:inline-flex;
+                                                         align-items:center; justify-content:center; font-size:11px; font-weight:700;">1</span>
+                                            <span>Select Products</span>
+                                        </div>
+
+                                        <div class="d-flex align-items-center" style="color:#ccc;"><span class="oi" data-icon="chevron_right"/></div>
+
+                                        <div class="d-flex align-items-center gap-2 px-3 py-2 rounded"
+                                             style="background:#f8f9fa; border:1px solid #dee2e6; font-size:13px;">
+                                            <span style="background:#4472C4; color:white; border-radius:50%;width:22px; height:22px; display:inline-flex;
+                                                         align-items:center; justify-content:center; font-size:11px; font-weight:700;">2</span>
+                                            <span>Configure Settings</span>
+                                        </div>
+
+                                        <div class="d-flex align-items-center" style="color:#ccc;"><span class="oi" data-icon="chevron_right"/></div>
+                                        <div class="d-flex align-items-center gap-2 px-3 py-2 rounded"
+                                             style="background:#f8f9fa; border:1px solid #dee2e6; font-size:13px;">
+                                            <span style="background:#4472C4; color:white; border-radius:50%;width:22px; height:22px; display:inline-flex;
+                                                         align-items:center; justify-content:center; font-size:11px; font-weight:700;">3</span>
+                                            <span>Run AI Analysis</span>
+                                        </div>
+
+                                        <div class="d-flex align-items-center" style="color:#ccc;"><span class="oi" data-icon="chevron_right"/></div>
+                                        <div class="d-flex align-items-center gap-2 px-3 py-2 rounded"
+                                             style="background:#f8f9fa; border:1px solid #dee2e6; font-size:13px;">
+                                            <span style="background:#4472C4; color:white; border-radius:50%;width:22px; height:22px; display:inline-flex;
+                                                         align-items:center; justify-content:center; font-size:11px; font-weight:700;">4</span>
+                                            <span>Review Results</span>
+                                        </div>
+
+                                        <div class="d-flex align-items-center" style="color:#ccc;"><span class="oi" data-icon="chevron_right"/></div>
+                                        <div class="d-flex align-items-center gap-2 px-3 py-2 rounded"
+                                             style="background:#f8f9fa; border:1px solid #dee2e6; font-size:13px;">
+                                            <span style="background:#27ae60; color:white; border-radius:50%;width:22px; height:22px; display:inline-flex;
+                                                         align-items:center; justify-content:center; font-size:11px; font-weight:700;">5</span>
+                                            <span>Apply to Odoo</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Tip -->
+                                <div class="d-flex align-items-start gap-3 p-3 rounded"
+                                     style="background:#fffbe6; border:1px solid #ffe082;">
+                                    <span class="oi mt-1" data-icon="lightbulb" style="color:#f0a500; font-size:16px;"/>
+                                    <div style="font-size:13px; color:#7a5800;"><strong>Tip:</strong>
+                                        For best results, add your business context in Step 2 and enable Sales History
+                                        in Step 4. The AI uses co-purchase data as its
+                                        strongest signal for accessory suggestions.
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 d-flex justify-content-end" style="border-top:1px solid #eee;">
+                                    <button class="btn btn-primary btn-sm"
+                                            t-on-click="()=>this.goToStep('#product_ai_step1_section','#product_ai_step2_section')">
+                                       Next <span class="oi ms-1" data-icon="arrow_forward"/>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-header d-flex justify-content-between align-items-center dashboard-toggle"
+                             data-bs-toggle="collapse" data-bs-target="#product_ai_step2_section"
+                             style="cursor:pointer;">
+                            <strong><span class="oi me-2" data-icon="apartment"/>Step 2 — Business Info</strong>
+                            <i class="oi toggle-icon" data-icon="expand_more"/>
+                        </div>
+                        <div id="product_ai_step2_section" class="collapse">
+                            <div class="card-body p-4">
+
+                                <!-- Header -->
+                                <div class="d-flex align-items-center gap-3 mb-4">
+                                    <div>
+                                        <div style="font-size:18px; font-weight:700; color:#2c3e7a;">Business Context</div>
+                                        <div class="text-muted" style="font-size:14px;">Help the AI to understand your business for smarter suggestions</div>
+                                    </div>
+                                </div>
+
+                                <!-- Why It Matters -->
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-4">
+                                        <div class="d-flex align-items-start gap-2 p-3 rounded h-100"
+                                             style="background:#f0f4ff; border:1px solid #d0d9f5;">
+                                                <span class="oi mt-1" data-icon="check" style="color:#4472C4;"/>
+                                            <div>
+                                                 <div style="font-size:15px; font-weight:600; color:#2c3e7a;">Better Accuracy</div>
+                                                <div class="text-muted" style="font-size:14px;">AI understands your industry and suggests more relevant products</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="d-flex align-items-start gap-2 p-3 rounded h-100"
+                                             style="background:#f0fff4; border:1px solid #a3cfbb;">
+                                           <span class="oi mt-1" data-icon="group" style="color:#27ae60;"/>
+                                            <div>
+                                                <div style="font-size:15px; font-weight:600; color:#1a6e3c;">Customer Intent</div>
+                                                <div class="text-muted" style="font-size:14px;">Helps AI predict what your customers actually need</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="d-flex align-items-start gap-2 p-3 rounded h-100"
+                                             style="background:#fff8f0; border:1px solid #f5cba7;">
+                                           <span class="oi mt-1" data-icon="filter_alt" style="color:#e67e22;"/>
+                                            <div>
+                                                <div style="font-size:15px; font-weight:600; color:#935200;">Smarter Filtering</div>
+                                                <div class="text-muted" style="font-size:14px;">Reduces irrelevant suggestions that don't fit your catalog</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Textarea -->
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold" style="color:#2c3e7a; font-size:15px;">
+                                        <span class="oi me-1" data-icon="edit"/>Describe Your Business
+                                        <span class="text-muted fw-normal ms-1" style="font-size:14px;">(optional but recommended)</span>
+                                    </label>
+                                    <textarea id="product_ai_business_info" class="form-control" rows="5"
+                                              style="font-size:13px; border:1px solid #d0d9f5; border-radius:8px; resize:vertical;"
+                                              placeholder="e.g. We are an office furniture retailer..."
+                                              t-att-value="this.state.productData and this.state.productData.product_ai_business_info or ''"
+                                              t-on-blur="(ev) => this.onBusinessInfoBlur(ev)"/>
+                                </div>
+
+                                <!-- Examples -->
+                                <div class="p-3 rounded" style="background:#f8f9fa; border:1px solid #dee2e6;">
+                                    <div class="fw-semibold mb-2" style="font-size:15px; color:#2c3e7a;">
+                                        <span class="oi me-1" data-icon="lightbulb" style="color:#f0a500;"/>
+                                        What to include for best results
+                                    </div>
+                                    <div class="row g-2">
+                                        <div class="col-md-6">
+                                            <div class="d-flex align-items-center gap-2"
+                                                 style="font-size:14px; color:#555;">
+                                                <span class="oi text-success" data-icon="check"/>
+                                                Your industry or business type
+                                            </div>
+                                            <div class="d-flex align-items-center gap-2 mt-1"
+                                                 style="font-size:15px; color:#555;">
+                                                <span class="oi text-success" data-icon="check"/>
+                                                Types of products you sell
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex align-items-center gap-2"
+                                                 style="font-size:14px; color:#555;">
+                                                <span class="oi text-success" data-icon="check"/>
+                                                Who your typical customers are
+                                            </div>
+                                            <div class="d-flex align-items-center gap-2 mt-1"
+                                                 style="font-size:14px; color:#555;">
+                                                <span class="oi text-success" data-icon="check"/>
+                                                Any special catalog characteristics
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-3 d-flex justify-content-between"
+                                     style="border-top:1px solid #eee;">
+                                <button class="btn btn-outline-secondary btn-sm"
+                                        t-on-click="()=>this.goToStep('#product_ai_step2_section','#product_ai_step1_section')">
+                                    <span class="oi me-1" data-icon="arrow_back"/>Previous
+                                </button>
+                                    <button class="btn btn-primary btn-sm"
+                                            t-on-click="()=>this.goToStep('#product_ai_step2_section','#product_ai_step3_section')">
+                                    Next <span class="oi ms-1" data-icon="arrow_forward"/>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-header d-flex justify-content-between align-items-center dashboard-toggle"
+                             data-bs-toggle="collapse" data-bs-target="#product_ai_step3_section"
+                             style="cursor:pointer;">
+                            <strong><span class="oi me-2" data-icon="deployed_code"/>Step 3 — Selected Products</strong>
+                            <i class="oi toggle-icon" data-icon="expand_more"/>
+                        </div>
+                        <div id="product_ai_step3_section" class="collapse">
+                            <div class="card-body p-4">
+
+                                <!-- Product Selector Box -->
+                                <div class="mb-2">
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <label class="form-label fw-semibold mb-0"
+                                               style="color:#2c3e7a; font-size:15px;">
+                                           <span class="oi me-1" data-icon="search"/>Search &amp; Select Products for AI
+                                            analysis
+                                        </label>
+                                        <button type="button"
+                                                t-att-class="'btn btn-sm ' + (this.state.selectedProducts.length ? 'btn-outline-danger' : 'btn-outline-primary')"
+                                                t-on-click="(ev) => this.onSelectAllProducts(ev)">
+                                            <span t-if="this.state.selectedProducts.length" class="oi me-1"
+                                                  data-icon="close"/>
+                                            <span t-if="!this.state.selectedProducts.length"
+                                                  class="oi me-1" data-icon="check_box"/>
+                                            <t t-if="this.state.selectedProducts.length">Deselect All</t>
+                                            <t t-if="!this.state.selectedProducts.length">Select All</t>
+                                        </button>
+                                    </div>
+
+                                    <div class="o_field_widget o_input" id="product_ai_product_selector"
+                                         style="min-height:44px; display:flex; flex-wrap:wrap; gap:6px;align-items:center; padding:6px 10px;
+                                                border:1px solid #d0d9f5; border-radius:8px;background:#fff; position:relative;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+
+                                        <!-- Selected tag pills -->
+                                        <t t-foreach="this.state.selectedProducts" t-as="product" t-key="product.id">
+                                            <span style="display:inline-flex; align-items:center; gap:5px;
+                                                         background:#d0e9ff; color:#0d6efd; font-size:0.82em;
+                                                         padding:4px 10px; border-radius:20px; font-weight:500;
+                                                         border:1px solid #a8d4ff;">
+                                                <span class="oi" data-icon="sell" style="font-size:10px;"/>
+                                                <t t-out="product.name"/>
+                                                <span style="cursor:pointer; font-size:11px; opacity:0.7;"
+                                                      t-on-click="() => this.onRemoveProduct(product.id)">&#x2715;</span>
+                                            </span>
+                                        </t>
+
+                                        <!-- Search input -->
+                                        <input type="text" class="border-0"
+                                               style="outline:none; box-shadow:none; min-width:150px;
+                                                      flex-grow:1; font-size:0.9rem; padding:2px 4px;"
+                                               placeholder="Type to search products..."
+                                               t-att-value="this.state.productSearch"
+                                               t-on-input="(ev) => this.onProductSearchInput(ev)"
+                                               t-on-focus="(ev) => this.onProductSearchFocus(ev)"/>
+
+                                        <!-- Checkbox dropdown -->
+                                        <div t-if="this.state.showDropdown"
+                                             style="position:absolute; top:100%; left:0; z-index:9999;
+                                                    width:100%; max-height:260px; overflow-y:auto;
+                                                    border:1px solid #d0d9f5; border-radius:8px;
+                                                    background:#fff; box-shadow:0 6px 20px rgba(0,0,0,0.12);
+                                                    margin-top:4px;">
+
+                                            <!-- No results -->
+                                            <div t-if="!this.state.productDropdown.length"
+                                                 class="d-flex align-items-center gap-2 px-3 py-3 text-muted small">
+                                               <span class="oi" data-icon="zoom_out"/>
+                                                No products found matching your search.
+                                            </div>
+
+                                            <!-- Checkbox rows -->
+                                            <t t-foreach="this.state.productDropdown" t-as="item" t-key="item.id">
+                                                <div class="d-flex align-items-center px-3 py-2"
+                                                     style="cursor:pointer; gap:10px; border-bottom:1px solid #f5f5f5;">
+                                                    <input type="checkbox"
+                                                           class="form-check-input mt-0"
+                                                           style="cursor:pointer; accent-color:#4472C4;"
+                                                           t-att-checked="!!this.state.selectedProductMap[item.id]"
+                                                           t-att-id="'chk_prod_' + item.id"
+                                                           t-on-change="() => this.onToggleProductCheckbox(item)"/>
+                                                    <label class="mb-0 w-100"
+                                                           style="cursor:pointer; font-size:0.9rem; color:#333;"
+                                                           t-att-for="'chk_prod_' + item.id">
+                                                        <t t-out="item.name"/>
+                                                    </label>
+                                                    <!-- Show checkmark if selected -->
+                                                    <span t-if="!!this.state.selectedProductMap[item.id]"
+                                                          class="oi" data-icon="check"
+                                                          style="color:#4472C4; font-size:12px;"/>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-3 my-3">
+                                    <hr style="flex:1; border-color:#dee2e6; margin:0;"/>
+                                    <span style="font-size:12px; font-weight:600; color:#4472C4;
+                                         border:1px solid #d0d9f5; border-radius:6px;
+                                         padding:4px 14px; background:#f0f4ff;">OR</span>
+                                    <hr style="flex:1; border-color:#dee2e6; margin:0;"/>
+                                </div>
+
+                                <!-- SKU Upload Section -->
+                                <div class="p-3 rounded" style="background:#f8f9fa; border:1px solid #dee2e6;">
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                       <span class="oi" data-icon="upload" style="color:#4472C4;"/>
+                                        <span class="fw-semibold" style="font-size:14px; color:#2c3e7a;">
+                                            Import Products via SKU File
+                                        </span>
+                                    </div>
+
+                                    <div class="text-muted mb-3" style="font-size:12px;">
+                                        Upload an Excel file with column header<strong>Internal Reference</strong>
+                                        containing SKUs.Matching products will be added to selection above.
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label class="btn btn-outline-primary btn-sm mb-0" style="cursor:pointer;">
+                                           <span class="oi me-1" data-icon="upload"/>Choose File
+                                            <input type="file" id="product_sku_upload" accept=".xlsx,.xls,.csv"
+                                                   style="display:none;"
+                                                   t-on-change="(ev) => this.onSKUFileUpload(ev)"/>
+                                        </label>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm"
+                                                t-on-click="(ev) => this.onDownloadSKUTemplate(ev)">
+                                           <span class="oi me-1" data-icon="download"/>Reference Template
+                                        </button>
+                                    </div>
+
+                                    <!-- Filename -->
+                                    <div class="mt-2 small text-muted" t-if="this.state.skuFilename">
+                                       <span class="oi me-1 text-success" data-icon="table_chart"/>
+                                        <t t-out="this.state.skuFilename"/>
+                                    </div>
+
+                                    <!-- Upload Message -->
+                                    <div t-if="this.state.skuUploadMessage"
+                                         t-attf-class="mt-2 small alert alert-{{ this.state.skuUploadMessageType }} py-1 px-2 mb-0">
+                                        <t t-out="this.state.skuUploadMessage"/>
+                                    </div>
+
+                                </div>
+                                <div class="mt-4 pt-3 d-flex justify-content-between"
+                                     style="border-top:1px solid #eee;">
+                                <button class="btn btn-outline-secondary btn-sm"
+                                        t-on-click="()=>this.goToStep('#product_ai_step3_section','#product_ai_step2_section')">
+                                    <span class="oi me-1" data-icon="arrow_back"/>Previous
+                                </button>
+                                    <button class="btn btn-primary btn-sm"
+                                            t-on-click="()=>this.goToStep('#product_ai_step3_section','#product_ai_step4_section')">
+                                   Next <span class="oi ms-1" data-icon="arrow_forward"/>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4 -->
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-header d-flex justify-content-between align-items-center dashboard-toggle"
+                             data-bs-toggle="collapse" data-bs-target="#product_ai_step4_section"
+                             style="cursor:pointer;">
+                            <strong><span class="oi me-2" data-icon="settings"/>Step 4 — Configuration</strong>
+                            <i class="oi toggle-icon" data-icon="expand_more"/>
+                        </div>
+                        <div id="product_ai_step4_section" class="collapse">
+                            <div class="card-body p-4">
+                                <div class="row g-4">
+
+                                    <!-- Left — Settings -->
+                                    <div class="col-md-6">
+                                        <div class="p-3 rounded h-100"
+                                             style="background:#f8f9fa; border:1px solid #dee2e6;">
+                                            <div class="fw-semibold mb-3" style="color:#2c3e7a; font-size:14px;">
+                                             <span class="oi me-1" data-icon="tune"/>AI Settings
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold small">Suggestion Type</label>
+                                                <select id="product_ai_suggestion_type"
+                                                        class="form-select form-select-sm"
+                                                        t-att-value="this.state.suggestionType"
+                                                        t-on-change="(ev) => this.onSuggestionTypeChange(ev)">
+                                                    <option value="both">Both alternatives and accessories</option>
+                                                    <option value="alternatives">Alternatives only</option>
+                                                    <option value="accessories">Accessories only</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold small">Price Tolerance (%)</label>
+                                                <input id="product_ai_price_tolerance" type="number"
+                                                       class="form-control form-control-sm"
+                                                       t-att-value="this.state.productData and this.state.productData.product_ai_price_tolerance or 15"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold small">Max Suggestions per Product</label>
+                                                <input id="product_ai_max_suggestions" type="number"
+                                                       class="form-control form-control-sm"
+                                                       t-att-value="this.state.productData and this.state.productData.product_ai_max_suggestions or 5"/>
+                                            </div>
+                                            <div class="mb-0">
+                                                <label class="form-label fw-semibold small">Minimum Confidence</label>
+                                                <select id="product_ai_min_confidence"
+                                                        class="form-select form-select-sm"
+                                                        t-att-value="this.state.minConfidence"
+                                                        t-on-change="(ev) => this.onMinConfidenceChange(ev)">
+                                                        <option value="all">All (high + medium + low)</option>
+                                                    <option value="medium">High &amp; medium only</option>
+                                                    <option value="high">High only</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right — Data Sources -->
+                                    <div class="col-md-6">
+                                        <div class="p-3 rounded" style="background:#f8f9fa; border:1px solid #dee2e6;">
+                                            <div class="fw-semibold mb-3" style="color:#2c3e7a; font-size:14px;">
+                                               <span class="oi me-1" data-icon="database"/>Data Sources
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                  <input id="product_ai_use_category" class="form-check-input"
+                                                         type="checkbox"
+                                                         t-att-checked="this.state.productData and this.state.productData.product_ai_use_category"/>
+                                                <label class="form-check-label" for="product_ai_use_category">Use Category</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                 <input id="product_ai_use_tags" class="form-check-input"
+                                                        type="checkbox"
+                                                        t-att-checked="this.state.productData and this.state.productData.product_ai_use_tags"/>
+                                                <label class="form-check-label small"
+                                                       for="product_ai_use_tags">Use Tags</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                               <input id="product_ai_use_price" class="form-check-input" type="checkbox"
+                                                      t-att-checked="this.state.productData and this.state.productData.product_ai_use_price"/>
+                                                <label class="form-check-label small" for="product_ai_use_price">Use Price</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input id="product_ai_use_attributes" class="form-check-input"
+                                                       type="checkbox"
+                                                       t-att-checked="this.state.productData and this.state.productData.product_ai_use_attributes"/>
+                                                <label class="form-check-label small" for="product_ai_use_attributes">Use Attributes</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input id="product_ai_use_sales_history" class="form-check-input"
+                                                       type="checkbox"
+                                                       t-att-checked="this.state.useSalesHistory"
+                                                       t-on-change="(ev) => this.onSalesHistoryToggle(ev)"/>
+                                                <label class="form-check-label small"
+                                                       for="product_ai_use_sales_history">Use Sales History</label>
+                                            </div>
+                                            <div t-if="this.state.useSalesHistory" class="mt-2"
+                                                 style="max-width:200px;">
+                                                <label class="form-label fw-semibold small">Sales History Days</label>
+                                                <input type="number" id="product_ai_sales_history_days"
+                                                       class="form-control form-control-sm" min="1" max="365"
+                                                       t-att-value="this.state.productData and this.state.productData.product_ai_sales_history_days or 30"/>
+                                                <div class="form-text" style="font-size:11px;">Number of days of past sales to include.</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cron / Auto Apply — Separate Section -->
+                                        <div class="p-3 rounded mt-3"
+                                             style="background:#fff8e1; border:1px solid #ffe082;">
+                                            <div class="fw-semibold mb-1" style="color:#856404; font-size:14px;">
+                                                <span class="oi me-1" data-icon="schedule"/>Scheduled Auto Run (Cron)
+                                            </div>
+                                            <div class="text-muted mb-2" style="font-size:11px;">
+                                                When enabled, the system will automatically run AI analysis and apply results on schedule via cron job.
+                                            </div>
+                                            <div class="form-check">
+                                                 <input id="product_ai_auto_apply" class="form-check-input"
+                                                        type="checkbox"
+                                                        t-att-checked="this.state.productData and this.state.productData.product_ai_auto_apply"/>
+                                                <label class="form-check-label small fw-semibold"
+                                                       for="product_ai_auto_apply"
+                                                       style="color:#856404;">
+                                                    Auto Analyze &amp; Apply in Odoo
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Save Button -->
+                                <div class="mt-3">
+
+                                </div>
+                                <div class="mt-4 pt-3 d-flex justify-content-between"
+                                     style="border-top:1px solid #eee;">
+                                <button class="btn btn-outline-secondary btn-sm"
+                                        t-on-click="()=>this.goToStep('#product_ai_step4_section','#product_ai_step3_section')">
+                                    <span class="oi me-1" data-icon="arrow_back"/>Previous
+                                </button>
+                                    <button class="btn btn-primary btn-sm"
+                                            t-on-click="(ev) => this.onProductAISave(ev)"
+                                            t-att-disabled="!this.state.selectedProducts.length"
+                                            t-att-title="!this.state.selectedProducts.length ? 'Please select at least one product in Step 3 first' : ''">
+                                       <span class="oi me-1" data-icon="save"/>Save &amp; Next
+                                    </button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5 -->
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-header d-flex justify-content-between align-items-center dashboard-toggle"
+                             data-bs-toggle="collapse" data-bs-target="#product_ai_step5_section"
+                             style="cursor:pointer;">
+                            <strong><span class="oi me-2" data-icon="rocket_launch"/>Step 5 — Data Preview &amp; Run AI</strong>
+                            <i class="oi toggle-icon" data-icon="expand_more"/>
+                        </div>
+                        <div id="product_ai_step5_section" class="collapse">
+                            <div class="card-body p-4">
+
+                                <!-- No file yet -->
+                                <div t-if="!this.state.productData or !this.state.productData.excel_attachment"
+                                     class="d-flex align-items-center gap-3 p-3 rounded mb-3"
+                                     style="background:#f0f4ff; border:1px solid #d0d9f5;">
+                                    <span class="oi" data-icon="info" style="color:#4472C4; font-size:1.4rem;"/>
+                                    <div>
+                                        <div class="fw-semibold"
+                                             style="font-size:13px; color:#2c3e7a;">No data file yet</div>
+                                        <div class="text-muted" style="font-size:12px;">
+                                            Select products in Step 3 —> Click Save &amp; Next Button in Step 4 -> file generates automatically.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Attachment -->
+                                <div t-if="this.state.productData and this.state.productData.excel_attachment"
+                                     class="d-flex align-items-center gap-3 p-3 rounded mb-4"
+                                     style="background:#f0fff4; border:1px solid #a3cfbb;">
+                                   <span class="oi" data-icon="table_chart" style="color:#27ae60; font-size:2rem;"/>
+                                    <div class="flex-grow-1">
+                                        <div class="fw-semibold" style="font-size:13px; color:#0f5132;">
+                                            <t t-out="this.state.productData.excel_attachment.name"/>
+                                        </div>
+                                        <div class="text-muted" style="font-size:12px;">
+                                            Data file ready — contains selected products and full catalog.
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a t-att-href="this.state.productData.excel_attachment.url"
+                                           class="btn btn-sm btn-success">
+                                           <span class="oi me-1" data-icon="download"/>Download
+                                        </a>
+                                        <div class="text-muted mt-2" style="font-size:11px;">
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="mt-4 pt-3 d-flex justify-content-between"
+                                     style="border-top:1px solid #eee;">
+                                <button class="btn btn-outline-secondary btn-sm"
+                                        t-on-click="()=>this.goToStep('#product_ai_step5_section','#product_ai_step4_section')">
+                                    <span class="oi me-1" data-icon="arrow_back"/>Previous
+                                </button>
+                                    <button class="btn btn-primary btn-sm"
+                                            t-on-click="(ev) => this.onProductAIRun(ev)"
+                                            t-att-disabled="!this.state.selectedProducts.length or !this.state.productData.excel_attachment or this.state.loading">
+                                        <span class="oi me-1" data-icon="auto_fix_high"/>Run AI Analysis
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 6 -->
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-header d-flex justify-content-between align-items-center dashboard-toggle"
+                             data-bs-toggle="collapse" data-bs-target="#product_ai_step6_section"
+                             style="cursor:pointer;">
+                            <strong><span class="oi oi-filled me-2" data-icon="check_circle"/>Step 6 — Review &amp;
+                                Apply</strong>
+                            <i class="oi toggle-icon" data-icon="expand_more"/>
+                        </div>
+                        <div id="product_ai_step6_section" class="collapse">
+                            <div class="card-body">
+                                <p class="text-muted small">
+                                    Review AI suggestions below then click Apply to write them to your products.
+                                </p>
+                                <div class="alert alert-warning small">
+                                   <span class="oi me-1" data-icon="warning"/>
+                                    Applying will overwrite existing alternatives and accessories for all selected
+                                    products.
+                                </div>
+
+                                <!-- No results yet -->
+                                <div t-if="!this.getAIResults().length" class="alert alert-info small">
+                                    <span class="oi me-1" data-icon="info"/>
+                                    No AI results yet. Please run AI analysis in Step 5 first.
+                                </div>
+
+                                <!-- Results cards -->
+                                <div t-if="this.getAIResults().length">
+
+                                    <!-- Search -->
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div class="text-muted small">
+                                            <strong><t t-out="this.getAIResults().length"/></strong>
+                                            products analysed
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm" style="max-width:250px;"
+                                               placeholder="Search product..."
+                                               t-on-input="(ev) => this.onStep6Search(ev)"/>
+                                    </div>
+
+                                    <!-- Table -->
+                                    <div style="max-height:500px; overflow-y:auto;">
+                                       <table class="table table-sm table-hover align-middle mb-0">
+                                            <thead class="table-dark sticky-top">
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th>Alternatives</th>
+                                                    <th>Accessories</th>
+                                                </tr>
+                                            </thead>
+                                           <tbody>
+                                                <t t-foreach="this.getPagedAIResults()" t-as="row"
+                                                   t-key="row.product_id">
+                                                    <tr>
+                                                        <td class="fw-semibold">
+                                                            <t t-out="row.product_name or row.product_id"/>
+                                                        </td>
+                                                        <td>
+                                                            <div t-if="!row.alternatives.length"
+                                                                 class="text-muted small">None</div>
+                                                            <t t-foreach="row.alternatives" t-as="alt"
+                                                               t-key="alt.product_id">
+                                                                <t t-out="alt.product_name"/>
+                                                                <t t-if="!alt_last">, </t>
+                                                            </t>
+                                                        </td>
+                                                        <td>
+                                                            <div t-if="!row.accessories.length"
+                                                                 class="text-muted small">None</div>
+                                                            <t t-foreach="row.accessories" t-as="acc"
+                                                               t-key="acc.product_id">
+                                                                <t t-out="acc.product_name"/>
+                                                                <t t-if="!acc_last">, </t>
+                                                            </t>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                        <!-- Pagination -->
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <small class="text-muted">
+                                                Showing <strong><t t-out="(this.state.step6Page-1)*10+1"/></strong>
+                                                –
+                                                <strong><t t-out="Math.min(this.state.step6Page*10, this.getFilteredAIResults().length)"/></strong>
+                                                of
+                                                <strong><t t-out="this.getFilteredAIResults().length"/></strong>
+                                            </small>
+                                            <div class="d-flex gap-1">
+                                                <button class="btn btn-sm btn-outline-secondary"
+                                                        t-att-disabled="this.state.step6Page===1"
+                                                        t-on-click="(e)=>this.onStep6PageChange(this.state.step6Page-1)">
+                                                   	<span class="oi" data-icon="chevron_left"/>
+                                                </button>
+                                                <t t-foreach="this.getPageNumbers()" t-as="pg" t-key="pg_index">
+                                                    <button t-if="pg!=='...'"
+                                                            t-on-click="(e)=>this.onStep6PageChange(pg)"
+                                                            t-att-class="'btn btn-sm '+(pg===this.state.step6Page?'btn-dark':'btn-outline-secondary')">
+                                                        <t t-out="pg"/>
+                                                    </button>
+                                                    <span t-if="pg==='...'" class="align-self-center px-1">…</span>
+                                                </t>
+                                                <button class="btn btn-sm btn-outline-secondary"
+                                                        t-att-disabled="this.state.step6Page===this.getTotalPages()"
+                                                        t-on-click="(e)=>this.onStep6PageChange(this.state.step6Page+1)">
+                                                    <span class="oi" data-icon="chevron_right"/>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 d-flex justify-content-between align-items-center"
+                                     style="border-top:1px solid #eee;">
+                                    <button class="btn btn-outline-secondary btn-sm"
+                                            t-on-click="()=>this.goToStep('#product_ai_step6_section','#product_ai_step5_section')">
+                                        <span class="oi me-1" data-icon="arrow_back"/>Previous
+                                    </button>
+                                    <button class="btn btn-success"
+                                            t-on-click="(ev) => this.onProductAIApply(ev)"
+                                            t-att-disabled="!this.getAIResults().length or this.state.loading"
+                                            t-att-title="!this.getAIResults().length ? 'Run AI Analysis in Step 5 first' : ''">
+                                        <span class="oi me-1" data-icon="check"/>Confirm &amp; Apply to Odoo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

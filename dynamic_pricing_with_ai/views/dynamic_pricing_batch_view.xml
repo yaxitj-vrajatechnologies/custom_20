@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="vraja_dp_batch_list_view" model="ir.ui.view">
+        <field name="name">vraja.dp.batch.list</field>
+        <field name="model">vraja.dp.batch</field>
+        <field name="arch" type="xml">
+            <list string="AI Pricing Batches"
+                  create="false"
+                  delete="false"
+                  decoration-danger="error_message"
+                  decoration-success="state == 'done'">
+                <field name="name" string="Batch" width="300px"/>
+                <field name="total_batches" string="Total Batches" width="120px"/>
+                <field name="products_count" string="Products" width="100px"/>
+                <field name="state"
+                       decoration-info="state == 'draft'"
+                       decoration-warning="state == 'running'"
+                       decoration-success="state == 'done'"
+                       widget="badge"
+                       optional="show"
+                       width="120px"/>
+                <field name="error_message" optional="show" width="300px"/>
+                <button string="Run Manually"
+                        name="action_run_batch_manually"
+                        type="object"
+                        invisible="state != 'draft'"
+                        class="btn-primary"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="vraja_dp_batch_form_view" model="ir.ui.view">
+        <field name="name">vraja.dp.batch.form</field>
+        <field name="model">vraja.dp.batch</field>
+        <field name="arch" type="xml">
+            <form string="AI Pricing Batch" create="false">
+                <header>
+                    <button string="Run Manually"
+                            name="action_run_batch_manually"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+                </header>
+
+                <sheet>
+
+                    <!-- Error Banner -->
+                    <div class="alert alert-danger d-flex align-items-center gap-3 mb-4"
+                         role="alert"
+                         invisible="not error_message"
+                         style="border-radius:12px; border-left:5px solid #b91c1c;
+                                background:#fef2f2; padding:16px 20px;">
+                        <span class="oi oi-fw fs-5" data-icon="warning" style="color:#dc2626;"/>
+                        <div>
+                            <strong style="color:#b91c1c;">Execution Failure</strong>
+                            <span style="color:#6b7280; font-size:12px; margin-left:8px;">
+                                — will retry on next cron run
+                            </span>
+                            <div style="margin-top:4px;">
+                                <field name="error_message" readonly="1"
+                                       style="color:#dc2626; font-size:13px;"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Title Block -->
+                    <div class="d-flex align-items-center justify-content-between mb-4 p-4"
+                         style="background:linear-gradient(135deg,#1e1b4b 0%,#4c1d95 60%,#7c3aed 100%);
+                                border-radius:16px; box-shadow:0 4px 24px rgba(124,58,237,0.25);">
+                        <div class="d-flex align-items-center gap-3">
+                            <div style="background:rgba(255,255,255,0.15); border-radius:12px;
+                                        width:52px; height:52px; display:flex; align-items:center;
+                                        justify-content:center; flex-shrink:0;">
+                                <i class="oi oi-fw" data-icon="checklist" style="color:#fff; font-size:22px;"/>
+                            </div>
+                            <div>
+                                <div style="color:#c4b5fd; font-size:11px; font-weight:600;
+                                            text-transform:uppercase; letter-spacing:1px; margin-bottom:2px;">
+                                    AI Pricing Batch
+                                </div>
+                                <h2 style="color:#fff; margin:0; font-size:22px; font-weight:800;">
+                                    <field name="name" readonly="1"
+                                           style="color:#fff; font-size:22px; font-weight:800;
+                                                  background:transparent; border:none; padding:0;"/>
+                                </h2>
+                            </div>
+                        </div>
+                        <!-- State pill -->
+                        <div>
+                            <span invisible="state != 'draft'"
+                                  style="background:rgba(14,165,233,0.2); color:#7dd3fc;
+                                         border:1px solid #38bdf8; border-radius:20px;
+                                         padding:6px 18px; font-size:12px; font-weight:700;">
+                                <i class="oi oi-fw me-1" data-icon="schedule"/>Draft
+                            </span>
+                            <span invisible="state != 'running'"
+                                  style="background:rgba(251,191,36,0.2); color:#fcd34d;
+                                         border:1px solid #fbbf24; border-radius:20px;
+                                         padding:6px 18px; font-size:12px; font-weight:700;">
+                                <span class="spinner-border spinner-border-sm me-1"/>Running
+                            </span>
+                            <span invisible="state != 'done'"
+                                  style="background:rgba(34,197,94,0.2); color:#86efac;
+                                         border:1px solid #4ade80; border-radius:20px;
+                                         padding:6px 18px; font-size:12px; font-weight:700;">
+                                <i class="oi oi-fw me-1" data-icon="check_circle"/>Done
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Stats Cards Row -->
+                    <div class="row g-3 mb-4">
+
+                        <!-- Products -->
+                        <div class="col-md-4">
+                            <div class="p-3 h-100"
+                                 style="background:#eff6ff; border:1px solid #bfdbfe;
+                                        border-radius:12px; border-left:4px solid #3b82f6;">
+                                <div style="font-size:11px; font-weight:700; text-transform:uppercase;
+                                            letter-spacing:0.6px; color:#3b82f6; margin-bottom:6px;">
+                                    <i class="oi oi-fw me-1" data-icon="deployed_code"/>Products in Batch
+                                </div>
+                                <div style="font-size:24px; font-weight:800; color:#1e40af;">
+                                    <field name="products_count" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Segments -->
+                        <div class="col-md-4">
+                            <div class="p-3 h-100"
+                                 style="background:#f5f3ff; border:1px solid #ddd6fe;
+                                        border-radius:12px; border-left:4px solid #7c3aed;">
+                                <div style="font-size:11px; font-weight:700; text-transform:uppercase;
+                                            letter-spacing:0.6px; color:#7c3aed; margin-bottom:6px;">
+                                    <i class="oi oi-fw me-1" data-icon="group"/>Segments
+                                </div>
+                                <div style="font-size:24px; font-weight:800; color:#4c1d95;">
+                                    <field name="segment_count" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Total Rows Analysed -->
+                        <div class="col-md-4">
+                            <div class="p-3 h-100"
+                                 style="background:#f0fdf4; border:1px solid #bbf7d0;
+                                        border-radius:12px; border-left:4px solid #22c55e;">
+                                <div style="font-size:11px; font-weight:700; text-transform:uppercase;
+                                            letter-spacing:0.6px; color:#16a34a; margin-bottom:6px;">
+                                    <i class="oi oi-fw me-1" data-icon="bar_chart"/>Total Rows Analysed
+                                </div>
+                                <div style="font-size:24px; font-weight:800; color:#166534;">
+                                    <field name="result_count" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Notebook -->
+                    <div style="border:1px solid #e5e7eb; border-radius:14px; overflow:hidden;
+                                box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+                        <notebook>
+                            <page string="CSV Payload" name="csv_payload">
+                                <div class="p-2">
+                                    <div class="mb-2 d-flex align-items-center gap-2"
+                                         style="padding:10px 12px; background:#f0f7ff;
+                                                border-radius:8px; border-left:3px solid #3b82f6;">
+                                        <i class="oi oi-fw" data-icon="info" style="color:#3b82f6;"/>
+                                        <span style="font-size:12px; color:#1e40af;">
+                                            Raw CSV data sent to provider for AI pricing analysis.
+                                        </span>
+                                    </div>
+                                    <field name="csv_rows" nolabel="1" readonly="1"
+                                           widget="ace" options="{'mode': 'text'}"/>
+                                </div>
+                            </page>
+                            <page string="JSON Response" name="json_response"
+                                  invisible="not result_json">
+                                <div class="p-2">
+                                    <div class="mb-2 d-flex align-items-center gap-2"
+                                         style="padding:10px 12px; background:#f0fdf4;
+                                                border-radius:8px; border-left:3px solid #22c55e;">
+                                        <i class="oi oi-fw" data-icon="check_circle" style="color:#16a34a;"/>
+                                        <span style="font-size:12px; color:#166534;">
+                                            AI-generated pricing recommendations returned by provider.
+                                        </span>
+                                    </div>
+                                    <field name="result_json" nolabel="1" readonly="1"
+                                           widget="ace" options="{'mode': 'json'}"/>
+                                </div>
+                            </page>
+                            <page string="Segment Rules" name="segment_rules"
+                                  invisible="not segment_rules_json">
+                                <div class="p-2">
+                                    <div class="mb-2 d-flex align-items-center gap-2"
+                                         style="padding:10px 12px; background:#f5f3ff;
+                                                border-radius:8px; border-left:3px solid #7c3aed;">
+                                        <i class="oi oi-fw" data-icon="tune" style="color:#7c3aed;"/>
+                                        <span style="font-size:12px; color:#4c1d95;">
+                                            Segment configuration rules used during this batch analysis.
+                                        </span>
+                                    </div>
+                                    <field name="segment_rules_json" nolabel="1" readonly="1"
+                                           widget="ace" options="{'mode': 'json'}"/>
+                                </div>
+                            </page>
+                        </notebook>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="vraja_dp_batch_action" model="ir.actions.act_window">
+        <field name="name">AI Pricing Batches</field>
+        <field name="res_model">vraja.dp.batch</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

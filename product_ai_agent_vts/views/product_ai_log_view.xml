@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_ai_log_form_vts" model="ir.ui.view">
+        <field name="name">vraja.ai.log.form.product.vts</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_ai_log_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <sheet invisible="vraja_common_log_store != 'product_alt_acc'">
+
+                    <div class="alert alert-success mb-4" invisible="status != 'success'">
+                        <span class="fa fa-check-circle me-2"/>All products applied successfully.
+                    </div>
+                    <div class="alert alert-warning mb-4" invisible="status != 'partial'">
+                        <span class="fa fa-exclamation-triangle me-2"/>Some products were skipped during apply.
+                    </div>
+                    <div class="alert alert-danger mb-4" invisible="status != 'failed'">
+                        <span class="fa fa-times-circle me-2"/>Request Error — The API request could not be completed.
+                    </div>
+
+                    <div class="oe_title mb-3">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Run Info">
+                            <field name="run_date"/>
+                            <field name="vraja_common_log_store"/>
+                            <field name="status" widget="badge"/>
+                        </group>
+                        <group string="Configuration Used">
+                            <field name="product_ai_suggestion_type"/>
+                            <field name="product_ai_confidence"/>
+                            <field name="ai_provider"/>
+                            <field name="ai_llm_model"/>
+                            <field name="product_ai_token_used"/>
+                        </group>
+                        <group string="Log Details">
+                            <field name="product_ai_log_message"/>
+                        </group>
+                    </group>
+
+                    <!-- Stat Cards -->
+                    <div class="row mb-4 mt-2" invisible="product_ai_total_products == 0">
+                        <div class="col-md-4">
+                            <div class="p-3 text-center rounded"
+                                 style="background:#f0f4ff; border:1px solid #d0d9f5;">
+                                <div style="font-size:28px; font-weight:700; color:#4472C4;">
+                                    <field name="product_ai_total_products" readonly="1"/>
+                                </div>
+                                <div class="text-muted small" style="font-size:16px;">Total Products Analysed</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 text-center rounded"
+                                 style="background:#f0fff4; border:1px solid #a3cfbb;">
+                                <div style="font-size:28px; font-weight:700; color:#27ae60;">
+                                    <field name="product_ai_total_alt" readonly="1"/>
+                                </div>
+                                <div class="text-muted small" style="font-size:16px;">Alternatives Applied</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 text-center rounded"
+                                 style="background:#fff8f0; border:1px solid #f5cba7;">
+                                <div style="font-size:28px; font-weight:700; color:#e67e22;">
+                                    <field name="product_ai_total_acc" readonly="1"/>
+                                </div>
+                                <div class="text-muted small" style="font-size:16px;">Accessories Applied</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Lines -->
+                    <notebook invisible="product_ai_total_products == 0">
+                        <page string="Product Details">
+                            <field name="line_ids" nolabel="1" readonly="1">
+                                <list decoration-muted="product_ai_status == 'skipped'"
+                                      decoration-danger="product_ai_status == 'failed'" limit="10">
+                                    <field name="product_ai_product_name" string="Product" width="180"/>
+                                    <field name="product_ai_alt_applied" string="Alt. Count" width="100"/>
+                                    <field name="product_ai_alt_names" string="Alternatives" width="250"/>
+                                    <field name="product_ai_acc_applied" string="Acc. Count" width="100"/>
+                                    <field name="product_ai_acc_names" string="Accessories" width="250"/>
+                                    <field name="product_ai_status" widget="badge" width="100"
+                                           decoration-success="product_ai_status == 'success'"
+                                           decoration-warning="product_ai_status == 'skipped'"
+                                           decoration-danger="product_ai_status == 'failed'"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="vraja_ai_product_ai_log_search" model="ir.ui.view">
+        <field name="name">vraja.ai.log.search.inherit.product</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_common_ai_log_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="Product AI" name="filter_product_ai"
+                        domain="[('vraja_common_log_store', '=', 'product_alt_acc')]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
