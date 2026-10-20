@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_company_inherit_view" model="ir.ui.view">
+            <field name="name">res.company.inherit.form.view</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="PrintNode Settings">
+                        <group>
+                            <!-- Group for Automatic Printing -->
+                            <group string="Auto Printing Configuration" col="2">
+                                <field name="printnode_auto_print"/>
+                                <field name="printnode_printer_id" invisible="not printnode_auto_print"/>
+                                <field name="paper_id" required="printnode_printer_id"
+                                       invisible="not printnode_auto_print"/>
+                            </group>
+
+                            <!-- Group for Shipping Labels -->
+                            <group string="Shipping Labels Configuration" col="2">
+                                <field name="auto_print_shipping_label"/>
+                                <field name="label_printer_id" invisible="not auto_print_shipping_label"/>
+                                <field name="label_paper_id" required="label_printer_id"
+                                       invisible="not auto_print_shipping_label"/>
+                                <field name="product_labels_format"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</odoo>

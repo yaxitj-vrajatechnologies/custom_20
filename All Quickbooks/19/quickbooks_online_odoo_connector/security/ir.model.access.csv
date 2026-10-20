@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qbo_product_vts,access.qbo.product.vts,model_qbo_product_vts,,1,1,0,1
+access_qbo_vendor_map_vts,access.qbo.vendor.map.vts,model_qbo_vendor_map_vts,,1,1,0,1
+access_instance_wizard,access.instance.wizard,model_instance_wizard,,1,1,1,1

@@ -1,7 +1,7 @@
 /** @odoo-module **/
 
 import {registry} from "@web/core/registry";
-import {onMounted, onWillUnmount, signal} from "@odoo/owl";
+import {onMounted, onWillUnmount} from "@odoo/owl";
 import {useService} from "@web/core/utils/hooks";
 import {VrajaAIDashboard} from "@vraja_ai/js/dashboard_client_action";
 
@@ -10,9 +10,6 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
     setup() {
         super.setup();
         this.actionService = useService("action");
-
-        this.productSelectorRef = signal.ref();
-        this.pricelistSelectorRef = signal.ref();
 
         // Page state
         this.state.ready = false;
@@ -28,6 +25,8 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
         this.state.productSearch = '';
         this.state.productDropdown = [];
         this.state.showProductDropdown = false;
+        this.state.productSelectionLoading = false;
+        this._productSearchRequest = 0;
 
 
         // Segment rules state
@@ -52,10 +51,12 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
 
         // Close dropdowns when clicking outside
         this._outsideClickHandler = (ev) => {
-            if (this.productSelectorRef() && !this.productSelectorRef().contains(ev.target)) {
+            const productEl = document.getElementById("dp_product_selector");
+            if (productEl && !productEl.contains(ev.target)) {
                 this.state.showProductDropdown = false;
             }
-            if (this.pricelistSelectorRef() && !this.pricelistSelectorRef().contains(ev.target)) {
+            const pricelistEl = document.getElementById("dp_pricelist_selector");
+            if (pricelistEl && !pricelistEl.contains(ev.target)) {
                 this.state.showPricelistDropdown = false;
             }
         };
@@ -107,20 +108,37 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
     // ─────────────────────────────────────────────────────────────────────────
 
     async loadDpDashboardData() {
-        if (!this.state.cardId) return;
+        if (!this.state.cardId) {
+            this._showMessage('Dynamic pricing card is not available. Reload the dashboard and try again.', 'danger');
+            return false;
+        }
         try {
             this.state.dpData = await this.orm.call(
                 'vraja.ai.card', 'get_dp_dashboard_data', [this.state.cardId]
-            );
-            // Load all pricelists for segment rule dropdowns
-            this.state.allPricelists = await this.orm.searchRead(
-                'product.pricelist', [], ['id', 'name'], {limit: 0}
             );
             // Restore auto apply toggle state
             this.state.dpAutoApplyEnabled = this.state.dpData?.dp_auto_apply || false;
         } catch (e) {
             console.error('Failed to load DP dashboard data:', e);
+            this._showMessage('Could not load dashboard data: ' + (e?.data?.message || e?.message || String(e)), 'danger');
+            return false;
         }
+
+        // A limit of 0 returns no records in Odoo 20; omit it to fetch every
+        // active pricelist available to the current user/company.
+        try {
+            this.state.allPricelists = await this.orm.searchRead(
+                'product.pricelist', [['active', '=', true]], ['id', 'name']
+            );
+        } catch (e) {
+            this.state.allPricelists = [];
+            console.error('Failed to load pricelists:', e);
+            this._showMessage(
+                'Failed to load pricelists: ' + (e?.data?.message || e?.message || String(e)),
+                'danger'
+            );
+        }
+        return true;
     }
 
     /** Restores product and pricelist selections from loaded card data. */
@@ -189,54 +207,87 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
     async onProductSearchInput(ev) {
         this.state.productSearch = ev.target.value;
         if (!this.state.productSearch.trim()) {
+            this._productSearchRequest++;
             this.state.productDropdown = [];
             this.state.showProductDropdown = false;
             return;
         }
-        const results = await this.orm.searchRead(
-            'product.product',
-            [
-                ['active', '=', true],
-                ['sale_ok', '=', true],
-                ['display_name', 'ilike', this.state.productSearch],
-                ['id', 'not in', this.state.selectedProducts.map(p => p.id)],
-            ],
-            ['id', 'display_name'], {limit: 0}
-        );
-        this.state.productDropdown = results.map(p => ({id: p.id, name: p.display_name}));
-        this.state.showProductDropdown = this.state.productDropdown.length > 0;
+        await this._searchProducts(this.state.productSearch);
     }
 
     async onProductSearchFocus() {
-        const excludeIds = this.state.selectedProducts.map(p => p.id);
-        const results = await this.orm.searchRead(
-            'product.product',
-            [['active', '=', true], ['sale_ok', '=', true], ['id', 'not in', excludeIds]],
-            ['id', 'display_name'], {limit: 0}
-        );
-        this.state.productDropdown = results.map(p => ({id: p.id, name: p.display_name}));
-        this.state.showProductDropdown = this.state.productDropdown.length > 0;
+        await this._searchProducts(this.state.productSearch);
+    }
+
+    async _searchProducts(query = '') {
+        const requestId = ++this._productSearchRequest;
+        const domain = [
+            ['active', '=', true],
+            ['sale_ok', '=', true],
+            ['id', 'not in', this.state.selectedProducts.map(product => product.id)],
+        ];
+        if (query.trim()) {
+            domain.push(['display_name', 'ilike', query.trim()]);
+        }
+        try {
+            const products = await this.orm.searchRead(
+                'product.product', domain, ['id', 'display_name'],
+                {limit: 80}
+            );
+            if (requestId !== this._productSearchRequest) return;
+            this.state.productDropdown = products.map(product => ({
+                id: product.id,
+                name: product.display_name,
+            }));
+            this.state.showProductDropdown = true;
+        } catch (error) {
+            if (requestId === this._productSearchRequest) {
+                this.state.showProductDropdown = false;
+                this._showMessage(
+                    'Product search failed: ' + (error?.data?.message || error?.message || String(error)),
+                    'danger'
+                );
+            }
+        }
     }
 
     async onSelectAllProducts() {
-        if (this.state.selectedProducts.length) {
-            this.state.selectedProducts = [];
-            this.state.selectedProductMap = {};
-        } else {
-            const all = await this.orm.searchRead(
-                'product.product',
-                [['active', '=', true], ['sale_ok', '=', true]],
-                ['id', 'display_name'], {limit: 0}
+        if (this.state.productSelectionLoading) return;
+        this.state.productSelectionLoading = true;
+        const previousSelection = this._getProductSelectionSnapshot();
+        try {
+            if (this.state.selectedProducts.length) {
+                this.state.selectedProducts = [];
+                this.state.selectedProductMap = {};
+            } else {
+                const products = await this.orm.searchRead(
+                    'product.product',
+                    [['active', '=', true], ['sale_ok', '=', true]],
+                    ['id', 'display_name'], {limit: 100000}
+                );
+                this.state.selectedProducts = products.map(product => ({
+                    id: product.id,
+                    name: product.display_name,
+                }));
+                this.state.selectedProductMap = Object.fromEntries(
+                    this.state.selectedProducts.map(product => [product.id, true])
+                );
+            }
+            this.state.showProductDropdown = false;
+            await this._autoSaveProducts();
+        } catch (error) {
+            this._restoreProductSelection(previousSelection);
+            this._showMessage(
+                'Product selection failed: ' + (error?.data?.message || error?.message || String(error)),
+                'danger'
             );
-            const normalized = all.map(p => ({id: p.id, name: p.display_name}));
-            this.state.selectedProducts = normalized;
-            this.state.selectedProductMap = Object.fromEntries(normalized.map(p => [p.id, true]));
+        } finally {
+            this.state.productSelectionLoading = false;
         }
-        this.state.showProductDropdown = false;
-        await this._autoSaveProducts();
     }
 
     async onToggleProductCheckbox(product) {
+        const previousSelection = this._getProductSelectionSnapshot();
         const map = {...this.state.selectedProductMap};
         if (map[product.id]) {
             delete map[product.id];
@@ -246,15 +297,44 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
             this.state.selectedProducts = [...this.state.selectedProducts, product];
         }
         this.state.selectedProductMap = map;
-        await this._autoSaveProducts();
+        try {
+            await this._autoSaveProducts();
+        } catch (error) {
+            this._restoreProductSelection(previousSelection);
+            this._showMessage(
+                'Could not save product selection: ' + (error?.data?.message || error?.message || String(error)),
+                'danger'
+            );
+        }
     }
 
     async onRemoveProduct(productId) {
+        const previousSelection = this._getProductSelectionSnapshot();
         const map = {...this.state.selectedProductMap};
         delete map[productId];
         this.state.selectedProductMap = map;
         this.state.selectedProducts = this.state.selectedProducts.filter(p => p.id !== productId);
-        await this._autoSaveProducts();
+        try {
+            await this._autoSaveProducts();
+        } catch (error) {
+            this._restoreProductSelection(previousSelection);
+            this._showMessage(
+                'Could not save product selection: ' + (error?.data?.message || error?.message || String(error)),
+                'danger'
+            );
+        }
+    }
+
+    _getProductSelectionSnapshot() {
+        return {
+            products: [...this.state.selectedProducts],
+            productMap: {...this.state.selectedProductMap},
+        };
+    }
+
+    _restoreProductSelection(snapshot) {
+        this.state.selectedProducts = snapshot.products;
+        this.state.selectedProductMap = snapshot.productMap;
     }
 
     async _autoSaveProducts() {
@@ -410,7 +490,7 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
         const all = this.state.allPricelists || [];
         const q = (search || '').toLowerCase();
 
-        // Exclude pricelists already used in ANY segment
+        // A pricelist can only be assigned to one segment at a time.
         const selectedIds = this.state.dpSegmentRules.flatMap(r =>
             (r.pricelist_ids || []).map(p => p.id)
         );
@@ -451,9 +531,11 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
     _showMessage(msg, type = 'success') {
         this.state.message = msg;
         this.state.messageType = type;
-        setTimeout(() => {
-            this.state.message = '';
-        }, 4000);
+        if (type === 'success' || type === 'info') {
+            setTimeout(() => {
+                if (this.state.message === msg) this.state.message = '';
+            }, 5000);
+        }
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -592,10 +674,27 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
     // ─────────────────────────────────────────────────────────────────────────
 
     async onDpSave() {
+        if (!this.state.cardId) {
+            this._showMessage('The dynamic pricing card has not loaded yet. Please wait for the dashboard to finish loading and try again.', 'danger');
+            return;
+        }
         const deadStockEl = document.getElementById('dp_dead_stock_days');
         const salesHistoryEl = document.getElementById('dp_sales_history_days');
         const cronTimeEl = document.getElementById('dp_cron_time');
 
+        if (!this.state.selectedProducts?.length) {
+            this._showMessage('Select at least one product in Step 3 before saving.', 'warning');
+            return;
+        }
+        if (!this.state.dpSegmentRules?.length) {
+            this._showMessage('Add at least one customer segment in Step 4 before saving.', 'warning');
+            return;
+        }
+        const invalidCustomer = this.state.dpSegmentRules.some(r => !r.customer_type);
+        if (invalidCustomer) {
+            this._showMessage('Choose a customer type for every segment.', 'danger');
+            return;
+        }
         const invalidSegments = (this.state.dpSegmentRules || []).filter(
             r => !r.pricelist_ids || r.pricelist_ids.length === 0
         );
@@ -618,6 +717,7 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
             dp_cron_time: cronTimeEl ? cronTimeEl.value : '02:00 AM',
             dp_auto_apply: this.state.dpAutoApplyEnabled,
             create_batches: true,
+            dp_selected_product_ids: this.state.selectedProducts.map(p => p.id),
 
             // pricelist_ids kept as [{id, name}] so Python can re-serialize them
             dp_segment_rules: (this.state.dpSegmentRules || []).map(r => ({
@@ -633,16 +733,39 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
 
         try {
             this.state.loading = true;
-            await this.orm.call(
+            const result = await this.orm.call(
                 'vraja.ai.card',
                 'action_save_dp_dashboard_data',
                 [this.state.cardId, payload],
             );
-            // Keep local state in sync
-            await this.loadDpDashboardData();
-            this._showMessage('Settings saved successfully.', 'success');
+            if (result?.success === false) {
+                throw new Error(result.message || 'The server rejected the dashboard settings.');
+            }
+
+            // Open Step 5 on a successful save RPC. Confirm the generated CSV
+            // and batches from persisted dashboard data, not a version-specific
+            // response shape.
             this.goToStep('#dp_step4_section', '#dp_step5_section');
+            const loaded = await this.loadDpDashboardData();
+            if (loaded) {
+                this._restoreSelectionsFromData();
+                const hasCsv = Boolean(this.state.dpData?.dp_csv_attachment_id);
+                const batches = this.state.dpData?.dp_batches || [];
+                if (hasCsv && batches.length) {
+                    this._showMessage(`Saved successfully: CSV generated and ${batches.length} batch(es) created.`, 'success');
+                } else if (!hasCsv) {
+                    this._showMessage('Settings saved, but the server did not generate a products CSV. Check server logs and verify selected products.', 'danger');
+                } else {
+                    this._showMessage('CSV generated, but no batches were created. Verify that at least one segment with a pricelist was saved.', 'danger');
+                }
+            } else {
+                this._showMessage(
+                    'Settings were saved and Step 5 is open, but dashboard data could not be reloaded. Use Refresh Status to retry.',
+                    'warning'
+                );
+            }
         } catch (e) {
+            console.error('Failed to save dynamic pricing dashboard settings:', e);
             this._showMessage('Save failed: ' + (e?.data?.message || e?.message || String(e)), 'danger');
         } finally {
             this.state.loading = false;
@@ -652,7 +775,8 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
     _startPolling() {
         this._stopPolling();
         this._pollTimer = setInterval(async () => {
-            await this.loadDpDashboardData();
+            const loaded = await this.loadDpDashboardData();
+            if (!loaded) return;
             const batches = this.state.dpData?.dp_batches || [];
             const allDone = batches.length > 0 && batches.every(b => b.state === 'done');
             // Batches are reset to 'draft' on error (never set to 'error' state).
@@ -684,7 +808,9 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
     }
 
     async onRefreshBatchStatus() {
-        await this.loadDpDashboardData();
+        const loaded = await this.loadDpDashboardData();
+        if (!loaded) return;
+        this._restoreSelectionsFromData();
         setTimeout(() => this.openStep('#dp_step5_section'), 50);
 
         const allBatchesDone = this.state.dpData?.dp_batches?.length > 0 &&
@@ -697,6 +823,13 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
             this._showMessage('Analysis is still running. Please wait.', 'warning');
         } else if (this.state.dpData?.dp_status === 'error') {
             this._showMessage('Analysis failed. Please check batch errors.', 'danger');
+        } else if (!this.state.dpData?.dp_batches?.length) {
+            this._showMessage('No batches are available. Complete Step 4 and click Save & Next first.', 'warning');
+        } else if (this.state.dpData.dp_batches.some(b => b.error_message)) {
+            const failed = this.state.dpData.dp_batches.find(b => b.error_message);
+            this._showMessage('Batch needs attention: ' + failed.error_message, 'danger');
+        } else if (this.state.dpData.dp_batches.some(b => b.state === 'draft')) {
+            this._showMessage('Batches are ready. Click Run All Batches to start the analysis.', 'info');
         } else {
             this._showMessage('Batch status refreshed.', 'info');
         }
@@ -755,11 +888,40 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
     }
 
     async runAllBatches() {
+        if (this.state.isRunning) return;
+        this.state.loading = true;
+        const loaded = await this.loadDpDashboardData();
+        if (!loaded) {
+            this.state.loading = false;
+            return;
+        }
+        this._restoreSelectionsFromData();
         const allBatchesDone = this.state.dpData?.dp_batches?.length > 0 &&
             this.state.dpData.dp_batches.every(b => b.state === 'done');
 
         if (allBatchesDone) {
+            this.state.loading = false;
             this.openStep('#dp_step6_section');
+            return;
+        }
+
+        const batches = this.state.dpData?.dp_batches || [];
+        if (!batches.length) {
+            this.state.loading = false;
+            this._showMessage('No batches found. Complete Step 4 and click Save & Next first.', 'warning');
+            return;
+        }
+        if (batches.some(batch => batch.state === 'running')) {
+            this.state.loading = false;
+            this.state.isRunning = true;
+            this._startPolling();
+            this._showMessage('Analysis is already running. Refresh status to check progress.', 'info');
+            return;
+        }
+        if (!batches.some(batch => batch.state === 'draft')) {
+            this.state.loading = false;
+            const failed = batches.find(batch => batch.error_message);
+            this._showMessage(failed?.error_message || 'There are no draft batches available to run.', 'danger');
             return;
         }
 
@@ -768,24 +930,31 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
         this.state.isRunning = true;
 
         this._startPolling();
-        fetch('/web/dataset/call_kw', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                jsonrpc: '2.0', method: 'call', id: 1,
-                params: {
-                    model: 'vraja.ai.card',
-                    method: 'action_cron_dp_run_analysis',
-                    args: [], kwargs: {},
-                }
-            })
-        }).catch(e => {
-            // Network-level failure (e.g. server unreachable)
+        try {
+            await this.orm.call('vraja.ai.card', 'action_cron_dp_run_analysis', []);
+            const refreshed = await this.loadDpDashboardData();
+            if (!refreshed) throw new Error('The run was requested, but the latest batch status could not be loaded.');
+            const latest = this.state.dpData?.dp_batches || [];
+            const done = latest.length > 0 && latest.every(batch => batch.state === 'done');
+            const failed = latest.find(batch => batch.error_message);
+            if (done) {
+                this._stopPolling();
+                this.state.loading = false;
+                this.state.isRunning = false;
+                this._showMessage('Analysis complete! Review your results.', 'success');
+                this.goToStep('#dp_step5_section', '#dp_step6_section');
+            } else if (failed) {
+                this._stopPolling();
+                this.state.loading = false;
+                this.state.isRunning = false;
+                this._showMessage('Analysis failed: ' + failed.error_message, 'danger');
+            }
+        } catch (e) {
             this._stopPolling();
             this.state.loading = false;
             this.state.isRunning = false;
-            this._showMessage('Failed to reach server: ' + (e?.message || String(e)), 'danger');
-        });
+            this._showMessage('Could not run batches: ' + (e?.data?.message || e?.message || String(e)), 'danger');
+        }
     }
 
     openBatchView() {
@@ -793,5 +962,7 @@ class DynamicPricingDashboard extends VrajaAIDashboard {
     }
 }
 
+// The XML template extends this shared template; extension templates are not
+// standalone component templates in Owl.
 DynamicPricingDashboard.template = "vraja_ai_dashboard_template";
 registry.category("actions").add("dynamic_pricing_dashboard_template", DynamicPricingDashboard);

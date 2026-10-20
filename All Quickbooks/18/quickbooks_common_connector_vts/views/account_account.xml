@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_account_acc_qk_inherit_form_view_vts" model="ir.ui.view">
+        <field name="name">qk.account.account.form.view.inherit.vts</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="quickbook" string="Quickbooks">
+                    <group>
+                        <group>
+                            <field name="qk_classification" readonly="1"/>
+                            <field name="qk_accountsubType" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

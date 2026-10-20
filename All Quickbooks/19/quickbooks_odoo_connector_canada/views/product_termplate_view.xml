@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_template_qk_inherit_form_view_vts" model="ir.ui.view">
+        <field name="name">qk.product.template.form.view.inherit.vts</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="quickbook_product" string="CA Quickbooks">
+                    <group>
+                        <field name="qkca_product_type" readonly="1"/>
+                        <field name="quickbook_vendor_product" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

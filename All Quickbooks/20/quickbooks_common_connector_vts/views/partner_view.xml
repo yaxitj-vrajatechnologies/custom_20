@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_partner_qk_inherit_form_view_vts" model="ir.ui.view">
+        <field name="name">qk.res.partner.form.view.inherit.vts</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="quickbook_api" string="Quickbooks">
+                    <group>
+                        <field name="qk_customer_type" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

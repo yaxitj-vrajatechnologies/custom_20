@@ -406,7 +406,7 @@ class VrajaAICard(models.Model):
         attachment = self.env['ir.attachment'].sudo().create({
             'name': f'dp_products_{fields.Date.today()}.csv',
             'type': 'binary',
-            'datas': base64.b64encode(csv_bytes).decode('utf-8'),
+            'raw': csv_bytes,
             'mimetype': 'text/csv',
             'res_model': self._name,
             'res_id': self.id,
@@ -889,6 +889,7 @@ class VrajaAICard(models.Model):
           4. Cron schedule synced if dp_auto_apply or dp_cron_time changed
         """
         self.ensure_one()
+        values = values or {}
 
         scalar_fields = [
             'dp_min_margin_pct', 'dp_max_margin_pct',
@@ -915,9 +916,26 @@ class VrajaAICard(models.Model):
         self.sudo().write(write_vals)
 
         # Regenerate CSV and create batches whenever products are configured
-        if values.get('create_batches') and self.dp_selected_product_ids:
+        generated_data = {}
+        if values.get('create_batches'):
+            if not self.dp_selected_product_ids:
+                raise UserError('Select at least one product in Step 3 before saving.')
+            segments = values.get('dp_segment_rules') or json.loads(self.dp_segment_rules_json or '[]')
+            if not segments:
+                raise UserError('Add at least one customer segment in Step 4 before saving.')
+            for index, segment in enumerate(segments, start=1):
+                if not segment.get('customer_type'):
+                    raise UserError(f'Segment {index} is missing a customer type.')
+                if not segment.get('pricelist_ids'):
+                    raise UserError(f'Segment {index} must have at least one pricelist.')
+
             self._generate_and_save_csv()
-            self._create_dp_batches(values.get('dp_segment_rules', []))
+            batch_count = self._create_dp_batches(segments)
+            generated_data = {
+                'csv_attachment_id': self.dp_csv_attachment_id.id,
+                'product_count': len(self.dp_selected_product_ids),
+                'batch_count': batch_count,
+            }
 
         # Sync cron job — update active flag and next call time
         if 'dp_auto_apply' in write_vals or 'dp_cron_time' in write_vals:
@@ -945,7 +963,7 @@ class VrajaAICard(models.Model):
             if schedule_cron:
                 schedule_cron.sudo().write(cron_vals)
 
-        return {'success': True}
+        return {'success': True, **generated_data}
 
     def _dp_get_batches(self):
         """
@@ -983,29 +1001,19 @@ class VrajaAICard(models.Model):
         """
         self.ensure_one()
 
-        # Clear old batches and Step 6 results before creating new ones
-        self.env['vraja.dp.batch'].sudo().search(
-            [('card_id', '=', self.id)]
-        ).unlink()
-        self.sudo().write({
-            'dp_result_json': False,
-            'dp_status': 'idle',
-            'dp_last_tokens': 0,
-        })
-
         segments = segments or json.loads(self.dp_segment_rules_json or '[]')
         if not segments:
-            return
+            raise UserError('No segment rules are configured; no AI batches can be created.')
 
         if not self.dp_csv_attachment_id:
-            return
+            raise UserError('The product CSV was not generated; no AI batches can be created.')
 
-        csv_bytes = base64.b64decode(self.dp_csv_attachment_id.datas)
+        csv_bytes = self.dp_csv_attachment_id.sudo().raw
         csv_content = csv_bytes.decode('utf-8')
 
         csv_lines = [l for l in csv_content.splitlines() if l.strip()]
         if len(csv_lines) < 2:
-            return
+            raise UserError('The generated product CSV contains no product rows.')
 
         header = csv_lines[0]
         data_rows = csv_lines[1:]
@@ -1023,6 +1031,16 @@ class VrajaAICard(models.Model):
         total_batches = len(batches)
         segments_json = json.dumps(segments)
 
+        # Replace prior results only after all input data has been validated.
+        self.env['vraja.dp.batch'].sudo().search(
+            [('card_id', '=', self.id)]
+        ).unlink()
+        self.sudo().write({
+            'dp_result_json': False,
+            'dp_status': 'idle',
+            'dp_last_tokens': 0,
+        })
+
         for idx, batch_rows in enumerate(batches):
             # Each batch gets its own CSV slice (header + data rows)
             batch_csv = header + '\n' + '\n'.join(batch_rows)
@@ -1036,6 +1054,7 @@ class VrajaAICard(models.Model):
                 'csv_rows': batch_csv,
                 'segment_rules_json': segments_json,
             })
+        return total_batches
 
     # =========================================================================
     # APPLY PRICING — writes suggested prices to pricelists only
@@ -1089,11 +1108,6 @@ class VrajaAICard(models.Model):
 
             product = self.env['product.product'].browse(int(product_id))
 
-            # Skip if product no longer exists
-            if not product.exists():
-                continue
-
-            # Skip hold/skip decisions and zero prices
             if decision in ('hold', 'skip') or not suggested_price:
                 skipped += 1
                 continue

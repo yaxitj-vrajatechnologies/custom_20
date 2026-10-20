@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-pack
-# version changelog
 {
     # App information
     'name': 'Quickbooks Common Connector',
@@ -23,17 +22,15 @@ vraja_accounting_solution''',
         'data/cron.xml',
         'wizard/quickbook_operations_view.xml',
         'report/mail_report_view.xml',
-        'views/quickbook_view.xml',
         'views/qb_account.xml',
         'views/qb_taxes.xml',
         'views/qb_payment_terms.xml',
         'views/qbo_payment_method_view.xml',
         'views/qb_partner_mapping.xml',
+        'views/quickbook_view.xml',
         'views/quickbooks_log.xml',
         'views/partner_view.xml',
         'views/account_account.xml',
-        'views/payment_term_view.xml',
-        'views/taxes_view.xml',
     ],
     # Odoo Store Specific
     'images': ['static/description/cover.gif'],
@@ -53,3 +50,4 @@ vraja_accounting_solution''',
     'currency': 'EUR',
 
 }
+# version changelog

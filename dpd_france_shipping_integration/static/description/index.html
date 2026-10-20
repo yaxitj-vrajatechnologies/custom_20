@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<?xml encoding="utf-8" ?><html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DPD France Odoo Shipping Integration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="margin:0; padding:0;">
+    <!-- Hero section start -->
+    <section class="oe_container" style="color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+            <div style="overflow:hidden; padding:5px; position:relative; box-sizing:border-box; border-radius:0;">
+                <div class="d-flex align-items-center justify-content-center text-center" style="position:relative; z-index:2; margin-bottom:8px; gap:clamp(8px, 2vw, 18px); box-sizing:border-box;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/06/logo-combine.png" class="img-fluid" alt="Vraja Technologies" style="display:block; height:auto; max-height:clamp(43px, 6vw, 60px); max-width:clamp(260px, 33vw, 405px); object-fit:contain; width:auto; box-sizing:border-box;">
+                </div>
+
+                <div class="row align-items-center" style="position:relative; z-index:2; margin-top:0; box-sizing:border-box;">
+                    <div class="col-12 col-lg-6" style="box-sizing:border-box;">
+                        <div style="max-width:750px; margin:0 auto; box-sizing:border-box;">
+                            <h1 style="background:linear-gradient(108deg,#1f55de 0%,#2577f1 33%,#159de8 57%,#04b4c0 76%,#009b76 100%); -webkit-background-clip:text; background-clip:text; color:#2577f1; font-size:clamp(22px, 5vw, 22px); font-weight:900; letter-spacing:0; line-height:1.15; margin:clamp(14px, 3vw, 28px) 0 clamp(14px, 2.6vw, 18px); box-sizing:border-box; font-family: sans-serif !important;">
+                                DPD France Odoo Shipping Integration
+                            </h1>
+                            <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3" style="gap:10px; margin:0 0 16px; box-sizing:border-box;">
+                                <p style="color:#94a3b8; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; margin:0; box-sizing:border-box;">
+                                    By Vraja Technologies
+                                </p>
+                                <div class="d-flex align-items-center justify-content-start justify-content-md-end flex-wrap" style="gap:6px; box-sizing:border-box;">
+                                    <span class="d-inline-flex align-items-center justify-content-center" style="background-color:#eaf8e7; border:0; border-radius:999px; color:#138a27; font-size:11px; font-weight:700; min-height:22px; padding:4px 9px; box-sizing:border-box; white-space:nowrap; line-height:1;">
+                                        <i class="fa fa-check-circle" style="font-family:FontAwesome !important; font-size:12px; color:#38a638; margin-right:5px; line-height:1;"></i>
+                                        Community
+                                    </span>
+                                    <span class="d-inline-flex align-items-center justify-content-center" style="background-color:#eaf8e7; border:0; border-radius:999px; color:#138a27; font-size:11px; font-weight:700; min-height:22px; padding:4px 9px; box-sizing:border-box; white-space:nowrap; line-height:1;">
+                                        <i class="fa fa-check-circle" style="font-family:FontAwesome !important; font-size:12px; color:#38a638; margin-right:5px; line-height:1;"></i>
+                                        Enterprise
+                                    </span>
+                                    <span class="d-inline-flex align-items-center justify-content-center" style="background-color:#eaf8e7; border:0; border-radius:999px; color:#138a27; font-size:11px; font-weight:700; min-height:22px; padding:4px 9px; box-sizing:border-box; white-space:nowrap; line-height:1;">
+                                        <i class="fa fa-check-circle" style="font-family:FontAwesome !important; font-size:12px; color:#38a638; margin-right:5px; line-height:1;"></i>
+                                        Odoo.sh
+                                    </span>
+                                </div>
+                            </div>
+
+                            <p style="color:#355486; font-size:clamp(14px, 1.5vw, 16px); line-height:1.6; margin:0 0 clamp(20px, 3vw, 24px); box-sizing:border-box;">
+                                This Shipping Integration offers reliable shipping solutions and becomes absolutely crucial for you. Also this integration allows you to connect Odoo with this carrier, enabling various operations such as retrieving live shipping rates, generating shipping labels, tracking shipments, and even cancelling shipments. All of these tasks can be done without accessing the dashboard. If a specific feature is not supported by the API, it will not be included in the module. To get started with this app, simply use your test or live credentials. These features are built to streamline your workflow and make shipping process easier.
+                            </p>
+
+                           <div class="row" style="margin-left:-8px; margin-right:-8px; max-width:575px; margin-bottom:30px; box-sizing:border-box;">
+
+    <div class="col-12 col-sm-6" style="padding:8px; box-sizing:border-box;">
+        <a href="mailto:sales@vrajatechnologies.com?subject=DPD%20France%20Odoo%20Shipping%20Integration" class="d-flex align-items-center justify-content-center text-center" style="background-color:#2563eb !important; border-radius:16px; box-shadow:0 16px 32px rgba(37,99,235,0.24); color:#ffffff !important; font-size:clamp(14px, 1.6vw, 16px); font-weight:800; min-height:clamp(58px, 7vw, 74px); padding:clamp(12px, 2vw, 16px) clamp(12px, 2vw, 18px); text-decoration:none !important; box-sizing:border-box; width:100%;">
+            <i class="fa fa-envelope" style="font-family:FontAwesome !important; color:#fde68a; font-size:clamp(20px, 4vw, 28px); margin-right:10px; line-height:1;"></i>
+            <span>Submit Request</span>
+        </a>
+    </div>
+
+    <div class="col-12 col-sm-6" style="padding:8px; box-sizing:border-box;">
+        <a href="https://www.youtube.com/watch?v=ljKtPFBzBJg&amp;feature=youtu.be" target="_blank" rel="noopener" class="d-flex align-items-center justify-content-center text-center" style="background-color:#b91c3b !important; border-radius:16px; box-shadow:0 16px 32px rgba(220,38,38,0.23); color:#ffffff !important; font-size:clamp(14px, 1.6vw, 16px); font-weight:800; min-height:clamp(58px, 7vw, 74px); padding:clamp(12px, 2vw, 16px) clamp(12px, 2vw, 18px); text-decoration:none !important; box-sizing:border-box; width:100%;">
+            <i class="fa fa-youtube-play" style="font-family:FontAwesome !important; color:#ffffff; font-size:clamp(24px, 5vw, 34px); margin-right:10px; line-height:1;"></i>
+            <span>Watch on YouTube</span>
+        </a>
+    </div>
+
+    <div class="col-12 col-sm-6" style="padding:8px; box-sizing:border-box;">
+        <a href="#CountrySpecificApps" class="d-flex align-items-center justify-content-center text-center" style="background-color:#ecfdf5 !important; border:1px solid rgba(16,185,129,0.35); border-radius:16px; box-shadow:0 10px 24px rgba(16,185,129,0.10); color:#047857 !important; font-size:clamp(14px, 1.6vw, 16px); font-weight:800; min-height:clamp(58px, 7vw, 74px); padding:clamp(12px, 2vw, 16px) clamp(12px, 2vw, 18px); text-decoration:none !important; box-sizing:border-box; width:100%;">
+            <span>Country Specific Apps</span>
+        </a>
+    </div>
+
+    <div class="col-12 col-sm-6" style="padding:8px; box-sizing:border-box;">
+        <a href="https://apps.odoo.com/apps/modules/19.0/advanced_shipping_dashboard" target="_blank" class="d-flex align-items-center justify-content-center text-center" style="background-color:#eff6ff !important; border:1px solid rgba(147,197,253,0.55); border-radius:16px; box-shadow:0 10px 24px rgba(37,99,235,0.08); color:#1d4ed8 !important; font-size:clamp(14px, 1.6vw, 16px); font-weight:800; min-height:clamp(58px, 7vw, 74px); padding:clamp(12px, 2vw, 16px) clamp(12px, 2vw, 18px); text-decoration:none !important; box-sizing:border-box; width:100%;">
+            <span>Advance Shipping Dashboard</span>
+        </a>
+    </div>
+
+</div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6" style="box-sizing:border-box;">
+                        <div class="text-center text-lg-end" style="position:relative; box-sizing:border-box; margin-top:clamp(0px, 2vw, 0px);">
+                            <img src="https://vrajatechnologies.com/wp-content/uploads/2026/06/shipping_workflow.png" class="img-fluid" alt="Shipping Workflow Layout" style="display:inline-block; height:auto; max-width:100%; object-fit:contain; width:860px; box-sizing:border-box;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero section End -->
+
+    <!-- Catagory section start -->
+    <section class="oe_container" style=" color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:26px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:900px; margin:0 auto 20px; box-sizing:border-box;">
+                <span style="background-color:#eaf8e7; border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:8px 16px; line-height:1; margin-bottom:14px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle" style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    Vraja Technologies
+                </span>
+
+                <h2 style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0 0 12px; box-sizing:border-box;">
+                    End-to-end Odoo solutions for growing companies.
+                </h2>
+            </div>
+
+            <div class="row" style="box-sizing:border-box;">
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div style="background-color:#ffffff; border:2px solid #138a27; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div style="background-color:#eaf8e7; color:#138a27; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-exchange" style="font-family:FontAwesome !important; font-size:40px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3 style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        EDI &amp; SWIFT/ACH Payment Integrations
+                                    </h3>
+
+                                    <p style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        End-to-end EDI automation, including X12, EDIFACT, XML standards, and financial
+                                        integrations such as SWIFT, ACH, and Fedwire.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                        X12</span>
+                                                    <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                                    <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                                    <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                        / AS2</span>
+                                                </td>
+                                                <td style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector" target="_blank" style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right" style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                X12</span>
+                                            <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                            <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                            <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                / AS2</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector" target="_blank" style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right" style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div style="background-color:#ffffff; border:2px solid #2563eb; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div style="background-color:#eaf2ff; color:#2563eb; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-shopping-cart" style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3 style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Ecommerce Integrations
+                                    </h3>
+
+                                    <p style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Seamless integration with leading eCommerce platforms to sync products, orders,
+                                        inventory, and customer data in real time.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                        Sync</span>
+                                                    <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                                    <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                                </td>
+                                                <td style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations" target="_blank" style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right" style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                Sync</span>
+                                            <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                            <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations" target="_blank" style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right" style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div style="background-color:#ffffff; border:2px solid #0f766e; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div style="background-color:#ecfdf5; color:#0f766e; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-truck" style="font-family:FontAwesome !important; font-size:42px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3 style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Shipping Integrations
+                                    </h3>
+
+                                    <p style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Robust shipping connectors for global couriers, offering automated label
+                                        generation, tracking, and rate computation.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                        Rates</span>
+                                                    <span style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                                    <span style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                                    <span style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                        Shipment</span>
+                                                </td>
+                                                <td style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration" target="_blank" style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right" style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                Rates</span>
+                                            <span style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                            <span style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                            <span style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                Shipment</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration" target="_blank" style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right" style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div style="background-color:#ffffff; border:2px solid #d6863a; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div style="background-color:#fff4e8; color:#d6863a; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-cubes" style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3 style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Most Useful Apps for your ERP
+                                    </h3>
+
+                                    <p style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        A wide range of highly-rated Odoo modules designed to enhance automation,
+                                        improve productivity, and simplify business operations.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                                    <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                                    <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                                </td>
+                                                <td style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations" target="_blank" style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right" style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                            <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                            <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations" target="_blank" style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right" style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Catagory section End -->
+
+    <!-- Tabs Section Start -->
+    <section class="oe_container" style=" background-color: #f8fafc; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:32px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 7px; box-sizing:border-box;">
+                <span style="border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:6px 14px; line-height:1; margin-bottom:10px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle" style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    App Details
+                </span>
+
+                <h2 style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                    Explore the key features, workflow, and value of this Odoo module.
+                </h2>
+            </div>
+
+            <div style="border-radius:26px; padding:8px; box-sizing:border-box;">
+
+                <!-- Tabs Header -->
+                <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs" style="border:none; background-color:inherit !important; margin:0 0 30px; padding:0; box-sizing:border-box;">
+
+                    <li class="nav-item" style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_features" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link" style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-star" style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Features</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_process" data-toggle="tab" data-bs-toggle="tab" aria-expanded="true" class="nav-link active" style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-cogs" style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Process</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_faqs" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link" style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-lightbulb-o" style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">FAQs</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 0 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_support" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link" style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-comments-o" style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Support</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="tab-content" style="box-sizing:border-box;">
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane" id="vt_features" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding: 10px 18px; box-sizing:border-box;">
+
+                            <div style="box-sizing:border-box;">
+
+<!-- VT_FEATURES_START -->
+
+                                <div style="padding:13px 10px; border-bottom:1px solid #e8eef7; box-sizing:border-box;">
+                                    <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                        <tr>
+                                            <td style="width:42px; vertical-align:middle; padding:0 12px 0 0; box-sizing:border-box;">
+                                                <i class="fa fa-chevron-circle-right" style="font-family:FontAwesome !important; color:#2563eb; font-size:clamp(20px, 5vw, 24px); line-height:1;"></i>
+                                            </td>
+                                            <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                <h4 style="color:#123d73; font-size:clamp(13px, 3.5vw, 16px); font-weight:900; line-height:1.35; margin:0; box-sizing:border-box;">Support both Test and Live Environments in the module</h4>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div style="padding:13px 10px; border-bottom:1px solid #e8eef7; box-sizing:border-box;">
+                                    <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                        <tr>
+                                            <td style="width:42px; vertical-align:middle; padding:0 12px 0 0; box-sizing:border-box;">
+                                                <i class="fa fa-chevron-circle-right" style="font-family:FontAwesome !important; color:#2563eb; font-size:clamp(20px, 5vw, 24px); line-height:1;"></i>
+                                            </td>
+                                            <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                <h4 style="color:#123d73; font-size:clamp(13px, 3.5vw, 16px); font-weight:900; line-height:1.35; margin:0; box-sizing:border-box;">Generate Label for Individual Shipment</h4>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div style="padding:13px 10px;  box-sizing:border-box;">
+                                    <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                        <tr>
+                                            <td style="width:42px; vertical-align:middle; padding:0 12px 0 0; box-sizing:border-box;">
+                                                <i class="fa fa-chevron-circle-right" style="font-family:FontAwesome !important; color:#2563eb; font-size:clamp(20px, 5vw, 24px); line-height:1;"></i>
+                                            </td>
+                                            <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                <h4 style="color:#123d73; font-size:clamp(13px, 3.5vw, 16px); font-weight:900; line-height:1.35; margin:0; box-sizing:border-box;">Track Shipment Using Web Link</h4>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+<!-- VT_FEATURES_END -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Tab  -->
+                    <div class="tab-pane show active" id="vt_process" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+
+<!-- VT_PROCESS_START -->
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                    Enter Shipping Provider API credentials Details
+                                </p>
+                                <img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/assets/2181/5b3c8c3a025eb36537acc2583efb48d7276cbc9e3975cbf1f7468aa7f02c03c7.png?v=5b3c8c3a025eb36537acc2583efb48d7276cbc9e3975cbf1f7468aa7f02c03c7" class="img img-fluid" style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0 0 14px; box-sizing:border-box;">
+                            </div>
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                    Setup of Shipping Methods with Adjustable Parameters
+                                </p>
+                                <img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/assets/2181/67baa9410eb6bc452fffc509f5ad67db7db83af31a1b01974dc7b50c13fa58d0.png?v=67baa9410eb6bc452fffc509f5ad67db7db83af31a1b01974dc7b50c13fa58d0" class="img img-fluid" style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0 0 14px; box-sizing:border-box;">
+                            </div>
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                    Choose Shipping Method During Sales Order Creation
+                                </p>
+                                <img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/assets/2181/50d5559c5f4a4802bf2fd07d6a9b978be9e88c5000033612f9665041ae3a8a0d.png?v=50d5559c5f4a4802bf2fd07d6a9b978be9e88c5000033612f9665041ae3a8a0d" class="img img-fluid" style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0 0 14px; box-sizing:border-box;">
+                            </div>
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span style="background-color:#fff0f3; color:#b91c3b; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">04</span>
+                                    Create Delivery Order Upon Sales Order Confirmation
+                                </p>
+                                <img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/assets/2181/bdd3bdd0d3bb8fee04e6ca81262da94522133a41358b6e29792d66f7816ed367.png?v=bdd3bdd0d3bb8fee04e6ca81262da94522133a41358b6e29792d66f7816ed367" class="img img-fluid" style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0 0 14px; box-sizing:border-box;">
+                            </div>
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">05</span>
+                                    Retrieve Shipping Label and Tracking Number in Delivery Order
+                                </p>
+                                <img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/assets/2181/bce7fdbbb6e316528f2c8aa04d0d9352634cca9de49beba7cca438571c8ade70.png?v=bce7fdbbb6e316528f2c8aa04d0d9352634cca9de49beba7cca438571c8ade70" class="img img-fluid" style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0 0 14px; box-sizing:border-box;">
+                            </div>
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px;  box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">06</span>
+                                    Label Details Provided by the Shipping Carrier
+                                </p>
+                                <img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/assets/2181/c30ea71b473d660ba818dbaf916160f98ed4c7255bd25fcca5a3728b0b01a259.png?v=c30ea71b473d660ba818dbaf916160f98ed4c7255bd25fcca5a3728b0b01a259" class="img img-fluid" style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0 0 14px; box-sizing:border-box;">
+                                <img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/assets/2181/e7db3bb9692f741a8e045d95ae5e6990602f12504cba9c8db7eeb6439f70047e.png?v=e7db3bb9692f741a8e045d95ae5e6990602f12504cba9c8db7eeb6439f70047e" class="img img-fluid" style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0 0 14px; box-sizing:border-box;">
+                            </div>
+<!-- VT_PROCESS_END -->
+
+                        </div>
+                    </div>
+
+                    <!-- FAQs Tab -->
+                    <div class="tab-pane" id="vt_faqs" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; box-sizing:border-box;">
+<!-- VT_FAQS_START -->
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o" style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4 style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">I would like to request a custom feature for this application. What&rsquo;s the process to get it implemented?</h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0; box-sizing:border-box;">We&rsquo;re happy to help tailor the application to meet your business needs! You can reach us via sales@vrajatechnologies.com</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o" style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4 style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">Which Sender Address Will Be Considered for Shipping?</h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0; box-sizing:border-box;">The sender address is taken from the configured warehouse. You can also set up multiple warehouses, each with its own address</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o" style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4 style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">Are integration updates covered when the API provider updates their API?</h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0; box-sizing:border-box;">Yes, Minor updates or fixes that fall under routine maintenance may be included at no additional cost.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px;  box-sizing:border-box;">
+                                <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div style="background-color:#fff0f3; color:#b91c3b; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o" style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+<!-- VT_FAQS_END -->
+
+                        </div>
+                    </div>
+
+
+                    <!-- Support Tab -->
+                    <div class="tab-pane" id="vt_support" role="tabpanel" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:22px;box-sizing:border-box;">
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:22px;padding:22px;box-sizing:border-box;">
+                                <div style="width:100%;background-color:#f8fbf8;border:1px solid #d9e7d7;border-radius:22px;padding:26px 28px;margin-bottom:18px;box-sizing:border-box;">
+                                    <div class="d-none d-lg-block">
+                                        <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:108px;vertical-align:top;padding:0 20px 0 0;box-sizing:border-box;">
+                                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;box-sizing:border-box;">
+                                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                        <h3 style="color:#123d73;font-size:27px;font-weight:900;line-height:1.2;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:8px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;margin:0 auto 16px;box-sizing:border-box;">
+                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                        </div>
+                                        <h3 style="color:#123d73;font-size:24px;font-weight:900;line-height:1.25;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:6px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin:0 -8px;box-sizing:border-box;">
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;box-sizing:border-box;">
+                                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Policy</div>
+                                                                <a href="https://vrajatechnologies.com/support-policy" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#fff9f2;border:1px solid #f2c487;border-radius:11px;padding:11px 10px;color:#d36c00!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/support-policy</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Scan for Support -->
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 10px;box-sizing:border-box;">Scan for Support</h4>
+                                                                                <div style="margin:8px 0 0;text-align:left;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:170px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Scan for Support</h4>
+                                                                <div style="width:100%;text-align:center;margin:0;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:150px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0 auto;box-sizing:border-box;">
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-qrcode" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <!-- Tabs Section End -->
+<section class="oe_container" style="color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; padding:35px 15px 0; margin:0; box-sizing:border-box;" id="CountrySpecificApps">
+    <div class="container" style="margin:0 auto; max-width:1200px; padding-bottom:0;">
+        <div style="max-width:900px; margin:0 auto 22px; text-align:center;">
+            <span style="background:#eaf2ff; background-color:#eaf2ff; border-radius:999px; color:#2563eb; display:inline-block; font-size:13px; font-weight:800; padding:8px 16px; margin:0 0 12px;"> <i class="fa fa-cubes" style="font-family:FontAwesome !important; margin-right:6px;"></i>Explore related Odoo shipping apps</span>
+            <!-- <h2 style="color:#123d73; font-family:Arial, sans-serif !important; font-size:28px; font-weight:900; line-height:1.25; margin:0 0 10px;">Discover Shipping Apps by Country</h2> -->
+            <p style="color:#475569; font-size:15px; line-height:1.7; margin:0 auto; max-width:850px;">Expand your Odoo shipping capabilities with Vraja Technologies global carrier integration modules. Our apps support shipping workflows across 35+ countries, helping you automate labels, tracking, live rates, and carrier communication.</p>
+        </div>
+
+        <!-- Odoo Apps Store safe responsive grid: no internal CSS, no flex, no table. Mobile: 3 per row. Desktop: 8 per row using max-width. -->
+        <div style="text-align:center;font-size:0;max-width:1120px;margin:0 auto;padding:0;line-height:0;">
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=France+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/France.png" alt="France Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">France</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Germany+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Germany.png" alt="Germany Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Germany</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Canada+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Canada.png" alt="Canada Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Canada</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Spain+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Spain.png" alt="Spain Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Spain</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=United+States+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/United-States.png" alt="United States Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">United States</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Australia+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Australia.png" alt="Australia Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Australia</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Netherlands+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Netherlands.png" alt="Netherlands Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Netherlands</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=India+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/India.png" alt="India Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">India</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Italy+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Italy.png" alt="Italy Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Italy</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Belgium+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Belgium.png" alt="Belgium Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Belgium</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=United+Kingdom+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/United-Kingdom.png" alt="United Kingdom Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">United Kingdom</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=New+Zealand+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/New-Zealand.png" alt="New Zealand Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">New Zealand</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Finland+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Finland.png" alt="Finland Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Finland</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Portugal+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Portugal-.png" alt="Portugal Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Portugal</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Mexico+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Mexico.png" alt="Mexico Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Mexico</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Ireland+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Ireland.png" alt="Ireland Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Ireland</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Sweden+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Sweden.png" alt="Sweden Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Sweden</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Switzerland+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Switzerland.png" alt="Switzerland Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Switzerland</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Saudi+Arabia+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Saudi-Arabia.png" alt="Saudi Arabia Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Saudi Arabia</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Austria+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Austria.png" alt="Austria Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Austria</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Czech+Republic+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Czech-Republic.png" alt="Czech Republic Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Czech Republic</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Lithuania+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Lithuania.png" alt="Lithuania Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Lithuania</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Slovenia+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Slovenia.png" alt="Slovenia Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Slovenia</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Denmark+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Denmark.png" alt="Denmark Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Denmark</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Hungary+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Hungary.png" alt="Hungary Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Hungary</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Poland+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Poland.png" alt="Poland Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Poland</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Romania+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Romania.png" alt="Romania Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Romania</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Singapore+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Singapore.png" alt="Singapore Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Singapore</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Colombia+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Colombia.png" alt="Colombia Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Colombia</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Croatia+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Croatia.png" alt="Croatia Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Croatia</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Estonia+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Estonia.png" alt="Estonia Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Estonia</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Latvia+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Latvia.png" alt="Latvia Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Latvia</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Slovakia+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Slovakia.png" alt="Slovakia Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Slovakia</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Malaysia+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Malaysia.png" alt="Malaysia Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Malaysia</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Hong+Kong+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Hong-Kong.png" alt="Hong Kong Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Hong Kong</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Chile+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Chile.png" alt="Chile Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Chile</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Bulgaria+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Bulgaria.png" alt="Bulgaria Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Bulgaria</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Luxembourg+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Luxembourg.png" alt="Luxembourg Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Luxembourg</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=Thailand+shipping+integrations+by+Vraja" target="_blank" style="background:#ffffff; background-color:#ffffff; border:1px solid #e8eef7; border-radius:12px; padding:9px 3px 7px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.06); text-align:center; box-sizing:border-box; margin:0;">
+                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/05/Thailand.png" alt="Thailand Shipping Apps" style="height:35px; width:auto; max-width:46px; display:block; margin:0 auto 6px; border-radius:4px;">
+                    <h4 style="color:#123d73; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">Thailand</h4>
+                </a>
+            </div>
+            <div style="display:inline-block; width:33.3333%; max-width:140px; vertical-align:top; padding:5px; box-sizing:border-box; font-size:14px;">
+                <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_shipping_solution" target="_blank" style="background:#123d73; background-color:#123d73; border:1px solid #123d73; border-radius:12px; padding:10px 3px 8px; text-decoration:none !important; display:block; box-shadow:0 4px 12px rgba(15,23,42,0.12); text-align:center; box-sizing:border-box; margin:0;">
+                    <span style="height:35px; width:28px; display:block; margin:0 auto 6px; border-radius:999px; background:#ffffff; background-color:#ffffff; color:#123d73; font-size:17px; font-weight:900; line-height:28px; text-align:center; font-family:Arial, sans-serif;">+</span>
+                    <h4 style="color:#ffffff; font-size:11px; font-weight:900; line-height:1.15; margin:0; padding:0; font-family:Arial, sans-serif; word-break:normal; overflow-wrap:break-word;">View All</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Discover Trending Addons Section Start -->
+    <section class="oe_container"
+        style="color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding: 30px 20px 15px; box-sizing:border-box; margin:0; ;"
+        id="TrendingApps">
+        <div class="container" style="margin:0 auto; box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 10px; box-sizing:border-box;">
+                <span
+                    style="background-color:#eaf2ff; border-radius:999px; color:#2563eb; font-size:13px; font-weight:800; padding:8px 16px; margin-bottom:14px;">
+                    <i class="fa fa-cubes" style="font-family:FontAwesome !important; margin-right:6px;"></i>
+                    Discover Shipping Addons
+                </span>
+            </div>
+
+            <div class="row" style="margin-left:-10px; margin-right:-10px; box-sizing:border-box;">
+                <!-- Custom Shipping Cost Calculation -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf2ff; color:#2563eb; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-calculator"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Custom Shipping Cost Calculation
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Set your own shipping charges for third-party carriers using fixed prices or custom rules. Perfect when live carrier rates are unavailable or when you want to control shipping costs in Odoo.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/base_shipping_integration" target="_blank"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batch Shipping Process -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf8e7; color:#138a27; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-tasks"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Batch Shipping Process
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Process multiple delivery orders at once, validate transfers, and generate shipping labels automatically using the selected or default carrier.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/batch_shipping_process_integration" target="_blank"
+                                    style="background-color:#138a27 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping(Manifest) Reports -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#fff4e8; color:#d6863a; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-file-text-o"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Shipping(Manifest) Reports
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Generate shipping manifest records and reports dynamically in Odoo based on selected shipping services. This app helps you create, manage, and download carrier-wise manifest reports for smoother shipment processing.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/all_in_one_shipping_report" target="_blank"
+                                    style="background-color:#d6863a !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PrintNode Odoo Connector -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eef2ff; color:#4f46e5; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-print"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    PrintNode Odoo Connector
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">It helps automate labels, reports, and attachment printing without manual downloads, making printer management and printing workflows faster and easier.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/printnode_odoo_connector" target="_blank"
+                                    style="background-color:#4f46e5 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Calculation | Auto Package Selection in Odoo -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#ecfdf5; color:#0f766e; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-cube"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Package Calculation | Auto Package Selection in Odoo
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Automatically select the best-fit package based on product dimensions, weight, package size, and configured packing rules in Odoo.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/package_calculation_vts" target="_blank"
+                                    style="background-color:#0f766e !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Shipping rate -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eefdf7; color:#0f8b6f; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-money"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Custom Shipping rate
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Custom Shipping Rate allows you to define and apply your own shipping charges in Odoo using fixed prices or rule-based cost calculation.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/custom_shipping_rate" target="_blank"
+                                    style="background-color:#0f8b6f !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fetch rate for all Shipping Carriers -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#fff7ed; color:#ea580c; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-line-chart"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Fetch rate for all Shipping Carriers
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Compare shipping rates from all active carriers in Odoo with a single click and view available options in one easy table.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/fetch_all_shipping_carrier_rates" target="_blank"
+                                    style="background-color:#ea580c !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculate Shipping Deadline Date -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#f0f9ff; color:#0284c7; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-calendar-check-o"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Calculate Shipping Deadline Date
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Automatically calculate shipping deadlines for orders based on cutoff times, working days, holidays, and company shipping policies.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/shipping_deadline_date" target="_blank"
+                                    style="background-color:#0284c7 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- Discover Shipping Addons Section End -->
+  
+    <!-- Discover Shipping Addons Section End -->
+
+    <!-- CTA Section Start -->
+    <section class="oe_container" style="background-color:#f7fbff; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:34px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+            <div style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:26px; padding:clamp(18px, 3.5vw, 30px); box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box; margin: 0px 9px;">
+                <div class="row align-items-center" style="margin-left:-12px; margin-right:-12px; box-sizing:border-box;">
+
+                    <div class="col-12 col-lg-7" style="padding:12px; box-sizing:border-box;">
+                        <table style="border-collapse:collapse; border-spacing:0; margin:0 0 12px; box-sizing:border-box;">
+                            <tr>
+                                <td style="vertical-align:middle; padding:0 10px 0 0; box-sizing:border-box;">
+                                    <span style="color:#123d73; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; line-height:1; box-sizing:border-box;">
+                                        <i class="fa fa-check-circle" style="font-family:FontAwesome !important; font-size:clamp(25px, 3.5vw, 33px);  margin-right:5px; vertical-align:middle;"></i>
+                                    </span>
+                                </td>
+                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                    <h2 style="color:#123d73; font-family:sans-serif !important; font-size:clamp(18px, 4.5vw, 28px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                                        Explore Before Purchase
+                                    </h2>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="color:#138a27; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.45; margin:0 0 12px; box-sizing:border-box;">
+                            Start with a free trial
+                        </p>
+
+                        <p style="color:#526b96; font-size:clamp(13px, 3.4vw, 15px); line-height:1.7; margin:0 0 18px; box-sizing:border-box;">
+                            Test the connector with your real workflows using our 15-day free trial. If you need help,
+                            our product experts will guide you throughout the trial.
+                        </p>
+
+                        <div class="row" style="margin-left:-7px; margin-right:-7px; box-sizing:border-box;">
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="mailto:sales@vrajatechnologies.com?subject=DPD%20France%20Odoo%20Shipping%20Integration" style="background-color:#2563eb !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:55px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(37,99,235,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-calendar-check-o" style="font-family:FontAwesome !important; font-size:17px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">Request Demo</span>
+                                </a>
+                            </div>
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="https://api.whatsapp.com/send/?phone=917359628466&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" style="background-color:#13a579 !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:50px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(19,165,121,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-whatsapp" style="font-family:FontAwesome !important; font-size:20px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">+91 73596 28466</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5" style="padding:12px; box-sizing:border-box;">
+                        <div style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; height:100%; box-sizing:border-box;">
+                            <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td style="width:62px; vertical-align:top; padding:0 15px 0 0; box-sizing:border-box;">
+                                        <div style="background-color:#eaf2ff; color:#2563eb; border-radius:18px; width:52px; height:52px; line-height:52px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-check-square-o" style="font-family:FontAwesome !important; font-size:24px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4 style="color:#123d73; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.35; margin:0 0 8px; box-sizing:border-box;">
+                                            Test the connector with your real workflows.
+                                        </h4>
+                                        <p style="color:#526b96; font-size:13px; line-height:1.65; margin:0 0 12px; box-sizing:border-box;">
+                                            Our product experts will guide you during the trial to help you evaluate,
+                                            configure, and use the connector with confidence.
+                                        </p>
+                                        <div style="box-sizing:border-box;">
+                                            <span style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">15-Day
+                                                Trial</span>
+                                            <span style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Expert
+                                                Guidance</span>
+                                            <span style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Real
+                                                Workflow Testing</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section End -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates xml:space="preserve">
+    <t t-name="printnode_odoo_connector.PdfOptionsModal">
+        <Dialog size="'md'" title="'Please Enter Number of Print'">
+            <div class="text-center">
+                <div class="form-group">
+                    <label for="printnode_copies">Number of Print</label>
+                    <input id="printnode_copies" type="number" class="form-control"
+                           min="1" max="100" t-model="this.copies"/>
+                </div>
+            </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-info" t-on-click="() => this.select('print')">
+                    <i class="oi oi-fw" data-icon="print"/>
+                    <span class="ps-1">Print</span>
+                </button>
+                <button class="btn btn-info" t-on-click="() => this.select('open')">
+                    <i class="oi oi-fw" data-icon="description"/>
+                    <span class="ps-1">Open</span>
+                </button>
+                <button class="btn" t-on-click="() => this.select('close')">Cancel</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

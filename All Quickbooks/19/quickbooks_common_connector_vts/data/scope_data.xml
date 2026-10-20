@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="quickbooks_scope_accounting" model="quickbooks.scope">
+        <field name="name">Accounting</field>
+        <field name="value">com.intuit.quickbooks.accounting</field>
+    </record>
+
+    <record id="quickbooks_scope_payment" model="quickbooks.scope">
+        <field name="name">Payments</field>
+        <field name="value">com.intuit.quickbooks.payment</field>
+    </record>
+</odoo>

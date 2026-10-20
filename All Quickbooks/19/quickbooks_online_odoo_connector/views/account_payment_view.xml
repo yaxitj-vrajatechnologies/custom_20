@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_account_payment_export_error_filter" model="ir.ui.view">
+        <field name="name">account.payment.filter.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='reconciled']" position="after">
+                <separator/>
+                <filter string="Quickbooks Export Issue"
+                        name="quickbook_customer_payment_and_vendor_payment"
+                        domain="[('error_in_export', '=', True)]"/>
+                <separator/>
+            </xpath>
+            <xpath expr="//filter[@name='company']" position="after">
+                <separator/>
+                <filter string="Quickbooks Export Issue"
+                        name="group_by_Quickbook"
+                        context="{'group_by':'error_in_export'}"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

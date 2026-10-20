@@ -1,0 +1,1666 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PrintNode Odoo Connector | Direct Print</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="margin:0; padding:0;">
+
+    <!-- Hero section start -->
+<section class="oe_container" style="padding:20px 0;color:#0f172a;font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+    <div class="container">
+        <div style="background-color:#ffffff;border:1px solid #e5e7eb;border-left:6px solid #2577f1;border-radius:20px;padding:15px;box-sizing:border-box;">
+
+            <table style="width:100%;border-collapse:collapse;border-spacing:0;">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top;padding:0;">
+                            <h1 style="color:#2577f1;font-size:32px;font-weight:900;line-height:1.25; font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+                                PrintNode Odoo Connector | Direct Print
+                            </h1>
+                        </td>
+                        <td style="vertical-align:top;text-align:right;padding:0;">
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Community
+                            </span>
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Enterprise
+                            </span>
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Odoo.sh
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+               The PrintNode Odoo Connector module provides seamless integration between Odoo and PrintNode, enabling automated and remote printing directly from Odoo to printers connected through PrintNode. PrintNode Odoo Connector simplifies printing by sending print jobs directly from Odoo to printers such as ZPL label printers, ESC/POS receipt printers, PDF printers, and PCL or PostScript printers commonly used for standard Odoo reports. The module imports computers from PrintNode along with their associated printers and supported paper sizes, allowing administrators to manage available printing devices directly within Odoo. It also allows configuring automatic printing rules, which can trigger the direct printing of documents or attachments based on defined conditions. This helps automate printing workflows and reduces manual intervention. The module provides report printing settings where administrators can configure specific users who can access the Print Wizard to print reports directly through PrintNode from Odoo. Additionally, the module supports direct label printing, allowing shipping labels or product labels to be printed automatically through PrintNode without downloading the files manually. This integration ensures efficient printer management, automated document printing, and streamlined printing workflows between Odoo and PrintNode.
+            </p>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+               Print your Odoo documents instantly without downloading files first. Reports, invoices, shipping labels, and attachments can be sent directly from Odoo to your connected printers
+            </p>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+               The solution is compatible with the printers you already use. Any printer capable of standard document printing can work with the PrintNode Odoo Connector, allowing you to print directly from Odoo with speed, reliability, and effortless printing.
+            </p>
+
+      <div style="text-align:center;">
+    
+    <a href="mailto:sales@vrajatechnologies.com?subject=PrintNode%20Odoo%20Connector%20%7C%20Direct%20Print"
+       style="display:inline-block;background-color:#2563eb;color:#ffffff !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+        <i class="fa fa-envelope" style="margin-right:6px;"></i> Submit Request
+    </a>
+
+    <a href="https://www.youtube.com/playlist?list=PLarcwR0xYlXkEHUroJ7z-KTVGOkHSrU8-"
+       target="_blank"
+       rel="noopener"
+       style="display:inline-block;background-color:#b91c3b;color:#ffffff !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;box-shadow:0 8px 18px rgba(220,38,38,0.23);">
+        <i class="fa fa-youtube-play" style="margin-right:6px;"></i> Watch on YouTube
+    </a>
+
+    <a href="#TrendingApps"
+       style="display:inline-block;background-color:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8 !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+        <i class="fa fa-line-chart" style="margin-right:6px;"></i> Trending Apps
+    </a>
+
+</div>
+
+        </div>
+    </div>
+</section>
+    <!-- Hero section End -->
+
+<!-- Catagory section start -->
+    <section class="oe_container"
+        style=" color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:26px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:900px; margin:0 auto 20px; box-sizing:border-box;">
+                <span
+                    style="background-color:#eaf8e7; border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:8px 16px; line-height:1; margin-bottom:14px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                        style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    Vraja Technologies
+                </span>
+
+                <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0 0 12px; box-sizing:border-box;">
+                    End-to-end Odoo solutions for growing companies.
+                </h2>
+            </div>
+
+            <div class="row" style="box-sizing:border-box;">
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #138a27; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-exchange"
+                                            style="font-family:FontAwesome !important; font-size:40px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        EDI &amp; SWIFT/ACH Payment Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        End-to-end EDI automation, including X12, EDIFACT, XML standards, and financial
+                                        integrations such as SWIFT, ACH, and Fedwire.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                        X12</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                        / AS2</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                                        target="_blank"
+                                                        style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                X12</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                / AS2</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                                target="_blank"
+                                                style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #2563eb; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-shopping-cart"
+                                            style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Ecommerce Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Seamless integration with leading eCommerce platforms to sync products, orders,
+                                        inventory, and customer data in real time.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                        Sync</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                                        target="_blank"
+                                                        style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                Sync</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                                target="_blank"
+                                                style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #0f766e; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-truck"
+                                            style="font-family:FontAwesome !important; font-size:42px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Shipping Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Robust shipping connectors for global couriers, offering automated label
+                                        generation, tracking, and rate computation.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                        Rates</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                        Shipment</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                                        target="_blank"
+                                                        style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                Rates</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                Shipment</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                                target="_blank"
+                                                style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #d6863a; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-cubes"
+                                            style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Most Useful Apps for your ERP
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        A wide range of highly-rated Odoo modules designed to enhance automation,
+                                        improve productivity, and simplify business operations.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                                        target="_blank"
+                                                        style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                                target="_blank"
+                                                style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Catagory section End -->
+
+<!-- Tabs Section Start -->
+    <section class="oe_container"
+        style=" background-color: #f8fafc; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:32px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 7px; box-sizing:border-box;">
+                <span
+                    style="border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:6px 14px; line-height:1; margin-bottom:10px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                        style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    App Details
+                </span>
+
+                <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                    Explore the key features, workflow, and value of this Odoo module.
+                </h2>
+            </div>
+
+            <div style="border-radius:26px; padding:8px; box-sizing:border-box;">
+
+                <!-- Tabs Header -->
+                <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs"
+                    style="border:none; background-color:inherit !important; margin:0 0 10px; padding:0; box-sizing:border-box;">
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_features" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-arrow-circle-right"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Features</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_process" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-cogs"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Configuration</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_process_2" data-toggle="tab" data-bs-toggle="tab" aria-expanded="true"
+                            class="nav-link active"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-cogs"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Process</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_faqs" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-lightbulb-o"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">FAQs</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 0 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_support" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-comments-o"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Support</span>
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <div class="tab-content" style="box-sizing:border-box;">
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane" id="vt_features" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:14px 16px;box-sizing:border-box;">
+                            <div style="box-sizing:border-box;">
+                                <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf8e7;color:#138a27;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Centralized Printer Management
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Imports computers along with their printers and supported paper sizes, allowing administrators to manage all printing devices directly within Odoo.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf2ff;color:#2563eb;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Automated Printing Rules
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Supports configurable Print Rules to automatically print documents based on defined conditions, selected printers, and paper sizes, minimizing manual intervention.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#fff4e8;color:#d6863a;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Print Job Tracking and Logs
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Manages logs for every printing operation, providing real-time tracking of print job status and helping identify any issues quickly.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eefdf7;color:#0f766e;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Streamlined Workflows
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">By combining automated rules, direct printing, and detailed logging, the module ensures efficient, reliable, and error-free printing operations across your Odoo environment.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#f5f3ff;color:#7c3aed;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Increased Efficiency
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Automates document and label printing directly from Odoo to printers via PrintNode, reducing manual printing steps and saving time for your team.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#ecfeff;color:#0891b2;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Direct Label Printing
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Automatically prints shipping or product labels based on delivery method settings, storing label details such as the file, carrier, printer, and related delivery order.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:0;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf8e7;color:#138a27;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Automatic Cleanup
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Removes old print job requests and associated attachments after a set period (e.g., 15 days), keeping the system optimized and clutter-free.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Tab -->
+                    <div class="tab-pane" id="vt_process" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                    To connect your system with PrintNode, some configuration is required. Install the PrintNode desktop application based on your operating system, log in with your PrintNode account credentials, and it will fetch the printers available on your system.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/1.png?v=653b9252eef27bf2f6dd8f6462e1854c" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                    PrintNode Instance Configuration Process
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/2.png?v=edf6e8bb69056956b15832f42e0ed261" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                    Enter the Instance Name and the PrintNode API Key, which can be retrieved from your PrintNode Account
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Note: If you already have a PrintNode account, you can use your existing API key.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/3.png?v=89f653cb38f8b315ec6565026d0a060f" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">04</span>
+                                    If you do not have a PrintNode account, you need to create one and obtain the API key from the PrintNode portal, as shown in the image.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/4.png?v=8b56b3b50af65542a9ebb6bd0ebad3a5" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:0; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">05</span>
+                                    After entering the API key, click Sync PrintNode Data to retrieve all the data such as systems, printers, and papers from PrintNode.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/5.png?v=55be1b47e4459e2d48b4b1f2b3d7876d" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Tab -->
+                    <div class="tab-pane show active" id="vt_process_2" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                    By clicking the Sync PrintNode Data button, you will retrieve all computers and their corresponding printers along with their paper formats. You can view these computers and printers using the smart buttons and also from the configuration menus.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/6.png?v=4b2ab3a79ca5f037053b8b490fffc1d4" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                    You can view the imported printers from PrintNode along with all the related information such as status, computer, and paper formats.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/7.png?v=886128d346bf484fc9560f36c82e1fc5" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/8.png?v=ffd7265825bf971d29dd288a6a78ceea" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                    Here you can view all the information related to the imported computer, including its ID and status of the computers.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/9.png?v=26a5cc7b6e365945167ca4238423ea83" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">04</span>
+                                    All paper formats imported from PrintNode can be viewed here.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/10.png?v=94a2f10cfff25a0223f41e017af47a4e" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">05</span>
+                                    Now that all available printers and computers have been synchronized for direct printing, you just need to enable the Direct Printing option for Report Printing and Print Shipping Label for Labels printing. Enable this option at both the User and Company levels, and then select the default printer and paper format.
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">The default printer and paper format are used when no specific printer is selected for printing a document and for printing a label.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/11.png?v=270f49c05d5b978ed9d6dcdc692eacdd" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/12.png?v=d2db9b6818d8bd4ffe9c5be79f490311" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">06</span>
+                                    Now in the Print Rules menu, you can see all the available printing rules. You just need to activate the rule you want to use.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/13.png?v=6a870289ebaacc35d46879f25776f94c" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">07</span>
+                                    When you click on a specific rule, you just need to activate it and select the printer, paper format and copies. If you want to print only specific records, you can add filters (domain conditions) so that the print job is created only when the conditions are satisfied.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/14.png?v=0ac34ca79632469e81eaf11f2ae4b330" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">08</span>
+                                    We created a sales order for Azure Interior. When the order is confirmed, a print job is automatically created and the document is printed instantly. This enables effortless printing with no need to download the document, improving overall efficiency.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/15.png?v=83ec5b4ebab7f8402a32fb7fecfdee7d" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">09</span>
+                                    After confirming the sales order, a print job request is created in the Print Job menu. You can view the print job record with the status Done, which indicates that the document was printed successfully through PrintNode.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/16.png?v=34946ce255d8f968d463e850256ac819" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">10</span>
+                                    PrintNode Connector includes a logger to track all operation records between Odoo and PrintNode. you can see the log details for import process of Computers and Printers, You can open each record to review its detailed information directly in the logbook.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/17.png?v=f18789626026c04ff6f22999b64ab129" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">11</span>
+                                    After configuring the settings at the Company level, you also need to configure the Delivery Method settings for PrintNode. For each delivery method, select the printer, paper format, and number of copies. You can assign a specific printer to each delivery method to ensure reliable and accurate printing.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/18.png?v=68db7f7b87865eca0fbd215fbed4502b" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">12</span>
+                                    Now everything is set to print the shipping label directly through PrintNode. When you validate the order, the label is generated and automatically printed via PrintNode.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/19.png?v=8b780e77c0c1432592b1f7c0f982d960" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">13</span>
+                                    You can view all the details related to shipping labels in the Print Job → Shipping Labels menu. Also we have a option to reprint that specific label using Print Label button.
+same you can view the log book to tack label records between odoo and PrintNode.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/20.png?v=dbe8bf6612f58dfe389f695177e80ba0" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">14</span>
+                                    You can also print a specific report by clicking the Print option from the Actions menu. To enable this feature, some configuration is required. Navigate to Settings &gt; Report , where you can grant users permission to print specific reports. In this section, you can also configure the printer and paper format that should be used for printing the report.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/21.png?v=abc40446e1554bfcf40cc2cb4ff8eadb" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">15</span>
+                                    Create a Sales Order and confirm it. Then, from the Actions → Print → PDF Quote server action, open the Print Wizard. In the wizard, enter the number of copies you want to print and click Print. The document will be printed directly through PrintNode, and a print job request will be created. You can also track this operation in the Log Book.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/22.png?v=c8498284215d029e599655e002926402" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/23.png?v=dd44c246be0c78e9be7a4e4dfd8932af" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">16</span>
+                                    A print job request is created in the Print Job menu. You can view the print job record with the status Done, which indicates that the document was printed successfully through PrintNode.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/24.png?v=6ce59171dd00693670c07a99766c58d3" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">17</span>
+                                    If you want to view the document, simply click Open in the print wizard. The document will open in your browser, So no need to download the PDF to open.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/25.png?v=1970bb9b6acee32c5385d225becde624" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/26.png?v=fea249edac34fc86086a59848ae7aa5b" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:0; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">18</span>
+                                    We also have a cron job that runs daily to delete print jobs older than 15 days, To keep the system clean and optimized.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/printnode_odoo_connector/static/description/img/27.png?v=db94bbc93d9cd359a6997baa10df20ab" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQs Tab -->
+                    <div class="tab-pane" id="vt_faqs" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What types of printers are supported by this module?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Our module supports all type of printers, including ZPL, ESC/POS, and network printers. And can Print Document based on printer</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Can I print shipping labels for any carrier?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes, you can print shipping labels for any carrier once the PrintNode configuration is properly set up.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Can I track print operations?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes, the module includes a logger that records all operations between Odoo and PrintNode. Each print job’s details can be viewed directly in the Log Book, including status, system, printer, and paper information.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eefdf7; color:#0f766e; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Can multiple copies be printed?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes, when using the Print Wizard or report printing, you can specify the number of copies to print.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#f5f3ff; color:#7c3aed; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Are all printing rules built-in, and can I customize them?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes, all rules come pre-configured (built-in). You can also customize each rule by selecting the printer, paper format, and adding filters or domain conditions to control which records are printed.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#ecfeff; color:#0891b2; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What happens if a printer is not configured in the rules?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">If no printer is configured for a rule, the system will use the default printer and paper format set at the User or Company level to print the document.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Will I receive Configuration support and upgrades upon buying the application?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes, We offer free support for the initial 60 days after the purchase date.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:0; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                I would like to request a custom feature for this application. What’s the process to get it implemented?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">We’re happy to help tailor the application to meet your business needs! You can reach us via sales@vrajatechnologies.com</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support Tab -->
+                    <div class="tab-pane" id="vt_support" role="tabpanel" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:22px;box-sizing:border-box;">
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:22px;padding:22px;box-sizing:border-box;">
+                                <div style="width:100%;background-color:#f8fbf8;border:1px solid #d9e7d7;border-radius:22px;padding:26px 28px;margin-bottom:18px;box-sizing:border-box;">
+                                    <div class="d-none d-lg-block">
+                                        <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:108px;vertical-align:top;padding:0 20px 0 0;box-sizing:border-box;">
+                                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;box-sizing:border-box;">
+                                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                        <h3 style="color:#123d73;font-size:27px;font-weight:900;line-height:1.2;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:8px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;margin:0 auto 16px;box-sizing:border-box;">
+                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                        </div>
+                                        <h3 style="color:#123d73;font-size:24px;font-weight:900;line-height:1.25;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:6px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin:0 -8px;box-sizing:border-box;">
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;box-sizing:border-box;">
+                                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Policy</div>
+                                                                <a href="https://vrajatechnologies.com/support-policy" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#fff9f2;border:1px solid #f2c487;border-radius:11px;padding:11px 10px;color:#d36c00!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/support-policy</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Scan for Support -->
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 10px;box-sizing:border-box;">Scan for Support</h4>
+                                                                                <div style="margin:8px 0 0;text-align:left;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:170px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Scan for Support</h4>
+                                                                <div style="width:100%;text-align:center;margin:0;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:150px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0 auto;box-sizing:border-box;">
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-qrcode" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tabs Section End -->
+
+<!-- Discover Trending Addons Section Start -->
+    <section class="oe_container"
+        style="color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding: 30px 20px 15px; box-sizing:border-box; margin:0; ;"
+        id="TrendingApps">
+        <div class="container" style="margin:0 auto; box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 10px; box-sizing:border-box;">
+                <span
+                    style="background-color:#eaf2ff; border-radius:999px; color:#2563eb; font-size:13px; font-weight:800; padding:8px 16px; margin-bottom:14px;">
+                    <i class="fa fa-cubes" style="font-family:FontAwesome !important; margin-right:6px;"></i>
+                    Discover Trending Apps
+                </span>
+            </div>
+
+            <div class="row" style="margin-left:-10px; margin-right:-10px; box-sizing:border-box;">
+                <!-- Advanced Shipping Dashboard -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf2ff; color:#2563eb; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-calculator"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Advanced Shipping Dashboard
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Shipping Dashboard for Odoo is designed to give businesses a complete overview of their delivery and shipment operations in one place. The dashboard provides real-time shipment insights using charts, graphs, filters, and detailed delivery order information.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/advanced_shipping_dashboard" target="_blank"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batch Shipping Process -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf8e7; color:#138a27; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-tasks"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Batch Shipping Process
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Process multiple delivery orders at once, validate transfers, and generate shipping labels automatically using the selected or default carrier.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/batch_shipping_process_integration" target="_blank"
+                                    style="background-color:#138a27 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping(Manifest) Reports -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#fff4e8; color:#d6863a; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-file-text-o"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Shipping(Manifest) Reports
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Generate shipping manifest records and reports dynamically in Odoo based on selected shipping services. This app helps you create, manage, and download carrier-wise manifest reports for smoother shipment processing.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/all_in_one_shipping_report" target="_blank"
+                                    style="background-color:#d6863a !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Shipping Cost Calculation -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eef2ff; color:#4f46e5; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-money"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Custom Shipping Cost Calculation
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Set your own shipping charges for third-party carriers using fixed prices or custom rules. Perfect when live carrier rates are unavailable or when you want to control shipping costs in Odoo.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/base_shipping_integration" target="_blank"
+                                    style="background-color:#4f46e5 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Calculation | Auto Package Selection in Odoo -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#ecfdf5; color:#0f766e; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-cubes"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Package Calculation | Auto Package Selection in Odoo
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Automatically select the best-fit package based on product dimensions, weight, package size, and configured packing rules in Odoo.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/package_calculation_vts" target="_blank"
+                                    style="background-color:#0f766e !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Shipping rate -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eefdf7; color:#0f8b6f; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-money"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Custom Shipping rate
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Custom Shipping Rate allows you to define and apply your own shipping charges in Odoo using fixed prices or rule-based cost calculation.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/custom_shipping_rate" target="_blank"
+                                    style="background-color:#0f8b6f !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fetch rate for all Shipping Carriers -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#fff7ed; color:#ea580c; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-line-chart"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Fetch rate for all Shipping Carriers
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Compare shipping rates from all active carriers in Odoo with a single click and view available options in one easy table.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/fetch_all_shipping_carrier_rates" target="_blank"
+                                    style="background-color:#ea580c !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculate Shipping Deadline Date -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#f0f9ff; color:#0284c7; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-calendar-check-o"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Calculate Shipping Deadline Date
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Automatically calculate shipping deadlines for orders based on cutoff times, working days, holidays, and company shipping policies.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/shipping_deadline_date" target="_blank"
+                                    style="background-color:#0284c7 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- Discover Shipping Addons Section End -->
+
+    <!-- Discover Shipping Addons Section End -->
+
+    <!-- CTA Section Start -->
+    <section class="oe_container"
+        style="background-color:#f7fbff; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:34px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+            <div
+                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:26px; padding:clamp(18px, 3.5vw, 30px); box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box; margin: 0px 9px;">
+                <div class="row align-items-center"
+                    style="margin-left:-12px; margin-right:-12px; box-sizing:border-box;">
+
+                    <div class="col-12 col-lg-7" style="padding:12px; box-sizing:border-box;">
+                        <table
+                            style="border-collapse:collapse; border-spacing:0; margin:0 0 12px; box-sizing:border-box;">
+                            <tr>
+                                <td style="vertical-align:middle; padding:0 10px 0 0; box-sizing:border-box;">
+                                    <span
+                                        style="color:#123d73; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; line-height:1; box-sizing:border-box;">
+                                        <i class="fa fa-check-circle"
+                                            style="font-family:FontAwesome !important; font-size:clamp(25px, 3.5vw, 33px);  margin-right:5px; vertical-align:middle;"></i>
+                                    </span>
+                                </td>
+                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                    <h2
+                                        style="color:#123d73; font-family:sans-serif !important; font-size:clamp(18px, 4.5vw, 28px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                                        Explore Before Purchase
+                                    </h2>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p
+                            style="color:#138a27; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.45; margin:0 0 12px; box-sizing:border-box;">
+                            Start with a free trial
+                        </p>
+
+                        <p
+                            style="color:#526b96; font-size:clamp(13px, 3.4vw, 15px); line-height:1.7; margin:0 0 18px; box-sizing:border-box;">
+                            Test the connector with your real workflows using our 15-day free trial. If you need help,
+                            our product experts will guide you throughout the trial.
+                        </p>
+
+                        <div class="row" style="margin-left:-7px; margin-right:-7px; box-sizing:border-box;">
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="mailto:sales@vrajatechnologies.com?subject=PrintNode%20Odoo%20Connector%20%7C%20Direct%20Print"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:55px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(37,99,235,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-calendar-check-o"
+                                        style="font-family:FontAwesome !important; font-size:17px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">Request Demo</span>
+                                </a>
+                            </div>
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="https://api.whatsapp.com/send/?phone=917359628466&amp;text&amp;type=phone_number&amp;app_absent=0"
+                                    target="_blank"
+                                    style="background-color:#13a579 !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:50px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(19,165,121,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-whatsapp"
+                                        style="font-family:FontAwesome !important; font-size:20px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">+91 73596 28466</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5" style="padding:12px; box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; height:100%; box-sizing:border-box;">
+                            <table
+                                style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                        style="width:62px; vertical-align:top; padding:0 15px 0 0; box-sizing:border-box;">
+                                        <div
+                                            style="background-color:#eaf2ff; color:#2563eb; border-radius:18px; width:52px; height:52px; line-height:52px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-check-square-o"
+                                                style="font-family:FontAwesome !important; font-size:24px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                            style="color:#123d73; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.35; margin:0 0 8px; box-sizing:border-box;">
+                                            Test the connector with your real workflows.
+                                        </h4>
+                                        <p
+                                            style="color:#526b96; font-size:13px; line-height:1.65; margin:0 0 12px; box-sizing:border-box;">
+                                            Our product experts will guide you during the trial to help you evaluate,
+                                            configure, and use the connector with confidence.
+                                        </p>
+                                        <div style="box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">15-Day
+                                                Trial</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Expert
+                                                Guidance</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Real
+                                                Workflow Testing</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section End -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

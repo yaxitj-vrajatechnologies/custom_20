@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_qkb_bill_payment_ca_form" model="ir.ui.view">
+        <field name="name">qbo.bill.payment.ca.map.vts.form</field>
+        <field name="model">qbo.bill.payment.ca.map.vts</field>
+        <field name="arch" type="xml">
+            <form string="Quickbooks Bill Payment">
+                <sheet>
+                    <group>
+                        <field name="quickbook_instance_id" readonly="1"/>
+                        <field name="quickbook_bill_payment_id" readonly="1"/>
+                        <field name="payment_id" readonly="1"/>
+                        <field name="quickbook_bill_payment_number"/>
+                        <field name="partner_id"/>
+                        <field name="company_id"/>
+                        <field name="qbo_response" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_qbk_bill_payment_filter" model="ir.ui.view">
+        <field name="name">qbo.bill.payment.ca.map.vts.search</field>
+        <field name="model">qbo.bill.payment.ca.map.vts</field>
+        <field name="arch" type="xml">
+            <search string="Search QuickBooks Bill Payment Map">
+                <field name="payment_id"
+                       string="Account"
+                       filter_domain="['|', '|',('quickbook_bill_payment_id', 'ilike', self),
+                           ('quickbook_bill_payment_number', 'ilike', self),('partner_id.name', 'ilike', self)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_qkb_bill_payment_ca_list" model="ir.ui.view">
+        <field name="name">qbo.bill.payment.ca.map.vts.list</field>
+        <field name="model">qbo.bill.payment.ca.map.vts</field>
+        <field name="arch" type="xml">
+            <list string="Quickbooks Bill Payment" editable="bottom">
+                <field name="quickbook_instance_id" readonly="1"/>
+                <field name="quickbook_bill_payment_id" readonly="1"/>
+                <field name="quickbook_bill_payment_number"/>
+                <field name="partner_id"/>
+                <field name="payment_id" readonly="1"/>
+                <button name="bill_payment_mapping_view" type="object" string="View" class="btn btn-link"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_qkca_bill_payment_map" model="ir.actions.act_window">
+        <field name="name">Quickbooks Vendor Payment</field>
+        <field name="res_model">qbo.bill.payment.ca.map.vts</field>
+        <field name="view_mode">list</field>
+    </record>
+    <menuitem id="menu_qkca_vill_payment"
+              name="Vendor Payment"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="action_qkca_bill_payment_map" sequence="5"/>
+</odoo>

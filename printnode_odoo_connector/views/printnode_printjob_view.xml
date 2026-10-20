@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="printnode_printjob_form_view" model="ir.ui.view">
+            <field name="name">printnode.printjob.form.view</field>
+            <field name="model">printnode.printjob.vts</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Print Job" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <field name="create_date" string="Date"/>
+                            <field name="printnode_instance_id"/>
+                            <field name="printjob_id" readonly="1"/>
+                            <field name="description" invisible="1"/>
+                            <field name="printer_id"/>
+                            <field name="attachment_id"/>
+                            <field name="print_status"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="printnode_printjob_list_view" model="ir.ui.view">
+            <field name="name">printnode.printjob.list.view</field>
+            <field name="model">printnode.printjob.vts</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Print Jobs" create="false" edit="false">
+                    <field name="create_date" string="Date"/>
+                    <field name="printnode_instance_id"/>
+                    <field name="printjob_id" readonly="1"/>
+<!--                    <field name="description" invisible="1"/>-->
+                    <field name="printer_id"/>
+                    <field name="attachment_id"/>
+                    <field name="print_status"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="action_printnode_printjob_menu" model="ir.actions.act_window">
+            <field name="name">Document Print Jobs</field>
+            <field name="res_model">printnode.printjob.vts</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="printnode_printjob_menu"
+                  name="Print Job"
+                  parent="main_menu_root"
+                  sequence="10"/>
+        <menuitem id="printnode_printjob_document_menu"
+                  name="Document Print Jobs"
+                  parent="printnode_odoo_connector.printnode_printjob_menu"
+                  sequence="5"
+                  action="action_printnode_printjob_menu"/>
+    </data>
+</odoo>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_quickbooks_failed_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+                <t t-set="safe_data" t-value="data or {}"/>
+                <t t-set="move_ids" t-value="safe_data.get('move_records') or []"/>
+                <t t-set="payment_ids" t-value="safe_data.get('payment_records') or []"/>
+                <t t-set="move_records"
+                   t-value="move_ids and env['account.move'].browse(move_ids) or env['account.move']"/>
+                <t t-set="payment_records"
+                   t-value="payment_ids and env['account.payment'].browse(payment_ids) or env['account.payment']"/>
+
+                <div class="page">
+                    <h2 style="text-align:center;">QuickBooks Export Failure Report</h2>
+
+                    <t t-if="move_records and move_records.ids">
+                        <h3 style="margin-top:20px;">Invoice and Bill</h3>
+                        <table style="width:100%; border-collapse:collapse; margin-top:10px;">
+                            <thead>
+                                <tr style="background-color:#f2f2f2;">
+                                    <th style="border:1px solid #000; padding:6px;">Number</th>
+                                    <th style="border:1px solid #000; padding:6px;">Type</th>
+                                    <th style="border:1px solid #000; padding:6px;">Customer</th>
+                                    <th style="border:1px solid #000; padding:6px;">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="move_records" t-as="rec" t-foreach-index="idx">
+                                    <tr>
+                                        <td style="border:1px solid #000; padding:6px;">
+                                            <t t-esc="rec.name or rec.ref or rec.display_name or ''"/>
+                                        </td>
+                                        <td style="border:1px solid #000; padding:6px;">
+                                            <t t-esc="'Invoice' if rec.move_type in ['out_invoice', 'out_refund'] else 'Bill'"/>
+                                        </td>
+                                        <td style="border:1px solid #000; padding:6px;">
+                                            <t t-esc="rec.partner_id.name or ''"/>
+                                        </td>
+                                        <td style="border:1px solid #000; padding:6px;">
+                                            <t t-esc="rec.invoice_date or rec.date or ''"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+
+                    <t t-if="payment_records and payment_records.ids">
+                        <h3 style="margin-top:30px;">Payments</h3>
+                        <table style="width:100%; border-collapse:collapse; margin-top:10px;">
+                            <thead>
+                                <tr style="background-color:#f2f2f2;">
+                                    <th style="border:1px solid #000; padding:6px;">Payment Reference</th>
+                                    <th style="border:1px solid #000; padding:6px;">Type</th>
+                                    <th style="border:1px solid #000; padding:6px;">Customer</th>
+                                    <th style="border:1px solid #000; padding:6px;">Amount</th>
+                                    <th style="border:1px solid #000; padding:6px;">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="payment_records" t-as="pay" t-foreach-index="idx">
+                                    <tr>
+                                        <td style="border:1px solid #000; padding:6px;">
+                                            <t t-esc="pay.name or pay.ref or ''"/>
+                                        </td>
+                                        <td style="border:1px solid #000; padding:6px;">
+                                            <t t-esc="'Receiver' if pay.payment_type == 'inbound' else 'Sender'"/>
+                                        </td>
+
+                                        <td style="border:1px solid #000; padding:6px;">
+                                            <t t-esc="pay.partner_id.name or ''"/>
+                                        </td>
+                                        <td style="border:1px solid #000; padding:6px;">
+                                            <t t-esc="'%.2f' % pay.amount if pay.amount else '0.00'"/>
+                                        </td>
+                                        <td style="border:1px solid #000; padding:6px;">
+                                            <t t-esc="pay.date or ''"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_quickbooks_failed_document" model="ir.actions.report">
+        <field name="name">QuickBooks Failed Records</field>
+        <field name="model">quickbooks.connect</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">quickbooks_common_connector_vts.report_quickbooks_failed_document</field>
+    </record>
+
+</odoo>

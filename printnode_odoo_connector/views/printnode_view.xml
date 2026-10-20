@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="printnode_connect_form_view" model="ir.ui.view">
+        <field name="name">printnode.connect.form</field>
+        <field name="model">printnode.connect</field>
+        <field name="arch" type="xml">
+            <form string="PrintNode Connect">
+                <header>
+                    <button name="sync_all_printnode_data"
+                            string="Sync PrintNode Data"
+                            type="object"
+                            class="oe_highlight" invisible="not printnode_api_key"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_printnode_printer"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="print">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Printers</span>
+                                <span class="o_stat_value">
+                                    <field name="printnode_printer_count"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button name="action_printnode_computer"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="desktop_windows">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Computers</span>
+                                <span class="o_stat_value">
+                                    <field name="printnode_computer_count"/>
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="printnode_api_key" required="1"/>
+                        </group>
+                        <group>
+                            <field name="printnode_api"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="printnode_connect_list_view" model="ir.ui.view">
+        <field name="name">printnode.connect.list</field>
+        <field name="model">printnode.connect</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="printnode_api_key"/>
+                <field name="printnode_api"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_printnode_connect" model="ir.actions.act_window">
+        <field name="name">PrintNode Instance</field>
+        <field name="res_model">printnode.connect</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- menus -->
+    <menuitem id="main_menu_root"
+              name="PrintNode"
+              web_icon="printnode_odoo_connector,static/description/icon.png"
+              sequence="1"/>
+
+    <menuitem id="main_connection_menu"
+              name="Instance"
+              action="action_printnode_connect"
+              parent="main_menu_root"
+              sequence="2"/>
+    <menuitem id="printnode_config_menu"
+              name="Configurations"
+              parent="main_menu_root"
+              sequence="50"/>
+</odoo>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!--log tree view-->
+        <record id="view_printnode_log_list_view" model="ir.ui.view">
+            <field name="name">printnode.log.vts.list</field>
+            <field name="model">printnode.log.vts</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Process Detail" create='false'>
+                    <field name="name"/>
+                    <field name="printnode_opr_type"/>
+                    <field name="printnode_opr_name"/>
+                    <field name="printnode_opr_message"/>
+                    <field name="create_date"/>
+                </list>
+            </field>
+        </record>
+
+        <!--  Printnode logs from views  -->
+        <record id="view_printnode_log_form_view" model="ir.ui.view">
+            <field name="name">printnode.log.vts.form</field>
+            <field name="model">printnode.log.vts</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Process Detail" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="printnode_opr_name"/>
+                                <field name="printnode_opr_type"/>
+                            </group>
+                            <group>
+                                <field name="create_date"/>
+                                <field name="printnode_instance_id"/>
+                                <field name="printnode_opr_message"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Log Line" name="process_detail_line">
+                                <field name="printnode_opr_line_ids" readonly="1">
+                                    <list decoration-danger="fault_operation==True"
+                                          decoration-success="fault_operation==False">
+                                        <field name="fault_operation"/>
+                                        <field name="printnode_opr_message"/>
+                                    </list>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="printnode_opr_type"/>
+                                                    <field name="printnode_opr_name"/>
+                                                    <field name="printnode_instance_id" invisible="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="fault_operation"/>
+                                                    <field name="printnode_opr_message"/>
+                                                </group>
+                                            </group>
+                                            <notebook>
+                                                <page name="request" string="Request Data">
+                                                    <field name="process_request_message" widget="ace"/>
+                                                </page>
+                                                <page string="Response Data" name="response">
+                                                    <field name="process_response_message" widget="ace"/>
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter reload_on_post="True"/>
+                </form>
+            </field>
+        </record>
+
+        <!-- log line tree view-->
+        <record id="printnode_log_line_tree_view" model="ir.ui.view">
+            <field name="name">printnode.log.line</field>
+            <field name="model">printnode.log.vts.line</field>
+            <field name="arch" type="xml">
+                <list string="Process Detail Line" create='false'>
+                    <field name="printnode_opr_id"/>
+                    <field name="printnode_opr_type"/>
+                    <field name="printnode_opr_name"/>
+                    <field name="printnode_opr_message"/>
+                    <field name="create_date"/>
+                </list>
+            </field>
+        </record>
+        <record id="view_printnode_log_line_form_view" model="ir.ui.view">
+            <field name="name">printnode.log.line</field>
+            <field name="model">printnode.log.vts.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Process Detail Line" create="false" edit="false">
+                    <sheet>
+                        <group readonly="1">
+                            <group>
+                                <field name="printnode_opr_id"/>
+                                <field name="printnode_opr_name"/>
+                                <field name="printnode_opr_type"/>
+                                <field name="printnode_instance_id"/>
+                            </group>
+                            <group>
+                                <field name="printnode_opr_message"/>
+                                <field name="process_request_message"/>
+                                <field name="process_response_message"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <chatter reload_on_post="True"/>
+                </form>
+            </field>
+        </record>
+        <!-- action log-->
+        <record id="action_printnode_log" model="ir.actions.act_window">
+            <field name="name">PrintNode Log</field>
+            <field name="res_model">printnode.log.vts</field>
+            <field name="view_id" ref="view_printnode_log_list_view"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    PrintNode Process Logs will display here
+                </p>
+            </field>
+        </record>
+
+        <!-- action log line-->
+        <record id="action_printnode_log_line" model="ir.actions.act_window">
+            <field name="name">PrintNode Log Line</field>
+            <field name="res_model">printnode.log.vts.line</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    PrintNode Process Log Lines will display here
+                </p>
+            </field>
+            <field name="domain">[('fault_operation', '=', True)]</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id="printnode_log_sequence" model="ir.sequence">
+            <field name="name">PrintNode log sequence</field>
+            <field name="code">printnode.log.vts</field>
+            <field name="padding">5</field>
+            <field name="prefix">Process-</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+
+    <!-- Log Menu & it's Items -->
+    <menuitem id="Printnode_log_menu"
+              name="Logs"
+              parent="printnode_odoo_connector.main_menu_root"
+              sequence="11"/>
+
+    <menuitem id="menu_printnode_log"
+              name="Log Book"
+              parent="printnode_odoo_connector.Printnode_log_menu"
+              sequence="1"
+              action="action_printnode_log"/>
+
+    <menuitem id="menu_printnode_log_line"
+              name="Log Book Line"
+              parent="printnode_odoo_connector.Printnode_log_menu"
+              sequence="2"
+              action="action_printnode_log_line"/>
+</odoo>
+
+

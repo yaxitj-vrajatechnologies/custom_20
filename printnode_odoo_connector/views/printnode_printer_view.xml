@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="printnode_printer_list_view" model="ir.ui.view">
+        <field name="name">printnode.printer.vts.list.view</field>
+        <field name="model">printnode.printer.vts</field>
+        <field name="arch" type="xml">
+            <list string="PrintNode Printers" create="false">
+                <field name="printnode_instance_id"/>
+                <field name="name"/>
+                <field name="printer_id"/>
+                <field name="computer_id"/>
+                <field name="status"/>
+                <field name="is_printer_active" width="120"/>
+            </list>
+        </field>
+    </record>
+    <record id="printnode_printer_form_view" model="ir.ui.view">
+        <field name="name">printnode.printer.form.view</field>
+        <field name="model">printnode.printer.vts</field>
+        <field name="arch" type="xml">
+            <form string="PrintNode Printer">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <separator string="Printer Information"/>
+
+                    <group col="2">
+                        <group>
+                            <field name="printer_id" readonly="1"/>
+                            <field name="computer_id" readonly="1"/>
+                            <field name="printnode_instance_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="status"/>
+                            <field name="is_printer_active"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <separator string="Papers"/>
+                    <group>
+                        <field name="paper_ids" widget="many2many_tags" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_printnode_printers" model="ir.actions.act_window">
+        <field name="name">PrintNode Printers</field>
+        <field name="res_model">printnode.printer.vts</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="printnode_printer_menu"
+              name="Printers"
+              action="action_printnode_printers"
+              parent="printnode_odoo_connector.printnode_config_menu"
+              sequence="2"/>
+</odoo>
+

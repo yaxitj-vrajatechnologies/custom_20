@@ -26,7 +26,7 @@
                         <button name="action_qck_customer"
                                 type="object"
                                 class="oe_stat_button"
-                                icon="fa-user">
+                                icon="group">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Customer</span>
                                 <span class="o_stat_value">
@@ -37,7 +37,7 @@
                         <button name="action_qck_account"
                                 type="object"
                                 class="oe_stat_button"
-                                icon="fa-book">
+                                icon="account_tree">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Accounts</span>
                                 <span class="o_stat_value">
@@ -48,7 +48,7 @@
                         <button name="action_qck_taxes"
                                 type="object"
                                 class="oe_stat_button"
-                                icon="fa-dollar">
+                                icon="attach_money">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Taxes</span>
                                 <span class="o_stat_value">
@@ -59,7 +59,7 @@
                         <button name="action_qck_payment_terms"
                                 type="object"
                                 class="oe_stat_button"
-                                icon="fa-credit-card">
+                                icon="credit_card">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Payment Terms</span>
                                 <span class="o_stat_value">
@@ -70,7 +70,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="name"/>
+                            <field name="name" required="1"/>
                         </group>
                         <group>
                             <field name="qk_company_id" invisible="state != 'connected'"/>
@@ -121,9 +121,9 @@
 
     <record id="action_quickbook_customer_id" model="ir.actions.act_window">
         <field name="name">Quickbook Customer</field>
-        <field name="res_model">res.partner</field>
-        <field name="view_id" ref="base.view_partner_tree"/>
-        <field name="domain">[('qck_instance_id', '=', active_id)]</field>
+        <field name="res_model">qbo.partner.map.vts</field>
+        <field name="view_id" ref="quickbooks_common_connector_vts.view_qbo_partner_map_list"/>
+        <field name="domain">[('quickbook_instance_id', '=', active_id)]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Quickbooks Customer will display here
@@ -134,8 +134,7 @@
     <record id="action_quickbook_account_moves" model="ir.actions.act_window">
         <field name="name">Quickbooks Invoice / Bills</field>
         <field name="res_model">account.move</field>
-        <field name="domain">[('qck_instance_id', '=', active_id)]
-        </field>
+        <field name="domain">[('qck_instance_id', '=', active_id)]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 QuickBooks Invoice / Bills linked to this instance will display here.
@@ -145,7 +144,8 @@
     <record id="action_quickbook_payments" model="ir.actions.act_window">
         <field name="name">QuickBooks Payments</field>
         <field name="res_model">account.payment</field>
-        <field name="domain">[('qck_instance_id', '=', active_id)]</field>
+        <field name="domain">[('qck_instance_id', '=', active_id)]
+        </field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 All QuickBooks customer and vendor payments will display here.
@@ -157,7 +157,7 @@
     <record id="quickbooks_connect_kanban" model="ir.ui.view">
         <field name="name">quickbooks.connect.kanban</field>
         <field name="model">quickbooks.connect</field>
-        <field name="arch" type="xml">
+        <field name="arch" type="html">
             <kanban class="oe_background_grey o_kanban_dashboard o_account_kanban">
                 <field name="name"/>
                 <templates>
@@ -173,38 +173,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container o_kanban_card_content fa-2x">
-                                <div class="row mt10">
-                                    <div class="col-4 border-right text-center">
+                            <div class="container o_kanban_card_content">
+                                <div class="row mt-2">
+                                    <div class="col-4 text-center">
                                         <a name="%(quickbooks_common_connector_vts.action_quickbook_customer_id)d"
                                            type="action"
                                            class="d-flex flex-column align-items-center">
-                                            <span class="fa-stack fa-lg" title="Customers">
-                                                <i class="fa fa-square-o fa-stack-2x"/>
-                                                <i class="fa fa-users fa-stack-1x"/>
-                                            </span>
+                                            <i class="oi oi-4x" data-icon="group" title="Customers"/>
                                             <span class="text-muted">Customer</span>
                                         </a>
                                     </div>
-                                    <div class="col-4 border-right text-center">
+                                    <div class="col-4 text-center">
                                         <a name="%(quickbooks_common_connector_vts.action_quickbook_account_moves)d"
                                            type="action"
                                            class="d-flex flex-column align-items-center">
-                                            <span class="fa-stack fa-lg" title="Invoice/Bill">
-                                                <i class="fa fa-square-o fa-stack-2x"/>
-                                                <i class="fa fa-file-text-o fa-stack-1x"/>
-                                            </span>
+                                            <i class="oi oi-4x" data-icon="task" title="Invoice/Bill"/>
                                             <span class="text-muted">Invoice/Bill</span>
                                         </a>
                                     </div>
-                                    <div class="col-4 border-right text-center">
+                                    <div class="col-4 text-center">
                                         <a name="%(quickbooks_common_connector_vts.action_quickbook_payments)d"
                                            type="action"
                                            class="d-flex flex-column align-items-center">
-                                            <span class="fa-stack fa-lg" title="Payments">
-                                                <i class="fa fa-square-o fa-stack-2x"/>
-                                                <i class="fa fa-credit-card fa-stack-1x"/>
-                                            </span>
+                                            <i class="oi oi-4x" data-icon="credit_card" title="Payments"/>
                                             <span class="text-muted">Payments</span>
                                         </a>
                                     </div>
@@ -215,7 +206,7 @@
                                                 type="object" class="btn btn-primary"
                                                 t-attf-style="border-radius:12px;">
                                             <span>
-                                                <i class="fa fa-hand-o-right fa-1x" aria-hidden="true"/>
+                                                <i class="oi" data-icon="east" aria-hidden="true"/>
                                                 Operations
                                             </span>
                                         </button>
@@ -225,7 +216,7 @@
                                                 type="object" class="btn btn-primary"
                                                 t-attf-style="border-radius:12px;">
                                             <span>
-                                                <i class="fa fa-file-text-o fa-1x" aria-hidden="true"/>
+                                                <i class="oi" data-icon="task" aria-hidden="true"/>
                                                 Logs
                                             </span>
                                         </button>
@@ -274,12 +265,41 @@
     </record>
 
     <!-- Menu -->
-    <menuitem id="menu_quickbooks_root" name="QuickBooks online"
+    <menuitem id="menu_quickbooks_root" name="QuickBooks"
               web_icon="quickbooks_common_connector_vts,static/description/icon.png"/>
 
     <menuitem id="menu_quickbooks_connect"
               name="QuickBooks Connect"
               parent="menu_quickbooks_root"
               action="action_quickbooks_connect"/>
+
+
+    <menuitem id="main_mapping_menu" name="Mapping" parent="quickbooks_common_connector_vts.menu_quickbooks_root"/>
+
+
+    <menuitem id="menu_qbo_partner_map"
+              name="Customers"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="quickbooks_common_connector_vts.action_qbo_partner_map" sequence="1"/>
+
+    <menuitem id="menu_qbo_account"
+              name="Accounts"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="quickbooks_common_connector_vts.action_qbo_account" sequence="1"/>
+
+    <menuitem id="menu_qbo_taxes"
+              name="Taxes"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="quickbooks_common_connector_vts.action_qbo_taxes" sequence="1"/>
+
+    <menuitem id="menu_qbo_payment_terms"
+              name="Payment Terms"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="quickbooks_common_connector_vts.action_qbo_payment_terms" sequence="1"/>
+
+    <menuitem id="menu_qbo_payment_method"
+              name="Payment Method"
+              parent="quickbooks_common_connector_vts.main_mapping_menu"
+              action="quickbooks_common_connector_vts.action_qbo_payment_method_map" sequence="1"/>
 
 </odoo>

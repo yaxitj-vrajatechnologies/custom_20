@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="printnode_computer_list_view" model="ir.ui.view">
+        <field name="name">printnode.computer.list.view</field>
+        <field name="model">printnode.computer.vts</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="PrintNode Computers" editable="bottom" create="false" edit="false">
+                <field name="printnode_instance_id" readonly="1"/>
+                <field name="printnode_computer_id" readonly="1"/>
+                <field name="name"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <!--        PrintNode Computer Menu Action-->
+    <record id="action_printnode_computer_menu" model="ir.actions.act_window">
+        <field name="name">Computers</field>
+        <field name="res_model">printnode.computer.vts</field>
+        <field name="view_id" ref="printnode_computer_list_view"/>
+    </record>
+    <menuitem id="printnode_computer_menu"
+              name="Computers"
+              action="action_printnode_computer_menu"
+              parent="printnode_odoo_connector.printnode_config_menu"
+              sequence="1"/>
+</odoo>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="server_action_export_partner_qb" model="ir.actions.server">
+            <field name="name">Export Customers &amp; Vendors to QuickBooks</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+            <field name="state">code</field>
+            <field name="code">action = records.action_instance_wizard_partner()</field>
+        </record>
+
+        <record id="server_action_export_invoice_bill_qb" model="ir.actions.server">
+            <field name="name">Export Invoice &amp; Bill to QuickBooks</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="state">code</field>
+            <field name="code">action = records.action_qbk_instance_for_move()</field>
+        </record>
+
+        <record id="server_action_export_payment_qb" model="ir.actions.server">
+            <field name="name">Export Payment to QuickBooks</field>
+            <field name="model_id" ref="account.model_account_payment"/>
+            <field name="binding_model_id" ref="account.model_account_payment"/>
+            <field name="state">code</field>
+            <field name="code">action = records.action_qbk_instance_for_payment()</field>
+        </record>
+
+        <record id="server_action_export_product_qb" model="ir.actions.server">
+            <field name="name">Export Product to QuickBooks</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">action = records.action_qbk_instance_for_product()</field>
+        </record>
+
+        <record id="excute_export_moves_to_quickbooks" model="ir.cron">
+            <field name="name">Export Invoices/Bills to Quickbooks</field>
+            <field name="model_id" ref="quickbooks_online_odoo_connector.model_quickbooks_connect"/>
+            <field name="interval_number">5</field>
+            <field name="interval_type">days</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="active">False</field>
+            <field name="state">code</field>
+            <field name="code">model.export_account_moves_to_qbk()</field>
+        </record>
+
+        <record id="excute_export_payment_to_quickbooks" model="ir.cron">
+            <field name="name">Export Payment/Bill Payment to Quickbooks</field>
+            <field name="model_id" ref="quickbooks_online_odoo_connector.model_quickbooks_connect"/>
+            <field name="interval_number">5</field>
+            <field name="interval_type">days</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="active">False</field>
+            <field name="state">code</field>
+            <field name="code">model.export_payments_to_qbk()</field>
+        </record>
+        <record id="execute_export_credit_note_to_quickbooks" model="ir.cron">
+            <field name="name">Export Credit Note to Quickbooks</field>
+            <field name="model_id" ref="quickbooks_online_odoo_connector.model_quickbooks_connect"/>
+            <field name="interval_number">5</field>
+            <field name="interval_type">days</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="active">False</field>
+            <field name="state">code</field>
+            <field name="code">model.export_credit_note_to_qbk()</field>
+        </record>
+        <record id="qbk_duplicate_customer_vendor_sequence" model="ir.sequence">
+            <field name="name">Quickbook Customer and Vendor</field>
+            <field name="code">qbk.res.partner</field>
+            <field name="prefix">0</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_user_prefrence_view" model="ir.ui.view">
+            <field name="name">res.users.preferences.form.view</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="PrintNode Settings">
+                        <group string="Printers" name="printing" col="2">
+                            <group>
+                                <field name="printnode_auto_print"/>
+                                <field name="printnode_printer_id" invisible="not printnode_auto_print"/>
+                                <field name="label_printer_id" invisible="not printnode_auto_print"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+        <record id="res_user_inherit_form_view" model="ir.ui.view">
+            <field name="name">PrintNode Settings</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='signature']" position="after">
+                    <group string="Printers" name="printing" col="2">
+                        <field name="printnode_auto_print"/>
+                        <field name="printnode_printer_id" invisible="not printnode_auto_print"/>
+                        <field name="label_printer_id" invisible="not printnode_auto_print"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

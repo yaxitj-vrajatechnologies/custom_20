@@ -7,9 +7,11 @@ import {useService} from "@web/core/utils/hooks";
 export class DynamicPricingAnalysisDashboard extends Component {
     setup() {
         this.orm = useService("orm");
+        this.actionService = useService("action");
+        const props = this.props || {};
 
         this.state = proxy({
-            cardId: this.props.action?.params?.card_id,
+            cardId: props.cardId || props.action?.params?.card_id || props.action?.context?.card_id || false,
             loading: true,
             error: "",
             data: {},
@@ -18,7 +20,6 @@ export class DynamicPricingAnalysisDashboard extends Component {
             impactSearch: "",
             impactFilter: "all",        // all | increase | decrease | hold | skip
         });
-        this.actionService = useService("action");
         this.state.activeView = 'card';
         this.requestSeq = 0;
         this.moneyFormatter = null;
@@ -39,6 +40,7 @@ export class DynamicPricingAnalysisDashboard extends Component {
             type: 'ir.actions.client',
             tag: 'dynamic_pricing_dashboard_template',
             target: 'current',
+            params: {card_id: this.state.cardId},
         });
     }
 
@@ -100,7 +102,7 @@ export class DynamicPricingAnalysisDashboard extends Component {
                 [this.state.cardId]
             );
             if (requestId === this.requestSeq) {
-                this.state.data = data;
+                this.state.data = data || {};
                 this.moneyFormatter = null;
             }
         } catch (error) {
@@ -132,23 +134,23 @@ export class DynamicPricingAnalysisDashboard extends Component {
 
     // ── Data getters ──────────────────────────────────────────────────────────
     get card() {
-        return this.state.data.card || {};
+        return this.state.data?.card || {};
     }
 
     get summary() {
-        return this.state.data.summary || {};
+        return this.state.data?.summary || {};
     }
 
     get alerts() {
-        return this.state.data.alerts || {};
+        return this.state.data?.alerts || {};
     }
 
     get segmentData() {
-        return this.state.data.segment_data || [];
+        return this.state.data?.segment_data || [];
     }
 
     get allProductRows() {
-        return this.state.data.product_rows || [];
+        return this.state.data?.product_rows || [];
     }
 
     get totalAlerts() {
@@ -257,6 +259,10 @@ export class DynamicPricingAnalysisDashboard extends Component {
         return row.alert_flags && row.alert_flags.includes(flag);
     }
 }
+
+DynamicPricingAnalysisDashboard.extractProps = action => ({
+    cardId: action?.params?.card_id || action?.context?.card_id || false,
+});
 
 DynamicPricingAnalysisDashboard.template = "dynamic_pricing_analysis_dashboard_template";
 registry.category("actions").add("dynamic_pricing_analysis_dashboard", DynamicPricingAnalysisDashboard);

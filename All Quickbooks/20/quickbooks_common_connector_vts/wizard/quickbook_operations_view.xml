@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Quickbooks Operations Form-->
+        <record id="quickbooks_operations_form_view" model="ir.ui.view">
+            <field name="name">Quickbooks operations form view</field>
+            <field name="model">quickbooks.operations</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <p style="background-color: powderblue; padding: 10px;" invisible="import_operations != 'import_product'">
+                            <b>Notes: Import Product Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched product from QuickBooks using API with applied filter.</li>
+                                <li>
+                                    <b>Date Filter :</b>
+                                    Only product created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.
+                                </li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_customers'">
+                            <b>Notes: Import Customers Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched customers from QuickBooks using API with applied filters.</li>
+                                <li><b>Customer Type Filter :</b> Only customers with type <span id="customer-type-info">[Customer Type]</span> were fetched.</li>
+                                <li><b>Date Filter :</b> Only customers created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_account'">
+                            <b>Notes: Import Chart of Account Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Chart of Accounts from QuickBooks using API with applied filter.</li>
+                                <li><b>Date Filter :</b> Only accounts created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_payment_terms'">
+                            <b>Notes: Import Payment Term Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Payment Terms from QuickBooks using API with applied filter.</li>
+                                <li><b>Date Filter :</b> Only Payment Terms created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;"
+                           invisible="import_operations != 'import_taxes'">
+                            <b>Notes: Import Taxes Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Taxes from QuickBooks using API with applied filter.</li>
+                                <li><b>Date Filter :</b> Only Taxes created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.</li>
+                            </ul>
+                        </p>
+                        <p style="background-color: powderblue; padding: 10px;" invisible="import_operations != 'import_vendor'">
+                            <b>Notes: Import Vendor Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Vendor from QuickBooks using API with applied filter.</li>
+                                <li>
+                                    <b>Date Filter :</b>
+                                    Only vendor created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.
+                                </li>
+                            </ul>
+                        </p>
+                         <p style="background-color: powderblue; padding: 10px;" invisible="import_operations != 'import_payment_method'">
+                            <b>Notes: Import Payment Method Process</b>
+                            <ul>
+                                <br/>
+                                <li>Fetched Payment Method from QuickBooks using API with applied filter.</li>
+                                <li>
+                                    <b>Date Filter :</b>
+                                    Only Payment Method created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.
+                                </li>
+                            </ul>
+                        </p>
+                        <br/>
+                        <group>
+                            <group>
+                                <field name="quickbook_instance_id" invisible="1"/>
+                                <field name="quickbook_operation" widget="radio"/>
+                                <field name="import_operations" widget="radio"/>
+                            </group>
+                            <group>
+                                <field name="qk_customer_type" invisible="import_operations != 'import_customers'"/>
+                                <field name="from_date"/>
+                                <field name="to_date"/>
+                            </group>
+                        </group>
+                        <footer>
+                            <button string="Execute" class="oe_highlight" type="object"
+                                    name="execute_process_of_quickbooks"/>
+                            <button string="Cancel" class="oe_highlight" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+

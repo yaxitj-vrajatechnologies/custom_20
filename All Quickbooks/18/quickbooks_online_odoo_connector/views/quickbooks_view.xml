@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_quickbooks_instance_form_inherit" model="ir.ui.view">
+        <field name="name">quickbooks.connect.inherit.form</field>
+        <field name="model">quickbooks.connect</field>
+        <field name="inherit_id" ref="quickbooks_common_connector_vts.quickbooks_connect_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='account_creation']" position="after">
+                <separator string="USA Configuration" invisible="qkca_is_company_canada"/>
+                <field name="product_creation" invisible="qkca_is_company_canada"/>
+                 <field name="vendor_creation" invisible="qkca_is_company_canada"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Export Configuration" name="export_configuration" invisible="qkca_is_company_canada">
+                    <group>
+                        <group>
+                            <field name="company_include_tax"/>
+                            <field name="qbk_auto_update_invoice_bill"/>
+                            <field name="auto_export_moves"/>
+                            <field name="export_moves_point_date" readonly="state == 'connected'"
+                                   invisible="not auto_export_moves"/>
+                        </group>
+                        <group>
+                            <field name="auto_export_payments"/>
+                            <field name="qbk_auto_update_payment"/>
+                            <field name="exp_qbk_moves_next_call_point" invisible="not auto_export_moves"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button name="action_qck_product"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-shopping-cart"
+                        invisible="qkca_is_company_canada">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Product</span>
+                        <span class="o_stat_value">
+                            <field name="qck_product_count"/>
+                        </span>
+                    </div>
+                </button>
+                <button name="action_qck_vendor"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-truck">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Vendors</span>
+                        <span class="o_stat_value">
+                            <field name="qck_vendor_count"/>
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

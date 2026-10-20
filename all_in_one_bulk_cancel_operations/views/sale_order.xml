@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="all_in_one_bulk_cancel_sale_order_action" model="ir.actions.server">
+            <field name="name">Cancel Sale Orders</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+            if records:
+                records.all_in_one_bulk_cancel_sale_order()
+            </field>
+        </record>
+
+        <record id="all_in_one_cancel_sale_order_form_inherited" model="ir.ui.view">
+            <field name="name">all_in_one_cancel_sale_order_form_inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <button name="action_draft" position="after">
+                    <button name="all_in_one_action_return_order" type="object" string="Return Order" invisible="state != 'sale'"/>
+                </button>
+                <field name="payment_term_id" position="after">
+                    <field name="register_payment_journal_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

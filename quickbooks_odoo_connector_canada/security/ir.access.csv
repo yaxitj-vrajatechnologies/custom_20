@@ -1,0 +1,9 @@
+id,name,model_id,group_id/id,operation,domain
+access_qbo_product_ca_map_vts,access.qbo.product.ca.map.vts,qbo.product.ca.map.vts,base.group_user,crud,
+access_qbo_category_ca_map_vts,access.qbo.category.ca.map.vts,qbo.category.ca.map.vts,base.group_user,crud,
+access_qbo_vendor_ca_map_vts,access.qbo.vendor.ca.map.vts,qbo.vendor.ca.map.vts,base.group_user,crud,
+access_qbo_invoice_map_vts,access.qbo.invoice.map.vts,qbo.invoice.map.vts,base.group_user,crud,
+access_qbo_bill_ca_map_vts,access.qbo.bill.ca.map.vts,qbo.bill.ca.map.vts,base.group_user,crud,
+access_qbo_payment_ca_map_vts,access.qbo.payment.ca.map.vts,qbo.payment.ca.map.vts,base.group_user,crud,
+access_qbo_bill_payment_ca_map_vts,access.qbo.bill.payment.ca.map.vts,qbo.bill.payment.ca.map.vts,base.group_user,crud,
+access_quickbook_instance_wizard,access.quickbook.instance.wizard,quickbook.instance.wizard,base.group_user,crud,

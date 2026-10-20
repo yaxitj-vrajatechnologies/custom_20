@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record id="ir_action_report_inherit_form_view_for_printnode" model="ir.ui.view">
+            <field name="name">ir.actions.report.inherit.form.view</field>
+            <field name="model">ir.actions.report</field>
+            <field name="inherit_id" ref="base.act_report_xml_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='security']" position="before">
+                    <page string="PrintNode" name="PrintNode">
+                        <group>
+                            <field name="is_color_printer" options="{'no_create': True}" />
+                        </group>
+                        <separator string="Printing actions per user"/>
+                        <field name="printnode_action_ids">
+                            <list string="Printing Action UserWise" editable="bottom">
+                                <field name="user_id" required="1" options="{'no_create': True}"/>
+                                <field name="action_type" required="1"/>
+                                <field name="printer_id" options="{'no_create': True}" required="1"/>
+                                <field name="printnode_paper_id" options="{'no_create': True}"/>
+                            </list>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+

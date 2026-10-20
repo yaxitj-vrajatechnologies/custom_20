@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="printnode_rule_list_view" model="ir.ui.view">
+            <field name="name">printnode.rule.list.view</field>
+            <field name="model">printnode.rule</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Print Rules" decoration-muted="not active" create="false">
+                    <field name="action" options="{'no_create': True}"/>
+                    <field name="domain" readonly="1"/>
+                    <field name="description"/>
+<!--                    <field name="reports_model_id" readonly="1"/>-->
+                    <field name="report_id" options="{'no_create': True}"
+                           domain="[
+                                                ('model_id', '=', reports_model_id),
+                                                ('report_type', 'in', ['qweb-pdf', 'qweb-text', 'py3o']),
+                                                ('report_name', 'not in', [
+                                                    'sale.report_saleorder_pro_forma',
+                                                    'product.report_pricelist',
+                                                ]),
+                                            ]"/>
+                    <field name="total_copies"/>
+                    <field name="printer_id" options="{'no_create': True}"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </list>
+            </field>
+        </record>
+        <record id="printnode_rule_domain_editor" model="ir.ui.view">
+            <field name="name">printnode.rule.domain.editor</field>
+            <field name="model">printnode.rule</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Print Rule">
+                    <sheet>
+                        <group>
+                            <!-- Basic Information -->
+                            <group string="Basic Information">
+                                <field name="action"/>
+                                <field name="active" widget="boolean_toggle"/>
+                                <field name="description"/>
+                            </group>
+
+                            <!-- Model Configuration -->
+                            <group string="Model Configuration">
+                                <field name="model_id"/>
+                                <field name="model"/>
+                                <field name="reports_model_id" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <!-- Printing Settings -->
+                            <group string="Printing Settings">
+                                <field name="printer_id"/>
+                                <field name="report_id"/>
+                                <field name="report_type"/>
+                                <field name="report_paper_id" required="printer_id"/>
+                                <field name="total_copies"/>
+                            </group>
+
+                            <!-- Domain Filter -->
+                            <group string="Domain Filter">
+                                <field name="domain" widget="domain" options="{'model': 'model'}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_printnode_rule_menu" model="ir.actions.act_window">
+            <field name="name">Print Rules</field>
+            <field name="res_model">printnode.rule</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="printnode_rule_list_view"/>
+            <field name="context">{'active_test': False}</field>
+        </record>
+
+        <menuitem id="printnode_rule_menu"
+                  name="Print Rules "
+                  parent="main_menu_root"
+                  sequence="4"
+                  action="action_printnode_rule_menu"/>
+    </data>
+</odoo>

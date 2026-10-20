@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_quickbooks_canada_form_inherit" model="ir.ui.view">
+        <field name="name">quickbooks.canada.wizard.form.inherit</field>
+        <field name="model">quickbooks.operations</field>
+        <field name="inherit_id" ref="quickbooks_common_connector_vts.quickbooks_operations_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/p" position="before">
+<!--                <p style="background-color: powderblue; padding: 10px;" invisible="import_operations != 'import_vendor'">-->
+<!--                    <b>Notes: Import Vendor Process</b>-->
+<!--                    <ul>-->
+<!--                        <br/>-->
+<!--                        <li>Fetched Vendor from QuickBooks using API with applied filter.</li>-->
+<!--                        <li>-->
+<!--                            <b>Date Filter :</b>-->
+<!--                            Only vendor created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </p>-->
+                <p style="background-color: powderblue; padding: 10px;" invisible="import_operations != 'import_pro_category'">
+                    <b>Notes: Import Product Category Process</b>
+                    <ul>
+                        <br/>
+                        <li>Fetched Category from QuickBooks using API with applied filter.</li>
+                        <li>
+                            <b>Date Filter :</b>
+                            Only category created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.
+                        </li>
+                    </ul>
+                </p>
+                <p style="background-color: powderblue; padding: 10px;" invisible="import_operations != 'import_vendor_bill'">
+                    <b>Notes: Import Vendor Bill Process</b>
+                    <ul>
+                        <br/>
+                        <li>Fetched Vendor Bills from QuickBooks using API with applied filter.</li>
+                        <li>
+                            <b>Date Filter :</b>
+                            Only bill created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.
+                        </li>
+                    </ul>
+                </p>
+                <p style="background-color: powderblue; padding: 10px;" invisible="import_operations != 'import_invoice'">
+                    <b>Notes: Import Invoice Process</b>
+                    <ul>
+                        <br/>
+                        <li>Fetched Invoice from QuickBooks using API with applied filter.</li>
+                        <li>
+                            <b>Date Filter :</b>
+                            Only invoice created between <span id="date-from">[Start Date]</span> and <span id="date-to">[End Date]</span> were fetched.
+                        </li>
+                    </ul>
+                </p>
+                <p style="background-color: powderblue; padding: 10px;" invisible="import_operations != 'import_customer_payment'">
+                    <b>Notes: Import Payment Process</b>
+                    <ul>
+                        <br/>
+                        <li>Fetched Payment from QuickBooks using API with applied filter.</li>
+                        <li>
+                            <b>Date Filter :</b>
+                            Only payment created between <span id="date-from">[Start Date]</span> and <span
+                                id="date-to">[End Date]
+                        </span> were fetched.
+                        </li>
+                    </ul>
+                </p>
+                <p style="background-color: powderblue; padding: 10px;" invisible="import_operations != 'import_billpayment'">
+                    <b>Notes: Import Vendor Payment Process</b>
+                    <ul>
+                        <br/>
+                        <li>Fetched Vender Payment from QuickBooks using API with applied filter.</li>
+                        <li>
+                            <b>Date Filter :</b>
+                            Only bill payment created between <span id="date-from">[Start Date]</span> and <span
+                                id="date-to">[End Date]
+                        </span> were fetched.
+                        </li>
+                    </ul>
+                </p>
+            </xpath>
+        </field>
+    </record>
+</odoo>

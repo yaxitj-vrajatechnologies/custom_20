@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="inherit_printnode_delivery_carrier_list_view" model="ir.ui.view">
+            <field name="name">printnode.delivery.carrier.list</field>
+            <field name="model">delivery.carrier</field>
+            <field name="arch" type="xml">
+                <list string="Delivery Carrier" editable="bottom" create="false">
+                    <field name="name" readonly="1" width="150"/>
+                    <field name="printer_id" options="{'no_create': True}" width="150"/>
+                    <field name="label_paper_format" required="printer_id" width="150"/>
+                    <field name="total_copies" width="150"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="action_printnode_delivery_carrier_settings" model="ir.actions.act_window">
+            <field name="name">Delivery Method Settings</field>
+            <field name="res_model">delivery.carrier</field>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="printnode_odoo_connector.inherit_printnode_delivery_carrier_list_view"/>
+        </record>
+
+        <menuitem id="delivery_carrier_setting_menu"
+                  name="Delivery Method Settings"
+                  parent="main_menu_root"
+                  sequence="7"
+                  action="action_printnode_delivery_carrier_settings"/>
+
+    </data>
+</odoo>

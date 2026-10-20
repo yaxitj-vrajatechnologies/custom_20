@@ -77,33 +77,5 @@
     </record>
 
 
-    <!-- Menu item -->
 
-    <menuitem id="main_mapping_menu" name="Mapping" parent="quickbooks_common_connector_vts.menu_quickbooks_root"/>
-
-
-    <menuitem id="menu_qbo_partner_map"
-              name="Customers"
-              parent="quickbooks_common_connector_vts.main_mapping_menu"
-              action="action_qbo_partner_map" sequence="1"/>
-
-    <menuitem id="menu_qbo_account"
-              name="Accounts"
-              parent="quickbooks_common_connector_vts.main_mapping_menu"
-              action="action_qbo_account" sequence="1"/>
-
-    <menuitem id="menu_qbo_taxes"
-              name="Taxes"
-              parent="quickbooks_common_connector_vts.main_mapping_menu"
-              action="action_qbo_taxes" sequence="1"/>
-
-     <menuitem id="menu_qbo_payment_terms"
-              name="Payment Terms"
-              parent="quickbooks_common_connector_vts.main_mapping_menu"
-              action="action_qbo_payment_terms" sequence="1"/>
-
-    <menuitem id="menu_qbo_payment_method"
-              name="Payment Method"
-              parent="quickbooks_common_connector_vts.main_mapping_menu"
-              action="action_qbo_payment_method_map" sequence="1"/>
 </odoo>

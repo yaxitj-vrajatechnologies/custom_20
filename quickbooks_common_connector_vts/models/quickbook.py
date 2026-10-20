@@ -127,47 +127,46 @@ class QuickbooksConnect(models.Model):
 
     def _compute_customer_count(self):
         for rec in self:
-            rec.qck_customer_count = self.env['res.partner'].search_count(
-                [('qbk_id', '!=', False), ('qck_instance_id', '=', rec.id)])
+            rec.qck_customer_count = self.env['qbo.partner.map.vts'].search_count(
+                [('quickbook_instance_id', '=', rec.id)])
 
     def _compute_account_count(self):
         for rec in self:
-            rec.qck_account_count = self.env['account.account'].search_count([('qck_instance_id', '=', rec.id)])
+            rec.qck_account_count = self.env['qbo.account.vts'].search_count([('quickbook_instance_id', '=', rec.id)])
 
     def _compute_payment_term_count(self):
         for rec in self:
-            rec.qck_payment_term_count = self.env['account.payment.term'].search_count(
-                [('qck_instance_id', '=', rec.id)])
+            rec.qck_payment_term_count = self.env['qbo.payment.terms.vts'].search_count(
+                [('quickbook_instance_id', '=', rec.id)])
 
     def _compute_taxes_count(self):
         for rec in self:
-            rec.qck_taxes_count = self.env['account.tax'].search_count([('qck_instance_id', '=', rec.id)])
+            rec.qck_taxes_count = self.env['qbo.taxes.vts'].search_count([('quickbook_instance_id', '=', rec.id)])
 
     def action_qck_customer(self):
         self.ensure_one()
-        action = self.env["ir.actions.actions"]._for_xml_id("account.res_partner_action_customer")
-        action['context'] = {}
-        action['domain'] = [('qbk_id', '!=', False), ('qck_instance_id', '=', self.id)]
+        action = self.env["ir.actions.actions"]._for_xml_id("quickbooks_common_connector_vts.action_qbo_partner_map")
+
+        action['domain'] = [('quickbook_instance_id', '=', self.id)]
         return action
 
     def action_qck_account(self):
         self.ensure_one()
-        action = self.env["ir.actions.actions"]._for_xml_id("account.action_account_form")
-        action['context'] = {}
-        action['domain'] = [('qck_instance_id', '=', self.id)]
+        action = self.env["ir.actions.actions"]._for_xml_id("quickbooks_common_connector_vts.action_qbo_account")
+
+        action['domain'] = [('quickbook_instance_id', '=', self.id)]
         return action
 
     def action_qck_taxes(self):
         self.ensure_one()
-        action = self.env["ir.actions.actions"]._for_xml_id("account.action_tax_form")
-        action['context'] = {}
-        action['domain'] = [('qck_instance_id', '=', self.id)]
+        action = self.env["ir.actions.actions"]._for_xml_id("quickbooks_common_connector_vts.action_qbo_taxes")
+        action['domain'] = [('quickbook_instance_id', '=', self.id)]
         return action
 
     def action_qck_payment_terms(self):
         self.ensure_one()
-        action = self.env["ir.actions.actions"]._for_xml_id("account.action_payment_term_form")
-        action['domain'] = [('qck_instance_id', '=', self.id)]
+        action = self.env["ir.actions.actions"]._for_xml_id("quickbooks_common_connector_vts.action_qbo_payment_terms")
+        action['domain'] = [('quickbook_instance_id', '=', self.id)]
         return action
 
     def unlink(self):
@@ -234,6 +233,7 @@ class QuickbooksConnect(models.Model):
                         report_action,
                         data={'data': data}
                     )
+
                     attachment = self.env['ir.attachment'].sudo().create({
                         'name': "QuickBooks_Failed_Records.pdf",
                         'type': 'binary',

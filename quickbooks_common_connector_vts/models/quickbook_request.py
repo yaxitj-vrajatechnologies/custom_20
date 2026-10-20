@@ -83,14 +83,24 @@ class QuickbooksAPIVts(models.AbstractModel):
 
         entity = operation_map.get(operation)
 
+        start = 1
+        page_size = 1000
+
         if not entity:
             raise UserError(f"Unsupported operation: {operation}")
 
         query = f"SELECT * FROM {entity}"
 
-        if from_date and to_date:
-            query += f" WHERE MetaData.CreateTime >= '{from_date}' AND MetaData.CreateTime <= '{to_date}'"
+        if operation == "import_pro_category":
+            query += " WHERE Type = 'Category'"
+            if from_date and to_date:
+                query += f" AND MetaData.CreateTime >= '{from_date}' AND MetaData.CreateTime <= '{to_date}'"
+        else:
+            if from_date and to_date:
+                query += f" WHERE MetaData.CreateTime >= '{from_date}' AND MetaData.CreateTime <= '{to_date}'"
 
+
+        query += f" startposition {start} maxresults {page_size}"
         endpoint = f"{company_id}/query"
         request_url = f"{qck_url}/{endpoint}?query={query}"
 

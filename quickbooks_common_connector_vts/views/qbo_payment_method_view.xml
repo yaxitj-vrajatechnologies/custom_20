@@ -32,7 +32,6 @@
                            ('journal_id.name', 'ilike', self)
                        ]"
                 />
-
             </search>
         </field>
     </record>

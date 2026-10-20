@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="quick_canada_form_inherit_vts" model="ir.ui.view">
+        <field name="name">quickbooks.connect.ca.inherit.form</field>
+        <field name="model">quickbooks.connect</field>
+        <field name="inherit_id" ref="quickbooks_common_connector_vts.quickbooks_connect_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='import_configuration']/group" position="inside">
+                <separator string="Canada Configuration" invisible="not qkca_is_company_canada"/>
+                <group>
+                    <field name="qkca_product_creation" invisible="not qkca_is_company_canada"/>
+                    <field name="qkca_vendor_creation" invisible="not qkca_is_company_canada"/>
+                    <field name="qkca_invoice_creation" invisible="not qkca_is_company_canada"/>
+                    <field name="qkca_bill_creation" invisible="not qkca_is_company_canada"/>
+                    <field name="qkca_payment_creation" invisible="not qkca_is_company_canada"/>
+                    <field name="qkca_bill_payment_creation" invisible="not qkca_is_company_canada"/>
+                </group>
+                <group>
+                    <field name="last_sync_invoice_bill_date" invisible="not qkca_is_company_canada"/>
+                    <field name="last_sync_payment_date" invisible="not qkca_is_company_canada"/>
+                </group>
+            </xpath>
+            <xpath expr="//sheet/div[@name='button_box']" position="inside">
+                <button name="action_qkb_product"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="shopping_cart"
+                        invisible="not qkca_is_company_canada">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Product</span>
+                        <span class="o_stat_value">
+                            <field name="qca_product_count"/>
+                        </span>
+                    </div>
+                </button>
+                <button name="action_qkb_vendor"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="local_shipping "
+                        invisible="not qkca_is_company_canada">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Vendor</span>
+                        <span class="o_stat_value">
+                            <field name="qca_vendor_count"/>
+                        </span>
+                    </div>
+                </button>
+                <button name="action_qkb_invoice"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="task"
+                        invisible="not qkca_is_company_canada">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Invoice</span>
+                        <span class="o_stat_value">
+                            <field name="qca_invoice_count"/>
+                        </span>
+                    </div>
+                </button>
+                <button name="action_qkb_bill"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="book"
+                        invisible="not qkca_is_company_canada">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Bills</span>
+                        <span class="o_stat_value">
+                            <field name="qca_bill_count"/>
+                        </span>
+                    </div>
+                </button>
+                <button name="action_qkb_customer_payment"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="payments"
+                        invisible="not qkca_is_company_canada">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Payment</span>
+                        <span class="o_stat_value">
+                            <field name="qca_payment_count"/>
+                        </span>
+                    </div>
+                </button>
+                <button name="action_qkb_bill_payment"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="attach_money"
+                        invisible="not qkca_is_company_canada">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Bill Payment</span>
+                        <span class="o_stat_value">
+                            <field name="qca_billpayment_count"/>
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Export Configuration" name="export_configuration"
+                      invisible="not qkca_is_company_canada">
+                    <group>
+                        <group>
+                            <field name="qkca_company_included_tax"/>
+                            <field name="qkca_auto_update_invoice_bill"/>
+                            <field name="qkca_auto_moves_export"/>
+                            <field name="qkca_export_moves_point_date" readonly="state == 'connected'"
+                                   invisible="not qkca_auto_moves_export"/>
+                        </group>
+                        <group>
+                            <field name="qkca_auto_payments_export"/>
+                            <field name="qkca_auto_update_payment"/>
+                            <field name="qkca_next_export_move_date" readonly="state == 'connected'"
+                                   invisible="not qkca_auto_moves_export"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -14,7 +14,7 @@
                 <p class="dpad-header__sub">
                     <t t-if="this.card.applied_on">
                         Last applied: <strong><t t-out="this.card.applied_on"/></strong>
-                        <t t-if="card.analyzed_on"> · Analysed: <strong><t t-esc="card.analyzed_on"/></strong></t>
+                        <t t-if="this.card.analyzed_on"> · Analysed: <strong><t t-esc="this.card.analyzed_on"/></strong></t>
                     </t>
                     <t t-else="">No AI pricing applied yet — run analysis and apply from the main dashboard</t>
                 </p>
@@ -31,20 +31,20 @@
     </header>
 
     <!-- ═══════════════════ LOADING / ERROR ═══════════════════ -->
-    <div t-if="state.loading" class="dpad-state">
+    <div t-if="this.state.loading" class="dpad-state">
         <div class="dpad-state__spinner"/>
         <p>Loading pricing data...</p>
     </div>
 
-    <div t-if="state.error and !state.loading" class="dpad-state dpad-state--error">
+    <div t-if="this.state.error and !this.state.loading" class="dpad-state dpad-state--error">
         <i class="oi oi-fw me-2" data-icon="error"/>
-        <p><t t-esc="state.error"/></p>
+        <p><t t-esc="this.state.error"/></p>
     </div>
 
-    <t t-if="!state.loading and !state.error">
+    <t t-if="!this.state.loading and !this.state.error">
 
         <!-- No data state -->
-        <t t-if="!allProductRows.length">
+        <t t-if="!this.allProductRows.length">
             <div class="dpad-state">
                 <i class="oi oi-fw" data-icon="auto_fix_high"
                    style="font-size:36px; color:#d1d5db; margin-bottom:12px;"/>
@@ -60,9 +60,9 @@
                 <div class="dpad-kpi dpad-kpi--blue">
                     <div class="dpad-kpi__icon"><i class="oi oi-fw" data-icon="deployed_code"/></div>
                     <div class="dpad-kpi__body">
-                        <div class="dpad-kpi__value"><t t-esc="summary.total_products || 0"/></div>
+                        <div class="dpad-kpi__value"><t t-esc="this.summary.total_products || 0"/></div>
                         <div class="dpad-kpi__label">Products in Log</div>
-                        <div class="dpad-kpi__sub"><t t-esc="summary.total_rows || 0"/>
+                        <div class="dpad-kpi__sub"><t t-esc="this.summary.total_rows || 0"/>
                             total rows (product × segment)</div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="dpad-kpi dpad-kpi--green">
                     <div class="dpad-kpi__icon"><i class="oi oi-fw" data-icon="percent"/></div>
                     <div class="dpad-kpi__body">
-                        <div class="dpad-kpi__value"><t t-esc="formatNumber(summary.avg_margin_before)"/>%</div>
+                        <div class="dpad-kpi__value"><t t-esc="this.formatNumber(this.summary.avg_margin_before)"/>%</div>
                         <div class="dpad-kpi__label">Avg Margin Before</div>
                         <div class="dpad-kpi__sub">Before AI pricing</div>
                     </div>
@@ -79,11 +79,11 @@
                 <div class="dpad-kpi dpad-kpi--orange">
                     <div class="dpad-kpi__icon"><i class="oi oi-fw" data-icon="auto_fix_high"/></div>
                     <div class="dpad-kpi__body">
-                        <div class="dpad-kpi__value"><t t-esc="formatNumber(summary.avg_margin_after)"/>%</div>
+                        <div class="dpad-kpi__value"><t t-esc="this.formatNumber(this.summary.avg_margin_after)"/>%</div>
                         <div class="dpad-kpi__label">Avg Margin After</div>
                         <div class="dpad-kpi__sub">
-                            <span t-att-class="deltaClass(summary.avg_margin_lift)">
-                                <t t-esc="formatPct(summary.avg_margin_lift)"/>
+                            <span t-att-class="this.deltaClass(this.summary.avg_margin_lift)">
+                                <t t-esc="this.formatPct(this.summary.avg_margin_lift)"/>
                                 lift
                             </span>
                         </div>
@@ -93,9 +93,9 @@
                 <div class="dpad-kpi dpad-kpi--cyan">
                     <div class="dpad-kpi__icon"><i class="oi oi-fw" data-icon="list_alt"/></div>
                     <div class="dpad-kpi__body">
-                        <div class="dpad-kpi__value"><t t-esc="summary.pricelists_updated || 0"/></div>
+                        <div class="dpad-kpi__value"><t t-esc="this.summary.pricelists_updated || 0"/></div>
                         <div class="dpad-kpi__label">Pricelist Items Updated</div>
-                        <div class="dpad-kpi__sub"><t t-esc="summary.total_tokens || 0"/>
+                        <div class="dpad-kpi__sub"><t t-esc="this.summary.total_tokens || 0"/>
                             tokens used</div>
                     </div>
                 </div>
@@ -103,12 +103,12 @@
                 <div class="dpad-kpi dpad-kpi--pink">
                     <div class="dpad-kpi__icon"><i class="oi oi-fw" data-icon="warning"/></div>
                     <div class="dpad-kpi__body">
-                        <div class="dpad-kpi__value"><t t-esc="totalAlerts"/></div>
+                        <div class="dpad-kpi__value"><t t-esc="this.totalAlerts"/></div>
                         <div class="dpad-kpi__label">Active Alerts</div>
                         <div class="dpad-kpi__sub">
-                            <t t-esc="summary.negative_margin_count || 0"/>
+                            <t t-esc="this.summary.negative_margin_count || 0"/>
                             neg. margin ·
-                            <t t-esc="summary.out_of_stock_count || 0"/>
+                            <t t-esc="this.summary.out_of_stock_count || 0"/>
                             out of stock
                         </div>
                     </div>
@@ -122,20 +122,20 @@
                     <i class="oi oi-fw me-2" data-icon="warning"/>
                     <strong><t t-out="this.totalAlerts"/>
                         products need attention:</strong>
-                    <span t-if="summary.negative_margin_count > 0" class="dpad-alert-chip dpad-alert-chip--red">
-                        <t t-esc="summary.negative_margin_count"/>
+                    <span t-if="this.summary.negative_margin_count > 0" class="dpad-alert-chip dpad-alert-chip--red">
+                        <t t-esc="this.summary.negative_margin_count"/>
                         Negative Margin
                     </span>
-                    <span t-if="summary.dead_stock_count > 0" class="dpad-alert-chip dpad-alert-chip--orange">
-                        <t t-esc="summary.dead_stock_count"/>
+                    <span t-if="this.summary.dead_stock_count > 0" class="dpad-alert-chip dpad-alert-chip--orange">
+                        <t t-esc="this.summary.dead_stock_count"/>
                         Dead Stock
                     </span>
-                    <span t-if="summary.out_of_stock_count > 0" class="dpad-alert-chip dpad-alert-chip--red">
-                        <t t-esc="summary.out_of_stock_count"/>
+                    <span t-if="this.summary.out_of_stock_count > 0" class="dpad-alert-chip dpad-alert-chip--red">
+                        <t t-esc="this.summary.out_of_stock_count"/>
                         Out of Stock
                     </span>
-                    <span t-if="summary.overstock_count > 0" class="dpad-alert-chip dpad-alert-chip--blue">
-                        <t t-esc="summary.overstock_count"/>
+                    <span t-if="this.summary.overstock_count > 0" class="dpad-alert-chip dpad-alert-chip--blue">
+                        <t t-esc="this.summary.overstock_count"/>
                         Overstock
                     </span>
                 </div>
@@ -143,43 +143,43 @@
 
             <!-- ═══════════════════ TABS ═══════════════════ -->
             <div class="dpad-tabs">
-                <button type="button" t-att-class="'dpad-tab' + (state.activeTab === 'impact' ? ' active' : '')"
+                <button type="button" t-att-class="'dpad-tab' + (this.state.activeTab === 'impact' ? ' active' : '')"
                         t-on-click="() => this.setTab('impact')">
                     <i class="oi oi-fw me-1" data-icon="auto_fix_high"/>AI Price Impact
                 </button>
-                <button type="button" t-att-class="'dpad-tab' + (state.activeTab === 'segments' ? ' active' : '')"
+                <button type="button" t-att-class="'dpad-tab' + (this.state.activeTab === 'segments' ? ' active' : '')"
                         t-on-click="() => this.setTab('segments')">
                     <i class="oi oi-fw me-1" data-icon="group"/>Segment Performance
                 </button>
-                <button type="button" t-att-class="'dpad-tab' + (state.activeTab === 'alerts' ? ' active' : '')"
+                <button type="button" t-att-class="'dpad-tab' + (this.state.activeTab === 'alerts' ? ' active' : '')"
                         t-on-click="() => this.setTab('alerts')">
                     <i class="oi oi-fw me-1" data-icon="notifications"/>Alerts
-                    <t t-if="totalAlerts > 0">
-                        <span class="dpad-alert-chip dpad-alert-chip--red ms-1"><t t-esc="totalAlerts"/></span>
+                    <t t-if="this.totalAlerts > 0">
+                        <span class="dpad-alert-chip dpad-alert-chip--red ms-1"><t t-esc="this.totalAlerts"/></span>
                     </t>
                 </button>
             </div>
 
             <!-- ═══════════════════ TAB: AI PRICE IMPACT ═══════════════════ -->
-            <div t-if="state.activeTab === 'impact'" class="dpad-tab-content">
+            <div t-if="this.state.activeTab === 'impact'" class="dpad-tab-content">
 
                 <!-- Filter bar + View Toggle Button -->
                 <div class="dpad-filter-bar">
                     <input type="text" class="dpad-search-input"
                            placeholder="Search product or segment..."
-                           t-att-value="state.impactSearch"
+                           t-att-value="this.state.impactSearch"
                            t-on-input="(ev) => { this.state.impactSearch = ev.target.value; }"/>
                     <div class="dpad-filter-chips">
                         <button type="button"
-                                t-att-class="'dpad-chip' + (state.impactFilter === 'all' ? ' active' : '')"
+                                t-att-class="'dpad-chip' + (this.state.impactFilter === 'all' ? ' active' : '')"
                                 t-on-click="() => this.setImpactFilter('all')">All</button>
                         <button type="button"
-                                t-att-class="'dpad-chip' + (state.impactFilter === 'increase' ? ' active' : '')"
+                                t-att-class="'dpad-chip' + (this.state.impactFilter === 'increase' ? ' active' : '')"
                                 t-on-click="() => this.setImpactFilter('increase')">
                             <i class="oi oi-fw me-1" data-icon="arrow_upward"/>Increased
                         </button>
                         <button type="button"
-                                t-att-class="'dpad-chip' + (state.impactFilter === 'decrease' ? ' active' : '')"
+                                t-att-class="'dpad-chip' + (this.state.impactFilter === 'decrease' ? ' active' : '')"
                                 t-on-click="() => this.setImpactFilter('decrease')">
                             <i class="oi oi-fw me-1" data-icon="arrow_downward"/>Decreased
                         </button>
@@ -190,7 +190,7 @@
                         <button type="button"
                                 style="background:#2563eb; color:#ffffff; border:1px solid #2563eb; padding:6px 14px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;"
                                 t-on-click="() => this.toggleView()">
-                            <t t-if="state.activeView === 'card'">
+                            <t t-if="this.state.activeView === 'card'">
                                 <i class="oi oi-fw me-1" data-icon="list"/>List View
                             </t>
                             <t t-else="">
@@ -198,13 +198,13 @@
                             </t>
                         </button>
                         <span style="font-size:12px; color:#8d99ae; font-weight:600; white-space:nowrap;">
-                            <t t-esc="aiImpactRows.length"/>
+                            <t t-esc="this.aiImpactRows.length"/>
                             rows
                         </span>
                     </div>
                 </div>
 
-                <t t-if="aiImpactRows.length === 0">
+                <t t-if="this.aiImpactRows.length === 0">
                     <div class="dpad-empty">
                         <i class="oi oi-fw me-2" data-icon="auto_fix_high"/>No products match the current filter.
                     </div>
@@ -213,9 +213,9 @@
                 <t t-else="">
 
                     <!-- CARD VIEW -->
-                    <t t-if="state.activeView === 'card'">
+                    <t t-if="this.state.activeView === 'card'">
                         <div class="dpad-impact-grid">
-                            <t t-foreach="aiImpactRows" t-as="row" t-key="row.product_id + '_' + row.segment">
+                            <t t-foreach="this.aiImpactRows" t-as="row" t-key="row.product_id + '_' + row.segment">
                                 <div class="dpad-impact-card">
                                     <div class="dpad-impact-card__header">
                                         <div>
@@ -226,15 +226,15 @@
                                                 <span class="ms-2 dpad-td-muted"><t t-esc="row.category"/></span>
                                             </div>
                                         </div>
-                                        <span t-att-class="decisionClass(row.decision)">
-                                            <i class="oi oi-fw me-1" t-att-data-icon="decisionIcon(row.decision)"/>
+                                        <span t-att-class="this.decisionClass(row.decision)">
+                                            <i class="oi oi-fw me-1" t-att-data-icon="this.decisionIcon(row.decision)"/>
                                             <t t-esc="row.decision"/>
                                         </span>
                                     </div>
                                     <div class="dpad-impact-card__prices">
                                         <div class="dpad-impact-price">
                                             <div class="dpad-impact-price__label">Old Price</div>
-                                            <div class="dpad-impact-price__value"><t t-esc="formatMoney(row.original_price)"/></div>
+                                            <div class="dpad-impact-price__value"><t t-esc="this.formatMoney(row.original_price)"/></div>
                                         </div>
                                         <div class="dpad-impact-arrow">
                                             <i class="oi oi-fw" data-icon="arrow_right_alt"
@@ -243,50 +243,50 @@
                                         <div class="dpad-impact-price">
                                             <div class="dpad-impact-price__label">AI Price <span class="dpad-ai-badge">AI</span></div>
                                             <div class="dpad-impact-price__value dpad-impact-price__value--ai">
-                                                <t t-esc="formatMoney(row.ai_price)"/>
+                                                <t t-esc="this.formatMoney(row.ai_price)"/>
                                             </div>
                                         </div>
                                         <div class="dpad-impact-price">
                                             <div class="dpad-impact-price__label">Δ Value</div>
-                                            <div t-att-class="'dpad-impact-price__value ' + deltaClass(row.price_delta)">
-                                                <t t-esc="(row.price_delta >= 0 ? '+' : '') + formatMoney(row.price_delta)"/>
+                                            <div t-att-class="'dpad-impact-price__value ' + this.deltaClass(row.price_delta)">
+                                                <t t-esc="(row.price_delta >= 0 ? '+' : '') + this.formatMoney(row.price_delta)"/>
                                             </div>
                                         </div>
                                         <div class="dpad-impact-price">
                                             <div class="dpad-impact-price__label">Δ %</div>
-                                            <div t-att-class="'dpad-impact-price__value ' + deltaClass(row.price_delta_pct)">
-                                                <t t-esc="formatPct(row.price_delta_pct)"/>
+                                            <div t-att-class="'dpad-impact-price__value ' + this.deltaClass(row.price_delta_pct)">
+                                                <t t-esc="this.formatPct(row.price_delta_pct)"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="dpad-impact-card__metrics">
                                         <div class="dpad-impact-metric">
                                             <div class="dpad-impact-metric__label">Cost Price</div>
-                                            <div class="dpad-impact-metric__value"><t t-esc="formatMoney(row.cost_price)"/></div>
+                                            <div class="dpad-impact-metric__value"><t t-esc="this.formatMoney(row.cost_price)"/></div>
                                         </div>
                                         <div class="dpad-impact-metric">
                                             <div class="dpad-impact-metric__label">Margin Before</div>
-                                            <div t-att-class="'dpad-impact-metric__value ' + marginClass(row.margin_before)">
-                                                <t t-esc="formatNumber(row.margin_before)"/>%
+                                            <div t-att-class="'dpad-impact-metric__value ' + this.marginClass(row.margin_before)">
+                                                <t t-esc="this.formatNumber(row.margin_before)"/>%
                                             </div>
                                         </div>
                                         <div class="dpad-impact-metric">
                                             <div class="dpad-impact-metric__label">Margin After</div>
-                                            <div t-att-class="'dpad-impact-metric__value ' + marginClass(row.margin_after)">
-                                                <t t-esc="formatNumber(row.margin_after)"/>%
-                                                <span t-att-class="'dpad-margin-delta ' + deltaClass(row.margin_delta)">
-                                                    (<t t-esc="formatPct(row.margin_delta)"/>)
+                                            <div t-att-class="'dpad-impact-metric__value ' + this.marginClass(row.margin_after)">
+                                                <t t-esc="this.formatNumber(row.margin_after)"/>%
+                                                <span t-att-class="'dpad-margin-delta ' + this.deltaClass(row.margin_delta)">
+                                                    (<t t-esc="this.formatPct(row.margin_delta)"/>)
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="dpad-impact-metric">
                                             <div class="dpad-impact-metric__label">Stock</div>
                                             <div class="dpad-impact-metric__value">
-                                                <span t-att-class="stockBadgeClass(row.stock_status)">
-                                                    <t t-esc="stockLabel(row.stock_status)"/>
+                                                <span t-att-class="this.stockBadgeClass(row.stock_status)">
+                                                    <t t-esc="this.stockLabel(row.stock_status)"/>
                                                 </span>
                                                 <span class="dpad-td-muted ms-1" style="font-size:11px;">
-                                                    <t t-esc="formatNumber(row.qty_on_hand)"/>
+                                                    <t t-esc="this.formatNumber(row.qty_on_hand)"/>
                                                     units
                                                 </span>
                                             </div>
@@ -298,7 +298,7 @@
                     </t>
 
                     <!-- LIST VIEW -->
-                    <t t-if="state.activeView === 'list'">
+                    <t t-if="this.state.activeView === 'list'">
                         <div class="dpad-table-wrap">
                             <table class="dpad-table">
                                 <thead>
@@ -317,14 +317,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <t t-if="aiImpactRows.length === 0">
+                                    <t t-if="this.aiImpactRows.length === 0">
                                         <tr>
                                             <td colspan="12" class="dpad-empty-row">
                                                 <i class="oi oi-fw me-2" data-icon="info"/>No products match the search.
                                             </td>
                                         </tr>
                                     </t>
-                                    <t t-foreach="aiImpactRows" t-as="row" t-key="row.product_id + '_' + row.segment">
+                                    <t t-foreach="this.aiImpactRows" t-as="row" t-key="row.product_id + '_' + row.segment">
                                         <tr>
                                             <td class="dpad-td-product">
                                                 <span class="dpad-product-name"><t t-esc="row.product_name"/></span>
@@ -335,52 +335,52 @@
                                                 </span>
                                             </td>
                                             <td class="dpad-td-muted"><t t-esc="row.category"/></td>
-                                            <td class="dpad-td-right"><t t-esc="formatMoney(row.cost_price)"/></td>
-                                            <td class="dpad-td-right"><t t-esc="formatMoney(row.original_price)"/></td>
+                                            <td class="dpad-td-right"><t t-esc="this.formatMoney(row.cost_price)"/></td>
+                                            <td class="dpad-td-right"><t t-esc="this.formatMoney(row.original_price)"/></td>
                                             <td class="dpad-td-right">
                                                 <t t-if="row.ai_price">
-                                                    <span class="dpad-ai-price"><t t-esc="formatMoney(row.ai_price)"/></span>
+                                                    <span class="dpad-ai-price"><t t-esc="this.formatMoney(row.ai_price)"/></span>
                                                     <span class="dpad-ai-badge">AI</span>
                                                 </t>
                                                 <t t-else=""><span class="dpad-td-muted">—</span></t>
                                             </td>
                                             <td class="dpad-td-right">
                                                 <t t-if="row.ai_price">
-                                                    <span t-att-class="deltaClass(row.price_delta)">
-                                                        <t t-esc="formatPct(row.price_delta_pct)"/>
+                                                    <span t-att-class="this.deltaClass(row.price_delta)">
+                                                        <t t-esc="this.formatPct(row.price_delta_pct)"/>
                                                     </span>
                                                 </t>
                                                 <t t-else=""><span class="dpad-td-muted">—</span></t>
                                             </td>
                                             <td class="dpad-td-center">
-                                                <span t-att-class="decisionClass(row.decision)">
+                                                <span t-att-class="this.decisionClass(row.decision)">
                                                     <i class="oi oi-fw me-1"
-                                                       t-att-data-icon="decisionIcon(row.decision)"/>
+                                                       t-att-data-icon="this.decisionIcon(row.decision)"/>
                                                     <t t-esc="row.decision"/>
                                                 </span>
                                             </td>
                                             <td class="dpad-td-right">
-                                                <span t-att-class="marginClass(row.margin_before)">
-                                                    <t t-esc="formatNumber(row.margin_before)"/>%
+                                                <span t-att-class="this.marginClass(row.margin_before)">
+                                                    <t t-esc="this.formatNumber(row.margin_before)"/>%
                                                 </span>
                                             </td>
                                             <td class="dpad-td-right">
                                                 <t t-if="row.margin_after">
-                                                    <span t-att-class="marginClass(row.margin_after)">
-                                                        <t t-esc="formatNumber(row.margin_after)"/>%
+                                                    <span t-att-class="this.marginClass(row.margin_after)">
+                                                        <t t-esc="this.formatNumber(row.margin_after)"/>%
                                                     </span>
-                                                    <span t-att-class="'dpad-margin-delta ' + deltaClass(row.margin_delta)">
-                                                        (<t t-esc="formatPct(row.margin_delta)"/>)
+                                                    <span t-att-class="'dpad-margin-delta ' + this.deltaClass(row.margin_delta)">
+                                                        (<t t-esc="this.formatPct(row.margin_delta)"/>)
                                                     </span>
                                                 </t>
                                                 <t t-else=""><span class="dpad-td-muted">—</span></t>
                                             </td>
                                             <td>
-                                                <span t-att-class="stockBadgeClass(row.stock_status)">
-                                                    <t t-esc="stockLabel(row.stock_status)"/>
+                                                <span t-att-class="this.stockBadgeClass(row.stock_status)">
+                                                    <t t-esc="this.stockLabel(row.stock_status)"/>
                                                 </span>
                                                 <div class="dpad-qty-label">
-                                                    <t t-esc="formatNumber(row.qty_on_hand)"/>
+                                                    <t t-esc="this.formatNumber(row.qty_on_hand)"/>
                                                     units
                                                 </div>
                                             </td>
@@ -395,8 +395,8 @@
             </div>
 
             <!-- ═══════════════════ TAB: SEGMENT PERFORMANCE ═══════════════════ -->
-            <div t-if="state.activeTab === 'segments'" class="dpad-tab-content">
-                <t t-if="segmentData.length === 0">
+            <div t-if="this.state.activeTab === 'segments'" class="dpad-tab-content">
+                <t t-if="this.segmentData.length === 0">
                     <div class="dpad-empty">
                         <i class="oi oi-fw me-2" data-icon="info"/>No segment data available. Apply AI pricing first.
                     </div>
@@ -418,7 +418,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="segmentData" t-as="seg" t-key="seg.segment_name">
+                                <t t-foreach="this.segmentData" t-as="seg" t-key="seg.segment_name">
                                     <tr>
                                         <td>
                                             <div class="dpad-seg-name">
@@ -428,18 +428,18 @@
                                         </td>
                                         <td class="dpad-td-center"><t t-esc="seg.products"/></td>
                                         <td class="dpad-td-right">
-                                            <span t-att-class="marginClass(seg.avg_margin_before)">
-                                                <t t-esc="formatNumber(seg.avg_margin_before)"/>%
+                                            <span t-att-class="this.marginClass(seg.avg_margin_before)">
+                                                <t t-esc="this.formatNumber(seg.avg_margin_before)"/>%
                                             </span>
                                         </td>
                                         <td class="dpad-td-right">
-                                            <span t-att-class="marginClass(seg.avg_margin_after)">
-                                                <t t-esc="formatNumber(seg.avg_margin_after)"/>%
+                                            <span t-att-class="this.marginClass(seg.avg_margin_after)">
+                                                <t t-esc="this.formatNumber(seg.avg_margin_after)"/>%
                                             </span>
                                         </td>
                                         <td class="dpad-td-right">
-                                            <span t-att-class="deltaClass(seg.margin_improvement)">
-                                                <t t-esc="formatPct(seg.margin_improvement)"/>
+                                            <span t-att-class="this.deltaClass(seg.margin_improvement)">
+                                                <t t-esc="this.formatPct(seg.margin_improvement)"/>
                                             </span>
                                         </td>
                                         <td class="dpad-td-center dpad-positive"><t t-esc="seg.increase"/></td>
@@ -455,8 +455,8 @@
             </div>
 
             <!-- ═══════════════════ TAB: ALERTS ═══════════════════ -->
-            <div t-if="state.activeTab === 'alerts'" class="dpad-tab-content">
-                <t t-if="totalAlerts === 0">
+            <div t-if="this.state.activeTab === 'alerts'" class="dpad-tab-content">
+                <t t-if="this.totalAlerts === 0">
                     <div class="dpad-empty">
                         <i class="oi oi-fw me-2" data-icon="check_circle" style="color:#2e7d32;"/>
                         All clear! No alerts at this time.
@@ -471,16 +471,16 @@
                                 <div>
                                     <div class="dpad-alert-panel__title">Negative Margin</div>
                                     <div class="dpad-alert-panel__count">
-                                        <t t-esc="(alerts.negative_margin || []).length"/>
+                                        <t t-esc="(this.alerts.negative_margin || []).length"/>
                                         product(s) — cost exceeds price
                                     </div>
                                 </div>
                             </div>
-                            <t t-if="(alerts.negative_margin || []).length === 0">
+                            <t t-if="(this.alerts.negative_margin || []).length === 0">
                                 <div class="dpad-alert-panel__empty">None — all clear</div>
                             </t>
                             <ul t-else="" class="dpad-alert-panel__list">
-                               <t t-foreach="alerts.negative_margin" t-as="name" t-key="name + '_' + name_index">
+                               <t t-foreach="this.alerts.negative_margin" t-as="name" t-key="name + '_' + name_index">
                                     <li><i class="oi oi-fw me-1" data-icon="error" style="color:#c62828;"/>
                                         <t t-esc="name"/></li>
                                 </t>
@@ -493,16 +493,16 @@
                                 <div>
                                     <div class="dpad-alert-panel__title">Out of Stock</div>
                                     <div class="dpad-alert-panel__count">
-                                        <t t-esc="(alerts.out_of_stock || []).length"/>
+                                        <t t-esc="(this.alerts.out_of_stock || []).length"/>
                                         product(s) — zero inventory
                                     </div>
                                 </div>
                             </div>
-                            <t t-if="(alerts.out_of_stock || []).length === 0">
+                            <t t-if="(this.alerts.out_of_stock || []).length === 0">
                                 <div class="dpad-alert-panel__empty">None — all clear</div>
                             </t>
                             <ul t-else="" class="dpad-alert-panel__list">
-                               <t t-foreach="alerts.out_of_stock" t-as="name" t-key="name + '_' + name_index">
+                               <t t-foreach="this.alerts.out_of_stock" t-as="name" t-key="name + '_' + name_index">
                                     <li><i class="oi oi-fw me-1" data-icon="block" style="color:#c62828;"/>
                                         <t t-esc="name"/></li>
                                 </t>
@@ -515,16 +515,16 @@
                                 <div>
                                     <div class="dpad-alert-panel__title">Overstock</div>
                                     <div class="dpad-alert-panel__count">
-                                        <t t-esc="(alerts.overstock || []).length"/>
+                                        <t t-esc="(this.alerts.overstock || []).length"/>
                                         product(s) — excess inventory
                                     </div>
                                 </div>
                             </div>
-                            <t t-if="(alerts.overstock || []).length === 0">
+                            <t t-if="(this.alerts.overstock || []).length === 0">
                                 <div class="dpad-alert-panel__empty">None — all clear</div>
                             </t>
                             <ul t-else="" class="dpad-alert-panel__list">
-                                <t t-foreach="alerts.overstock" t-as="name" t-key="name">
+                                <t t-foreach="this.alerts.overstock" t-as="name" t-key="name">
                                     <li><i class="oi oi-fw me-1" data-icon="archive" style="color:#1565c0;"/>
                                         <t t-esc="name"/></li>
                                 </t>

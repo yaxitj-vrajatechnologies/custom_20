@@ -1,0 +1,1739 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Odoo Quickbooks Online Connector</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="margin:0; padding:0;">
+
+    <!-- Hero section start -->
+<section class="oe_container" style="padding:20px 0;color:#0f172a;font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+    <div class="container">
+        <div style="background-color:#ffffff;border:1px solid #e5e7eb;border-left:6px solid #2577f1;border-radius:20px;padding:15px;box-sizing:border-box;">
+
+            <table style="width:100%;border-collapse:collapse;border-spacing:0;">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top;padding:0;">
+                            <h1 style="color:#2577f1;font-size:32px;font-weight:900;line-height:1.25; font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+                                Odoo Quickbooks Online Connector
+                            </h1>
+                        </td>
+                        <td style="vertical-align:top;text-align:right;padding:0;">
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Community
+                            </span>
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Enterprise
+                            </span>
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Odoo.sh
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+               QuickBooks is a powerful accounting platform that, when integrated with Odoo, streamlines your financial operations by synchronizing essential data between both systems. This integration enables you to import customers, payment terms, taxes, chart of accounts, and products from QuickBooks into Odoo, and export customer invoices, vendor bills, and payments seamlessly back to QuickBooks. By automating financial data synchronization, you can eliminate manual entry, reduce errors, and maintain accurate, up-to-date records across platforms empowering you to streamline accounting workflows and drive business growth efficiently.
+            </p>
+
+      <div style="text-align:center;">
+    
+    <a href="mailto:sales@vrajatechnologies.com?subject=Odoo%20Quickbooks%20Online%20Connector"
+       style="display:inline-block;background-color:#2563eb;color:#ffffff !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+        <i class="fa fa-envelope" style="margin-right:6px;"></i> Submit Request
+    </a>
+
+    <a href="https://www.youtube.com/playlist?list=PLarcwR0xYlXlEGR3i_8MY2iAadgIW3Kx8"
+       target="_blank"
+       rel="noopener"
+       style="display:inline-block;background-color:#b91c3b;color:#ffffff !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;box-shadow:0 8px 18px rgba(220,38,38,0.23);">
+        <i class="fa fa-youtube-play" style="margin-right:6px;"></i> Watch on YouTube
+    </a>
+
+    <a href="#TrendingApps"
+       style="display:inline-block;background-color:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8 !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+        <i class="fa fa-line-chart" style="margin-right:6px;"></i> Trending Apps
+    </a>
+
+</div>
+
+        </div>
+    </div>
+</section>
+    <!-- Hero section End -->
+
+<!-- Catagory section start -->
+    <section class="oe_container"
+        style=" color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:26px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:900px; margin:0 auto 20px; box-sizing:border-box;">
+                <span
+                    style="background-color:#eaf8e7; border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:8px 16px; line-height:1; margin-bottom:14px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                        style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    Vraja Technologies
+                </span>
+
+                <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0 0 12px; box-sizing:border-box;">
+                    End-to-end Odoo solutions for growing companies.
+                </h2>
+            </div>
+
+            <div class="row" style="box-sizing:border-box;">
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #138a27; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-exchange"
+                                            style="font-family:FontAwesome !important; font-size:40px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        EDI &amp; SWIFT/ACH Payment Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        End-to-end EDI automation, including X12, EDIFACT, XML standards, and financial
+                                        integrations such as SWIFT, ACH, and Fedwire.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                        X12</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                        / AS2</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                                        target="_blank"
+                                                        style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                X12</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                / AS2</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                                target="_blank"
+                                                style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #2563eb; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-shopping-cart"
+                                            style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Ecommerce Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Seamless integration with leading eCommerce platforms to sync products, orders,
+                                        inventory, and customer data in real time.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                        Sync</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                                        target="_blank"
+                                                        style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                Sync</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                                target="_blank"
+                                                style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #0f766e; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-truck"
+                                            style="font-family:FontAwesome !important; font-size:42px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Shipping Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Robust shipping connectors for global couriers, offering automated label
+                                        generation, tracking, and rate computation.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                        Rates</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                        Shipment</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                                        target="_blank"
+                                                        style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                Rates</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                Shipment</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                                target="_blank"
+                                                style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #d6863a; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-cubes"
+                                            style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Most Useful Apps for your ERP
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        A wide range of highly-rated Odoo modules designed to enhance automation,
+                                        improve productivity, and simplify business operations.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                                        target="_blank"
+                                                        style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                                target="_blank"
+                                                style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Catagory section End -->
+
+<!-- Tabs Section Start -->
+    <section class="oe_container"
+        style=" background-color: #f8fafc; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:32px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 7px; box-sizing:border-box;">
+                <span
+                    style="border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:6px 14px; line-height:1; margin-bottom:10px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                        style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    App Details
+                </span>
+
+                <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                    Explore the key features, workflow, and value of this Odoo module.
+                </h2>
+            </div>
+
+            <div style="border-radius:26px; padding:8px; box-sizing:border-box;">
+
+                <!-- Tabs Header -->
+                <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs"
+                    style="border:none; background-color:inherit !important; margin:0 0 10px; padding:0; box-sizing:border-box;">
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_features" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-arrow-circle-right"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Features</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_process" data-toggle="tab" data-bs-toggle="tab" aria-expanded="true"
+                            class="nav-link active"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-cogs"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">CONFIGURATION</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_process_2" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-download"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">IMPORT</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_process_3" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-file-export"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">EXPORT / UPDATE</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_faqs" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-lightbulb-o"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">FAQs</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 0 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_support" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-comments-o"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Support</span>
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <div class="tab-content" style="box-sizing:border-box;">
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane" id="vt_features" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:14px 16px;box-sizing:border-box;">
+                            <div style="box-sizing:border-box;">
+                                <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf8e7;color:#138a27;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Import Operations
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">1) Import Customers with essential details such as name, email, phone number, billing addresses.</p><p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">2) Import Chart of Accounts and map QuickBooks accounts with Odoo accounts seamlessly.</p><p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">3) Import Taxes from QuickBooks and automatically configure them in Odoo.</p><p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">4) Import Payment Terms and synchronize them with Odoo customer and vendor records.</p><p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">5) Import Products with key information including SKU, description, sales price, cost, and category.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:0;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf2ff;color:#2563eb;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Export Operations
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">1) Export Customers created or updated in Odoo directly to QuickBooks.</p><p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">2) Export Products along with name, SKU, and pricing details.</p><p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">3) Export Invoices and Bills from Odoo to QuickBooks for accurate financial synchronization.</p><p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">4) Export Customer Payments and Vendor Payments to keep QuickBooks ledgers up to date.</p><p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">5) Automatically schedule Invoice, Bill, Payment, and Vendor Payment synchronization at regular intervals.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Tab -->
+                    <div class="tab-pane show active" id="vt_process" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                    Instance creation and configuration process for QuickBooks connection.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/1.png?v=6b241ca7718640b4124ff369d780e42a" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                    Configure your QuickBooks instance in Odoo this menu allows you to create and manage new instances easily.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/2.png?v=ab8a3542ad4fda5a3600ba15c060b9d1" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                    In the instance configuration, enter your QuickBooks credentials to establish a secure connection between Odoo and QuickBooks.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/3.png?v=0dd35deaa5d39cabbe7243e9e46e3222" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">04</span>
+                                    From your QuickBooks Workspace, click &#039;Get Production Key&#039; to retrieve the client ID and client secret required to connect your QuickBooks account with Odoo.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/4.png?v=8dae2033de44c99f2b656cdcbfdc9e9e" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">05</span>
+                                    Click &#039;Redirect URL&#039; in your QuickBooks app settings to specify the redirect URL.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/5.png?v=5b0650e2617a86b6e7abbaf6ea084d19" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">06</span>
+                                    Copy this URL and configure it in Odoo to establish a secure connection between the two platforms.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/6.png?v=8507a46c25a365da772dc13b6a4ca919" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">07</span>
+                                    When you click &#039;Connect&#039;, Odoo will redirect you to the QuickBooks authorization screen to establish a connection with your company account.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/7.png?v=a10b635963beb649153b5d00e24206e8" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">08</span>
+                                    Choose your QuickBooks company and click &#039;Next&#039;.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/8.png?v=a288d21077e35dba10e1c78ce137dade" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">09</span>
+                                    You’ll be redirected to Odoo, and the instance will automatically establish a successful connection.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/9.png?v=5f419b08afd6d6c9770944643681b14d" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">10</span>
+                                    In the import configuration, when the options for Customer, Chart of Accounts, Payment Terms, Products, and Taxes are enabled, the data from QuickBooks will be automatically created in Odoo during the import process.
+                                </p>
+                                <div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/10.png?v=59d5cbe4b6929c97e8173f84c37ec800" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:0; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">11</span>
+                                    In the Export Configuration, enable Send Invoice Tax Included to ensure taxes are included when exporting invoices to QuickBooks.
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">You can also enable Automatic Invoice/Bill Export to QuickBooks and Automatic Payment Export to QuickBooks to schedule automatic synchronization.</p><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">This feature exports invoices, bills, and payments from Odoo to QuickBooks automatically based on the defined export date, ensuring your financial data stays up to date.</p><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Auto Update Invoice/Bill: Automatically updates any changes made to exported invoices and bills in QuickBooks, keeping both systems perfectly aligned.</p><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Auto Update Payments: Automatically updates to customer and vendor payments that were already exported, ensuring real-time accuracy of payment records across Odoo and QuickBooks.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/11.png?v=5d4ec2c8e63d648f143c924794e6f6c9" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Tab -->
+                    <div class="tab-pane" id="vt_process_2" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                    Import Customer process
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Import Customers from QuickBooks to Odoo (you can import customers by date range or customer type).</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/12.png?v=7d49d55e0ed9d1c9694cf6085549431d" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">In the Mapping section, Customer Mapping table displays the mapped customers between QuickBooks and Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/13.png?v=3a5912694693539dbbe610d6e4b48865" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, the Customer Mapping table is generated with data received from QuickBooks to Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/14.png?v=dd994135bb7487ac73a84d0f66f32a5a" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, this customer was generated in Odoo based on data received from QuickBooks, ensuring synchronization between both platforms and creating the corresponding record in Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/15.png?v=f7e01af9a3a3cb9c2b6df9528fffce59" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                    Import Account process
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Import Account from QuickBooks to Odoo (you can import account by date range).</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/16.png?v=7647aef3fb69de2ea70d0c2d974300e6" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">In the Mapping section, Account Mapping table displays the mapped account between QuickBooks and Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/17.png?v=0dae411e2bf10853b0d753b2681badfe" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, the Account Mapping table is generated with data received from QuickBooks to O</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/18.png?v=b37d836aa9ada1974b7ca4122b03a5ac" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, this account was generated in Odoo based on data received from QuickBooks, ensuring synchronization between both platforms and creating the corresponding record in Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/19.png?v=c81f6ad81d93b7ea88a7631e97cd2852" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, logbook is automatically generated to track the data received from QuickBooks into Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/20.png?v=451de1f9c5a3883747adb46fda0d0b0f" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Each line in the logbook represents a single account import, providing detailed response data and status messages received from QuickBooks during the import process.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/21.png?v=bce2beb8daf7843a788ca9cdfdfda64b" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                    Import Taxes process
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Import Taxes from QuickBooks to Odoo (you can import taxes by date range).</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/22.png?v=035d2af92635b9e7b3d15f791ff98d7f" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">In the Mapping section, Taxes Mapping table displays the mapped taxes between QuickBooks and Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/23.png?v=b6eaeeb556eabd0609379805c2e73d26" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, the Taxes Mapping table is generated with data received from QuickBooks to Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/24.png?v=84637d83812b188ee98a5e4de4cd30ac" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, this taxes was generated in Odoo based on data received from QuickBooks, ensuring synchronization between both platforms and creating the corresponding record in Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/25.png?v=9c56af2d4b847933b3d2cb83d67bcda4" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">04</span>
+                                    Import Payment Terms process
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Import Payment Terms from QuickBooks to Odoo (you can import Payment Terms by date range).</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/26.png?v=b15cf3e2877801c0df4a662421f1263c" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">In the Mapping section, Payment Terms Mapping table displays the mapped Payment Terms between QuickBooks and Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/27.png?v=1cfa374200d52a0b9ad27cd37b06bf34" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, the Payment Terms Mapping table is generated with data received from QuickBooks to Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/28.png?v=23e002c92e265f830df351746e348eec" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, this Payment Terms was generated in Odoo based on data received from QuickBooks, ensuring synchronization between both platforms and creating the corresponding record in Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/29.png?v=f19ba4ee9c33bdc23f454cbd03bf7b56" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:0; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">05</span>
+                                    Import Product process
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Import Product from QuickBooks to Odoo (you can import Product by date range).</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/30.png?v=76c496440a5762c1c0e47edb79edef08" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">In the Mapping section, Product Mapping table displays the mapped Product between QuickBooks and Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/31.png?v=2f8e54ae2bb47a26cbba8c005298ea32" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, if a product from QuickBooks is not mapped with any Odoo product, you can manually select and map the corresponding Odoo product.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/32.png?v=399ae07ed1c640731ec33ba638cebf99" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, the Product Mapping table is generated with data received from QuickBooks to Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/33.png?v=95ce66fdffcc8fb7b95639c095c66bc8" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">During the import process, this Product was generated in Odoo based on data received from QuickBooks, ensuring synchronization between both platforms and creating the corresponding record in Odoo.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/34.png?v=90a8c59992e9145a6a3647dd90709698" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Tab -->
+                    <div class="tab-pane" id="vt_process_3" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                    Export Customer &amp; Vendor process
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Export customer records from Odoo to QuickBooks to keep your accounting system updated with the latest customer information.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/35.png?v=e15b08d82726e50569babb2bf9e659f0" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/36.png?v=6d4c7a485ead4e8254e1a7256e38d5cf" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">When exporting a customer, if that Odoo customer has any vendor bills created, the customer will also be created as a vendor in QuickBooks.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/37.png?v=365550423740f1d8491caa3277964695" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                    Export Invoice/Bill process
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Export invoices from Odoo to QuickBooks to ensure your accounting system stays up to date with the latest billing and payment information.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/38.png?v=3102e2a9f5a285c72fda1193a689c2fb" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/39.png?v=a84bf61b66dd29c2f1f5720673524e4e" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">This QuickBooks invoice has been exported from Odoo, with all taxes and amounts accurately matched.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/40.png?v=8401d73e22d570f9e3a95e860efda28c" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Export vendor bills from Odoo to QuickBooks to ensure your accounting system stays up to date with the latest expense and payment information.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/41.png?v=f2a2f653c23ff95ca3008d7107d11dab" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/42.png?v=6568d9df907fa4fd7746e7faf306a250" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">This QuickBooks vendor bill has been exported from Odoo. All amounts have been accurately matched to ensure consistency.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/43.png?v=9cb89b66484d83581769a88485bee9aa" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:0; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                    Export Customer Payment Process
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Export customer payments linked to invoices from Odoo to QuickBooks to ensure your payment records accurately match the corresponding invoice details.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/44.png?v=f6cfb1e9a1892e502ec8b6d99e765817" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/45.png?v=56b1ed4564e8f55831776f5ff9f65b14" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">This QuickBooks customer payment has been exported from Odoo, with all amounts accurately matched to the related invoices.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/46.png?v=c1858db84c99964e29d2a5a7b2d30acf" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Export Bill payments linked to bills from Odoo to QuickBooks to ensure your payment records accurately match the corresponding invoice details.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/47.png?v=face40a000467bab1ccccb12dfd64da3" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/48.png?v=04338830fb8546939c87dfc5f809b232" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">QuickBooks bill payment has been exported from Odoo. All amounts have been accurately matched to ensure consistency with the related bills.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/49.png?v=f054629abd6ca709bbcaf9cd5ec0d259" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">QuickBooks instance includes a smart button linked to the QuickBooks customer, allowing you to view related customer details, accounts, taxes, payment terms, and products.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/50.png?v=1268584e1a47facb0ffc7b5a3d15d271" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">QuickBooks includes a logger to track all import and export records between Odoo and QuickBooks. Each record’s details can be opened and reviewed directly within this logbook.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/51.png?v=74ab482c65fc95080317bf741ef39cf0" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">QuickBooks includes an automated action that executes based on the export configuration. It automatically exports data and refreshes the token when it expires.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/quickbooks_online_odoo_connector/static/description/img/52.png?v=d9df7dcd12bf35a8576abdac25fcab2f" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQs Tab -->
+                    <div class="tab-pane" id="vt_faqs" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Does the application support both QuickBooks Online and QuickBooks Desktop?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">This application is designed specifically for QuickBooks Online. QuickBooks Desktop is not supported in this version.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Can I manage multiple QuickBooks instances (companies)?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes, you can manage and sync multiple QuickBooks Online instances from Odoo. Each instance can be configured with its own credentials, settings, and synchronization preferences.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What type of data can I import from QuickBooks to Odoo?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">You can import the following records from QuickBooks to Odoo:</p><p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">1. Customers 2. Payment Terms 3. Taxes 4. Chart of Accounts 5. Products</p><p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">During import, you’ll have an option to create records in Odoo if they don’t already exist or skip them as per your configuration.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eefdf7; color:#0f766e; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What type of data can I export from Odoo to QuickBooks?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">You can export the following data from Odoo to QuickBooks:</p><p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">1. Customers 2. Vendors 3. Products 4. Customer Invoices / Vendor Bills 5. Customer Payments / Vendor Payments</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#f5f3ff; color:#7c3aed; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Does the integration handle updates for invoices or payments?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes. Any updates made to Invoices / Vendor Bills or Payments in Odoo can be synced to QuickBooks to keep both systems in sync.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#ecfeff; color:#0891b2; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Are there scheduled actions (cron jobs) for automatic synchronization?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes.</p><p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">The app includes three automatic scheduled actions (cron jobs):</p><p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">1. Token Refresh Cron – Automatically refreshes QuickBooks API tokens to maintain authentication. 2. Invoice/Bill Export Cron – Automatically exports Odoo invoices and vendor bills based on the instance’s date filter. 3. Payment Export Cron – Automatically exports Odoo customer/vendor payments using the instance’s date range.</p><p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">You can also run these operations manually at any time.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Can I control what gets created automatically in Odoo?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes. During import, you can choose whether to automatically create missing records (like customers, products, etc.) or skip them if not found. This option can be configured per instance.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                How are taxes and chart of accounts handled?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">1. Taxes and chart of accounts are imported directly from QuickBooks. 2. The app ensures correct linking of tax codes and accounts between Odoo and QuickBooks to maintain financial consistency.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:0; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                The app ensures correct linking of tax codes and accounts between Odoo and QuickBooks to maintain financial consistency.
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes, you can perform manual sync operations for all import and export functionalities directly from the instance dashboard in Odoo.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support Tab -->
+                    <div class="tab-pane" id="vt_support" role="tabpanel" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:22px;box-sizing:border-box;">
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:22px;padding:22px;box-sizing:border-box;">
+                                <div style="width:100%;background-color:#f8fbf8;border:1px solid #d9e7d7;border-radius:22px;padding:26px 28px;margin-bottom:18px;box-sizing:border-box;">
+                                    <div class="d-none d-lg-block">
+                                        <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:108px;vertical-align:top;padding:0 20px 0 0;box-sizing:border-box;">
+                                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;box-sizing:border-box;">
+                                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                        <h3 style="color:#123d73;font-size:27px;font-weight:900;line-height:1.2;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:8px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;margin:0 auto 16px;box-sizing:border-box;">
+                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                        </div>
+                                        <h3 style="color:#123d73;font-size:24px;font-weight:900;line-height:1.25;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:6px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin:0 -8px;box-sizing:border-box;">
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;box-sizing:border-box;">
+                                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Policy</div>
+                                                                <a href="https://vrajatechnologies.com/support-policy" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#fff9f2;border:1px solid #f2c487;border-radius:11px;padding:11px 10px;color:#d36c00!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/support-policy</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Scan for Support -->
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 10px;box-sizing:border-box;">Scan for Support</h4>
+                                                                                <div style="margin:8px 0 0;text-align:left;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:170px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Scan for Support</h4>
+                                                                <div style="width:100%;text-align:center;margin:0;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:150px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0 auto;box-sizing:border-box;">
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-qrcode" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tabs Section End -->
+
+<!-- Discover Trending Addons Section Start -->
+    <section class="oe_container"
+        style="color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding: 30px 20px 15px; box-sizing:border-box; margin:0; ;"
+        id="TrendingApps">
+        <div class="container" style="margin:0 auto; box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 10px; box-sizing:border-box;">
+                <span
+                    style="background-color:#eaf2ff; border-radius:999px; color:#2563eb; font-size:13px; font-weight:800; padding:8px 16px; margin-bottom:14px;">
+                    <i class="fa fa-cubes" style="font-family:FontAwesome !important; margin-right:6px;"></i>
+                    Discover Trending Apps
+                </span>
+            </div>
+
+            <div class="row" style="margin-left:-10px; margin-right:-10px; box-sizing:border-box;">
+                <!-- BigCommerce Odoo Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf2ff; color:#2563eb; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-shopping-bag"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    BigCommerce Odoo Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">BigCommerce Odoo Integration helps businesses connect their BigCommerce online store with Odoo and manage eCommerce operations from one centralized system. This connector allows you to import and export key store data between BigCommerce and Odoo, reducing manual work and improving operational accuracy.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/bigcommerce_odoo_integration" target="_blank"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shopify Odoo Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf8e7; color:#138a27; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-shopping-cart"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Shopify Odoo Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Shopify Odoo Integration helps you connect your Shopify store with Odoo to manage products, orders, customers, and inventory from one centralized system.Automate data synchronization between Shopify and Odoo, reduce manual work, avoid errors, and streamline your complete eCommerce operations.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/vraja_shopify_odoo_integration" target="_blank"
+                                    style="background-color:#138a27 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDI Odoo Integration (FTP/SFTP - Import/Export Records) -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#fff4e8; color:#d6863a; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-cloud-upload"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    EDI Odoo Integration (FTP/SFTP - Import/Export Records)
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">This all-in-one Odoo EDI solution connects Odoo with trading partners using FTP and SFTP protocols, with a dynamic XML mapping engine to import, export, create, or update any Odoo record without coding. It supports remote directory synchronization, scheduled automation, and reliable bidirectional data exchange across any Odoo model for accurate and streamlined business workflows.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/odoo_edi_integration" target="_blank"
+                                    style="background-color:#d6863a !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Klaviyo Odoo Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eef2ff; color:#4f46e5; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-envelope"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Klaviyo Odoo Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Klaviyo Odoo Integration Most ecommerce marketing software forces you to choose between being as effective as possible or moving fast. Klaviyo is different. Designed for growth-minded ecommerce merchants, Klaviyo gives you powerful functionality without sacrificing the time it takes for your marketing to make an impact on your bottom line.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/klaviyo_odoo_integration" target="_blank"
+                                    style="background-color:#4f46e5 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipstation V2 Odoo Shipping -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#ecfdf5; color:#0f766e; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-truck"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Shipstation V2 Odoo Shipping
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">The ShipStation Odoo Integration provides a seamless two-way connection between Odoo ERP and ShipStation Easily connect Odoo with ShipStation to automate shipping workflows, generate carrier labels, fetch real-time rates, and synchronize orders and tracking details.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/shipstation_shipping_odoo_integration_v2" target="_blank"
+                                    style="background-color:#0f766e !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stripe Terminal Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eefdf7; color:#0f8b6f; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-credit-card"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Stripe Terminal Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Stripe Odoo Integration helps businesses process real-time card payments from Odoo invoices and sale quotations using Stripe Terminal devices like WisePOS E and Stripe S700. It streamlines backend payment collection with automated syncing to Odoo Accounting, reducing manual work and improving financial accuracy.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/stripe_payment_odoo_integration" target="_blank"
+                                    style="background-color:#0f8b6f !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Sales Dashboard -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#fff7ed; color:#ea580c; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-tachometer"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Advanced Sales Dashboard
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Sales Dashboard is an advanced Odoo module developed by Vraja Technologies that provides a real-time overview of sales in a single screen.It gives users a complete, real-time view of business performance for a selected date range, combining key performance indicators with visual analytics in a single screen. It displays critical metrics such as total sales, orders, quotations, invoices, unpaid amounts, deliveries, gross profit and margin, and shipping costs, each with a month-over-month percentage change so trends are easy to spot at a glance.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/sales_dashboard_vts" target="_blank"
+                                    style="background-color:#ea580c !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RMA | Customer &amp; Supplier Return Management -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#f0f9ff; color:#0284c7; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-undo"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    RMA | Customer &amp; Supplier Return Management
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">RMA Customer &amp; Supplier Return Management helps businesses manage product returns, refunds, replacements, approvals, stock movements, and credit notes for both customers and vendors directly in Odoo. Fully integrated with Sales, Purchase, Inventory, Accounting, and Website Portal, it automates the complete return workflow, reduces manual work, and improves return process traceability.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/rma_customer_management" target="_blank"
+                                    style="background-color:#0284c7 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ALL IN ONE Import Record From SFTP Import CSV &amp; XLSX File Manually -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#f0f9ff; color:#9802c7; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-upload"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    ALL IN ONE Import Record From SFTP Import CSV &amp; XLSX File Manually
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">ALL IN ONE Import Records is a flexible Odoo import solution that allows users to import any type of data using configurable mappings, multiple file formats, and automated workflows. It also supports dynamic translation during import, enabling multilingual data import in a single operation for accurate, consistent, and efficient data management.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/dynamic_import_records" target="_blank"
+                                    style="background-color:#9802c7 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WooCommerce Odoo Connector -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eefdf7; color:#9b88d3; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-wordpress"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    WooCommerce Odoo Connector
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">WooCommerce Odoo Integration helps businesses connect their WooCommerce online store with Odoo and manage complete eCommerce operations from one centralized ERP system.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/vraja_woocommerce_odoo_integration" target="_blank"
+                                    style="background-color:#9b88d3 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Sales Dashboard -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf2ff; color:#2563eb; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-tachometer"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Advanced Sales Dashboard
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Sales Dashboard is an advanced Odoo module developed by Vraja Technologies that provides a real-time overview of sales in a single screen.It gives users a complete, real-time view of business performance for a selected date range, combining key performance indicators with visual analytics in a single screen. It displays critical metrics such as total sales, orders, quotations, invoices, unpaid amounts, deliveries, gross profit and margin, and shipping costs, each with a month-over-month percentage change so trends are easy to spot at a glance.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/sales_dashboard_vts" target="_blank"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ZOHO Odoo Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf8e7; color:#138a27; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-book"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    ZOHO Odoo Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">ZOHO Odoo Integration helps businesses connect Zoho applications with Odoo to synchronize CRM, accounting, inventory, customer, sales, and business data in one unified system.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/zoho_book_odoo_integration" target="_blank"
+                                    style="background-color:#138a27 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- Discover Shipping Addons Section End -->
+
+    <!-- Discover Shipping Addons Section End -->
+
+    <!-- CTA Section Start -->
+    <section class="oe_container"
+        style="background-color:#f7fbff; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:34px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+            <div
+                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:26px; padding:clamp(18px, 3.5vw, 30px); box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box; margin: 0px 9px;">
+                <div class="row align-items-center"
+                    style="margin-left:-12px; margin-right:-12px; box-sizing:border-box;">
+
+                    <div class="col-12 col-lg-7" style="padding:12px; box-sizing:border-box;">
+                        <table
+                            style="border-collapse:collapse; border-spacing:0; margin:0 0 12px; box-sizing:border-box;">
+                            <tr>
+                                <td style="vertical-align:middle; padding:0 10px 0 0; box-sizing:border-box;">
+                                    <span
+                                        style="color:#123d73; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; line-height:1; box-sizing:border-box;">
+                                        <i class="fa fa-check-circle"
+                                            style="font-family:FontAwesome !important; font-size:clamp(25px, 3.5vw, 33px);  margin-right:5px; vertical-align:middle;"></i>
+                                    </span>
+                                </td>
+                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                    <h2
+                                        style="color:#123d73; font-family:sans-serif !important; font-size:clamp(18px, 4.5vw, 28px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                                        Explore Before Purchase
+                                    </h2>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p
+                            style="color:#138a27; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.45; margin:0 0 12px; box-sizing:border-box;">
+                            Start with a free trial
+                        </p>
+
+                        <p
+                            style="color:#526b96; font-size:clamp(13px, 3.4vw, 15px); line-height:1.7; margin:0 0 18px; box-sizing:border-box;">
+                            Test the connector with your real workflows using our 15-day free trial. If you need help,
+                            our product experts will guide you throughout the trial.
+                        </p>
+
+                        <div class="row" style="margin-left:-7px; margin-right:-7px; box-sizing:border-box;">
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="mailto:sales@vrajatechnologies.com?subject=Odoo%20Quickbooks%20Online%20Connector"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:55px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(37,99,235,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-calendar-check-o"
+                                        style="font-family:FontAwesome !important; font-size:17px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">Request Demo</span>
+                                </a>
+                            </div>
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="https://api.whatsapp.com/send/?phone=917359628466&amp;text&amp;type=phone_number&amp;app_absent=0"
+                                    target="_blank"
+                                    style="background-color:#13a579 !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:50px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(19,165,121,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-whatsapp"
+                                        style="font-family:FontAwesome !important; font-size:20px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">+91 73596 28466</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5" style="padding:12px; box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; height:100%; box-sizing:border-box;">
+                            <table
+                                style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                        style="width:62px; vertical-align:top; padding:0 15px 0 0; box-sizing:border-box;">
+                                        <div
+                                            style="background-color:#eaf2ff; color:#2563eb; border-radius:18px; width:52px; height:52px; line-height:52px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-check-square-o"
+                                                style="font-family:FontAwesome !important; font-size:24px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                            style="color:#123d73; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.35; margin:0 0 8px; box-sizing:border-box;">
+                                            Test the connector with your real workflows.
+                                        </h4>
+                                        <p
+                                            style="color:#526b96; font-size:13px; line-height:1.65; margin:0 0 12px; box-sizing:border-box;">
+                                            Our product experts will guide you during the trial to help you evaluate,
+                                            configure, and use the connector with confidence.
+                                        </p>
+                                        <div style="box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">15-Day
+                                                Trial</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Expert
+                                                Guidance</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Real
+                                                Workflow Testing</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section End -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

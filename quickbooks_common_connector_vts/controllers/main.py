@@ -1,9 +1,11 @@
 # -*- coding: utf-8 *-*
 from odoo import http
+from odoo.http import request
 import base64
 import requests
 import logging
-from odoo.http import request
+from werkzeug.utils import redirect
+
 _logger = logging.getLogger(__name__)
 
 class QuickbookAuthController(http.Controller):
@@ -39,7 +41,7 @@ class QuickbookAuthController(http.Controller):
             quickbook_connect.sudo().write({
                 "state": "failed",
                 "reason" : f"Connection Error: {response.text}"})
-            return request.redirect(f"/odoo/quickbooks.connect/{quickbook_connect.id}")
+            return redirect(f"/web#id={quickbook_connect.id}&model=quickbooks.connect&view_type=form")
 
         tokens = response.json()
         
@@ -76,8 +78,8 @@ class QuickbookAuthController(http.Controller):
                     quickbook_connect.qk_company_id = qkb_company.id
                     quickbook_connect.country_id = qck_country_id.id if qck_country_id else False
                 else:
-                    qk_company_id = qkb_company_obj.create(company_vals)
+                    qk_company_id = qkb_company_obj.sudo().create(company_vals)
                     quickbook_connect.qk_company_id = qk_company_id.id
                     quickbook_connect.country_id = qck_country_id.id if qck_country_id else False
                     
-        return request.redirect(f"/odoo/quickbooks.connect/{quickbook_connect.id}")
+        return redirect(f"/web#id={quickbook_connect.id}&model=quickbooks.connect&view_type=form")

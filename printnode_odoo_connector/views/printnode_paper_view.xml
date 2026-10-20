@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="printnode_paper_list_view" model="ir.ui.view">
+            <field name="name">printnode.paper.list.view</field>
+            <field name="model">printnode.paper.vts</field>
+            <field name="arch" type="xml">
+                <list string="Papers" create="false" edit="false">
+                    <field name="name" width="120"/>
+                    <field name="width" width="20"/>
+                    <field name="height" width="20"/>
+                </list>
+            </field>
+        </record>
+
+<!--        PrintNode_Paper Action Menu-->
+        <record id="action_printnode_paper_menu" model="ir.actions.act_window">
+            <field name="name">Papers</field>
+            <field name="res_model">printnode.paper.vts</field>
+            <field name="view_mode">list</field>
+        </record>
+        <menuitem id="printnode_paper_menu_vts"
+                  name="Papers"
+                  action="action_printnode_paper_menu"
+                  parent="printnode_odoo_connector.printnode_config_menu"
+                  sequence="3"/>
+    </data>
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_qbo_payment_method_form" model="ir.ui.view">
+        <field name="name">qbo.payment.method.vts.form</field>
+        <field name="model">qbo.payment.method.vts</field>
+        <field name="arch" type="xml">
+            <form string="Quickbooks Payment Method">
+                <sheet>
+                    <group>
+                        <field name="quickbook_instance_id" readonly="1"/>
+                        <field name="quickbook_id" readonly="1"/>
+                        <field name="quickbook_payment_method_name" readonly="1"/>
+                        <field name="journal_id"/>
+                        <field name="company_id"/>
+                        <field name="qbo_response" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_qbo_payment_method_map_filter" model="ir.ui.view">
+        <field name="name">qbo.payment.method.vts.search</field>
+        <field name="model">qbo.payment.method.vts</field>
+        <field name="arch" type="xml">
+            <search string="Search QuickBooks Payment Methods">
+
+                <field name="journal_id"
+                       string="Payment Method"
+                       filter_domain="['|', '|',
+                           ('quickbook_id', 'ilike', self),
+                           ('quickbook_payment_method_name', 'ilike', self),
+                           ('journal_id.name', 'ilike', self)
+                       ]"
+                />
+            </search>
+        </field>
+    </record>
+    <record id="view_qbo_payment_method_list" model="ir.ui.view">
+        <field name="name">qbo.payment.method.vts.list</field>
+        <field name="model">qbo.payment.method.vts</field>
+        <field name="arch" type="xml">
+            <list string="Quickbooks Payment Method" editable="bottom">
+                <field name="quickbook_instance_id" readonly="1"/>
+                <field name="quickbook_id" readonly="1"/>
+                <field name="quickbook_payment_method_name" readonly="1"/>
+                <field name="journal_id"/>
+                <button name="payment_method_mapping_view" type="object" string="View" class="btn btn-link"/>
+            </list>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Instance Wizard Form-->
+        <record id="quickbooks_ca_instance_wizard_view" model="ir.ui.view">
+            <field name="name">Quickbooks Instance Wizard Form View</field>
+            <field name="model">quickbook.instance.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="instance_id" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="qkca_export_operation"
+                                type="object"
+                                string="Export"
+                                class="btn-primary"/>
+
+                        <button string="Cancel"
+                                class="btn-secondary"
+                                special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
