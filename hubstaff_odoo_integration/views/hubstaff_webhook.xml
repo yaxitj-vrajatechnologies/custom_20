@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hubstaff_webhook_tree" model="ir.ui.view">
+        <field name="name">hubstaff.webhook.tree</field>
+        <field name="model">hubstaff.webhook</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name" required="True"/>
+                <field name="webhook_event" required="True"/>
+                <field name="status" column_invisible="1"/>
+                <field name="hubstaff_webhook_id" />
+                <field name="state" column_invisible="1"/>
+                <button name="action_create_hubstaff_webhook"
+                        type="object"
+                        string="Create"
+                        class="btn-outline-primary"
+                        invisible="status == 'active'"
+                />
+            </list>
+        </field>
+    </record>
+</odoo>

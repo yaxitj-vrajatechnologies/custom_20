@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_vraja_cashflow_wizard_form" model="ir.ui.view">
+        <field name="name">vraja.cashflow.wizard.form</field>
+        <field name="model">vraja.cashflow.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Cashflow Intelligence">
+                <sheet>
+                    <div class="alert alert-info" role="alert">
+                        <strong>AI Chief Financial Officer Analysis</strong><br/>
+                        Select the historical date range to provide relevant data to the AI model.<br/>
+                        The system will analyze open Accounts Receivable and Accounts Payable, historical payments, and outstanding balances to generate a comprehensive financial dashboard.<br/>
+                        You can also select the Odoo company for which you want to perform the analysis.<br/>
+                        Additionally, you can provide any extra information, context, or specific instructions for the AI to consider during the analysis.
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="company_id" options="{'no_create': True}"/>
+                        </group>
+                        <group>
+                            <field name="date_to"/>
+                        </group>
+                        <field name="card_id" invisible="1"/>
+                    </group>
+                    <group string="Additional Information (optional)">
+                        <field name="additional_info" nolabel="1" colspan="2"
+                               placeholder="Extra context or instructions for the AI, e.g.&#10;- Our business is seasonal; Q4 revenue is always low.&#10;- Treat the Acme Corp receivable as secured; do not flag it as a risk.&#10;- Keep the executive summary conservative in tone."/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Generate Dashboard" name="action_generate_analysis" type="object" class="btn-primary" icon="auto_awesome"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

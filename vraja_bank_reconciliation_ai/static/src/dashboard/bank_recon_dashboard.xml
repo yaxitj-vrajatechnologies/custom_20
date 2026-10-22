@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+<t t-name="vraja_bank_recon.Dashboard" owl="1">
+<div class="vrk-dashboard">
+
+    <!-- ══════════════════════════════════════════════════════════
+         EXECUTIVE CONTROL HEADER
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="vrk-header">
+        <div class="vrk-header__top">
+            <div class="vrk-header__brand">
+                <div class="vrk-header__icon-wrap">
+                    <i class="oi" data-icon="wand_stars"/>
+                </div>
+                <div>
+                    <h1 class="vrk-header__title">Bank Reconciliation AI</h1>
+                    <p class="vrk-header__subtitle">Agentic 7-Step Workflow Engine</p>
+                </div>
+            </div>
+            <div class="vrk-header__actions">
+                <button class="vrk-btn vrk-btn--ghost" t-on-click="this.toggleBrief" id="btn-toggle-brief">
+                    <i class="oi me-1" t-att-data-icon="this.state.briefOpen ? 'expand_less' : 'info'"/>
+                    <t t-if="this.state.briefOpen">Hide Brief</t>
+                    <t t-else="">Agent Brief</t>
+                </button>
+            </div>
+        </div>
+
+        <!-- Agent Brief (collapsible) -->
+        <div t-if="this.state.briefOpen" class="vrk-brief">
+            <h6 class="vrk-brief__title"><i class="oi me-2" data-icon="memory"/>Agent Brief</h6>
+            <p>
+                The <strong>Bank Reconciliation AI Agent</strong> follows a structured 7-step process to analyse
+                unreconciled bank statement lines against your open journal items. It classifies each line into
+                one of three outcomes: <span class="vrk-badge vrk-badge--matched">✅ Matched</span>,
+                <span class="vrk-badge vrk-badge--rule">⚡ Rule-Based</span>, or
+                <span class="vrk-badge vrk-badge--check">⚠️ To Check</span>.
+                Matched and rule-based lines are automatically reconciled on confirmation. Flagged lines are
+                redirected to the native Odoo widget for human review.
+                <br/>
+                <strong>Quick Summary:</strong> The agent collects bank and journal data in (Steps 1-3), applies direct matching and existing Odoo rules in (Steps 4-5), uses AI to intelligently resolve complex exceptions in (Step 6), and outputs a final review report in (Step 7).
+            </p>
+        </div>
+
+        <!-- KPI Summary Row -->
+        <div class="vrk-kpi-row">
+            <div class="vrk-kpi-card vrk-kpi-card--clickable" t-on-click="this.openReconciliationRate">
+                <span class="vrk-kpi-card__value vrk-kpi-card__value--green">
+                    <t t-esc="this.state.stats.reconciliation_rate"/>%
+                </span>
+                <span class="vrk-kpi-card__label">Reconciliation Rate</span>
+            </div>
+            <div class="vrk-kpi-card vrk-kpi-card--clickable" t-on-click="this.openUnreconciledLines">
+                <span class="vrk-kpi-card__value vrk-kpi-card__value--amber">
+                    <t t-esc="this.state.stats.unreconciled_lines"/>
+                </span>
+                <span class="vrk-kpi-card__label">Unreconciled Lines</span>
+            </div>
+            <div class="vrk-kpi-card vrk-kpi-card--clickable" t-on-click="this.openAIMatchedLines">
+                <span class="vrk-kpi-card__value vrk-kpi-card__value--blue">
+                    <t t-esc="this.state.stats.ai_matched"/>
+                </span>
+                <span class="vrk-kpi-card__label">AI Matched (All Time)</span>
+            </div>
+
+        </div>
+    </div><!-- end .vrk-header -->
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         IDLE PHASE — Journal Picker + Run CTA
+    ══════════════════════════════════════════════════════════════ -->
+    <t t-if="this.state.phase === 'idle'">
+        <div class="vrk-launch-panel">
+            <div class="vrk-launch-panel__inner">
+
+                <div class="vrk-launch-panel__glow"/>
+
+                <div class="vrk-launch-panel__label">
+                    <i class="oi me-2" data-icon="account_balance"/>Select Bank Journal
+                </div>
+                <select class="vrk-select"
+                        id="select-journal"
+                        t-on-change="this.onJournalChange">
+                    <t t-foreach="this.state.bankJournals" t-as="j" t-key="j.id">
+                        <option t-att-value="j.id"
+                                t-att-selected="j.id === this.state.selectedJournalId">
+                            <t t-esc="j.name"/>
+                        </option>
+                    </t>
+                    <t t-if="this.state.bankJournals.length === 0">
+                        <option value="">No bank journals found</option>
+                    </t>
+                </select>
+
+                <button class="vrk-run-btn"
+                        id="btn-run-ai-agent"
+                        t-on-click="this.runAIAgent"
+                        t-att-disabled="!this.state.selectedJournalId">
+                    <span class="vrk-run-btn__orbit"/>
+                    <span class="vrk-run-btn__orbit vrk-run-btn__orbit--2"/>
+                    <i class="oi me-2" data-icon="play_circle"/>
+                    Run AI Agent Now
+                </button>
+
+                <p class="vrk-launch-panel__hint">
+                    The agent will run 7 steps to analyse, match, and categorise all unreconciled
+                    statement lines for the selected journal. <br/><br/>
+                    By clicking the button above, the AI will process all pending transactions.
+                    Once complete, you can check the output and categorizations on the next screen.
+                </p>
+            </div>
+        </div>
+    </t><!-- end idle -->
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         RUNNING PHASE — Animated 7-Step Stepper
+    ══════════════════════════════════════════════════════════════ -->
+    <t t-elif="this.state.phase === 'running'">
+        <div class="vrk-stepper-section">
+
+            <div class="vrk-stepper-header">
+                <div class="vrk-stepper-header__pulse"/>
+                <span class="vrk-stepper-header__text">AI Agent Running…</span>
+            </div>
+
+            <!-- Horizontal Step Track -->
+            <div class="vrk-stepper">
+                <t t-foreach="this.state.steps" t-as="step" t-key="step.id">
+                    <div t-attf-class="vrk-step vrk-step--#{step.status}">
+                        <!-- Connector line (not before first step) -->
+                        <div t-if="step_index !== 0" class="vrk-step__connector"/>
+
+                        <!-- Circle badge -->
+                        <div class="vrk-step__circle">
+                            <t t-if="step.status === 'done'">
+                                <i class="oi" data-icon="check"/>
+                            </t>
+                            <t t-elif="step.status === 'error'">
+                                <i class="oi" data-icon="close"/>
+                            </t>
+                            <t t-else="">
+                                <t t-esc="step.id"/>
+                            </t>
+                        </div>
+
+                        <!-- Labels -->
+                        <div class="vrk-step__body">
+                            <span class="vrk-step__icon"><t t-esc="step.icon"/></span>
+                            <span class="vrk-step__label"><t t-esc="step.label"/></span>
+                        </div>
+                    </div>
+                </t>
+            </div>
+
+            <!-- Current step description -->
+            <div class="vrk-stepper-desc">
+                <i class="oi oi-spin me-2" data-icon="progress_activity"/>
+                <t t-esc="this.state.currentStepDesc"/>
+            </div>
+
+        </div>
+    </t><!-- end running -->
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         RESULTS PHASE — Tri-Category Analysis
+    ══════════════════════════════════════════════════════════════ -->
+    <t t-elif="this.state.phase === 'results'">
+        <div class="vrk-results-section">
+
+            <!-- Results Header -->
+            <div class="vrk-results-header">
+                <div>
+                    <h2 class="vrk-results-header__title">
+                        <i class="oi me-2" data-icon="check_circle"/>Analysis Complete
+                    </h2>
+                    <p class="vrk-results-header__sub">
+                        <t t-esc="this.state.analysisName"/> ·
+                        <t t-esc="this.state.results and this.state.results.journal_name or ''"/>
+                    </p>
+                </div>
+                <button class="vrk-btn vrk-btn--ghost" t-on-click="this.runAgain" id="btn-run-again">
+                    <i class="oi me-1" data-icon="refresh"/> Run Again
+                </button>
+            </div>
+
+            <!-- 7-Step Accordions -->
+            <div class="vrk-accordions" t-if="this.state.stepData">
+
+                <!-- STEP 1 -->
+                <div class="vrk-accordion" t-att-class="this.state.activeAccordion === 1 ? 'vrk-accordion--active' : ''">
+                    <div class="vrk-accordion__header" t-on-click="() => this.toggleAccordion(1)">
+                        <div class="vrk-accordion__icon"><i class="oi" data-icon="newspaper"/></div>
+                        <div class="vrk-accordion__title">Step 1 of 7: Execution Plan</div>
+                        <div class="vrk-accordion__arrow"><i class="oi" t-att-data-icon="this.state.activeAccordion === 1 ? 'expand_less' : 'expand_more'"/></div>
+                    </div>
+                    <div class="vrk-accordion__content" t-if="this.state.activeAccordion === 1">
+                        <div class="vrk-step-desc"><strong>Step 1 of 7: Execution Plan</strong><br/>Define the overall reconciliation workflow, clarifying objectives and rules to apply. This ensures consistency and a clear roadmap before processing transactions.</div>
+                        <div class="vrk-step-desc mt-2"><strong>Step 2 of 7: Bank Statements Information</strong><br/>Collect and structure all imported bank statement lines for analysis. Accurate and complete bank data is the foundation for reconciliation.</div>
+                        <div class="vrk-step-desc mt-2"><strong>Step 3 of 7: Unreconciled Account Move Lines</strong><br/>Identify open journal items in Odoo that remain unreconciled. These records are the candidate transactions to match against the bank statement.</div>
+                        <div class="vrk-step-desc mt-2"><strong>Step 4 of 7: Identify Direct Matching Transactions</strong><br/>Search for one-to-one matches between bank lines and account move lines. Direct matches reduce reconciliation effort and provide immediate clarity.</div>
+                        <div class="vrk-step-desc mt-2"><strong>Step 5 of 7: Existing Bank Reconciliations Rules Analysis</strong><br/>Review automated rules (e.g., based on partner, reference, or amount). This step highlights where predefined logic can speed up reconciliation.</div>
+                        <div class="vrk-step-desc mt-2"><strong>Step 6 of 7: Bank Reconciliation with No Direct Match</strong><br/>Apply batch processing, partial matching, or manual review for complex cases. Here, intelligence and rules are applied to resolve non-straightforward transactions.</div>
+                        <div class="vrk-step-desc mt-2"><strong>Step 7 of 7: Overview Full Bank Reconciliation</strong><br/>Summarize all reconciled and unreconciled items into a final report. This provides a clear overview of completed matches and outstanding exceptions.</div>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="vrk-accordion" t-att-class="this.state.activeAccordion === 2 ? 'vrk-accordion--active' : ''">
+                    <div class="vrk-accordion__header" t-on-click="() => this.toggleAccordion(2)">
+                        <div class="vrk-accordion__icon"><i class="oi" data-icon="newspaper"/></div>
+                        <div class="vrk-accordion__title">Step 2 of 7: Bank Statements Information</div>
+                        <div class="vrk-accordion__arrow"><i class="oi" t-att-data-icon="this.state.activeAccordion === 2 ? 'expand_less' : 'expand_more'"/></div>
+                    </div>
+                    <div class="vrk-accordion__content" t-if="this.state.activeAccordion === 2">
+                        <h4 class="vrk-table-title">Bank Statements</h4>
+                        <div class="vrk-table-responsive">
+                            <table class="vrk-table">
+                                <thead><tr><th>ID</th><th>REFERENCE</th><th>DATE</th><th>BALANCE START</th><th>BALANCE END REAL</th><th>LINE COUNT</th></tr></thead>
+                                <tbody>
+                                    <t t-foreach="this.state.stepData.step2.statements" t-as="st" t-key="st.id">
+                                        <tr>
+                                            <td><t t-esc="st.id"/></td><td><t t-esc="st.reference"/></td><td><t t-esc="st.date"/></td>
+                                            <td><t t-esc="this.formatAmount(st.balance_start)"/></td><td><t t-esc="this.formatAmount(st.balance_end_real)"/></td>
+                                            <td><t t-esc="st.line_count"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="vrk-table-title mt-4">Bank Transactions</h4>
+                        <div class="vrk-table-responsive">
+                            <table class="vrk-table">
+                                <thead><tr><th>ID</th><th>STATEMENT</th><th>DATE</th><th>NAME</th><th>AMOUNT</th><th>PARTNER ID</th><th>PARTNER NAME</th><th>PAYMENT REF</th></tr></thead>
+                                <tbody>
+                                    <t t-foreach="this.state.stepData.step2.transactions" t-as="tx" t-key="tx.id">
+                                        <tr>
+                                            <td><t t-esc="tx.id"/></td><td><t t-esc="tx.statement"/></td><td><t t-esc="tx.date"/></td>
+                                            <td><t t-esc="tx.name"/></td><td><t t-esc="this.formatAmount(tx.amount)"/></td>
+                                            <td><t t-esc="tx.partner_id"/></td><td><t t-esc="tx.partner_name"/></td><td><t t-esc="tx.payment_ref"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="vrk-accordion" t-att-class="this.state.activeAccordion === 3 ? 'vrk-accordion--active' : ''">
+                    <div class="vrk-accordion__header" t-on-click="() => this.toggleAccordion(3)">
+                        <div class="vrk-accordion__icon"><i class="oi" data-icon="newspaper"/></div>
+                        <div class="vrk-accordion__title">Step 3 of 7: Unreconciled Account Move Lines</div>
+                        <div class="vrk-accordion__arrow"><i class="oi" t-att-data-icon="this.state.activeAccordion === 3 ? 'expand_less' : 'expand_more'"/></div>
+                    </div>
+                    <div class="vrk-accordion__content" t-if="this.state.activeAccordion === 3">
+                        <h4 class="vrk-table-title">Unreconciled Move Lines</h4>
+                        <div class="vrk-table-responsive">
+                            <table class="vrk-table">
+                                <thead><tr><th>ID</th><th>DATE</th><th>NAME</th><th>AMOUNT</th><th>ACCOUNT ID</th><th>PARTNER ID</th><th>PARTNER NAME</th><th>MOVE ID</th></tr></thead>
+                                <tbody>
+                                    <t t-foreach="this.state.stepData.step3.unreconciled_moves" t-as="mv" t-key="mv.id">
+                                        <tr>
+                                            <td><t t-esc="mv.id"/></td><td><t t-esc="mv.date"/></td><td><t t-esc="mv.name"/></td>
+                                            <td><t t-esc="this.formatAmount(mv.amount)"/></td><td><t t-esc="mv.account_id"/></td>
+                                            <td><t t-esc="mv.partner_id"/></td><td><t t-esc="mv.partner_name"/></td><td><t t-esc="mv.move_id"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="vrk-accordion" t-att-class="this.state.activeAccordion === 4 ? 'vrk-accordion--active' : ''">
+                    <div class="vrk-accordion__header" t-on-click="() => this.toggleAccordion(4)">
+                        <div class="vrk-accordion__icon"><i class="oi" data-icon="newspaper"/></div>
+                        <div class="vrk-accordion__title">Step 4 of 7: Identify Direct Matching Transactions</div>
+                        <div class="vrk-accordion__arrow"><i class="oi" t-att-data-icon="this.state.activeAccordion === 4 ? 'expand_less' : 'expand_more'"/></div>
+                    </div>
+                    <div class="vrk-accordion__content" t-if="this.state.activeAccordion === 4">
+                        <h4 class="vrk-table-title">Matched Transactions</h4>
+                        <div class="vrk-table-responsive">
+                            <table class="vrk-table">
+                                <thead><tr><th>STATEMENT ID</th><th>STATEMENT DATE</th><th>STATEMENT REFERENCE</th><th>STATEMENT AMOUNT</th><th>TRANSACTION ID</th><th>TRANSACTION PARTNER ID</th><th>TRANSACTION PARTNER</th><th>TRANSACTION DATE</th><th>TRANSACTION REF</th></tr></thead>
+                                <tbody>
+                                    <t t-if="this.state.stepData.step4.matched.length &gt; 0">
+                                        <t t-foreach="this.state.stepData.step4.matched" t-as="mt" t-key="mt.statement_id + '_' + mt.transaction_id">
+                                            <tr>
+                                                <td><t t-esc="mt.statement_id"/></td><td><t t-esc="mt.statement_date"/></td><td><t t-esc="mt.statement_ref"/></td>
+                                                <td><t t-esc="this.formatAmount(mt.statement_amount)"/></td><td><t t-esc="mt.transaction_id"/></td>
+                                                <td><t t-esc="mt.transaction_partner_id"/></td><td><t t-esc="mt.transaction_partner"/></td>
+                                                <td><t t-esc="mt.transaction_date"/></td><td><t t-esc="mt.transaction_ref"/></td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <tr>
+                                            <td colspan="9" class="text-center text-muted py-4">
+                                                No direct matching transactions found in this step.
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="vrk-table-title mt-4">Remaining Bank Transactions</h4>
+                        <div class="vrk-table-responsive">
+                            <table class="vrk-table">
+                                <thead><tr><th>ID</th><th>STATEMENT</th><th>DATE</th><th>NAME</th><th>AMOUNT</th></tr></thead>
+                                <tbody>
+                                    <t t-foreach="this.state.stepData.step4.remaining" t-as="rm" t-key="rm.id">
+                                        <tr>
+                                            <td><t t-esc="rm.id"/></td><td><t t-esc="rm.statement"/></td><td><t t-esc="rm.date"/></td>
+                                            <td><t t-esc="rm.name"/></td><td><t t-esc="this.formatAmount(rm.amount)"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 5 -->
+                <div class="vrk-accordion" t-att-class="this.state.activeAccordion === 5 ? 'vrk-accordion--active' : ''">
+                    <div class="vrk-accordion__header" t-on-click="() => this.toggleAccordion(5)">
+                        <div class="vrk-accordion__icon"><i class="oi" data-icon="newspaper"/></div>
+                        <div class="vrk-accordion__title">Step 5 of 7: Existing Bank Reconciliations Rules Analysis</div>
+                        <div class="vrk-accordion__arrow"><i class="oi" t-att-data-icon="this.state.activeAccordion === 5 ? 'expand_less' : 'expand_more'"/></div>
+                    </div>
+                    <div class="vrk-accordion__content" t-if="this.state.activeAccordion === 5">
+                        <h4 class="vrk-table-title">Reconciliations Rules</h4>
+                        <div class="vrk-table-responsive">
+                            <table class="vrk-table">
+                                <thead><tr><th>ID</th><th>RECONCILIATION MODEL</th><th>CRITERIA</th><th>INSTRUCTIONS</th></tr></thead>
+                                <tbody>
+                                    <t t-foreach="this.state.stepData.step5.rules" t-as="ru" t-key="ru.id">
+                                        <tr>
+                                            <td><t t-esc="ru.id"/></td><td><t t-esc="ru.name"/></td>
+                                            <td><t t-esc="ru.criteria"/></td><td><t t-esc="ru.instructions"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 6 -->
+                <div class="vrk-accordion" t-att-class="this.state.activeAccordion === 6 ? 'vrk-accordion--active' : ''">
+                    <div class="vrk-accordion__header" t-on-click="() => this.toggleAccordion(6)">
+                        <div class="vrk-accordion__icon"><i class="oi" data-icon="newspaper"/></div>
+                        <div class="vrk-accordion__title">Step 6 of 7: Bank Reconciliation with no direct match</div>
+                        <div class="vrk-accordion__arrow"><i class="oi" t-att-data-icon="this.state.activeAccordion === 6 ? 'expand_less' : 'expand_more'"/></div>
+                    </div>
+                    <div class="vrk-accordion__content" t-if="this.state.activeAccordion === 6">
+                        <h4 class="vrk-table-title">Rule-Matched Transactions</h4>
+                        <div class="vrk-table-responsive">
+                            <table class="vrk-table">
+                                <thead><tr><th>Date</th><th>Reference</th><th class="text-end">Amount</th><th>Note</th></tr></thead>
+                                <tbody>
+                                    <t t-foreach="this.state.results.rule" t-as="r" t-key="r.id">
+                                        <tr>
+                                            <td><t t-esc="r.date"/></td><td><t t-esc="r.payment_ref"/></td>
+                                            <td class="text-end"><t t-esc="this.formatAmount(r.amount)"/></td><td><t t-esc="r.ai_explanation"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 7 -->
+                <div class="vrk-accordion" t-att-class="this.state.activeAccordion === 7 ? 'vrk-accordion--active' : ''">
+                    <div class="vrk-accordion__header" t-on-click="() => this.toggleAccordion(7)">
+                        <div class="vrk-accordion__icon"><i class="oi" data-icon="newspaper"/></div>
+                        <div class="vrk-accordion__title">Step 7 of 7: Overview Full Bank Reconciliation</div>
+                        <div class="vrk-accordion__arrow"><i class="oi" t-att-data-icon="this.state.activeAccordion === 7 ? 'expand_less' : 'expand_more'"/></div>
+                    </div>
+                    <div class="vrk-accordion__content" t-if="this.state.activeAccordion === 7">
+                        <div class="row text-center mb-3">
+                            <div class="col-4">
+                                <div class="vrk-step7-tab" t-att-class="this.state.step7ActiveTab === 'matched' ? 'active' : ''" t-on-click="() => this.setStep7Tab('matched')">
+                                    <strong>Matched:</strong> <t t-esc="this.state.results.matched.length"/>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="vrk-step7-tab" t-att-class="this.state.step7ActiveTab === 'rule' ? 'active' : ''" t-on-click="() => this.setStep7Tab('rule')">
+                                    <strong>Rule-based:</strong> <t t-esc="this.state.results.rule.length"/>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="vrk-step7-tab" t-att-class="this.state.step7ActiveTab === 'check' ? 'active' : ''" t-on-click="() => this.setStep7Tab('check')">
+                                    <strong>To Check:</strong> <t t-esc="this.state.results.check.length"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <t t-set="activeList" t-value="this.state.step7ActiveTab === 'matched' ? this.state.results.matched : (this.state.step7ActiveTab === 'rule' ? this.state.results.rule : this.state.results.check)"/>
+                        <t t-set="activeTitle" t-value="this.state.step7ActiveTab === 'matched' ? 'Matched Transactions' : (this.state.step7ActiveTab === 'rule' ? 'Rule-Matched Transactions' : 'Outstanding / To-Check Transactions')"/>
+
+                        <h4 class="vrk-table-title"><t t-esc="activeTitle"/></h4>
+                        <div class="vrk-table-responsive">
+                            <table class="vrk-table">
+                                <thead><tr><th>Date</th><th>Reference</th><th class="text-end">Amount</th><th>Note</th></tr></thead>
+                                <tbody>
+                                    <t t-foreach="activeList" t-as="item" t-key="item.id">
+                                        <tr>
+                                            <td><t t-esc="item.date"/></td><td><t t-esc="item.payment_ref"/></td>
+                                            <td class="text-end"><t t-esc="this.formatAmount(item.amount)"/></td><td><t t-esc="item.ai_explanation"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- end .vrk-accordions -->
+
+
+            <!-- Confirm & Review CTA -->
+            <div class="vrk-confirm-cta">
+                <div class="vrk-confirm-cta__info">
+                    <i class="oi me-2" data-icon="info"/>
+                    Clicking <strong>Confirm &amp; Review</strong> will auto-reconcile
+                    <em>Matched</em> lines (exact journal item found). <em>Rule-Based</em> lines
+                    (bank fees, charges, etc.) have no counterpart journal item — Odoo's native
+                    reconciliation widget will suggest a write-off account for those.
+                    <em>Statements to Check</em> require your manual review.
+                </div>
+                <button class="vrk-confirm-btn"
+                        id="btn-confirm-review"
+                        t-on-click="this.confirmAndReview">
+                    <i class="oi me-2" data-icon="check_circle"/>
+                    Confirm &amp; Review
+                    <span class="vrk-confirm-btn__badge">
+                        <t t-esc="this.state.results ? this.state.results.check.length : 0"/> to review
+                    </span>
+                </button>
+            </div>
+
+        </div>
+    </t><!-- end results -->
+
+</div><!-- end .vrk-dashboard -->
+</t>
+</templates>

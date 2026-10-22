@@ -1,0 +1,8 @@
+<odoo>
+    <record id="seq_hubstaff_log" model="ir.sequence">
+        <field name="name">Hubstaff Log Sequence</field>
+        <field name="code">hubstaff.log</field>
+        <field name="prefix">HL/</field>
+        <field name="padding">6</field>
+    </record>
+</odoo>

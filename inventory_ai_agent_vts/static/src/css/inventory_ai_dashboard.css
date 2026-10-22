@@ -1,0 +1,102 @@
+.o_inventory_ai_dashboard_scroll {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 30px;
+}
+
+.o_inventory_ai_dashboard_scroll .card {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.o_inventory_ai_dashboard_scroll .card-header {
+    background: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.o_inventory_ai_dashboard_scroll textarea {
+    resize: vertical;
+}
+
+.o_inventory_ai_status_badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.o_inventory_ai_status_idle {
+    background: #f0f0f0;
+    color: #6c757d;
+    border: 1px solid #ddd;
+}
+
+.o_inventory_ai_status_ready {
+    background: #fff8e1;
+    color: #856404;
+    border: 1px solid #ffe082;
+}
+
+.o_inventory_ai_status_done {
+    background: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #a3cfbb;
+}
+
+.o_inventory_ai_status_error {
+    background: #f8d7da;
+    color: #842029;
+    border: 1px solid #f1aeb5;
+}
+
+.o_inventory_ai_step_chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    color: #333;
+    font-size: 13px;
+}
+
+.o_inventory_ai_step_chip span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: #ffffff;
+    background: #4472C4;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.o_inventory_ai_step_chip em {
+    font-style: normal;
+}
+
+.o_inventory_ai_step_chip_success span {
+    background: #27ae60;
+}
+
+.o_inventory_ai_dashboard_scroll .sticky-top {
+    top: 0;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .o_inventory_ai_dashboard_scroll {
+        padding-bottom: 80px;
+    }
+
+    .o_inventory_ai_status_badge {
+        margin-top: 12px;
+    }
+}

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="inventory_ai_log_form_vts" model="ir.ui.view">
+        <field name="name">vraja.ai.log.form.inventory.vts</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_ai_log_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <sheet invisible="vraja_common_log_store != 'ai_low_stock'">
+                    <div class="alert alert-success mb-4" invisible="status != 'success'">
+                        <span class="oi me-2" data-icon="check_circle"/>Inventory analysis completed successfully.
+                    </div>
+                    <div class="alert alert-danger mb-4" invisible="status != 'failed'">
+                        <span class="oi me-2" data-icon="cancel"/>Inventory analysis failed.
+                    </div>
+
+                    <div class="oe_title mb-3">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Run Info">
+                            <field name="run_date"/>
+                            <field name="vraja_common_log_store"/>
+                            <field name="status" widget="badge"/>
+                            <field name="ai_provider"/>
+                            <field name="ai_llm_model"/>
+                        </group>
+                        <group string="Configuration Used">
+                            <field name="inventory_ai_minimum_stock_threshold"/>
+                            <field name="inventory_ai_forecast_period"/>
+                            <field name="inventory_ai_sale_forecast_days"
+                                   invisible="inventory_ai_forecast_period == 'all_data'"/>
+                            <field name="inventory_ai_purchase_forecast_period"/>
+                            <field name="inventory_ai_purchase_forecast_days"
+                                   invisible="inventory_ai_purchase_forecast_period == 'all_data'"/>
+                            <field name="inventory_ai_auto_create_rfq"/>
+                            <field name="inventory_ai_token_usage" string="Token Used"/>
+                        </group>
+                    </group>
+
+                    <group string="Log Details" invisible="not inventory_ai_error">
+                        <field name="inventory_ai_error" string="Log Message"/>
+                    </group>
+
+                    <div class="row mb-4 mt-2" invisible="inventory_ai_error">
+                        <div class="col-md-4">
+                            <div class="p-3 text-center rounded"
+                                 style="background:#f0f4ff; border:1px solid #d0d9f5;">
+                                <div style="font-size:28px; font-weight:700; color:#4472C4;">
+                                    <field name="inventory_ai_total_products" readonly="1"/>
+                                </div>
+                                <div class="text-muted small">Products Recommended</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 text-center rounded"
+                                 style="background:#f0fff4; border:1px solid #a3cfbb;">
+                                <div style="font-size:28px; font-weight:700; color:#27ae60;">
+                                    <field name="inventory_ai_total_order_qty" readonly="1"/>
+                                </div>
+                                <div class="text-muted small">Total Recommended Qty</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 text-center rounded"
+                                 style="background:#fff8f0; border:1px solid #f5cba7;">
+                                <div style="font-size:28px; font-weight:700; color:#e67e22;">
+                                    <field name="inventory_ai_purchase_order_count" readonly="1"/>
+                                </div>
+                                <div class="text-muted small">RFQs Created</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <notebook>
+                        <page string="Recommendations" invisible="inventory_ai_error">
+                            <field name="line_ids" nolabel="1" readonly="1">
+                                <list limit="20">
+                                    <field name="inventory_ai_product_name" string="Product" width="180"/>
+                                    <field name="inventory_ai_product_sku" string="SKU" width="120"/>
+                                    <field name="inventory_ai_recommended_vendor_name" string="Vendor" width="180"/>
+                                    <field name="inventory_ai_recommended_order_qty" string="Order Qty"
+                                           width="100"/>
+                                    <field name="inventory_ai_available_stock" string="Available" width="100"/>
+                                    <field name="inventory_ai_forecasted_demand" string="Forecast" width="100"/>
+                                    <field name="inventory_ai_reason" string="Reason" width="260"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="vraja_ai_inventory_ai_log_search" model="ir.ui.view">
+        <field name="name">vraja.ai.log.search.inventory</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_common_ai_log_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <separator/>
+                <filter string="Inventory AI" name="filter_inventory_ai"
+                        domain="[('vraja_common_log_store', '=', 'ai_low_stock')]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

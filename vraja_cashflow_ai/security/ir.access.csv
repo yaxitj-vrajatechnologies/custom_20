@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_vraja_cashflow_analysis_user,vraja.cashflow.analysis.user,vraja.cashflow.analysis,base.group_user,cru,
+access_vraja_cashflow_analysis_manager,vraja.cashflow.analysis.manager,vraja.cashflow.analysis,account.group_account_manager,crud,
+access_vraja_cashflow_wizard_user,vraja.cashflow.wizard.user,vraja.cashflow.wizard,base.group_user,crud,

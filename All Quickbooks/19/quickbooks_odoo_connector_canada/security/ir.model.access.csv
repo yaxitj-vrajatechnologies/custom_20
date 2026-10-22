@@ -1,9 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_qbo_product_ca_map_vts,access.qbo.product.ca.map.vts,model_qbo_product_ca_map_vts,,1,1,1,1
-access_qbo_category_ca_map_vts,access.qbo.category.ca.map.vts,model_qbo_category_ca_map_vts,,1,1,1,1
-access_qbo_vendor_ca_map_vts,access.qbo.vendor.ca.map.vts,model_qbo_vendor_ca_map_vts,,1,1,1,1
-access_qbo_invoice_map_vts,access.qbo.invoice.map.vts,model_qbo_invoice_map_vts,,1,1,1,1
-access_qbo_bill_ca_map_vts,access.qbo.bill.ca.map.vts,model_qbo_bill_ca_map_vts,,1,1,1,1
-access_qbo_payment_ca_map_vts,access.qbo.payment.ca.map.vts,model_qbo_payment_ca_map_vts,,1,1,1,1
-access_qbo_bill_payment_ca_map_vts,access.qbo.bill.payment.ca.map.vts,model_qbo_bill_payment_ca_map_vts,,1,1,1,1
-access_quickbook_instance_wizard,access.quickbook.instance.wizard,model_quickbook_instance_wizard,,1,1,1,1

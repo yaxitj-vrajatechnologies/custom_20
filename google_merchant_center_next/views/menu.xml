@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         TOP-LEVEL: Website → Google Merchant Center
+    ══════════════════════════════════════════════════════════════════ -->
+
+    <!-- Parent menu under Website -->
+    <menuitem
+        id="menu_gmc_root"
+        name="Google Merchant Center"
+        parent="website.menu_website_configuration"
+        sequence="200"/>
+
+    <!-- Sub-menus -->
+    <menuitem
+        id="menu_gmc_feeds"
+        name="Feeds"
+        parent="menu_gmc_root"
+        action="action_gmc_feed"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_gmc_taxonomy"
+        name="Google Product Taxonomy"
+        parent="menu_gmc_root"
+        action="action_google_product_taxonomy"
+        sequence="20"/>
+
+    <menuitem
+        id="menu_gmc_import_categories"
+        name="Import Google Categories"
+        parent="menu_gmc_root"
+        action="action_import_google_category_wizard"
+        sequence="30"/>
+
+    <menuitem
+        id="menu_gmc_logs"
+        name="Upload Logs"
+        parent="menu_gmc_root"
+        action="action_gmc_feed_log"
+        sequence="40"/>
+
+</odoo>

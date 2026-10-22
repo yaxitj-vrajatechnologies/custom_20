@@ -1,0 +1,8 @@
+id,name,model_id,group_id/id,operation,domain
+access_fruugo_feed_user,fruugo.feed user,fruugo.feed,base.group_user,r,
+access_fruugo_feed_manager,fruugo.feed manager,fruugo.feed,base.group_system,crud,
+access_fruugo_feed_log_user,fruugo.feed.log user,fruugo.feed.log,base.group_user,r,
+access_fruugo_feed_log_manager,fruugo.feed.log manager,fruugo.feed.log,base.group_system,crud,
+access_fruugo_category_user,fruugo.category user,fruugo.category,base.group_user,r,
+access_fruugo_category_manager,fruugo.category manager,fruugo.category,base.group_system,crud,
+access_import_fruugo_category_wizard,import.fruugo.category.wizard user,import.fruugo.category.wizard,base.group_user,crud,

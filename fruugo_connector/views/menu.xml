@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         ROOT MENU — Fruugo
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <menuitem
+        id="menu_fruugo_root"
+        name="Fruugo"
+        sequence="95"
+        web_icon="fruugo_connector,static/description/icon.png"/>
+
+    <!-- ── Feeds ──────────────────────────────────────────────────────────── -->
+    <menuitem
+        id="menu_fruugo_feed"
+        name="Product Feeds"
+        parent="menu_fruugo_root"
+        action="action_fruugo_feed"
+        sequence="10"/>
+
+    <!-- ── Logs ───────────────────────────────────────────────────────────── -->
+    <menuitem
+        id="menu_fruugo_logs"
+        name="Generation Logs"
+        parent="menu_fruugo_root"
+        action="action_fruugo_feed_log"
+        sequence="20"/>
+
+    <!-- ── Configuration ──────────────────────────────────────────────────── -->
+    <menuitem
+        id="menu_fruugo_config"
+        name="Configuration"
+        parent="menu_fruugo_root"
+        sequence="100"/>
+        
+    <menuitem
+        id="menu_fruugo_categories"
+        name="Fruugo Categories"
+        parent="menu_fruugo_config"
+        action="action_fruugo_category"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_fruugo_import_categories"
+        name="Import Fruugo Categories"
+        parent="menu_fruugo_config"
+        action="action_import_fruugo_category_wizard"
+        sequence="20"/>
+
+</odoo>

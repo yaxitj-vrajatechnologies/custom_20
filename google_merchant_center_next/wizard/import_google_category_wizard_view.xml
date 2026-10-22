@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ── Import Wizard View ──────────────────────────────────────────── -->
+    <record id="view_import_google_category_wizard_form" model="ir.ui.view">
+        <field name="name">import.google.category.wizard.form</field>
+        <field name="model">import.google.category.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import Google Product Categories">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Import / Update Google Product Categories</h1>
+                    </div>
+                    <group>
+                        <p class="text-muted">
+                            This wizard downloads the official Google Product Taxonomy from:
+                            <br/>
+                            <strong>https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt</strong>
+                            <br/>
+                            New categories are created and existing ones are updated automatically.
+                        </p>
+                    </group>
+                    <group invisible="state == 'ready'">
+                        <group>
+                            <field name="imported_count" readonly="1"/>
+                            <field name="updated_count" readonly="1"/>
+                            <field name="skipped_count" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="info_message" readonly="1" widget="text"/>
+                        </group>
+                    </group>
+                    <group invisible="state != 'ready'">
+                        <p>Click <strong>Import / Update</strong> to start downloading categories from Google.</p>
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        string="Import / Update Categories"
+                        name="action_import_categories"
+                        type="object"
+                        class="btn-primary"
+                        invisible="state == 'done'"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Wizard Action ──────────────────────────────────────────────── -->
+    <record id="action_import_google_category_wizard" model="ir.actions.act_window">
+        <field name="name">Import Google Categories</field>
+        <field name="res_model">import.google.category.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

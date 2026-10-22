@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Sequence for analysis reference -->
+    <data noupdate="1">
+        <record id="seq_vraja_bank_recon_analysis" model="ir.sequence">
+            <field name="name">Bank Reconciliation AI Analysis</field>
+            <field name="code">vraja.bank.recon.analysis</field>
+            <field name="prefix">BRA/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+
+    <!-- Form View -->
+    <record id="view_vraja_bank_recon_analysis_form" model="ir.ui.view">
+        <field name="name">vraja.bank.recon.analysis.form</field>
+        <field name="model">vraja.bank.recon.analysis</field>
+        <field name="arch" type="xml">
+            <form string="Bank Reconciliation Analysis">
+                <header>
+                    <button name="action_confirm_and_review" string="Confirm and Review" type="object" class="btn-primary" invisible="state != 'done'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,reconciled"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="journal_id" readonly="1"/>
+                            <field name="run_date"/>
+                        </group>
+                        <group>
+                            <field name="card_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Statement Lines Review">
+                            <field name="line_ids" readonly="state == 'reconciled'">
+                                <list decoration-success="status == 'matched'" decoration-warning="status == 'check'" decoration-info="status == 'rule'" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="payment_ref" string="Reference"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="status" widget="badge" decoration-success="status == 'matched'" decoration-warning="status == 'check'" decoration-info="status == 'rule'"/>
+                                    <field name="matched_aml_ids" widget="many2many_tags"/>
+                                    <field name="ai_explanation"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_vraja_bank_recon_analysis" model="ir.actions.act_window">
+        <field name="name">Bank Reconciliation Analyses</field>
+        <field name="res_model">vraja.bank.recon.analysis</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

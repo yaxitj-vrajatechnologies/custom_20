@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="card_vraja_bank_reconciliation" model="vraja.ai.card">
+            <field name="vraja_common_card_name">Bank Reconciliation AI</field>
+            <field name="vraja_common_card_description">Automated bank statement reconciliation using AI matching and categorizing and real-time reactive frontend dashboard.</field>
+            <field name="vraja_common_card_active">1</field>
+            <field name="vraja_common_store">bank_recon</field>
+        </record>
+    </data>
+</odoo>

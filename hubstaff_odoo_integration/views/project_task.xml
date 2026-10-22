@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_task_form_hubstaff_sync" model="ir.ui.view">
+        <field name="name">project.task.form.hubstaff.sync</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='extra_info']" position="after">
+                <page name="hubstaff_configuration" string="Hubstaff Configuration">
+                    <group>
+                        <field name="hubstaff_task_id" readonly="1"/>
+                        <field name="hubstaff_instance_id" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//header" position="inside">
+                <button name="action_update_hubstaff_task" string="Update from Hubstaff" type="object"
+                        class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="export_action_from_task" model="ir.actions.act_window">
+        <field name="name">Export Task to Hubstaff</field>
+        <field name="res_model">hubstaff.export.project.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_res_model': 'project.task', 'default_res_ids': active_ids,'task_export':True}
+        </field>
+        <field name="binding_model_id" ref="project.model_project_task"/>
+        <field name="binding_view_types">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="vendor_ai_log_form_vts" model="ir.ui.view">
+        <field name="name">vraja.ai.log.form.vendor.vts</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_ai_log_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <sheet invisible="vraja_common_log_store != 'ai_vendor_intel'">
+
+                    <div class="alert alert-success mb-4" invisible="status != 'success'">
+                        <span class="oi oi-check text-success me-2"/>Vendor Intelligence Analysis completed successfully.
+                    </div>
+                    <div class="alert alert-danger mb-4" invisible="status != 'failed'">
+                        <span class="oi oi-close me-2"/>Vendor Intelligence Analysis failed.
+                    </div>
+
+                    <div class="oe_title mb-3">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Run Info">
+                            <field name="run_date"/>
+                            <field name="vraja_common_log_store"/>
+                            <field name="status" widget="badge"/>
+                        </group>
+                        <group string="Configuration Used">
+                            <field name="vendor_ai_forecast_period"/>
+                            <field name="vendor_ai_forecast_days" invisible="vendor_ai_forecast_period == 'all_data'"/>
+                            <field name="ai_provider"/>
+                            <field name="ai_llm_model"/>
+                            <field name="vendor_ai_token_usage" string="Token Used"/>
+                        </group>
+                    </group>
+
+                    <group string="Log Details" invisible="not vendor_ai_error">
+                        <field name="vendor_ai_error" string="Log Message"/>
+                    </group>
+
+                    <div class="row mb-4 mt-2" invisible="vendor_ai_error">
+                        <div class="col-md-6">
+                            <div class="p-3 text-center rounded"
+                                 style="background:#f0f4ff; border:1px solid #d0d9f5;">
+                                <div style="font-size:28px; font-weight:700; color:#4472C4;">
+                                    <field name="vendor_ai_total_vendors" readonly="1"/>
+                                </div>
+                                <div class="text-muted small">Top Vendors Analyzed</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <notebook>
+                        <page string="Top Vendors" invisible="vendor_ai_error">
+                            <field name="line_ids" nolabel="1" readonly="1">
+                                <list>
+                                    <field name="vendor_ai_rank" string="Rank" width="80"/>
+                                    <field name="vendor_ai_partner_name" string="Vendor Name"/>
+                                    <field name="vendor_ai_score" string="AI Analytical Score" width="120" widget="progressbar"/>
+                                    <field name="vendor_ai_category" string="Vendor Category"/>
+                                    <field name="vendor_ai_reason" string="Vendor Reason"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Executive Report" invisible="vendor_ai_error">
+                            <field name="vendor_ai_report_html" nolabel="1" readonly="1" widget="html" style="padding: 15px;"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="vraja_ai_vendor_ai_log_search" model="ir.ui.view">
+        <field name="name">vraja.ai.log.search.vendor</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_common_ai_log_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <separator/>
+                <filter string="Vendor AI" name="filter_vendor_ai"
+                        domain="[('vraja_common_log_store', '=', 'ai_vendor_intel')]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

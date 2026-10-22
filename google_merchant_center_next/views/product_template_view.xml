@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ── Inherit product.template form — Sales tab ─────────────────── -->
+    <record id="view_product_template_gmc_form" model="ir.ui.view">
+        <field name="name">product.template.gmc.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Insert GMC group into Sales tab -->
+            <xpath expr="//notebook/page[@name='sales']" position="inside">
+                <separator string="Google Merchant Center"/>
+                <group>
+                    <group>
+                        <field name="google_product_category_id"
+                            options="{'no_create': True, 'no_open': True}"
+                            widget="many2one"
+                            placeholder="Select Google product category…"/>
+                        <field name="gmc_condition"/>
+                        <field name="gmc_exclude_from_feed"/>
+                    </group>
+                    <group>
+                        <field name="gmc_brand" placeholder="Leave blank to use company name"/>
+                        <field name="gmc_mpn" placeholder="Manufacturer Part Number"/>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="gmc_custom_label_0"/>
+                        <field name="gmc_custom_label_1"/>
+                    </group>
+                    <group>
+                        <field name="gmc_custom_label_2"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

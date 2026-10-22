@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ── Feed Column Form View (standalone) ─────────────────────────── -->
+    <record id="view_gmc_feed_column_form" model="ir.ui.view">
+        <field name="name">gmc.feed.column.form</field>
+        <field name="model">gmc.feed.column</field>
+        <field name="arch" type="xml">
+            <form string="Feed Column">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Column Label"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Column Identity">
+                            <field name="feed_id" readonly="1"/>
+                            <field name="column_key"/>
+                            <field name="custom_column_key" invisible="column_key != 'custom'" required="column_key == 'custom'"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                            <field name="is_required"/>
+                        </group>
+                        <group string="Value Mapping">
+                            <field name="field_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="static_value"/>
+                        </group>
+                    </group>
+                    <group string="Notes">
+                        <field name="notes" nolabel="1" placeholder="Optional hint for this column"/>
+                    </group>
+                    <group string="Help">
+                        <p class="text-muted">
+                            Select a <strong>Model Field</strong> to extract data dynamically from the product.<br/>
+                            If a field has a special Google meaning (e.g. <code>image_1920</code> for <code>g:image_link</code>, or <code>qty_available</code> for <code>g:availability</code>), the system automatically formats the output.<br/>
+                            Enter a <strong>Static Value</strong> if you want to hardcode the XML value for all products (e.g. <code>new</code> for <code>g:condition</code>).
+                        </p>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Feed Column List View ──────────────────────────────────────── -->
+    <record id="view_gmc_feed_column_tree" model="ir.ui.view">
+        <field name="name">gmc.feed.column.tree</field>
+        <field name="model">gmc.feed.column</field>
+        <field name="arch" type="xml">
+            <list string="Feed Columns" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="feed_id" column_invisible="True"/>
+                <field name="name"/>
+                <field name="column_key"/>
+                <field name="custom_column_key" invisible="column_key != 'custom'" required="column_key == 'custom'"/>
+                <field name="field_id" options="{'no_create': True, 'no_open': True}"/>
+                <field name="static_value"/>
+                <field name="is_required"/>
+                <field name="active" widget="toggle_button"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Action ─────────────────────────────────────────────────────── -->
+    <record id="action_gmc_feed_column" model="ir.actions.act_window">
+        <field name="name">Feed Columns</field>
+        <field name="res_model">gmc.feed.column</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

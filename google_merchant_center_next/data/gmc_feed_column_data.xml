@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Default feed columns for newly created GMC feeds.
+        These are loaded as a data template; the feed form lets users
+        create new feeds and customize columns freely.
+        We also create one default "Google Shopping Feed" record here.
+    -->
+
+    <!-- ── Default Feed ─────────────────────────────────────────────────── -->
+    <record id="gmc_feed_default" model="gmc.feed">
+        <field name="name">Google Shopping Feed</field>
+        <field name="state">draft</field>
+        <field name="remote_filename">products_feed.xml</field>
+        <field name="store_title">My Odoo Store</field>
+        <field name="store_url">https://yourstore.com</field>
+        <field name="use_global_sftp">True</field>
+        <field name="product_domain">[('sale_ok', '=', True)]</field>
+    </record>
+
+    <!-- ── Default Columns ──────────────────────────────────────────────── -->
+    <record id="gmc_column_id" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">10</field>
+        <field name="name">ID</field>
+        <field name="column_key">g:id</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'default_code')]"/>
+        <field name="is_required">True</field>
+        <field name="notes">Product Internal Reference (default_code). Change to 'id' to use system ID.</field>
+    </record>
+
+    <record id="gmc_column_title" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">20</field>
+        <field name="name">Title</field>
+        <field name="column_key">title</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'name')]"/>
+        <field name="is_required">True</field>
+    </record>
+
+    <record id="gmc_column_description" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">30</field>
+        <field name="name">Description</field>
+        <field name="column_key">description</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'description_sale')]"/>
+        <field name="is_required">True</field>
+    </record>
+
+    <record id="gmc_column_link" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">40</field>
+        <field name="name">Link</field>
+        <field name="column_key">link</field>
+        <field name="is_required">True</field>
+    </record>
+
+    <record id="gmc_column_image_link" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">50</field>
+        <field name="name">Image Link</field>
+        <field name="column_key">g:image_link</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'image_1920')]"/>
+        <field name="is_required">True</field>
+    </record>
+
+    <record id="gmc_column_availability" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">60</field>
+        <field name="name">Availability</field>
+        <field name="column_key">g:availability</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'qty_available')]"/>
+        <field name="is_required">True</field>
+    </record>
+
+    <record id="gmc_column_price" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">70</field>
+        <field name="name">Price</field>
+        <field name="column_key">g:price</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'list_price')]"/>
+        <field name="is_required">True</field>
+    </record>
+
+    <record id="gmc_column_condition" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">80</field>
+        <field name="name">Condition</field>
+        <field name="column_key">g:condition</field>
+        <field name="static_value">new</field>
+        <field name="is_required">True</field>
+    </record>
+
+    <record id="gmc_column_brand" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">90</field>
+        <field name="name">Brand</field>
+        <field name="column_key">g:brand</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'brand_id')]"/>
+    </record>
+
+    <record id="gmc_column_gtin" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">100</field>
+        <field name="name">GTIN</field>
+        <field name="column_key">g:gtin</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'barcode')]"/>
+    </record>
+
+    <record id="gmc_column_mpn" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">110</field>
+        <field name="name">MPN</field>
+        <field name="column_key">g:mpn</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'default_code')]"/>
+    </record>
+
+    <record id="gmc_column_google_product_category" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">120</field>
+        <field name="name">Google Product Category</field>
+        <field name="column_key">g:google_product_category</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'google_product_category_id')]"/>
+    </record>
+
+    <record id="gmc_column_product_type" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">130</field>
+        <field name="name">Product Type</field>
+        <field name="column_key">g:product_type</field>
+        <field name="field_id" search="[('model', 'in', ['product.template', 'product.product']), ('name', '=', 'categ_id')]"/>
+    </record>
+
+    <record id="gmc_column_custom_label_0" model="gmc.feed.column">
+        <field name="feed_id" ref="gmc_feed_default"/>
+        <field name="sequence">140</field>
+        <field name="name">Custom Label 0</field>
+        <field name="column_key">g:custom_label_0</field>
+    </record>
+
+</odoo>

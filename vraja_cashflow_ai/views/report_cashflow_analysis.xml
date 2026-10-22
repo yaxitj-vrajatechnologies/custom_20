@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ─── Report Action ────────────────────────────────────────────────── -->
+    <record id="action_report_cashflow_analysis" model="ir.actions.report">
+        <field name="name">CFO Cashflow Intelligence Report</field>
+        <field name="model">vraja.cashflow.analysis</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vraja_cashflow_ai.report_cashflow_analysis</field>
+        <field name="print_report_name">'CFO_Cashflow_Report_%s_to_%s' % (object.date_from, object.date_to)</field>
+        <field name="binding_model_id" ref="model_vraja_cashflow_analysis"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- ─── Executive PDF Report Template ─────────────────────────────────── -->
+    <template id="report_cashflow_analysis">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a2e;">
+
+                        <!-- ══ COVER HEADER ══════════════════════════════════════ -->
+                        <div style="background: linear-gradient(135deg,#0d1117,#161b22); color:#fff; border-radius:10px; padding:28px 32px; margin-bottom:24px;">
+                            <div style="display:flex; align-items:center; justify-content:space-between;">
+                                <div>
+                                    <div style="font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#8b949e; margin-bottom:6px;">Vraja Cashflow AI · Powered by GPT</div>
+                                    <h1 style="font-size:22px; font-weight:700; margin:0; color:#fff;">CFO Cashflow Intelligence Report</h1>
+                                    <div style="font-size:12px; color:#8b949e; margin-top:6px;">
+                                        Period: <strong style="color:#58a6ff;"><span t-field="doc.date_from"/> — <span t-field="doc.date_to"/></strong>
+                                        &amp;nbsp;·&amp;nbsp; Generated: <span t-field="doc.generated_on" t-options='{"widget": "datetime"}'/>
+                                    </div>
+                                </div>
+                                <!-- Liquidity Badge -->
+                                <div style="text-align:center; padding:12px 20px; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05);">
+                                    <div style="font-size:9px; color:#8b949e; text-transform:uppercase; letter-spacing:0.08em;">Liquidity Status</div>
+                                    <div style="font-size:18px; font-weight:700; margin-top:4px;">
+                                        <t t-if="doc.liquidity_status == 'HEALTHY'">
+                                            <span style="color:#3fb950;"><span t-field="doc.liquidity_status"/></span>
+                                        </t>
+                                        <t t-elif="doc.liquidity_status == 'CAUTION'">
+                                            <span style="color:#e3b341;"><span t-field="doc.liquidity_status"/></span>
+                                        </t>
+                                        <t t-else="">
+                                            <span style="color:#f85149;"><span t-field="doc.liquidity_status"/></span>
+                                        </t>
+                                    </div>
+                                    <div style="font-size:11px; color:#8b949e; margin-top:2px;"><span t-field="doc.liquidity_score"/>/100</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ══ EXECUTIVE SUMMARY ═════════════════════════════════ -->
+                        <div t-if="doc.executive_summary" style="background:#f6f8fa; border-left:4px solid #58a6ff; border-radius:0 8px 8px 0; padding:16px 20px; margin-bottom:20px;">
+                            <div style="font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#57606a; margin-bottom:8px;">&#9733; CFO Executive Summary</div>
+                            <div style="font-size:12px; line-height:1.7; color:#24292f;"><span t-field="doc.executive_summary"/></div>
+                        </div>
+
+                        <!-- ══ KPI METRIC TABLE ══════════════════════════════════ -->
+                        <div style="margin-bottom:20px;">
+                            <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#57606a; margin-bottom:10px; border-bottom:2px solid #d0d7de; padding-bottom:4px;">Key Financial Metrics</div>
+                            <table style="width:100%; border-collapse:collapse; font-size:11px;">
+                                <thead>
+                                    <tr style="background:#f6f8fa;">
+                                        <th style="padding:8px 10px; text-align:left; border:1px solid #d0d7de; color:#57606a; font-weight:600;">Metric</th>
+                                        <th style="padding:8px 10px; text-align:right; border:1px solid #d0d7de; color:#57606a; font-weight:600;">Value</th>
+                                        <th style="padding:8px 10px; text-align:left; border:1px solid #d0d7de; color:#57606a; font-weight:600;">Metric</th>
+                                        <th style="padding:8px 10px; text-align:right; border:1px solid #d0d7de; color:#57606a; font-weight:600;">Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Total Open Receivables (AR)</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600; color:#1a7f37;">
+<!--                                            <span t-field="doc.total_ar" t-options='{"widget":"monetary","display_currency":user.company_id.currency_id}'/>-->
+                                            <span t-field="doc.total_ar" t-options='{"widget":"monetary","display_currency":doc.company_id.currency_id}'/>
+                                        </td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Total Open Payables (AP)</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600; color:#cf222e;">
+<!--                                            <span t-field="doc.total_ap" t-options='{"widget":"monetary","display_currency":user.company_id.currency_id}'/>-->
+                                            <span t-field="doc.total_ap" t-options='{"widget":"monetary","display_currency":doc.company_id.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                    <tr style="background:#fafafa;">
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Overdue Receivables</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600; color:#e3b341;">
+<!--                                            <span t-field="doc.overdue_ar" t-options='{"widget":"monetary","display_currency":user.company_id.currency_id}'/>-->
+                                            <span t-field="doc.overdue_ar" t-options='{"widget":"monetary","display_currency":doc.company_id.currency_id}'/>
+                                        </td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Overdue Payables</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600; color:#e3b341;">
+<!--                                            <span t-field="doc.overdue_ap" t-options='{"widget":"monetary","display_currency":user.company_id.currency_id}'/>-->
+                                            <span t-field="doc.overdue_ap" t-options='{"widget":"monetary","display_currency":doc.company_id.currency_id}'/>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Bank Balance (Cash on Hand)</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600;">
+<!--                                            <span t-field="doc.cash_balance" t-options='{"widget":"monetary","display_currency":user.company_id.currency_id}'/>-->
+                                            <span t-field="doc.cash_balance" t-options='{"widget":"monetary","display_currency":doc.company_id.currency_id}'/>
+
+                                        </td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Working Capital</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600;">
+<!--                                            <span t-field="doc.working_capital" t-options='{"widget":"monetary","display_currency":user.company_id.currency_id}'/>-->
+                                            <span t-field="doc.working_capital" t-options='{"widget":"monetary","display_currency":doc.company_id.currency_id}'/>
+
+                                        </td>
+                                    </tr>
+                                    <tr style="background:#fafafa;">
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Days Sales Outstanding (DSO)</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600;"><span t-field="doc.dso"/> days</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Days Payable Outstanding (DPO)</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600;"><span t-field="doc.dpo"/> days</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Cash Runway</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600;"><span t-field="doc.cash_runway_days"/> days</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">30-Day Net Cash Forecast</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600;">
+<!--                                            <span t-field="doc.net_forecast_30d" t-options='{"widget":"monetary","display_currency":user.company_id.currency_id}'/>-->
+                                            <span t-field="doc.net_forecast_30d" t-options='{"widget":"monetary","display_currency":doc.company_id.currency_id}'/>
+
+                                        </td>
+                                    </tr>
+                                    <tr t-if="doc.so_pipeline or doc.po_pipeline or doc.expense_pipeline" style="background:#fafafa;">
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">SO Pipeline (Pending Invoice)</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600;">
+<!--                                            <span t-field="doc.so_pipeline" t-options='{"widget":"monetary","display_currency":user.company_id.currency_id}'/>-->
+                                            <span t-field="doc.so_pipeline" t-options='{"widget":"monetary","display_currency":doc.company_id.currency_id}'/>
+                                        </td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; color:#57606a;">Pending Employee Expenses</td>
+                                        <td style="padding:7px 10px; border:1px solid #d0d7de; text-align:right; font-weight:600; color:#e3b341;">
+<!--                                            <span t-field="doc.expense_pipeline" t-options='{"widget":"monetary","display_currency":user.company_id.currency_id}'/>-->
+                                            <span t-field="doc.expense_pipeline" t-options='{"widget":"monetary","display_currency":doc.company_id.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ══ WHAT NEEDS ATTENTION ══════════════════════════════ -->
+                        <t t-set="attention_items" t-value="doc.attention_needed_json and doc.attention_needed_json != '[]'"/>
+                        <div t-if="attention_items" style="margin-bottom:20px;">
+                            <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#cf222e; margin-bottom:10px; border-bottom:2px solid #ffebe9; padding-bottom:4px;">&#9888; Critical — Requires Immediate Attention</div>
+                            <div style="background:#ffebe9; border:1px solid #ffcecb; border-radius:8px; padding:14px 18px;">
+                                <div style="font-size:11px; color:#57606a;"><em>See live dashboard for detailed AI breakdown per item. Summary below:</em></div>
+                                <pre style="font-size:10px; color:#24292f; white-space:pre-wrap; word-break:break-word; margin-top:8px; background:transparent; border:none; padding:0;"><span t-esc="doc.attention_needed_json"/></pre>
+                            </div>
+                        </div>
+
+                        <!-- ══ TOP AR RISKS ══════════════════════════════════════ -->
+                        <t t-set="ar_risks" t-value="doc.ar_risks_json and doc.ar_risks_json != '[]'"/>
+                        <div t-if="ar_risks" style="margin-bottom:20px;">
+                            <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#57606a; margin-bottom:10px; border-bottom:2px solid #d0d7de; padding-bottom:4px;">Top Receivable Collection Risks</div>
+                            <table style="width:100%; border-collapse:collapse; font-size:11px;">
+                                <thead>
+                                    <tr style="background:#ffebe9;">
+                                        <th style="padding:7px 10px; text-align:left; border:1px solid #d0d7de; color:#57606a;">Customer</th>
+                                        <th style="padding:7px 10px; text-align:right; border:1px solid #d0d7de; color:#57606a;">Amount Due</th>
+                                        <th style="padding:7px 10px; text-align:center; border:1px solid #d0d7de; color:#57606a;">Days Overdue</th>
+                                        <th style="padding:7px 10px; text-align:center; border:1px solid #d0d7de; color:#57606a;">Risk</th>
+                                        <th style="padding:7px 10px; text-align:left; border:1px solid #d0d7de; color:#57606a;">Recommended Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.get_ar_risks()" t-as="r">
+                                        <tr>
+                                            <td style="padding:6px 10px; border:1px solid #d0d7de; font-weight:600;"><t t-esc="r.get('name','')"/></td>
+                                            <td style="padding:6px 10px; border:1px solid #d0d7de; text-align:right; color:#cf222e;"><t t-esc="doc.company_id.currency_id.symbol or ''"/><t t-esc="'{:,.0f}'.format(r.get('amount', 0))"/></td>                                            <td style="padding:6px 10px; border:1px solid #d0d7de; text-align:center;"><t t-esc="r.get('days_overdue', 0)"/>d</td>
+                                            <td style="padding:6px 10px; border:1px solid #d0d7de; text-align:center; font-weight:700;">
+                                                <t t-if="r.get('risk_level') == 'RED'"><span style="color:#cf222e;"><t t-esc="r.get('risk_level','')"/></span></t>
+                                                <t t-elif="r.get('risk_level') == 'AMBER'"><span style="color:#e3b341;"><t t-esc="r.get('risk_level','')"/></span></t>
+                                                <t t-else=""><span style="color:#1a7f37;"><t t-esc="r.get('risk_level','')"/></span></t>
+                                            </td>
+                                            <td style="padding:6px 10px; border:1px solid #d0d7de; font-size:10px; color:#57606a;"><t t-esc="r.get('action','')"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ══ AI STRATEGIC INSIGHTS ═════════════════════════════ -->
+                        <t t-set="insights" t-value="doc.insights_json and doc.insights_json != '[]'"/>
+                        <div t-if="insights" style="margin-bottom:20px;">
+                            <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#57606a; margin-bottom:10px; border-bottom:2px solid #d0d7de; padding-bottom:4px;">&#9733; AI Strategic Insights &amp; Recommendations</div>
+                            <table style="width:100%; border-collapse:collapse; font-size:11px;">
+                                <thead>
+                                    <tr style="background:#f6f8fa;">
+                                        <th style="padding:7px 10px; text-align:center; width:60px; border:1px solid #d0d7de; color:#57606a;">Severity</th>
+                                        <th style="padding:7px 10px; text-align:center; width:70px; border:1px solid #d0d7de; color:#57606a;">Category</th>
+                                        <th style="padding:7px 10px; text-align:left; border:1px solid #d0d7de; color:#57606a;">Finding</th>
+                                        <th style="padding:7px 10px; text-align:left; border:1px solid #d0d7de; color:#57606a;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.get_insights()" t-as="ins">
+                                        <tr t-attf-style="background: {{ ins_index % 2 == 0 and '#fafafa' or '#fff' }};">
+                                            <td style="padding:6px 10px; border:1px solid #d0d7de; text-align:center; font-weight:700; font-size:10px;">
+                                                <t t-if="ins.get('severity') == 'HIGH'"><span style="color:#cf222e; background:#ffebe9; padding:2px 6px; border-radius:4px;">HIGH</span></t>
+                                                <t t-elif="ins.get('severity') == 'MEDIUM'"><span style="color:#9a6700; background:#fff8c5; padding:2px 6px; border-radius:4px;">MED</span></t>
+                                                <t t-else=""><span style="color:#1a7f37; background:#dafbe1; padding:2px 6px; border-radius:4px;">LOW</span></t>
+                                            </td>
+                                            <td style="padding:6px 10px; border:1px solid #d0d7de; text-align:center; font-size:10px; color:#57606a;"><t t-esc="ins.get('category','')"/></td>
+                                            <td style="padding:6px 10px; border:1px solid #d0d7de; font-size:10px; line-height:1.5;"><t t-esc="ins.get('finding','')"/></td>
+                                            <td style="padding:6px 10px; border:1px solid #d0d7de; font-size:10px; color:#0969da; line-height:1.5;"><t t-esc="ins.get('action','')"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ══ FOOTER DISCLAIMER ═════════════════════════════════ -->
+                        <div style="margin-top:28px; padding-top:12px; border-top:1px solid #d0d7de; font-size:9px; color:#8c959f; text-align:center;">
+                            Generated by <strong>Vraja Cashflow AI</strong>· Analysis ID #<span t-field="doc.id"/> · For internal executive use only.
+                            This report was produced using AI-assisted analysis. Verify key figures before external reporting.
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

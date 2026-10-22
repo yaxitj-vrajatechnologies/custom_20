@@ -1,0 +1,43 @@
+.o_vendor_ai_status_badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.o_vendor_ai_status_idle {
+    background: #f0f0f0;
+    color: #6c757d;
+    border: 1px solid #ddd;
+}
+
+.o_vendor_ai_status_ready {
+    background: #fff8e1;
+    color: #856404;
+    border: 1px solid #ffe082;
+}
+
+.o_vendor_ai_status_done {
+    background: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #a3cfbb;
+}
+
+.o_vendor_ai_status_error {
+    background: #f8d7da;
+    color: #842029;
+    border: 1px solid #f1aeb5;
+}
+
+@media (max-width: 768px) {
+    .o_inventory_ai_dashboard_scroll {
+        padding-bottom: 80px;
+    }
+
+    .o_vendor_ai_status_badge {
+        margin-top: 12px;
+    }
+}

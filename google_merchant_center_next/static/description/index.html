@@ -1,0 +1,1828 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Odoo Google Merchant Center Integration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="margin:0; padding:0;">
+
+    <!-- Hero section start -->
+<section class="oe_container" style="padding:20px 0;color:#0f172a;font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+    <div class="container">
+        <div style="background-color:#ffffff;border:1px solid #e5e7eb;border-left:6px solid #2577f1;border-radius:20px;padding:15px;box-sizing:border-box;">
+
+            <table style="width:100%;border-collapse:collapse;border-spacing:0;">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top;padding:0;">
+                            <h1 style="color:#2577f1;font-size:32px;font-weight:900;line-height:1.25; font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;">
+                                Odoo Google Merchant Center Integration
+                            </h1>
+                        </td>
+                        <td style="vertical-align:top;text-align:right;padding:0;">
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Community
+                            </span>
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Enterprise
+                            </span>
+                            <span style="display:inline-block;background-color:#eaf8e7;color:#138a27;border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;margin:2px;">
+                                <i class="fa fa-check-circle" style="color:#38a638;margin-right:4px;"></i> Odoo.sh
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="color:#355486;font-size:16px;line-height:1.75;text-align:justify;margin:0 0 12px 0;">
+               The Google Merchant Center Integration module for Odoo provides a fully automated, native bridge between your Odoo eCommerce catalog and your Google Shopping. Manual uploads and outdated API connections often lead to data mismatches and frustrating account suspensions. This module eliminates those headaches by dynamically generating perfectly structured XML feeds directly from your Odoo database and pushing them securely via automated SFTP synchronization. Designed for both simplicity and scale, the module excels at handling complex Odoo data. It naturally processes product templates, automatically grouping variants and translating attributes like Color or Size into Google-compliant swatches. For businesses with multi-warehouse operations, it offers precision control—allowing you to filter feeds by specific Stock Locations so Google only sees inventory available for your eCommerce fulfillment. Furthermore, it actively protects your Google Merchant account with built-in data quality tools. It prevents zero-priced products from being submitted, automatically enforces Google&#039;s strict character limits on titles and descriptions, and logs user-friendly warnings right inside Odoo if essential data is missing. Whether managing a hundred products or tens of thousands of SKUs, this module ensures your catalog remains flawlessly formatted, compliant, and continuously optimized for Google Shopping.
+            </p>
+
+      <div style="text-align:center;">
+    
+    <a href="mailto:sales@vrajatechnologies.com?subject=Odoo%20Google%20Merchant%20Center%20Integration"
+       style="display:inline-block;background-color:#2563eb;color:#ffffff !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+        <i class="fa fa-envelope" style="margin-right:6px;"></i> Submit Request
+    </a>
+
+    <a href="https://www.youtube.com/playlist?list=PLarcwR0xYlXkCGRzJT0m0L0CNEbVd5ApC"
+       target="_blank"
+       rel="noopener"
+       style="display:inline-block;background-color:#b91c3b;color:#ffffff !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;box-shadow:0 8px 18px rgba(220,38,38,0.23);">
+        <i class="fa fa-youtube-play" style="margin-right:6px;"></i> Watch on YouTube
+    </a>
+
+    <a href="#TrendingApps"
+       style="display:inline-block;background-color:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8 !important;text-decoration:none !important;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:800;margin:5px 6px 5px 0;min-width:210px;text-align:center;">
+        <i class="fa fa-line-chart" style="margin-right:6px;"></i> Trending Apps
+    </a>
+
+</div>
+
+        </div>
+    </div>
+</section>
+    <!-- Hero section End -->
+
+<!-- Catagory section start -->
+    <section class="oe_container"
+        style=" color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:26px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:900px; margin:0 auto 20px; box-sizing:border-box;">
+                <span
+                    style="background-color:#eaf8e7; border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:8px 16px; line-height:1; margin-bottom:14px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                        style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    Vraja Technologies
+                </span>
+
+                <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0 0 12px; box-sizing:border-box;">
+                    End-to-end Odoo solutions for growing companies.
+                </h2>
+            </div>
+
+            <div class="row" style="box-sizing:border-box;">
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #138a27; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-exchange"
+                                            style="font-family:FontAwesome !important; font-size:40px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        EDI &amp; SWIFT/ACH Payment Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        End-to-end EDI automation, including X12, EDIFACT, XML standards, and financial
+                                        integrations such as SWIFT, ACH, and Fedwire.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                        X12</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                                    <span
+                                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                        / AS2</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                                        target="_blank"
+                                                        style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">ANSI
+                                                X12</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">EDIFACT</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">XML</span>
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">SFTP
+                                                / AS2</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_edi_and_wired_payment_connector"
+                                                target="_blank"
+                                                style="background-color:#138a27 !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #2563eb; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-shopping-cart"
+                                            style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Ecommerce Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Seamless integration with leading eCommerce platforms to sync products, orders,
+                                        inventory, and customer data in real time.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                        Sync</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                                    <span
+                                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                                        target="_blank"
+                                                        style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Orders
+                                                Sync</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Products</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Customers</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_ecommerce_integrations"
+                                                target="_blank"
+                                                style="background-color:#2563eb !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #0f766e; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-truck"
+                                            style="font-family:FontAwesome !important; font-size:42px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Shipping Integrations
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        Robust shipping connectors for global couriers, offering automated label
+                                        generation, tracking, and rate computation.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                        Rates</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                                    <span
+                                                        style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                        Shipment</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                                        target="_blank"
+                                                        style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Live
+                                                Rates</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Labels</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Tracking</span>
+                                            <span
+                                                style="background-color:#ecfdf5; color:#0f766e; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Cancel
+                                                Shipment</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=Vraja+Shipping+Integration"
+                                                target="_blank"
+                                                style="background-color:#0f766e !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6" style="padding:12px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:2px solid #d6863a; border-radius:24px; padding:20px; height:100%; box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box;">
+                        <table style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                            <tr>
+                                <td style="width:104px; vertical-align:top; padding:0 22px 0 0; box-sizing:border-box;">
+                                    <div
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:22px; height:82px; width:82px; text-align:center; line-height:82px; box-sizing:border-box;">
+                                        <i class="fa fa-cubes"
+                                            style="font-family:FontAwesome !important; font-size:41px; line-height:1; vertical-align:middle;"></i>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                    <h3
+                                        style="color:#123d73; font-size:20px; font-weight:900; line-height:1.3; margin:0 0 9px; box-sizing:border-box;">
+                                        Most Useful Apps for your ERP
+                                    </h3>
+
+                                    <p
+                                        style="color:#526b96; font-size:14px; line-height:1.68; margin:0 0 16px; box-sizing:border-box;">
+                                        A wide range of highly-rated Odoo modules designed to enhance automation,
+                                        improve productivity, and simplify business operations.
+                                    </p>
+
+                                    <div class="d-none d-md-block" style="box-sizing:border-box;">
+                                        <table
+                                            style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                            <tr>
+                                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                                    <span
+                                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                                </td>
+                                                <td
+                                                    style="width:120px; vertical-align:middle; text-align:right; padding:0 0 6px 8px; box-sizing:border-box; white-space:nowrap;">
+                                                    <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                                        target="_blank"
+                                                        style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                        More Apps
+                                                        <i class="fa fa-angle-right"
+                                                            style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-block d-md-none" style="box-sizing:border-box;">
+                                        <div style="margin:0 0 10px; box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Sales</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Inventory</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Accounting</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:600; padding:6px 9px; margin:0 4px 6px 0; box-sizing:border-box;">Automation</span>
+                                        </div>
+                                        <div style="text-align:left; box-sizing:border-box;">
+                                            <a href="https://apps.odoo.com/apps/modules/browse?search=vraja_top_sale_integrations"
+                                                target="_blank"
+                                                style="background-color:#d6863a !important; color:#ffffff !important; border-radius:13px; display:inline-block; font-size:12px; font-weight:900; padding:9px 13px; text-decoration:none !important; box-sizing:border-box; white-space:nowrap;">
+                                                More Apps
+                                                <i class="fa fa-angle-right"
+                                                    style="font-family:FontAwesome !important; font-size:16px; margin-left:8px; line-height:1;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Catagory section End -->
+
+<!-- Tabs Section Start -->
+    <section class="oe_container"
+        style=" background-color: #f8fafc; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:32px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 7px; box-sizing:border-box;">
+                <span
+                    style="border-radius:999px; color:#138a27; display:inline-block; font-size:12px; font-weight:800; padding:6px 14px; line-height:1; margin-bottom:10px; box-sizing:border-box;">
+                    <i class="fa fa-check-circle"
+                        style="font-family:FontAwesome !important; font-size:13px; color:#38a638; margin-right:6px; line-height:1;"></i>
+                    App Details
+                </span>
+
+                <h2
+                    style="color:#123d73; font-family:sans-serif !important; font-size:clamp(19px, 4.5vw, 26px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                    Explore the key features, workflow, and value of this Odoo module.
+                </h2>
+            </div>
+
+            <div style="border-radius:26px; padding:8px; box-sizing:border-box;">
+
+                <!-- Tabs Header -->
+                <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs"
+                    style="border:none; background-color:inherit !important; margin:0 0 10px; padding:0; box-sizing:border-box;">
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_features" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-arrow-circle-right"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Features</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_process" data-toggle="tab" data-bs-toggle="tab" aria-expanded="true"
+                            class="nav-link active"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-cogs"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Process</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 8px 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_faqs" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-lightbulb-o"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">FAQs</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"
+                        style="background-color:#d6e7f8; border:1px solid #bfd2e8; margin:0 0 10px 0; padding:0 !important; border-radius:50px; box-sizing:border-box;">
+                        <a href="#vt_support" data-toggle="tab" data-bs-toggle="tab" aria-expanded="false"
+                            class="nav-link"
+                            style="border:0; border-bottom:0 !important; border-radius:50px; font-size:15px; font-weight:800; padding:12px 25px; text-decoration:none !important; box-sizing:border-box;">
+                            <i class="fa fa-comments-o"
+                                style="font-family:FontAwesome !important; color:#123d73; margin-right:8px;"></i>
+                            <span style="color:#123d73;">Support</span>
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <div class="tab-content" style="box-sizing:border-box;">
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane" id="vt_features" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:14px 16px;box-sizing:border-box;">
+                            <div style="box-sizing:border-box;">
+                                <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf8e7;color:#138a27;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Automated Feed Generation &amp; Sync (SFTP):
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Generate dynamic XML feeds instantly or rely on automated cron jobs to push fresh product listings, prices, and stock data straight to Google via secure SFTP. Eliminates manual exports and ensures Google always has your latest catalog data.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf2ff;color:#2563eb;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Intelligent Variant Grouping &amp; Mapping:
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Odoo variants are handled naturally. The module auto-injects g:item_group_id for product families and intelligently auto-maps Odoo attributes like Color, Size, and Material into the precise XML g:tags that Google requires, ensuring perfect variant swatches on Google Shopping.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#fff4e8;color:#d6863a;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Stock Location Filtering &amp; Precision Inventory:
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Have multiple warehouses but only want to fulfill eCommerce orders from specific locations? Easily select designated Stock Locations on the feed configuration. The module computes the exact g:availability and  exclusively from those warehouses, falling back to global stock if no locations are selected.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eefdf7;color:#0f766e;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Actionable Validation Logs &amp; Warnings:
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Missing a product description or an image? The system validates your data seamlessly during the XML build process. It logs user-friendly and actionable warnings directly in Odoo without interrupting the feed upload, providing a clear report of exactly which products need fixing.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#f5f3ff;color:#7c3aed;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    High-Resolution Image Support:
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">First impressions matter on Google Shopping. The module securely routes and properly formats high-resolution image links straight from your Odoo web server.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#ecfeff;color:#0891b2;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Customizable Attribute Mapping Interface:
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Move beyond rigid standard setups. The module includes a dynamic dropdown interface to effortlessly pair Odoo product fields or static text values with both standard Google tags and fully custom XML tags, allowing advanced custom labels like g:custom_label_0 and dynamic categorization like g:google_product_category.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf8e7;color:#138a27;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Automatic Scheduled Jobs:
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Set it and forget it. Fully integrated with Odoo’s Scheduled Actions, the module silently builds and pushes fresh product listings, inventory quantities, and price data to Google via secure SFTP daily, eliminating manual exports and ensuring Google always has your latest catalog data.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eaf2ff;color:#2563eb;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Easy Feed Preview:
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Eliminate the guesswork of what your feed looks like. With a single click, you can generate a real-time, easy-to-read preview of your XML feed directly within the Odoo interface. This allows you to verify tag injection, check data formatting, and confirm your products look perfect before pushing them to Google.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:12px;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#fff4e8;color:#d6863a;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Advanced Product &amp; Domain Filters:
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Gain absolute control over exactly which products are sent to Google. Instead of blindly syncing your entire catalog, the module uses Odoo’s powerful domain filtering system. This allows you to build advanced dynamic filters, such as syncing only products from specific categories, published items only, or seasonal collections, ensuring you only spend ad budget on the exact products you want visible in Merchant Center.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div><div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:16px;padding:15px 16px;margin-bottom:0;box-shadow:0 8px 22px rgba(15,23,42,0.04);box-sizing:border-box;">
+                                    <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                        <tbody><tr>
+                                            <td style="width:54px;vertical-align:middle;padding:0 14px 0 0;box-sizing:border-box;">
+                                                <div style="background-color:#eefdf7;color:#0f766e;width:42px;height:42px;line-height:42px;border-radius:14px;text-align:center;box-sizing:border-box;">
+                                                    <i class="fa fa-arrow-circle-right" style="font-family:FontAwesome !important;font-size:18px;line-height:42px;"></i>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:middle;padding:0;box-sizing:border-box;">
+                                                <h4 style="color:#123d73;font-size:clamp(14px,3.5vw,16px);font-weight:900;line-height:1.35;margin:0 0 5px;box-sizing:border-box;">
+                                                    Easy Credentials &amp; SFTP Setup:
+                                                </h4>
+                                                <p style="color:#526b96;font-size:13px;line-height:1.55;margin:0 0 6px;box-sizing:border-box;">Connecting to Google Merchant Center is seamless and frustration-free. The module features an intuitive credential manager where you can safely enter your Google SFTP connection details directly into Odoo. It also includes a built-in Test Connection button, allowing you to instantly verify your host, port, username, and password credentials before your first feed upload.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Tab -->
+                    <div class="tab-pane show active" id="vt_process" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:22px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">01</span>
+                                    Import Google Categories
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Go to Website &gt; Google Merchant Center &gt; Import Google Categories.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/1.png?v=26521aaf59522c14b3c52d4d576c06cc" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">02</span>
+                                    Import / Update Product Categories
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Now, click on the Import / Update Product Categories button.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/2.png?v=8705aca2ddd5fba5424e62bb6feda222" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">03</span>
+                                    Open Google Product Taxonomy
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Now navigate to Website &gt; Google Merchant Center &gt; Google Product Taxonomy.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/3.png?v=2f8a7bd9412b5d8223ff82567f7090fe" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">04</span>
+                                    View Google Product Categories
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Inside the list view, you can see all individual categories. Inside the form view, you can also see subcategories.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/4.png?v=ac681799ff6836f7dbea4f41f15ff9cd" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">05</span>
+                                    Track Products by Category
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Inside the form view, there is a useful smart button for easy identification and tracking, showing how many products belong to this category.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/5.png?v=6f4c482cc08f6dd30031d4159cb3bf4a" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">06</span>
+                                    Assign Google Product Category
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Inside the product form, navigate to the Sales tab. In the Google Merchant Center section, you can assign the Google Product Category.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/6.png?v=6c1852b1a9730dc5ab15c61bd52ab9b1" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">07</span>
+                                    Open Feeds Menu
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Now navigate to Website &gt; Google Merchant Center &gt; Feeds.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/7.png?v=5d0a02bbee4f707def9eb861e9349f93" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">08</span>
+                                    Configure Feed Details
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Fill in the feed details such as Feed Name, Remote Filename, Language, Currency, Pricelist, Store Title, and Store URL.</p><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Feed Name: A descriptive internal name, for example, Google Shopping – US (USD).</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Remote Filename: Must exactly match the feed filename registered inside your Google Merchant Center account, for example, products_feed.xml.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Language: Select the language for the feed content.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Currency: Select the currency for prices.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Pricelist: Optionally select an Odoo pricelist to compute prices using specific rules.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Store Title: The name of your store as it appears in the feed channel title.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Store URL: Your store base URL.</li></ul><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/8.png?v=3518d40c4bd1a7c11de362cd337628b7" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">09</span>
+                                    Open Product Filter Tab
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Inside the Feed form, go to the Product Filter tab.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/9.png?v=11f3c8d3b05b7a5ff9512a6d2733d7ec" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">10</span>
+                                    Set Product Domain Filter
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Use the <strong>Product Domain</strong> field to define which products are included in the feed. By default, it exports only products that are for sale and published on your website.</p><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Only a specific product category</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Products with a specific internal tag</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Products above a certain price</li></ul><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/10.png?v=b8b1c4912cda51c552746c2a094cbed3" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">11</span>
+                                    Enable Product Variants
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Toggle Include Variants to control whether each product variant is exported. This is recommended for products with Color or Size variants. When enabled, each variant gets its own item row and a shared <strong>g:item_group_id.</strong></p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/11.png?v=c6f3b95b8575bde8fbf03b25bdbb57ff" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">12</span>
+                                    Set Maximum Products
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Set <strong>Max Products</strong> if you want to limit the feed to a fixed number of products during testing. Set it to <strong>0</strong> for unlimited products.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/12.png?v=20fc6b90a7d1e2e9ed42b1c00fcab716" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">13</span>
+                                    Configure Stock Locations
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Under <strong>Stock Settings,</strong> select one or more Stock Locations to restrict availability calculation to specific warehouses. If no location is selected, total stock across all locations is used.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/13.png?v=622f6fb46aa6d4251ee13c1a4e9552c0" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">14</span>
+                                    Configure SFTP Settings
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Inside the Feed form, go to the <strong>SFTP</strong> tab. By default, <strong>Use Global SFTP Settings</strong> is enabled and uses the credentials saved in Settings.</p><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">If this feed requires different SFTP credentials, disable the toggle and manually enter the SFTP Host, Port, Username, and Password. Then click <strong>Test SFTP Connection</strong> to verify the credentials.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/14.png?v=f5919cba99556c7fb8d22686790ec30a" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">15</span>
+                                    Configure Feed Columns
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Inside the Feed form, go to the <strong>Feed Columns</strong> tab. If columns are not pre-loaded, click the <strong>Load Default Columns</strong> button to populate standard recommended Google Merchant Center fields automatically.</p><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Column Label: Human-readable name for the column.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Feed Key: Select the standard Google XML tag, such as g:id, title, g:price, or g:availability.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Model Field: Select a live Odoo field from product.template or product.product.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Static Value: Add fixed text to apply the same value across all products.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Required: Enable this for mandatory GMC fields so the module logs warnings for missing data.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Active: Disable a column temporarily without deleting it.</li></ul><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/15.png?v=4f01a710e9805d3044d443aa9adc4a28" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eefdf7; color:#0f766e; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">16</span>
+                                    Map Product Attributes
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">If <strong>Include Variants</strong> is enabled, the <strong>Attribute Mappings</strong> tab will appear. Here, you can map Odoo product attributes to the correct Google tags.</p><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Odoo Attribute: Select the attribute, for example, Color, Size, or Fabric.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Google Tag: Select the matching Google tag, for example, g:color, g:size, or g:material.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Select Do Not Export if you do not want a specific attribute to appear in the feed.</li></ul><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/16.png?v=f900d0761d5268dbe7ff88d28adec382" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#f5f3ff; color:#7c3aed; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">17</span>
+                                    Preview XML Feed
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">From the Feed form, click the <strong>Preview Feed</strong> button in the header. A dialog window will open showing a real-time preview of your XML feed content directly inside Odoo.</p><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">Review the structure, check that product data looks correct, verify that all <strong>g:</strong> tags are populated, and confirm the formatting matches Google requirements.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/17.png?v=ec6e34c5b7c0e23783f72ed9834285b6" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#ecfeff; color:#0891b2; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">18</span>
+                                    Activate and Upload Feed
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">From the Feed form header, click <strong>Activate</strong> to move the feed from Draft to Active state. To push the feed to Google immediately, click <strong>Upload Now. </strong></p><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Build the full XML feed from your Odoo product catalog.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Validate all products against required fields.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Upload the file securely to Google SFTP server.</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Show a success notification or warning notification if any products have missing required data.</li></ul><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">To pause automated uploads temporarily without deleting the feed, click <strong>Pause. </strong></p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/18.png?v=5fc9d99220351259357a7045169b6f4d" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:26px; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">19</span>
+                                    View Feed Logs
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">After each upload, manual or scheduled, a log entry is created. Click the <strong>Logs</strong> smart button on the feed form to view all upload history.</p><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Date and time of the upload</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Trigger type, Manual or Scheduled</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Status, Success, Error, or Warning</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Products Exported count</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">File Size in KB</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Duration in seconds</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Detailed message or error description</li></ul><ul style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px 18px; padding:0; box-sizing:border-box;"><li style="margin:0 0 5px; box-sizing:border-box;">Missing Required Fields report</li></ul><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/19.png?v=d06e77bc513988bd16253e2023274d74" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:20px; padding:18px; margin-bottom:0; box-shadow:0 12px 30px rgba(15,23,42,0.07); box-sizing:border-box;">
+                                <p
+                                    style="color:#123d73; font-size:clamp(13px, 3.4vw, 17px); line-height:1.35; font-weight:900; margin:0 0 14px; box-sizing:border-box;">
+                                    <span
+                                        style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; padding:6px 11px; margin-right:8px; box-sizing:border-box;">20</span>
+                                    Automated Scheduled Uploads
+                                </p>
+                                <p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">The cron job is set to run daily by default. It automatically builds and pushes fresh feeds for all Active feeds via SFTP without manual work.</p><p style="color:#526b96; font-size:14px; line-height:1.7; margin:0 0 12px; text-align:justify; box-sizing:border-box;">You can adjust the frequency to hourly, daily, or weekly depending on how often your prices or inventory change. Feeds in Draft or Paused state are automatically skipped by the cron job.</p><div style="margin:14px 0; box-sizing:border-box;"><img src="https://shop.vrajatechnologies.com/wp-content/uploads/odoo-description-builder/modules/google_merchant_center_next/static/description/img/20.png?v=15d35225c8c80b8867aab131a98919db" class="img img-fluid"
+                                    style="border-radius:16px; box-shadow:0 14px 34px rgba(15,23,42,0.10); margin:0; box-sizing:border-box;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQs Tab -->
+                    <div class="tab-pane" id="vt_faqs" style="box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; box-sizing:border-box;">
+                            <div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Does the module map product variants accurately for Google Shopping?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes. The integration fully supports complex Odoo product templates. It automatically assigns the mandatory g:item_group_id to link variations together and accurately translates multi-variant attributes like Color, Size, and Material into Google-compliant variant swatches.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Can I choose which warehouse stock is pushed to Google?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Absolutely. You can select specific Stock Locations on your feed configuration. The integration calculates both  and  based only on the available stock from those selected locations.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                How do I prevent my entire catalog from syncing to Google?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">The module includes an Advanced Domain Filter feature. You can easily configure conditions to sync only products from specific categories, products with a particular tag, or items marked as published. This gives you full control over which products are sent to Google Merchant Center.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eefdf7; color:#0f766e; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                What happens if a product has missing required data like an image or description?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">The feed sync will continue uploading correctly configured products. For affected products with missing required data, the module detects the issue during feed generation and creates a user-friendly Feed Log warning inside Odoo, so you know exactly which product attributes need to be fixed.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#f5f3ff; color:#7c3aed; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Will zero-priced products cause my Google feed to be rejected?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">No. The system includes a built-in validation guard that identifies products with a $0.00 price and prevents them from being pushed to Google. This helps avoid invalid pricing issues and protects your Google Merchant Center feed quality.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#ecfeff; color:#0891b2; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                How do I connect Odoo to my Google Merchant Center?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">The module provides an easy credentials section where you can enter your Google Merchant Center SFTP host, port, username, and password. It also includes a built-in Test Connection button to instantly verify your credentials before uploading the feed.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Is there a way to verify the feed before sending it to Google?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes. The module includes an Easy Preview feature. With one click, you can generate a real-time, readable preview of your XML feed directly inside the Odoo interface to confirm that tags, formatting, and product data are correct before sending it to Google.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Is the data sync fully automated?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">Yes. You can run the feed manually by clicking Run Feed, or configure the setup once and let Odoo’s built-in Scheduled Action cron job automatically push updated product listings, inventory quantities, and prices to Google via secure SFTP on a daily basis.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:14px; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                I would like to request a custom feature for this application. What’s the process to get it implemented?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">We’re happy to help tailor the application to meet your business needs! You can reach us via sales@vrajatechnologies.com</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><div
+                                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px 18px 18px 22px; margin-bottom:0; box-sizing:border-box;">
+                                <table
+                                    style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                    <tr>
+                                        <td
+                                            style="width:52px; vertical-align:top; padding:0 14px 0 0; box-sizing:border-box;">
+                                            <div
+                                                style="background-color:#eefdf7; color:#0f766e; border-radius:16px; width:42px; height:42px; line-height:42px; text-align:center; box-sizing:border-box;">
+                                                <i class="fa fa-comments-o"
+                                                    style="font-family:FontAwesome !important; font-size:20px; vertical-align:middle;"></i>
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                            <h4
+                                                style="color:#123d73; font-size:16px; font-weight:900; line-height:1.4; margin:0 0 8px; box-sizing:border-box;">
+                                                Who is the point of contact for technical support, configuration support or bug-related queries?
+                                            </h4>
+                                            <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0 0 10px; box-sizing:border-box;">You can reach us via support@vrajatechnologies.com</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support Tab -->
+                    <div class="tab-pane" id="vt_support" role="tabpanel" style="box-sizing:border-box;">
+                        <div style="background-color:#f8fbff;border:1px solid #dfeaf7;border-radius:22px;padding:22px;box-sizing:border-box;">
+                            <div style="background-color:#ffffff;border:1px solid #e4edf8;border-radius:22px;padding:22px;box-sizing:border-box;">
+                                <div style="width:100%;background-color:#f8fbf8;border:1px solid #d9e7d7;border-radius:22px;padding:26px 28px;margin-bottom:18px;box-sizing:border-box;">
+                                    <div class="d-none d-lg-block">
+                                        <table style="width:100%;border-collapse:collapse;border-spacing:0;box-sizing:border-box;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:108px;vertical-align:top;padding:0 20px 0 0;box-sizing:border-box;">
+                                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;box-sizing:border-box;">
+                                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                        <h3 style="color:#123d73;font-size:27px;font-weight:900;line-height:1.2;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:8px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                        <div style="width:82px;height:82px;line-height:82px;text-align:center;border-radius:25px;background-color:#eaf8e7;margin:0 auto 16px;box-sizing:border-box;">
+                                            <i class="fa fa-shield" style="font-family:FontAwesome!important;color:#169234;font-size:40px;vertical-align:middle;"></i>
+                                        </div>
+                                        <h3 style="color:#123d73;font-size:24px;font-weight:900;line-height:1.25;margin:0 0 8px;box-sizing:border-box;">Included App Support</h3>
+                                        <p style="color:#1d9a33;font-size:15px;font-weight:900;line-height:1.55;margin:0 0 12px;box-sizing:border-box;"><i class="fa fa-check-circle" style="font-family:FontAwesome!important;color:#169234;font-size:17px;margin-right:6px;"></i> 90 Days Complimentary Support for Supported Versions</p>
+                                        <p style="color:#435676;font-size:14px;font-weight:500;line-height:1.8;margin:0;box-sizing:border-box;">If you encounter issues caused by the app itself, our team provides complimentary support for 90 days from the date of purchase for supported Odoo versions.</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin:0 -8px;box-sizing:border-box;">
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/customer_support_icon.svg" alt="Customer Support" style="display:inline-block;width:40px;max-width:40px;height:auto;vertical-align:middle;margin:0;box-sizing:border-box;">
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Customer Support</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Need help with installation, configuration, technical issues, or general questions about the module? Submit a support ticket through our dedicated support portal.</p>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;box-sizing:border-box;">
+                                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#fff3e7;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-file-text-o" style="font-family:FontAwesome!important;color:#f07b00;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Support Policy</h4>
+                                                                <p style="color:#445775;font-size:14px;font-weight:600;line-height:1.82;margin:0 0 10px 0;box-sizing:border-box;">Review our support policy for complete information about support coverage, issue eligibility, exclusions, version compatibility, and other support conditions.</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Policy</div>
+                                                                <a href="https://vrajatechnologies.com/support-policy" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#fff9f2;border:1px solid #f2c487;border-radius:11px;padding:11px 10px;color:#d36c00!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-link" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/support-policy</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Scan for Support -->
+                                    <div class="col-12 col-lg-4" style="padding:8px;box-sizing:border-box;">
+                                        <div style="width:100%;background-color:#ffffff;border:1px solid #dfe6ef;border-radius:20px;padding:22px;box-sizing:border-box;">
+                                            <table style="width:100%;height:310px;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                            <div class="d-none d-lg-block">
+                                                                <table style="width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;box-sizing:border-box;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:94px;vertical-align:top;padding:0 16px 0 0;box-sizing:border-box;">
+                                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;box-sizing:border-box;">
+                                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="vertical-align:top;padding:0;box-sizing:border-box;">
+                                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:3px 0 10px;box-sizing:border-box;">Scan for Support</h4>
+                                                                                <div style="margin:8px 0 0;text-align:left;box-sizing:border-box;">
+                                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:170px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0;box-sizing:border-box;">
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="d-block d-lg-none" style="text-align:center;box-sizing:border-box;">
+                                                                <div style="width:74px;height:74px;line-height:74px;text-align:center;border-radius:50%;background-color:#edf2ff;margin:0 auto 16px;box-sizing:border-box;">
+                                                                    <i class="fa fa-qrcode" style="font-family:FontAwesome!important;color:#135fe8;font-size:35px;vertical-align:middle;"></i>
+                                                                </div>
+                                                                <h4 style="color:#123d73;font-size:21px;font-weight:900;line-height:1.25;margin:0 0 12px;box-sizing:border-box;">Scan for Support</h4>
+                                                                <div style="width:100%;text-align:center;margin:0;box-sizing:border-box;">
+                                                                    <img src="https://vrajatechnologies.com/wp-content/uploads/2026/08/vraja-helpdesk-qr.svg" alt="Vraja Technologies Support Portal QR Code" style="display:block;width:150px;max-width:100%;height:auto;border:1px solid #dfe6ef;border-radius:12px;margin:0 auto;box-sizing:border-box;">
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align:bottom;padding:0;box-sizing:border-box;">
+                                                            <div style="width:100%;border-top:1px solid #e5eaf2;padding-top:14px;text-align:center;box-sizing:border-box;">
+                                                                <div style="color:#64748b;font-size:11px;font-weight:900;line-height:1.4;text-transform:uppercase;text-align:center;margin:0 0 10px;box-sizing:border-box;">Support Portal</div>
+                                                                <a href="https://vrajatechnologies.com/helpdesk" target="_blank" rel="noopener" style="display:block;width:100%;background-color:#f5f8ff;border:1px solid #9fc1ff;border-radius:11px;padding:11px 10px;color:#1d5fd1!important;text-decoration:none!important;font-size:12px;font-weight:900;line-height:1.5;text-align:center;box-sizing:border-box;word-break:break-word;"><i class="fa fa-qrcode" style="font-family:FontAwesome!important;font-size:15px;margin-right:6px;vertical-align:middle;"></i> vrajatechnologies.com/helpdesk</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tabs Section End -->
+
+<!-- Discover Trending Addons Section Start -->
+    <section class="oe_container"
+        style="color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding: 30px 20px 15px; box-sizing:border-box; margin:0; ;"
+        id="TrendingApps">
+        <div class="container" style="margin:0 auto; box-sizing:border-box;">
+
+            <div class="text-center" style="max-width:1100px; margin:0 auto 10px; box-sizing:border-box;">
+                <span
+                    style="background-color:#eaf2ff; border-radius:999px; color:#2563eb; font-size:13px; font-weight:800; padding:8px 16px; margin-bottom:14px;">
+                    <i class="fa fa-cubes" style="font-family:FontAwesome !important; margin-right:6px;"></i>
+                    Discover Trending Apps
+                </span>
+            </div>
+
+            <div class="row" style="margin-left:-10px; margin-right:-10px; box-sizing:border-box;">
+                <!-- BigCommerce Odoo Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf2ff; color:#2563eb; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-shopping-bag"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    BigCommerce Odoo Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">BigCommerce Odoo Integration helps businesses connect their BigCommerce online store with Odoo and manage eCommerce operations from one centralized system. This connector allows you to import and export key store data between BigCommerce and Odoo, reducing manual work and improving operational accuracy.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/bigcommerce_odoo_integration" target="_blank"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shopify Odoo Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf8e7; color:#138a27; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-shopping-cart"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Shopify Odoo Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Shopify Odoo Integration helps you connect your Shopify store with Odoo to manage products, orders, customers, and inventory from one centralized system.Automate data synchronization between Shopify and Odoo, reduce manual work, avoid errors, and streamline your complete eCommerce operations.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/vraja_shopify_odoo_integration" target="_blank"
+                                    style="background-color:#138a27 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDI Odoo Integration (FTP/SFTP - Import/Export Records) -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#fff4e8; color:#d6863a; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-cloud-upload"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    EDI Odoo Integration (FTP/SFTP - Import/Export Records)
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">This all-in-one Odoo EDI solution connects Odoo with trading partners using FTP and SFTP protocols, with a dynamic XML mapping engine to import, export, create, or update any Odoo record without coding. It supports remote directory synchronization, scheduled automation, and reliable bidirectional data exchange across any Odoo model for accurate and streamlined business workflows.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/odoo_edi_integration" target="_blank"
+                                    style="background-color:#d6863a !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Klaviyo Odoo Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eef2ff; color:#4f46e5; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-envelope"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Klaviyo Odoo Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Klaviyo Odoo Integration Most ecommerce marketing software forces you to choose between being as effective as possible or moving fast. Klaviyo is different. Designed for growth-minded ecommerce merchants, Klaviyo gives you powerful functionality without sacrificing the time it takes for your marketing to make an impact on your bottom line.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/klaviyo_odoo_integration" target="_blank"
+                                    style="background-color:#4f46e5 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipstation V2 Odoo Shipping -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#ecfdf5; color:#0f766e; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-truck"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Shipstation V2 Odoo Shipping
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">The ShipStation Odoo Integration provides a seamless two-way connection between Odoo ERP and ShipStation Easily connect Odoo with ShipStation to automate shipping workflows, generate carrier labels, fetch real-time rates, and synchronize orders and tracking details.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/shipstation_shipping_odoo_integration_v2" target="_blank"
+                                    style="background-color:#0f766e !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stripe Terminal Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eefdf7; color:#0f8b6f; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-credit-card"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Stripe Terminal Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Stripe Odoo Integration helps businesses process real-time card payments from Odoo invoices and sale quotations using Stripe Terminal devices like WisePOS E and Stripe S700. It streamlines backend payment collection with automated syncing to Odoo Accounting, reducing manual work and improving financial accuracy.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/stripe_payment_odoo_integration" target="_blank"
+                                    style="background-color:#0f8b6f !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Odoo Quickbooks Online Connector | USA -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#fff7ed; color:#ea580c; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-calculator"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Odoo Quickbooks Online Connector | USA
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">QuickBooks Odoo Integration helps businesses synchronize customers, vendors, products, taxes, accounts, invoices, bills, payments, and payment terms between QuickBooks and Odoo. Automate financial data exchange, reduce manual entry, avoid inconsistencies, and maintain accurate accounting records across both platforms.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/quickbooks_online_odoo_connector" target="_blank"
+                                    style="background-color:#ea580c !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RMA | Customer &amp; Supplier Return Management -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#f0f9ff; color:#0284c7; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-undo"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    RMA | Customer &amp; Supplier Return Management
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">RMA Customer &amp; Supplier Return Management helps businesses manage product returns, refunds, replacements, approvals, stock movements, and credit notes for both customers and vendors directly in Odoo. Fully integrated with Sales, Purchase, Inventory, Accounting, and Website Portal, it automates the complete return workflow, reduces manual work, and improves return process traceability.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/rma_customer_management" target="_blank"
+                                    style="background-color:#0284c7 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ALL IN ONE Import Record From SFTP Import CSV &amp; XLSX File Manually -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#f0f9ff; color:#9802c7; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-upload"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    ALL IN ONE Import Record From SFTP Import CSV &amp; XLSX File Manually
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">ALL IN ONE Import Records is a flexible Odoo import solution that allows users to import any type of data using configurable mappings, multiple file formats, and automated workflows. It also supports dynamic translation during import, enabling multilingual data import in a single operation for accurate, consistent, and efficient data management.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/dynamic_import_records" target="_blank"
+                                    style="background-color:#9802c7 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WooCommerce Odoo Connector -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eefdf7; color:#9b88d3; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-wordpress"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    WooCommerce Odoo Connector
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">WooCommerce Odoo Integration helps businesses connect their WooCommerce online store with Odoo and manage complete eCommerce operations from one centralized ERP system.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/vraja_woocommerce_odoo_integration" target="_blank"
+                                    style="background-color:#9b88d3 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Odoo Quickbooks Canada Connector -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf2ff; color:#2563eb; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-calculator"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    Odoo Quickbooks Canada Connector
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">Odoo QuickBooks Canada Connector helps businesses synchronize customers, vendors, products, taxes, chart of accounts, invoices, bills, payments, and payment terms between Odoo and QuickBooks Canada.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/quickbooks_odoo_connector_canada" target="_blank"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ZOHO Odoo Integration -->
+                <div class="col-12 col-md-6" style="padding:10px; box-sizing:border-box;">
+                    <div
+                        style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:18px; padding:18px; height:100%; box-shadow:0 8px 22px rgba(15,23,42,0.05); box-sizing:border-box;">
+                        <div class="row align-items-center">
+                            <div class="col-auto" style="padding-right:0;">
+                                <div
+                                    style="background-color:#eaf8e7; color:#138a27; border-radius:15px; width:44px; height:44px; line-height:44px; text-align:center;">
+                                    <i class="fa fa-book"
+                                        style="font-family:FontAwesome !important; font-size:20px;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col" style="min-width:0;">
+                                <h4
+                                    style="color:#123d73; font-size:16px; font-weight:900; line-height:1.35; margin:0 0 8px;">
+                                    ZOHO Odoo Integration
+                                </h4>
+                                <p style="color:#526b96; font-size:13px; line-height:1.6; margin:0;">ZOHO Odoo Integration helps businesses connect Zoho applications with Odoo to synchronize CRM, accounting, inventory, customer, sales, and business data in one unified system.</p>
+                            </div>
+
+                            <div class="col-10 offset-2 offset-md-0 col-md-auto text-left text-md-right mt-3 mt-md-0">
+                                <a href="https://apps.odoo.com/apps/modules/19.0/zoho_book_odoo_integration" target="_blank"
+                                    style="background-color:#138a27 !important; color:#ffffff !important; border-radius:12px; font-size:12px; font-weight:900; padding:10px 16px; text-decoration:none !important; white-space:nowrap; line-height:1.2;">
+                                    View App
+                                    <i class="fa fa-angle-right"
+                                        style="font-family:FontAwesome !important; margin-left:6px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- Discover Shipping Addons Section End -->
+
+    <!-- Discover Shipping Addons Section End -->
+
+    <!-- CTA Section Start -->
+    <section class="oe_container"
+        style="background-color:#f7fbff; color:#0f172a; font-family:Arial, 'Segoe UI', Roboto, Helvetica, sans-serif; line-height:1.5; overflow:hidden; padding:34px 0; box-sizing:border-box;">
+        <div class="container" style="box-sizing:border-box;">
+            <div
+                style="background-color:#ffffff; border:1px solid #dfeaf7; border-radius:26px; padding:clamp(18px, 3.5vw, 30px); box-shadow:0 18px 44px rgba(15,23,42,0.08); box-sizing:border-box; margin: 0px 9px;">
+                <div class="row align-items-center"
+                    style="margin-left:-12px; margin-right:-12px; box-sizing:border-box;">
+
+                    <div class="col-12 col-lg-7" style="padding:12px; box-sizing:border-box;">
+                        <table
+                            style="border-collapse:collapse; border-spacing:0; margin:0 0 12px; box-sizing:border-box;">
+                            <tr>
+                                <td style="vertical-align:middle; padding:0 10px 0 0; box-sizing:border-box;">
+                                    <span
+                                        style="color:#123d73; border-radius:999px; display:inline-block; font-size:12px; font-weight:900; line-height:1; box-sizing:border-box;">
+                                        <i class="fa fa-check-circle"
+                                            style="font-family:FontAwesome !important; font-size:clamp(25px, 3.5vw, 33px);  margin-right:5px; vertical-align:middle;"></i>
+                                    </span>
+                                </td>
+                                <td style="vertical-align:middle; padding:0; box-sizing:border-box;">
+                                    <h2
+                                        style="color:#123d73; font-family:sans-serif !important; font-size:clamp(18px, 4.5vw, 28px); font-weight:900; line-height:1.25; margin:0; box-sizing:border-box;">
+                                        Explore Before Purchase
+                                    </h2>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p
+                            style="color:#138a27; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.45; margin:0 0 12px; box-sizing:border-box;">
+                            Start with a free trial
+                        </p>
+
+                        <p
+                            style="color:#526b96; font-size:clamp(13px, 3.4vw, 15px); line-height:1.7; margin:0 0 18px; box-sizing:border-box;">
+                            Test the connector with your real workflows using our 15-day free trial. If you need help,
+                            our product experts will guide you throughout the trial.
+                        </p>
+
+                        <div class="row" style="margin-left:-7px; margin-right:-7px; box-sizing:border-box;">
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="mailto:sales@vrajatechnologies.com?subject=Odoo%20Google%20Merchant%20Center%20Integration"
+                                    style="background-color:#2563eb !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:55px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(37,99,235,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-calendar-check-o"
+                                        style="font-family:FontAwesome !important; font-size:17px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">Request Demo</span>
+                                </a>
+                            </div>
+
+                            <div class="col-12 col-sm-4" style="padding:7px; box-sizing:border-box;">
+                                <a href="https://api.whatsapp.com/send/?phone=917359628466&amp;text&amp;type=phone_number&amp;app_absent=0"
+                                    target="_blank"
+                                    style="background-color:#13a579 !important; color:#ffffff !important; border-radius:14px; display:block; font-size:15px; font-weight:900; height:55px; line-height:50px; text-align:center; text-decoration:none !important; box-shadow:0 12px 24px rgba(19,165,121,0.20); box-sizing:border-box; width:100%;">
+                                    <i class="fa fa-whatsapp"
+                                        style="font-family:FontAwesome !important; font-size:20px; margin-right:8px; vertical-align:middle;"></i>
+                                    <span style="vertical-align:middle;">+91 73596 28466</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5" style="padding:12px; box-sizing:border-box;">
+                        <div
+                            style="background-color:#f8fbff; border:1px solid #dfeaf7; border-radius:22px; padding:20px; height:100%; box-sizing:border-box;">
+                            <table
+                                style="width:100%; border-collapse:collapse; border-spacing:0; box-sizing:border-box;">
+                                <tr>
+                                    <td
+                                        style="width:62px; vertical-align:top; padding:0 15px 0 0; box-sizing:border-box;">
+                                        <div
+                                            style="background-color:#eaf2ff; color:#2563eb; border-radius:18px; width:52px; height:52px; line-height:52px; text-align:center; box-sizing:border-box;">
+                                            <i class="fa fa-check-square-o"
+                                                style="font-family:FontAwesome !important; font-size:24px; vertical-align:middle;"></i>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:top; padding:0; box-sizing:border-box;">
+                                        <h4
+                                            style="color:#123d73; font-size:clamp(15px, 3.5vw, 17px); font-weight:900; line-height:1.35; margin:0 0 8px; box-sizing:border-box;">
+                                            Test the connector with your real workflows.
+                                        </h4>
+                                        <p
+                                            style="color:#526b96; font-size:13px; line-height:1.65; margin:0 0 12px; box-sizing:border-box;">
+                                            Our product experts will guide you during the trial to help you evaluate,
+                                            configure, and use the connector with confidence.
+                                        </p>
+                                        <div style="box-sizing:border-box;">
+                                            <span
+                                                style="background-color:#eaf8e7; color:#138a27; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">15-Day
+                                                Trial</span>
+                                            <span
+                                                style="background-color:#eaf2ff; color:#2563eb; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Expert
+                                                Guidance</span>
+                                            <span
+                                                style="background-color:#fff4e8; color:#d6863a; border-radius:999px; display:inline-block; font-size:10px; font-weight:800; padding:6px 10px; margin:0 5px 6px 0; box-sizing:border-box;">Real
+                                                Workflow Testing</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section End -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id/id,operation,domain
+access_google_product_taxonomy_user,google.product.taxonomy user,model_google_product_taxonomy,base.group_user,r,
+access_google_product_taxonomy_manager,google.product.taxonomy manager,model_google_product_taxonomy,base.group_system,crud,
+access_gmc_feed_user,gmc.feed user,model_gmc_feed,base.group_user,r,
+access_gmc_feed_manager,gmc.feed manager,model_gmc_feed,base.group_system,crud,
+access_gmc_feed_column_user,gmc.feed.column user,model_gmc_feed_column,base.group_user,r,
+access_gmc_feed_column_manager,gmc.feed.column manager,model_gmc_feed_column,base.group_system,crud,
+access_gmc_feed_log_user,gmc.feed.log user,model_gmc_feed_log,base.group_user,r,
+access_gmc_feed_log_manager,gmc.feed.log manager,model_gmc_feed_log,base.group_system,crud,
+access_import_google_category_wizard,import.google.category.wizard,model_import_google_category_wizard,base.group_system,crud,
+access_gmc_feed_preview_wizard,gmc.feed.preview.wizard,model_gmc_feed_preview_wizard,base.group_user,crud,
+access_gmc_feed_attribute_mapping_user,gmc.feed.attribute.mapping user,model_gmc_feed_attribute_mapping,base.group_user,r,
+access_gmc_feed_attribute_mapping_manager,gmc.feed.attribute.mapping manager,model_gmc_feed_attribute_mapping,base.group_system,crud,

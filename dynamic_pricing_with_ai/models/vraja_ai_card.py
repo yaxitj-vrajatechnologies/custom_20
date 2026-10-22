@@ -303,8 +303,8 @@ class VrajaAICard(models.Model):
         """Routes the card to the Dynamic Pricing dashboard template."""
         action = super().action_review_dashboard()
         self.ensure_one()
-        action['name'] = 'Dynamic Pricing Dashboard'
         if self.vraja_common_store == 'dynamic_pricing':
+            action['name'] = 'Dynamic Pricing Dashboard'
             action['tag'] = 'dynamic_pricing_dashboard_template'
         return action
 

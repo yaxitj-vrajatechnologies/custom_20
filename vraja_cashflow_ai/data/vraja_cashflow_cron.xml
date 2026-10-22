@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--
+            Cashflow AI — CFO Executive Report
+            ─────────────────────────────────────────
+            Runs every night at 00:00 (midnight, server time).
+            For each Cashflow AI card that has a CFO user configured,
+            it generates the Executive Report PDF and emails it to that user.
+            Set cfo_user_id on the vraja.ai.card record to activate.
+        -->
+        <record id="ir_cron_vraja_cashflow_cfo_nightly"
+                model="ir.cron">
+            <field name="name">Cashflow AI: CFO Executive Report Email</field>
+            <field name="model_id" ref="vraja_ai.model_vraja_ai_card"/>
+            <field name="state">code</field>
+            <field name="code">model.action_send_cfo_nightly_report()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+            <!-- nextcall is midnight tonight (server time) — Odoo auto-adjusts -->
+            <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)"/>
+        </record>
+
+    </data>
+</odoo>

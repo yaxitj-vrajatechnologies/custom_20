@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PRODUCT CATEGORY — Fruugo Tab
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <record id="view_category_property_form_fruugo" model="ir.ui.view">
+        <field name="name">product.category.fruugo.form</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='first']" position="after">
+                <group string="Fruugo Integration" name="fruugo">
+                    <field name="fruugo_category_id" 
+                           options="{'no_create': True}"
+                           help="Map this category to the exact Fruugo Taxonomy tree path."/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

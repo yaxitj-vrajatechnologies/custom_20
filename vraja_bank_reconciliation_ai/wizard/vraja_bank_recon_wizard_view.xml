@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_vraja_bank_recon_wizard_form" model="ir.ui.view">
+        <field name="name">vraja.bank.recon.wizard.form</field>
+        <field name="model">vraja.bank.recon.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate AI Reconciliation">
+                <sheet>
+                    <group>
+                        <field name="journal_id" options="{'no_create': True}"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="card_id" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_generate_analysis" string="Run AI Analysis" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

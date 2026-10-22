@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="ir_cron_vendor_ai_generate_excel" model="ir.cron">
+            <field name="name">Vendor AI Agent: Auto Generate Data File</field>
+            <field name="model_id" ref="model_vraja_ai_card"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="state">code</field>
+            <field name="code">model.with_context(from_cron=True).action_cron_vendor_ai_generate_excel()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">False</field>
+        </record>
+
+        <record id="ir_cron_run_vendor_ai_analysis" model="ir.cron">
+            <field name="name">Vendor AI Agent - Auto Run AI Analysis</field>
+            <field name="model_id" ref="model_vraja_ai_card"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="state">code</field>
+            <field name="code">model.with_context(from_cron=True).action_cron_vendor_ai_analysis()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">False</field>
+        </record>
+
+    </data>
+</odoo>

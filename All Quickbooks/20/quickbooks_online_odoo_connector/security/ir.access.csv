@@ -1,4 +1,0 @@
-id,name,model_id,group_id/id,operation,domain
-access_qbo_product_vts,access.qbo.product.vts,qbo.product.vts,base.group_user,crud,
-access_qbo_vendor_map_vts,access.qbo.vendor.map.vts,qbo.vendor.map.vts,base.group_user,crud,
-access_instance_wizard,access.instance.wizard,instance.wizard,base.group_user,crud,

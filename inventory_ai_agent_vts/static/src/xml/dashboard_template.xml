@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="inventory_low_stock_dashboard_template"
+       t-inherit="vraja_ai_dashboard_template"
+       t-inherit-mode="extension">
+
+        <xpath expr="//div[@id='dashboard_template_common_app_vts']" position="inside">
+            <div t-if="this.state.store === 'ai_low_stock' &amp;&amp; !this.state.card"
+                 class="d-flex justify-content-center align-items-center"
+                 style="height:100vh;">
+                <div class="text-center text-muted">
+                    <span class="spinner-border mb-3" role="status"/>
+                    <div>Loading dashboard...</div>
+                </div>
+            </div>
+
+            <div t-if="this.state.store === 'ai_low_stock' &amp;&amp; this.state.card" class="o_inventory_ai_dashboard_scroll">
+                <t t-set="stats" t-value="this.getDashboardStats()"/>
+
+                <h1 class="mb-4">AI Dashboard — Low Stock Replenishment</h1>
+
+                <div t-if="this.state.isBusy" class="d-flex align-items-center gap-2 px-3 py-2 mb-3 rounded"
+                     style="background:#fff8e1; border:1px solid #ffe082; color:#7a6000; width:fit-content;">
+                    <span class="spinner-border spinner-border-sm" role="status"/>
+                    <span style="font-size:14px; font-weight:500;">Please wait, processing...</span>
+                </div>
+
+                <div t-if="this.state.card.ai_low_stock_analysis_error"
+                     class="alert alert-warning mb-3">
+                    <span class="oi me-2" data-icon="warning"/>
+                    <t t-out="this.state.card.ai_low_stock_analysis_error"/>
+                </div>
+
+                <!-- STATUS BAR -->
+                <div class="d-flex align-items-center justify-content-between mb-4 p-3"
+                     style="background:white; border-radius:10px; border:1px solid #dee2e6; box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="oi" data-icon="inventory_2" style="font-size:1.6rem; color:#4472C4;"/>
+                        <div>
+                            <div class="fw-bold" style="font-size:15px; color:#2c3e7a;">
+                                AI Low Stock Alert &amp; RFQ Automation
+                            </div>
+                            <div class="d-flex align-items-center gap-2 mt-1 flex-wrap">
+                                <span style="color:#888;">Last Analyzed on |</span>
+                                <span style="font-size:12px; color:#888;">
+                                    <i class="oi me-1" data-icon="schedule"/>
+                                    <t t-out="stats.analyzedOn"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span t-if="!this.state.card.ai_low_stock_attachment_id"
+                              class="o_inventory_ai_status_badge o_inventory_ai_status_idle">
+                            <i class="oi" data-icon="remove_circle"/>No Data File
+                        </span>
+                        <span t-if="this.state.card.ai_low_stock_attachment_id and !this.state.card.ai_low_stock_analysis_result and !this.state.card.ai_low_stock_analysis_error"
+                              class="o_inventory_ai_status_badge o_inventory_ai_status_ready">
+                            <i class="oi" data-icon="description"/>Ready
+                        </span>
+                        <span t-if="this.state.card.ai_low_stock_analysis_result"
+                              class="o_inventory_ai_status_badge o_inventory_ai_status_done">
+                            <i class="oi" data-icon="check_circle"/>Done
+                        </span>
+                        <span t-if="this.state.card.ai_low_stock_analysis_error"
+                              class="o_inventory_ai_status_badge o_inventory_ai_status_error">
+                            <i class="oi" data-icon="warning"/>Error
+                        </span>
+                    </div>
+                </div>
+
+                <!-- STEP 1 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center"
+                         t-on-click="() => this.state.currentWizardStep = (this.state.currentWizardStep === 1 ? 0 : 1)"
+                         style="cursor:pointer;">
+                        <strong><span class="oi me-2" data-icon="info"/> About This Module</strong>
+                        <i class="oi toggle-icon" t-att-data-icon="this.state.currentWizardStep === 1 ? 'expand_more' : 'expand_less'"/>
+                    </div>
+                    <div id="inventory_ai_step1_section" t-att-class="this.state.currentWizardStep === 1 ? 'collapse show' : 'collapse'">
+                        <div class="card-body p-4">
+                            <div class="mb-4">
+                                <div style="font-size:20px; font-weight:700; margin-bottom:4px;">
+                                    AI Low Stock Replenishment
+                                </div>
+                                <div style="font-size:13px; opacity:0.85;">
+                                    Automate inventory forecasting, vendor selection and RFQ preparation inside Odoo.
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-3">
+                                    <div class="p-3 h-100 rounded text-center"
+                                         style="background:#f0f4ff; border:1px solid #d0d9f5;">
+                                        <div style="font-size:1.8rem; color:#4472C4; margin-bottom:8px;">
+                                            <span class="oi" data-icon="apps"/>
+                                        </div>
+                                        <div style="font-weight:600; font-size:13px; color:#2c3e7a; margin-bottom:4px;">AI Powered</div>
+                                        <div class="text-muted" style="font-size:12px;">Uses stock, sales and purchase history to recommend replenishment.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="p-3 h-100 rounded text-center"
+                                         style="background:#f0fff4; border:1px solid #a3cfbb;">
+                                        <div style="font-size:1.8rem; color:#27ae60; margin-bottom:8px;">
+                                            <span class="oi" data-icon="monitoring"/>
+                                        </div>
+                                        <div style="font-weight:600; font-size:13px; color:#1a6e3c; margin-bottom:4px;">Forecasting</div>
+                                        <div class="text-muted" style="font-size:12px;">Forecasts demand from all history or a preferred recent period.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="p-3 h-100 rounded text-center"
+                                         style="background:#fff8f0; border:1px solid #f5cba7;">
+                                        <div style="font-size:1.8rem; color:#e67e22; margin-bottom:8px;">
+                                            <span class="oi" data-icon="local_shipping"/>
+                                        </div>
+                                        <div style="font-weight:600; font-size:13px; color:#935200; margin-bottom:4px;">Vendor Review</div>
+                                        <div class="text-muted" style="font-size:12px;">Evaluates lead time, delays, reliability and purchase price.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="p-3 h-100 rounded text-center"
+                                         style="background:#fdf0ff; border:1px solid #e0b0f5;">
+                                        <div style="font-size:1.8rem; color:#8e44ad; margin-bottom:8px;">
+                                            <span class="oi" data-icon="shopping_cart"/>
+                                        </div>
+                                        <div style="font-weight:600; font-size:13px; color:#5b2c7a; margin-bottom:4px;">RFQ Action</div>
+                                        <div class="text-muted" style="font-size:12px;">Creates draft RFQs from approved AI replenishment rows.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="fw-semibold mb-3" style="font-size:14px; color:#2c3e7a;">
+                                    <span class="oi me-2" data-icon="format_list_bulleted"/>How It Works
+                                </div>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <div class="o_inventory_ai_step_chip"><span>1</span><em>Business Info</em></div>
+                                    <div class="d-flex align-items-center" style="color:#ccc;"><span class="oi" data-icon="chevron_right"/></div>
+                                    <div class="o_inventory_ai_step_chip"><span>2</span><em>Configure Settings</em></div>
+                                    <div class="d-flex align-items-center" style="color:#ccc;"><span class="oi" data-icon="chevron_right"/></div>
+                                    <div class="o_inventory_ai_step_chip"><span>3</span><em>Generate Data</em></div>
+                                    <div class="d-flex align-items-center" style="color:#ccc;"><span class="oi" data-icon="chevron_right"/></div>
+                                    <div class="o_inventory_ai_step_chip"><span>4</span><em>Run AI</em></div>
+                                    <div class="d-flex align-items-center" style="color:#ccc;"><span class="oi" data-icon="chevron_right"/></div>
+                                    <div class="o_inventory_ai_step_chip o_inventory_ai_step_chip_success"><span>5</span><em>Create RFQs</em></div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start gap-3 p-3 rounded"
+                                 style="background:#fffbe6; border:1px solid #ffe082;">
+                                <span class="oi mt-1" data-icon="lightbulb" style="color:#f0a500; font-size:16px;"/>
+                                <div style="font-size:13px; color:#7a5800;">
+                                    <strong>Tip:</strong>
+                                    Keep business context and forecast periods accurate before generating the workbook. The AI reads those settings into its replenishment prompt.
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4">
+                                <button class="btn btn-primary" t-on-click="this.onNextStep">Next <i class="oi ms-1" data-icon="arrow_forward"/></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center"
+                         t-on-click="() => this.state.currentWizardStep = (this.state.currentWizardStep === 2 ? 0 : 2)"
+                         style="cursor:pointer;">
+                        <strong><span class="oi me-2" data-icon="inventory_2"/> Company Information</strong>
+                        <i class="oi toggle-icon" t-att-data-icon="this.state.currentWizardStep === 2 ? 'expand_more' : 'expand_less'"/>
+                    </div>
+                    <div id="inventory_ai_step2_section" t-att-class="this.state.currentWizardStep === 2 ? 'collapse show' : 'collapse'">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center gap-3 mb-4">
+                                <div>
+                                    <div style="font-size:15px; font-weight:700; color:#2c3e7a;">Inventory Business Context</div>
+                                    <div class="text-muted" style="font-size:12px;">Help AI understand your warehouses, product types and replenishment rules.</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold" style="color:#2c3e7a; font-size:13px;">
+                                    <span class="oi me-1" data-icon="edit"/>Describe Your Inventory Process
+                                </label>
+                                <textarea class="form-control" rows="5"
+                                          style="font-size:13px; border:1px solid #d0d9f5; border-radius:8px; resize:vertical;"
+                                          placeholder="e.g. We sell office furniture across two warehouses. Chairs and tables use preferred vendors with 7 day lead time. Keep at least 2 weeks stock for fast moving products..."
+                                          t-on-input="(ev) => this.onChangeField('ai_low_stock_company_information', ev)"
+                                          t-att-value="this.state.card.ai_low_stock_company_information || ''"/>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-secondary" t-on-click="this.onPrevStep"><i class="oi me-1" data-icon="arrow_back"/> Previous</button>
+                                <button class="btn btn-primary" t-on-click="this.onNextStep">Next <i class="oi ms-1" data-icon="arrow_forward"/></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center"
+                         t-on-click="() => this.state.currentWizardStep = (this.state.currentWizardStep === 3 ? 0 : 3)"
+                         style="cursor:pointer;">
+                        <strong><span class="oi me-2" data-icon="settings"/> Forecast Configuration</strong>
+                        <i class="oi toggle-icon" t-att-data-icon="this.state.currentWizardStep === 3 ? 'expand_more' : 'expand_less'"/>
+                    </div>
+                    <div id="inventory_ai_step3_section" t-att-class="this.state.currentWizardStep === 3 ? 'collapse show' : 'collapse'">
+                        <div class="card-body p-4">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="p-3 rounded h-100" style="background:#f8f9fa; border:1px solid #dee2e6;">
+                                        <div class="fw-semibold mb-3" style="color:#2c3e7a; font-size:13px;">
+                                            <span class="oi me-1" data-icon="settings"/>Forecast Settings
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label fw-semibold small">Minimum Stock Threshold</label>
+                                            <input type="number" class="form-control form-control-sm" min="0"
+                                                   t-on-input="(ev) => this.onChangeField('minimum_stock_threshold', ev)"
+                                                   t-att-value="this.state.card.minimum_stock_threshold"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label fw-semibold small">Sales Forecast Period</label>
+                                            <select class="form-select form-select-sm"
+                                                    t-on-change="(ev) => this.onChangeField('forecast_period', ev)"
+                                                    t-att-value="this.state.card.forecast_period">
+                                                <option value="all_data">All Time Data</option>
+                                                <option value="selected_data">Preferred Data</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-0" t-if="this.state.card.forecast_period === 'selected_data'">
+                                            <label class="form-label fw-semibold small">Sales Forecast Days</label>
+                                            <input type="number" class="form-control form-control-sm" min="1" max="365"
+                                                   t-on-input="(ev) => this.onChangeField('sale_forecast_days', ev)"
+                                                   t-att-value="this.state.card.sale_forecast_days"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="p-3 rounded h-100" style="background:#f8f9fa; border:1px solid #dee2e6;">
+                                        <div class="fw-semibold mb-3" style="color:#2c3e7a; font-size:13px;">
+                                            <span class="oi me-1" data-icon="database"/>Purchase &amp; RFQ Settings
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label fw-semibold small">Purchase Forecast Period</label>
+                                            <select class="form-select form-select-sm"
+                                                    t-on-change="(ev) => this.onChangeField('purchase_forecast_period', ev)"
+                                                    t-att-value="this.state.card.purchase_forecast_period">
+                                                <option value="all_data">All Purchase History</option>
+                                                <option value="selected_data">Preferred Purchase Data</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3" t-if="this.state.card.purchase_forecast_period === 'selected_data'">
+                                            <label class="form-label fw-semibold small">Purchase Forecast Days</label>
+                                            <input type="number" class="form-control form-control-sm" min="1" max="365"
+                                                   t-on-input="(ev) => this.onChangeField('purchase_forecast_days', ev)"
+                                                   t-att-value="this.state.card.purchase_forecast_days"/>
+                                        </div>
+                                        <div class="form-check form-switch mb-0">
+                                            <input class="form-check-input" type="checkbox"
+                                                   id="ai_low_stock_auto_create_rfq"
+                                                   t-on-change="(ev) => this.onChangeCheckbox('ai_low_stock_auto_create_rfq', ev)"
+                                                   t-att-checked="this.state.card.ai_low_stock_auto_create_rfq"/>
+                                            <label class="form-check-label small" for="ai_low_stock_auto_create_rfq">
+                                                Auto create draft RFQs after AI analysis
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-outline-secondary" t-on-click="this.onPrevStep"><i class="oi me-1" data-icon="arrow_back"/> Previous</button>
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-outline-primary"
+                                            t-on-click="this.onClickGenerateFile"
+                                            t-att-disabled="this.state.isBusy">
+                                        <span class="oi me-1" data-icon="description"/>Save Data &amp; Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center"
+                        t-on-click="() => this.state.currentWizardStep = (this.state.currentWizardStep === 4 ? 0 : 4)"
+                        style="cursor:pointer;">
+                        <strong><span class="oi me-2" data-icon="play_arrow"/> Data File &amp; Run AI</strong>
+                        <i class="oi toggle-icon" t-att-data-icon="this.state.currentWizardStep === 4 ? 'expand_more' : 'expand_less'"/>
+                    </div>
+                    <div id="inventory_ai_step4_section" t-att-class="this.state.currentWizardStep === 4 ? 'collapse show' : 'collapse'">
+                        <div class="card-body p-4">
+                            <div class="row g-4">
+                                <div class="col-md-7">
+                                    <div class="p-3 rounded h-100" style="background:#f8f9fa; border:1px solid #dee2e6;">
+                                        <div class="fw-semibold mb-3" style="color:#2c3e7a; font-size:13px;">
+                                            <span class="oi me-1" data-icon="description"/>Generated Workbook
+                                        </div>
+                                        <div t-if="this.state.card.ai_low_stock_attachment_id"
+                                             class="d-flex align-items-center gap-3 p-3 rounded"
+                                             style="background:white; border:1px solid #d0d9f5;">
+                                            <span class="oi text-success" data-icon="description" style="font-size:2rem;"/>
+                                            <div>
+                                                <div class="fw-semibold"><t t-out="this.state.card.stock_attachment_name"/></div>
+                                                <div class="text-muted small">Stock, sales and purchase data prepared for AI analysis.</div>
+                                            </div>
+                                            <a t-att-href="'/web/content/' + this.state.card.ai_low_stock_attachment_id + '?download=true'"
+                                               class="btn btn-outline-success btn-sm ms-auto">
+                                                <span class="oi me-1" data-icon="download"/>Download
+                                            </a>
+                                        </div>
+                                        <div t-if="!this.state.card.ai_low_stock_attachment_id"
+                                             class="d-flex align-items-center gap-2 p-3 rounded text-muted"
+                                             style="background:white; border:1px dashed #d0d9f5; font-size:13px;">
+                                            <span class="oi" data-icon="info"/>
+                                            No workbook generated yet. Save settings in Step 3 first.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="p-3 rounded h-100" style="background:#f0f4ff; border:1px solid #d0d9f5;">
+                                        <div class="fw-semibold mb-2" style="color:#2c3e7a; font-size:13px;">
+                                            <span class="oi me-1" data-icon="smart_toy"/>AI Analysis
+                                        </div>
+                                        <div class="text-muted mb-3" style="font-size:12px;">
+                                            Run the replenishment analyst on the latest workbook and review RFQ recommendations in Step 5.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-secondary" t-on-click="this.onPrevStep"><i class="oi me-1" data-icon="arrow_back"/> Previous</button>
+                                <button class="btn btn-success"
+                                                t-on-click="this.onClickRunAI"
+                                                t-att-disabled="this.state.isBusy || !this.state.card.ai_low_stock_attachment_id">
+                                            <span class="oi me-1" data-icon="play_arrow"/>Run AI Analysis
+                                        </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 5 -->
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center"
+                         t-on-click="() => this.state.currentWizardStep = (this.state.currentWizardStep === 5 ? 0 : 5)"
+                         style="cursor:pointer;">
+                        <strong><span class="oi me-2" data-icon="table_chart"/> Review Results &amp; Create RFQs</strong>
+                        <i class="oi toggle-icon" t-att-data-icon="this.state.currentWizardStep === 5 ? 'expand_more' : 'expand_less'"/>
+                    </div>
+                    <div id="inventory_ai_step5_section" t-att-class="this.state.currentWizardStep === 5 ? 'collapse show' : 'collapse'">
+                        <div class="card-body p-4">
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-4">
+                                    <div class="p-3 rounded text-center" style="background:#f0f4ff; border:1px solid #d0d9f5;">
+                                        <div class="fw-bold" style="font-size:22px; color:#4472C4;"><t t-out="stats.recommendations"/></div>
+                                        <div class="text-muted" style="font-size:12px;">Recommended Products</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-3 rounded text-center" style="background:#f0fff4; border:1px solid #a3cfbb;">
+                                        <div class="fw-bold" style="font-size:22px; color:#27ae60;"><t t-out="stats.totalQty"/></div>
+                                        <div class="text-muted" style="font-size:12px;">Total Order Quantity</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-3 rounded text-center" style="background:#fff8f0; border:1px solid #f5cba7;">
+                                        <div class="fw-bold" style="font-size:22px; color:#e67e22;"><t t-out="stats.vendors"/></div>
+                                        <div class="text-muted" style="font-size:12px;">Vendors</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center gap-2 mb-3 flex-wrap">
+                                <div class="fw-semibold" style="font-size:14px; color:#2c3e7a;">
+                                    <span class="oi me-1" data-icon="format_list_bulleted"/>AI Replenishment Recommendations
+                                </div>
+                                <input type="text" class="form-control form-control-sm"
+                                       style="max-width:360px;"
+                                       placeholder="Search product, SKU, vendor..."
+                                       t-on-input="this.onSearchProduct"/>
+                            </div>
+
+                            <div t-if="!this.state.card.ai_low_stock_analysis_result"
+                                 class="d-flex align-items-center justify-content-center gap-2 text-muted rounded"
+                                 style="min-height:180px; background:#f8f9fa; border:1px dashed #dee2e6; font-size:13px;">
+                                <span class="oi" data-icon="table_chart"/>
+                                No AI recommendations yet. Generate data and run AI analysis.
+                            </div>
+
+                            <div t-if="this.state.card.ai_low_stock_analysis_result">
+                                <div style="max-height:520px; overflow:auto; border:1px solid #dee2e6; border-radius:8px;">
+                                    <table class="table table-sm table-hover align-middle mb-0">
+                                        <thead class="table-light sticky-top">
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Vendor</th>
+                                                <th class="text-end">Available</th>
+                                                <th class="text-end">Forecast</th>
+                                                <th class="text-end">Order Qty</th>
+                                                <th>Decision</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="this.getPaginatedLowStockResults()" t-as="record" t-key="`${record.product_id}-${record.recommended_vendor_id || record.recommended_vendor || ''}`">
+                                                <tr>
+                                                    <td>
+                                                        <t t-if="record.product_sku">
+                                                                [<t t-out="record.product_sku"/>]
+                                                        </t>
+                                                        <t t-out="record.product"/>
+                                                    </td>
+                                                    <td><t t-out="record.recommended_vendor || '-'"/></td>
+                                                    <td class="text-end"><t t-out="record.available_stock"/></td>
+                                                    <td class="text-end"><t t-out="record.forecasted_demand"/></td>
+                                                    <td class="text-end fw-semibold"><t t-out="record.recommended_order_qty"/></td>
+                                                    <td>
+                                                        <span t-if="record.decision === 'CREATE_RFQ'" class="badge bg-success">Create RFQ</span>
+                                                        <span t-if="record.decision !== 'CREATE_RFQ'" class="badge bg-secondary">No Action</span>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+                                    <div class="text-muted small">
+                                        Showing <strong><t t-out="this.getPaginatedLowStockResults().length"/></strong>
+                                        of <strong><t t-out="this.getFilteredProductAIResults().length"/></strong> products
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <button class="btn btn-outline-secondary btn-sm"
+                                                t-on-click="this.onPrevPage"
+                                                t-att-disabled="this.state.currentPage === 1">
+                                            <span class="oi" data-icon="chevron_left"/>
+                                        </button>
+                                        <span class="small fw-semibold">
+                                            Page <t t-out="this.state.currentPage || 1"/> / <t t-out="this.getTotalPages()"/>
+                                        </span>
+                                        <button class="btn btn-outline-secondary btn-sm"
+                                                t-on-click="this.onNextPage"
+                                                t-att-disabled="(this.state.currentPage || 1) >= this.getTotalPages()">
+                                            <span class="oi" data-icon="chevron_right"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-secondary" t-on-click="this.onPrevStep"><i class="oi me-1" data-icon="arrow_back"/> Previous</button>
+                                <button class="btn btn-success"
+                                        t-on-click="this.onClickCreateRFQ"
+                                        t-att-disabled="!this.state.card.ai_low_stock_analysis_result || !this.getParsedAIResult().length"
+                                        t-attf-style="cursor: #{(!this.state.card.ai_low_stock_analysis_result || !this.getParsedAIResult().length) ? 'not-allowed' : 'pointer'}; pointer-events: auto;"
+                                        t-att-title="(!this.state.card.ai_low_stock_analysis_result || !this.getParsedAIResult().length) ? 'No AI recommendations available to create RFQs.' : ''">
+                                    <span class="oi me-1" data-icon="shopping_cart"/>Create RFQs
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

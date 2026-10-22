@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Daily Fruugo Feed Generation Cron -->
+    <record id="ir_cron_fruugo_generate_feed" model="ir.cron">
+        <field name="name">Fruugo: Generate Product XML Feed (Daily)</field>
+        <field name="model_id" ref="model_fruugo_feed"/>
+        <field name="state">code</field>
+        <field name="code">model.run_scheduled_feed_generation()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+        <!-- Run at 02:00 UTC daily -->
+        <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).replace(hour=2, minute=0, second=0, microsecond=0)"/>
+    </record>
+
+    <!-- Daily Fruugo Feed Log Cleanup Cron -->
+    <record id="ir_cron_fruugo_cleanup_logs" model="ir.cron">
+        <field name="name">Fruugo: Cleanup Old Feed Logs (Daily)</field>
+        <field name="model_id" ref="model_fruugo_feed"/>
+        <field name="state">code</field>
+        <field name="code">model.run_scheduled_log_cleanup()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+        <!-- Run at 03:00 UTC daily -->
+        <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).replace(hour=3, minute=0, second=0, microsecond=0)"/>
+    </record>
+</odoo>

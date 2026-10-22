@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FRUUGO CATEGORY — List View
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <record id="view_fruugo_category_tree" model="ir.ui.view">
+        <field name="name">fruugo.category.list</field>
+        <field name="model">fruugo.category</field>
+        <field name="arch" type="xml">
+            <list string="Fruugo Categories">
+                <field name="full_path"/>
+                <field name="parent_id"/>
+                <field name="product_count" string="Products"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FRUUGO CATEGORY — Form View
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <record id="view_fruugo_category_form" model="ir.ui.view">
+        <field name="name">fruugo.category.form</field>
+        <field name="model">fruugo.category</field>
+        <field name="arch" type="xml">
+            <form string="Fruugo Category">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_view_products"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="shopping_cart">
+                            <field name="product_count" widget="statinfo" string="Products"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active" />
+                    <div class="oe_title">
+                        <h1><field name="full_path" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="name" string="Category Name"/>
+                            <field name="parent_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Sub-categories" name="children">
+                            <field name="child_ids">
+                                <list>
+                                    <field name="full_path"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FRUUGO CATEGORY — Search View
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <record id="view_fruugo_category_search" model="ir.ui.view">
+        <field name="name">fruugo.category.search</field>
+        <field name="model">fruugo.category</field>
+        <field name="arch" type="xml">
+            <search string="Search Fruugo Categories">
+                <field name="full_path" string="Category Path"/>
+                <field name="name" string="Leaf Name"/>
+                <filter string="Archived" name="archived" domain="[('active', '=', False)]"/>
+                <filter name="root" string="Top Level" domain="[('parent_id', '=', False)]"/>
+                <group>
+                    <filter name="group_parent" string="Parent" context="{'group_by': 'parent_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FRUUGO CATEGORY — Window Action
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <record id="action_fruugo_category" model="ir.actions.act_window">
+        <field name="name">Fruugo Categories</field>
+        <field name="res_model">fruugo.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_fruugo_category_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Fruugo Categories Found
+            </p>
+            <p>
+                Go to <strong>Fruugo → Configuration → Import Fruugo Categories</strong>
+                to download the official taxonomy list.
+            </p>
+        </field>
+    </record>
+
+</odoo>

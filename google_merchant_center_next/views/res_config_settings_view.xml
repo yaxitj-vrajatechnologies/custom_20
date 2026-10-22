@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ── Inherit res.config.settings ─────────────────────────────────── -->
+    <record id="view_res_config_settings_gmc_form" model="ir.ui.view">
+        <field name="name">res.config.settings.gmc.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='website']" position="inside">
+                <block title="Google Merchant Center" id="google_merchant_center_next_settings">
+                    <setting id="gmc_sftp_credentials"
+                             help="These credentials are used by all feeds that have 'Use Global SFTP Settings' enabled."
+                             string="Global SFTP Settings">
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label class="col-lg-3 o_light_label" string="SFTP Host" for="gmc_sftp_host"/>
+                                <field name="gmc_sftp_host"/>
+                            </div>
+                            <div class="row mt8">
+                                <label class="col-lg-3 o_light_label" string="SFTP Port" for="gmc_sftp_port"/>
+                                <field name="gmc_sftp_port"/>
+                            </div>
+                            <div class="row mt8">
+                                <label class="col-lg-3 o_light_label" string="Username" for="gmc_sftp_username"/>
+                                <field name="gmc_sftp_username"/>
+                            </div>
+                            <div class="row mt8">
+                                <label class="col-lg-3 o_light_label" string="Password" for="gmc_sftp_password"/>
+                                <field name="gmc_sftp_password" password="True"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting id="gmc_store_url_setting"
+                             help="Default store URL used to build product links and image URLs in feeds."
+                             string="Store URL">
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label class="col-lg-3 o_light_label" string="Store URL" for="gmc_store_url"/>
+                                <field name="gmc_store_url" placeholder="https://yourstore.com"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PRODUCT TEMPLATE — Fruugo Tab
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <record id="view_product_template_fruugo_form" model="ir.ui.view">
+        <field name="name">product.template.fruugo.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <notebook>
+                <page string="Fruugo" name="fruugo_tab">
+                    <group string="Fruugo Marketplace Settings">
+                        <group string="Catalog Information">
+                            <field name="fruugo_category_id"
+                                options="{'no_create': True}"
+                                help="Optional: Map this specific product. This overrides the ProductCategory mapping."/>
+                            <field name="fruugo_brand"
+                                placeholder="e.g. Nike, Apple, Own Brand"
+                                help="Leave blank to use product internal category name as fallback."/>
+                        </group>
+                        <group string="Options">
+                            <field name="fruugo_ean_exception"
+                                help="Tick if you are the manufacturer and have no EAN/barcode. Exports 'EXCEP'."/>
+                            <field name="fruugo_excluded"
+                                help="Tick to prevent this product from appearing in any Fruugo feed."/>
+                            <field name="fruugo_lead_time"
+                                help="Days from order to dispatch (INSTOCK items). Only fill if more than 1 day."/>
+                            <field name="fruugo_country_restriction"
+                                placeholder="IE FR DE"
+                                help="Space-separated ISO country codes to restrict this product. Leave blank for no restriction."/>
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

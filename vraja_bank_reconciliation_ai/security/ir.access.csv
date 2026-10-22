@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_vraja_bank_recon_analysis,vraja.bank.recon.analysis,vraja.bank.recon.analysis,base.group_user,crud,
+access_vraja_bank_recon_analysis_line,vraja.bank.recon.analysis.line,vraja.bank.recon.analysis.line,base.group_user,crud,
+access_vraja_bank_recon_wizard,vraja.bank.recon.wizard,vraja.bank.recon.wizard,base.group_user,crud,
+access_vraja_bank_recon_dashboard_data,vraja.bank.recon.dashboard.data,vraja.bank.recon.dashboard.data,base.group_user,crud,

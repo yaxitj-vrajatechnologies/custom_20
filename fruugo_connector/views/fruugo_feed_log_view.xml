@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FRUUGO FEED LOG — List View
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <record id="view_fruugo_feed_log_list" model="ir.ui.view">
+        <field name="name">fruugo.feed.log.list</field>
+        <field name="model">fruugo.feed.log</field>
+        <field name="arch" type="xml">
+            <list string="Feed Generation Logs"
+                  decoration-danger="status == 'error'"
+                  decoration-success="status == 'success'">
+                <field name="create_date" string="Date / Time"/>
+                <field name="feed_id" string="Feed"/>
+                <field name="trigger"/>
+                <field name="status" widget="badge"
+                    decoration-success="status == 'success'"
+                    decoration-danger="status == 'error'"/>
+                <field name="product_count" string="Products"/>
+                <field name="file_size_kb" string="File Size (KB)" digits="[10,2]"/>
+                <field name="duration_seconds" string="Duration (s)" digits="[10,2]"/>
+                <field name="attachment_id" string="XML File" widget="many2one"/>
+                <field name="message" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FRUUGO FEED LOG — Form View
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <record id="view_fruugo_feed_log_form" model="ir.ui.view">
+        <field name="name">fruugo.feed.log.form</field>
+        <field name="model">fruugo.feed.log</field>
+        <field name="arch" type="xml">
+            <form string="Feed Generation Log" create="false" edit="false">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+
+                    <group>
+                        <group string="Summary">
+                            <field name="feed_id" readonly="1"/>
+                            <field name="create_date" string="Date / Time" readonly="1"/>
+                            <field name="trigger" readonly="1"/>
+                            <field name="status" widget="badge" readonly="1"
+                                decoration-success="status == 'success'"
+                                decoration-danger="status == 'error'"/>
+                        </group>
+                        <group string="Statistics">
+                            <field name="product_count" readonly="1"/>
+                            <field name="file_size_kb" readonly="1" digits="[10,2]"/>
+                            <field name="duration_seconds" readonly="1" digits="[10,2]"/>
+                        </group>
+                    </group>
+
+                    <!-- ── XML File Download ─────────────────────────────────── -->
+                    <group string="Generated XML File" invisible="not attachment_id">
+                        <group>
+                            <field name="attachment_id" string="XML File"
+                                readonly="1"
+                                widget="many2one"
+                                help="Click the file name to download the generated XML."/>
+                            <field name="attachment_name" string="Filename" readonly="1"/>
+                            <field name="file_size_kb" string="File Size (KB)" readonly="1" digits="[10,2]"/>
+                        </group>
+                        <div class="text-muted mt-1 ms-2">
+                            <i class="oi" data-icon="info"/> Click the file link above to open / download <code>fruugo_feed.xml</code>.
+                            The filename is always the same on every generation.
+                        </div>
+                    </group>
+
+                    <group string="Message / Error" invisible="not message">
+                        <field name="message" readonly="1" nolabel="1" colspan="2"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FRUUGO FEED LOG — Action
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <record id="action_fruugo_feed_log" model="ir.actions.act_window">
+        <field name="name">Feed Generation Logs</field>
+        <field name="res_model">fruugo.feed.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{"search_default_group_feed": 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No logs yet.
+            </p>
+            <p>
+                Logs are created automatically each time the Fruugo feed is generated (scheduled or manual).
+                Each log includes the generated XML file as an attachment.
+            </p>
+        </field>
+    </record>
+
+</odoo>

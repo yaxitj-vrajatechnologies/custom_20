@@ -216,7 +216,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center dashboard-toggle"
                              data-bs-toggle="collapse" data-bs-target="#product_ai_step2_section"
                              style="cursor:pointer;">
-                            <strong><span class="oi me-2" data-icon="apartment"/>Step 2 — Business Info</strong>
+                            <strong><span class="oi me-2" data-icon="business"/>Step 2 — Business Info</strong>
                             <i class="oi toggle-icon" data-icon="expand_more"/>
                         </div>
                         <div id="product_ai_step2_section" class="collapse">

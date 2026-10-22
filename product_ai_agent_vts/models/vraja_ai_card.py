@@ -96,6 +96,7 @@ class VrajaAICard(models.Model):
         action = super().action_review_dashboard()
         self.ensure_one()
         if self.vraja_common_store == 'product_alt_acc':
+            action['name'] = 'Product Alternate & Accessory'
             action['tag'] = 'product_ai_agent_dashboard_template'
         return action
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="rental_order_inherited_for_rental_extension" model="ir.ui.view">
+            <field name="name">rental_order_inherited_for_rental_extension</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_renting.rental_order_primary_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form[1]/sheet[1]/group[@name='sale_header']/group[@name='order_details']/div[4]"
+                       position="after">
+                    <field name="is_damage_after_returned" invisible="rental_status != 'returned'"/>
+                </xpath>
+                <xpath expr="//field[@name='is_rental_order']" position="after">
+                    <button name="open_repair_wizard" string="Create Repair Order" type="object"
+                            invisible="is_damage_after_returned == False"/>
+                    <field name="ord_total_amount" invisible="1"/>
+                    <button name="action_advance_payment" type="object" string="Register Payment"
+                            class="btn btn-primary" invisible="state != 'sale' or ord_total_amount == 0.0"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

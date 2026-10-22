@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hubstaff_instance_list" model="ir.ui.view">
+        <field name="name">hubstaff.instance.integration.list</field>
+        <field name="model">hubstaff.instance.integration</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="company_id"/>
+                <field name="hubstaff_organization_id"/>
+                <field name="client_id"/>
+                <field name="api_url"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hubstaff_instance_form" model="ir.ui.view">
+        <field name="name">hubstaff.instance.integration.form</field>
+        <field name="model">hubstaff.instance.integration</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_authenticate"
+                            type="object"
+                            string="Authenticate"
+                            class="btn-primary"
+                            invisible="state == 'confirm'"/>
+                    <button name="action_sync_all_users_button"
+                            type="object"
+                            string="Sync Users"
+                            class="btn-primary"
+                    />
+                    <button name="action_reset_to_draft"
+                            type="object"
+                            string="Reset to Draft"
+                            class="btn-primary"
+                            invisible="state == 'draft'"
+                    />
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button class="oe_stat_button" type="object" name="action_view_instance_projects"
+                                icon="folder">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Projects</span>
+                                <span class="o_stat_value">
+                                    <field name="imported_project_count"/>
+                                </span>
+                            </div>
+                        </button>
+
+                        <button class="oe_stat_button" type="object" name="action_view_instance_tasks" icon="task_alt">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Tasks</span>
+                                <span class="o_stat_value">
+                                    <field name="imported_task_count"/>
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. Hubstaff Instance name..." required="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="failure_activity_user_id"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <notebook>
+
+                        <page string="Credentials">
+                            <group>
+                                <field name="client_id" readonly="state == 'confirm'"/>
+                                <field name="client_secret" readonly="state == 'confirm'"/>
+                                <field name="api_url" readonly="state == 'confirm'"/>
+                                <field name="auth_code" readonly="state == 'confirm'"/>
+                                <field name="account_token_url" readonly="state == 'confirm'" invisible="1"/>
+                                <field name="redirect_url" readonly="state == 'confirm'" required="1"/>
+                                <field name="hubstaff_organization_id" readonly="state == 'confirm'"/>
+                                <field name="refresh_token" readonly="state == 'confirm'"/>
+                                <field name="access_token"/>
+                                <field name="token_generated_at"/>
+                            </group>
+                        </page>
+                        <page string="Project/Task Configuration">
+                            <group string="Project/Task Export Configuration">
+                                <group>
+                                    <field name="is_export_project"/>
+                                    <field name="is_export_task"/>
+                                    <field name="last_project_synced_date" readonly="1"/>
+                                </group>
+                            </group>
+
+                            <group string="Update Project/Task Configuration">
+                                <group>
+                                    <field name="is_update_project"/>
+                                    <field name="is_update_task"/>
+
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Task Entry Configuration">
+                            <group string="Task Entry Configuration">
+                                <group>
+                                    <field name="task_entry_days"/>
+                                </group>
+                            </group>
+
+                        </page>
+
+                        <page string="Hubstaff Webhooks">
+                            <field name="webhook_ids"
+                                   context="{'tree_view_ref': 'hubstaff_odoo_integration.view_hubstaff_webhook_tree'}"/>
+
+                        </page>
+
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hubstaff_instance_search" model="ir.ui.view">
+        <field name="name">hubstaff.instance.integration.search</field>
+        <field name="model">hubstaff.instance.integration</field>
+        <field name="arch" type="xml">
+            <search string="Hubstaff Instances">
+
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="hubstaff_organization_id"/>
+
+                <filter string="Draft"
+                        name="state_draft"
+                        domain="[('state', '=', 'draft')]"/>
+
+                <filter string="Confirmed"
+                        name="state_confirm"
+                        domain="[('state', '=', 'confirm')]"/>
+
+
+                <filter string="Export Projects"
+                        name="export_project"
+                        domain="[('is_export_project', '=', True)]"/>
+
+                <filter string="Export Tasks"
+                        name="export_task"
+                        domain="[('is_export_task', '=', True)]"/>
+
+                <filter string="Company"
+                        name="group_company"
+                        context="{'group_by': 'company_id'}"/>
+
+                <filter string="State"
+                        name="group_state"
+                        context="{'group_by': 'state'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hubstaff_log_instance_id" model="ir.actions.act_window">
+        <field name="name">Hubstaff Log Instance</field>
+        <field name="res_model">hubstaff.log</field>
+        <field name="view_id" ref="hubstaff_log_list"/>
+        <field name="domain">[('instance_id', '=', active_id)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hubstaff Logs will display here
+            </p>
+        </field>
+    </record>
+
+    <record id="hubstaff_instance_integration_kanban" model="ir.ui.view">
+        <field name="name">hubstaff.instance.integration.kanban</field>
+        <field name="model">hubstaff.instance.integration</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard">
+                <templates>
+                    <t t-name="card">
+
+
+                        <div class="o_kanban_card rounded-3 " style="min-height: 220px; ">
+
+                            <div class="p-3">
+                                <strong class="fs-3" style=" color: #0b7c83;">
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+
+                            <div class=" mb-4 p-3">
+                                <div class="row " style="">
+                                    <div class="col-lg-4 text-center">
+                                        <button name="action_view_instance_projects" type="object"
+                                                class="btn btn-link p-0 text-decoration-none">
+                                            <i class="oi fs-2" data-icon="folder"/>
+                                            <div style="color: #161616;">Projects</div>
+                                            <field name="imported_project_count"/>
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-4 text-center">
+                                        <button name="action_view_instance_tasks" type="object"
+                                                class="btn btn-link p-0 text-decoration-none">
+                                            <i class="oi fs-2" data-icon="task_alt"/>
+                                            <div style="color: #161616;">Tasks</div>
+                                            <field name="imported_task_count"/>
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-4 text-center">
+                                        <button name="action_view_users" type="object"
+                                                class="btn btn-link p-0 text-decoration-none">
+                                            <i class="oi fs-2" data-icon="group"/>
+                                            <div style="color: #161616;">Users</div>
+                                            <field name="imported_user_count"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-lg-6">
+                                    <button name="%(hubstaff_odoo_integration.action_hubstaff_operations_wizard)d"
+                                            type="action"
+                                            class="btn btn-primary text-start text-decoration-none d-flex p-1 align-items-center"
+                                            style=" display: flex !important; background: #12c4b5 !important;  color: white !important; padding: 3px 10px !important;">
+                                        <i class="oi" data-icon="settings" style="padding-right:10px;"/>
+                                        <div>Operations</div>
+                                    </button>
+                                </div>
+                                <div class="d-flex col-lg-6 justify-content-end">
+                                    <button name="%(hubstaff_odoo_integration.action_hubstaff_log_instance_id)d"
+                                            type="action"
+                                            class="btn btn-primary   text-start text-decoration-none d-flex p-1 align-items-center"
+                                            style=" display: flex; background: #12c4b5;  color: white !important; padding: 3px 10px !important;">
+                                        <i class="oi" data-icon="menu_book" style="padding-right:10px;"/>
+                                        <div>Logs</div>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </t>
+                </templates>
+                <field name="id" invisible="1"/>
+
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hubstaff_instance_integration_action" model="ir.actions.act_window">
+        <field name="name">Hubstaff Instance</field>
+        <field name="res_model">hubstaff.instance.integration</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <record id="action_hubstaff_instance_view" model="ir.actions.act_window">
+        <field name="name">Hubstaff Instance</field>
+        <field name="res_model">hubstaff.instance.integration</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+</odoo>

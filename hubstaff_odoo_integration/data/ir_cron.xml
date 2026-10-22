@@ -1,0 +1,42 @@
+<odoo>
+    <record id="cron_hubstaff_auto_token_refresh" model="ir.cron">
+        <field name="name">Hubstaff: Auto Refresh Access Token</field>
+        <field name="model_id" ref="model_hubstaff_instance_integration"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_refresh_hubstaff_tokens()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+     <record id="cron_hubstaff_project_import" model="ir.cron">
+        <field name="name">Hubstaff: Project/Task Import</field>
+        <field name="model_id" ref="model_hubstaff_instance_integration"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_import_project_task()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+     <record id="cron_hubstaff_project_export" model="ir.cron">
+        <field name="name">Hubstaff: Project/Task Export</field>
+        <field name="model_id" ref="model_hubstaff_instance_integration"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_export_project_task()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="cron_hubstaff_task_entry_import" model="ir.cron">
+        <field name="name">Hubstaff: Task Entry Import</field>
+        <field name="model_id" ref="model_hubstaff_instance_integration"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_import_task_entry()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+</odoo>

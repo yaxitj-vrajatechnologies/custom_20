@@ -14,7 +14,10 @@ export class VrajaAIDashboard extends Component {
         this.orm = useService("orm");
 
         this.state = makeState({
-            store: false,
+            // The client action already includes the card's store in params.
+            // Seed it immediately so extension templates can render their
+            // store-specific dashboard without waiting for the ORM read.
+            store: this.props?.action?.params?.store || false,
             cardId: this.props?.action?.params?.card_id,
         });
 

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Form view for vraja.cashflow.analysis ─────────────────────────── -->
+    <record id="view_vraja_cashflow_analysis_form" model="ir.ui.view">
+        <field name="name">vraja.cashflow.analysis.form</field>
+        <field name="model">vraja.cashflow.analysis</field>
+        <field name="arch" type="xml">
+            <form string="Cashflow AI Analysis" create="false">
+                <header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,generating,done,error"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Date Range">
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="generated_on"/>
+                            <field name="card_id"/>
+                        </group>
+                        <group string="Key Metrics">
+                            <field name="total_ar" widget="monetary"/>
+                            <field name="total_ap" widget="monetary"/>
+                            <field name="cash_balance" widget="monetary"/>
+                            <field name="working_capital" widget="monetary"/>
+                        </group>
+                    </group>
+                    <group string="AI KPIs">
+                        <group>
+                            <field name="dso"/>
+                            <field name="dpo"/>
+                            <field name="cash_runway_days"/>
+                        </group>
+                        <group>
+                            <field name="liquidity_score"/>
+                            <field name="liquidity_status"/>
+                            <field name="net_forecast_30d" widget="monetary"/>
+                        </group>
+                    </group>
+                    <group string="AI Response (Raw)">
+                        <field name="executive_summary" nolabel="1"/>
+                    </group>
+                    <group string="Additional Information (sent to AI)"
+                           invisible="not additional_info">
+                        <field name="additional_info" nolabel="1" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Raw CSV Data">
+                            <field name="raw_csv_data" widget="code" nolabel="1"/>
+                        </page>
+                        <page string="AI Raw Response">
+                            <field name="ai_raw_response" widget="code" nolabel="1"/>
+                        </page>
+                        <page string="Error" invisible="state != 'error'">
+                            <field name="error_message" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── List view ─────────────────────────────────────────────────────── -->
+    <record id="view_vraja_cashflow_analysis_list" model="ir.ui.view">
+        <field name="name">vraja.cashflow.analysis.list</field>
+        <field name="model">vraja.cashflow.analysis</field>
+        <field name="arch" type="xml">
+            <list string="Cashflow Analyses" default_order="generated_on desc">
+                <field name="name"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'done'"
+                       decoration-warning="state == 'generating'"
+                       decoration-danger="state == 'error'"/>
+                <field name="liquidity_status"/>
+                <field name="liquidity_score"/>
+                <field name="cash_runway_days"/>
+                <field name="generated_on"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Action ────────────────────────────────────────────────────────── -->
+    <record id="action_vraja_cashflow_analysis" model="ir.actions.act_window">
+        <field name="name">Cashflow Analyses</field>
+        <field name="res_model">vraja.cashflow.analysis</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

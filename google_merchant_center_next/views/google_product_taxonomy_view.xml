@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ── Tree View ──────────────────────────────────────────────────── -->
+    <record id="view_google_product_taxonomy_tree" model="ir.ui.view">
+        <field name="name">google.product.taxonomy.tree</field>
+        <field name="model">google.product.taxonomy</field>
+        <field name="arch" type="xml">
+            <list string="Google Product Taxonomy">
+                <field name="google_id" string="ID"/>
+                <field name="full_path"/>
+                <field name="parent_id"/>
+                <field name="product_count" string="Products"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Form View ──────────────────────────────────────────────────── -->
+    <record id="view_google_product_taxonomy_form" model="ir.ui.view">
+        <field name="name">google.product.taxonomy.form</field>
+        <field name="model">google.product.taxonomy</field>
+        <field name="arch" type="xml">
+            <form string="Google Product Taxonomy">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_view_products"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="shopping_cart">
+                            <field name="product_count" widget="statinfo" string="Products"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="full_path" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="google_id"/>
+                            <field name="name"/>
+                            <field name="parent_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Sub-categories" name="children">
+                            <field name="child_ids">
+                                <list>
+                                    <field name="google_id"/>
+                                    <field name="full_path"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Search View ────────────────────────────────────────────────── -->
+    <record id="view_google_product_taxonomy_search" model="ir.ui.view">
+        <field name="name">google.product.taxonomy.search</field>
+        <field name="model">google.product.taxonomy</field>
+        <field name="arch" type="xml">
+            <search string="Search Google Taxonomy">
+                <field name="full_path" string="Category Path"/>
+                <field name="name" string="Name"/>
+                <field name="google_id" string="Google ID"/>
+                <filter name="root" string="Top Level" domain="[('parent_id', '=', False)]"/>
+                <group>
+                    <filter name="group_parent" string="Parent" context="{'group_by': 'parent_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ── Action ─────────────────────────────────────────────────────── -->
+    <record id="action_google_product_taxonomy" model="ir.actions.act_window">
+        <field name="name">Google Product Taxonomy</field>
+        <field name="res_model">google.product.taxonomy</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_google_product_taxonomy_search"/>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No categories imported yet.
+            </p>
+            <p>
+                Go to <strong>Website → Configuration → Import Google Categories</strong>
+                to download the official Google Product Taxonomy.
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,55 @@
+<odoo>
+    <record id="view_project_form_hubstaff" model="ir.ui.view">
+        <field name="name">project.project.form.hubstaff</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+
+            <!-- Add Hubstaff config page -->
+            <xpath expr="//page[@name='settings']" position="after">
+                <page name="hubstaff_configuration" string="Hubstaff Configuration">
+                    <group>
+                        <field name="hubstaff_project_id" readonly="1"/>
+                        <field name="hubstaff_organization_id" readonly="1"/>
+                        <field name="hubstaff_instance_id" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_update_hubstaff_project" string="Update from Hubstaff" type="object"
+                        class="oe_highlight" invisible="not hubstaff_project_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_project_filter_inherit_hubstaff" model="ir.ui.view">
+        <field name="name">project.project.search.inherit.hubstaff</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='activity_type_id']" position="after">
+                <field name="hubstaff_instance_id"/>
+                <field name="hubstaff_project_id"/>
+                <field name="hubstaff_organization_id"/>
+            </xpath>
+
+            <xpath expr="//filter[@name='company']" position="after">
+                <filter string="Instance"
+                        name="group_instance"
+                        context="{'group_by': 'hubstaff_instance_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="export_action_from_project" model="ir.actions.act_window">
+        <field name="name">Export Project to Hubstaff</field>
+        <field name="res_model">hubstaff.export.project.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_res_model': 'project.project', 'default_res_ids': active_ids}</field>
+        <field name="binding_model_id" ref="project.model_project_project"/>
+        <field name="binding_view_types">list,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ═══ Search View (AI Logs) Inherit ═══════════════════════════════════ -->
+    <record id="view_vraja_ai_log_search_inherit_bank_recon" model="ir.ui.view">
+        <field name="name">vraja.ai.log.search.inherit.bank_recon</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_common_ai_log_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="Bank Reconciliation Logs" name="store_bank_recon"
+                        domain="[('vraja_common_log_store', '=', 'bank_recon')]"/>
+                
+                <group>
+                    <filter string="Store" name="group_store"
+                            context="{'group_by': 'vraja_common_log_store'}"/>
+                    <filter string="Status" name="group_status"
+                            context="{'group_by': 'status'}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ═══ Bank Recon AI Log — Inherited Form View ═══════════════════════════
+         Injects bank_recon-specific content into the form.
+         All sections are wrapped with invisible="vraja_common_log_store != 'bank_recon'"
+         so they are completely hidden when viewing logs from other stores.
+    ════════════════════════════════════════════════════════════════════════ -->
+    <record id="view_vraja_bank_recon_ai_log_form" model="ir.ui.view">
+        <field name="name">vraja.ai.log.bank.recon.form</field>
+        <field name="model">vraja.ai.log</field>
+        <field name="inherit_id" ref="vraja_ai.vraja_ai_log_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+
+                <!-- Wrapper: everything inside is only visible for bank_recon logs -->
+                <div invisible="vraja_common_log_store != 'bank_recon'">
+                    <field name="bank_recon_state" invisible="1"/>
+                    <sheet>
+                        <!-- ── Status Bar inside sheet (right-aligned) ──────── -->
+                        <div class="d-flex justify-content-end" style="margin-bottom: 12px;">
+                            <field name="bank_recon_state" widget="statusbar" statusbar_visible="draft,done,reconciled"/>
+                        </div>
+                        <!-- ── Action Button ─────────────────────────────────── -->
+                        <div class="oe_button_box" name="button_box" style="margin-bottom: 8px;">
+                            <button name="action_confirm_and_review" string="Confirm and Review" type="object"
+                                    class="btn-primary oe_stat_button" icon="check_circle"
+                                    invisible="bank_recon_state != 'done'"/>
+                        </div>
+                        <div class="oe_title">
+                            <h1><field name="name" readonly="1"/></h1>
+                            <h2>Bank Reconciliation AI Run</h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="bank_recon_journal_id" readonly="1" string="Bank Journal"/>
+                                <field name="run_date" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="bank_recon_card_id" readonly="1" string="AI Card" invisible="1"/>
+                                <field name="status" widget="badge" decoration-success="status == 'success'" decoration-danger="status == 'failed'" readonly="1" string="Log Status"/>
+                                <field name="ai_provider" readonly="1"/>
+                                <field name="ai_llm_model" readonly="1" string="LLM Model"
+                                       invisible="not ai_llm_model"/>
+                                <field name="bank_recon_token_usage" readonly="1" string="Token Usage"/>
+                                <div class="o_field_widget" invisible="ai_llm_model">
+                                    <span class="text-muted" style="font-size:0.85em;">Rules Only (no AI model used)</span>
+                                </div>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Statement Lines Review">
+                                <field name="bank_recon_line_ids" readonly="bank_recon_state == 'reconciled'">
+                                    <list decoration-success="status == 'matched'" decoration-warning="status == 'check'" decoration-info="status == 'rule'" editable="bottom">
+                                        <field name="date"/>
+                                        <field name="payment_ref" string="Reference"/>
+                                        <field name="amount" sum="Total"/>
+                                        <field name="currency_id" column_invisible="True"/>
+                                        <field name="status" widget="badge" decoration-success="status == 'matched'" decoration-warning="status == 'check'" decoration-info="status == 'rule'"/>
+                                        <field name="matched_aml_ids" widget="many2many_tags" force_save="1"/>
+                                        <field name="ai_explanation"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Detailed Execution Log">
+                                <field name="line_ids" readonly="1">
+                                    <list>
+                                        <field name="step" string="Step / Metric"/>
+                                        <field name="message" string="Detail / Value"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </div>
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

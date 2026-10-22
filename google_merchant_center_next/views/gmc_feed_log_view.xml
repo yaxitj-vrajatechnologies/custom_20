@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ── Feed Log List View ─────────────────────────────────────────── -->
+    <record id="view_gmc_feed_log_tree" model="ir.ui.view">
+        <field name="name">gmc.feed.log.tree</field>
+        <field name="model">gmc.feed.log</field>
+        <field name="arch" type="xml">
+            <list string="Feed Upload Logs"
+                decoration-danger="status == 'error'"
+                decoration-success="status == 'success'"
+                decoration-warning="status == 'warning'">
+                <field name="create_date" string="Date/Time"/>
+                <field name="feed_id"/>
+                <field name="remote_filename"/>
+                <field name="trigger"/>
+                <field name="status" widget="badge"
+                    decoration-success="status == 'success'"
+                    decoration-danger="status == 'error'"
+                    decoration-warning="status == 'warning'"/>
+                <field name="product_count"/>
+                <field name="warnings_count" string="⚠ Issues" optional="show"
+                    decoration-warning="warnings_count &gt; 0"
+                    decoration-muted="warnings_count == 0"/>
+                <field name="file_size_kb"/>
+                <field name="duration_seconds"/>
+                <field name="message"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Feed Log Form View ─────────────────────────────────────────── -->
+    <record id="view_gmc_feed_log_form" model="ir.ui.view">
+        <field name="name">gmc.feed.log.form</field>
+        <field name="model">gmc.feed.log</field>
+        <field name="arch" type="xml">
+            <form string="Feed Upload Log">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="feed_id" readonly="1"/>
+                            <field name="remote_filename" readonly="1"/>
+                            <field name="trigger" readonly="1"/>
+                            <field name="status" readonly="1" widget="badge"
+                                decoration-success="status == 'success'"
+                                decoration-danger="status == 'error'"
+                                decoration-warning="status == 'warning'"/>
+                        </group>
+                        <group>
+                            <field name="product_count" readonly="1"/>
+                            <field name="warnings_count" readonly="1" string="⚠ Issues Detected"
+                                decoration-warning="warnings_count &gt; 0"/>
+                            <field name="file_size_kb" readonly="1"/>
+                            <field name="duration_seconds" readonly="1"/>
+                            <field name="create_date" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Message">
+                        <field name="message" readonly="1" nolabel="1" widget="text"/>
+                    </group>
+                    <!-- Warnings section — only rendered when there are missing required fields -->
+                    <group string="⚠️ Missing Required Fields" invisible="not warnings_text"
+                        style="background: #fff8e1; border-left: 4px solid #f9a825; padding: 8px; border-radius: 4px;">
+                        <div class="text-warning" style="white-space: pre-wrap; font-family: monospace; font-size: 13px; line-height: 1.7;">
+                            <field name="warnings_text" readonly="1" nolabel="1" widget="text"
+                                style="background: transparent; border: none; color: #7c5700; font-family: monospace; font-size: 13px; white-space: pre-wrap;"/>
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Search View ────────────────────────────────────────────────── -->
+    <record id="view_gmc_feed_log_search" model="ir.ui.view">
+        <field name="name">gmc.feed.log.search</field>
+        <field name="model">gmc.feed.log</field>
+        <field name="arch" type="xml">
+            <search string="Search Logs">
+                <field name="feed_id"/>
+                <field name="remote_filename"/>
+                <filter name="success" string="Success" domain="[('status', '=', 'success')]"/>
+                <filter name="warning" string="Has Warnings" domain="[('status', '=', 'warning')]"/>
+                <filter name="error" string="Error" domain="[('status', '=', 'error')]"/>
+                <separator/>
+                <filter name="scheduled" string="Scheduled" domain="[('trigger', '=', 'scheduled')]"/>
+                <filter name="manual" string="Manual" domain="[('trigger', '=', 'manual')]"/>
+                <group>
+                    <filter name="group_feed" string="Feed" context="{'group_by': 'feed_id'}"/>
+                    <filter name="group_status" string="Status" context="{'group_by': 'status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ── Action ─────────────────────────────────────────────────────── -->
+    <record id="action_gmc_feed_log" model="ir.actions.act_window">
+        <field name="name">Feed Upload Logs</field>
+        <field name="res_model">gmc.feed.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_gmc_feed_log_search"/>
+    </record>
+
+    <!-- ── Feed Preview Wizard ──────────────────────────────────────────── -->
+    <record id="view_gmc_feed_preview_wizard_form" model="ir.ui.view">
+        <field name="name">gmc.feed.preview.wizard.form</field>
+        <field name="model">gmc.feed.preview.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Feed Preview">
+                <sheet>
+                    <div class="oe_title">
+                        <h2>Feed Preview — <field name="feed_id" readonly="1"/></h2>
+                    </div>
+                    <p class="text-muted">Showing all products in the feed.</p>
+                    <field name="content" readonly="1" widget="text"
+                        style="font-family: monospace; font-size: 12px; background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; white-space: pre-wrap; max-height: 70vh; overflow-y: auto;"/>
+                </sheet>
+                <footer>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

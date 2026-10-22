@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <menuitem id="menu_hubstaff_instance_root" name="Hubstaff"
+                  web_icon="hubstaff_odoo_integration,static/description/icon.png"/>
+        <menuitem id="menu_hubstaff_instance_config" name="Instance Integration" parent="menu_hubstaff_instance_root"
+                  action="action_hubstaff_instance_view"/>
+
+
+        <menuitem id="hubstaff_instance_integration_menu"
+                  name="Hubstaff Integration"
+                  action="hubstaff_instance_integration_action"
+                  parent="base.menu_custom"/>
+
+        <!-- Main Menu -->
+        <menuitem id="hubstaff_instance_logs_root"
+                  name="Logs"
+                  parent="hubstaff_odoo_integration.menu_hubstaff_instance_root"
+                  sequence="10"/>
+
+        <!-- Sub Menu -->
+        <menuitem id="hubstaff_instance_logs_menu"
+                  name="Logs"
+                  parent="hubstaff_odoo_integration.hubstaff_instance_logs_root"
+                  action="hubstaff_log_action"
+                  sequence="1"/>
+
+        <menuitem id="hubstaff_instance_logs_line_menu"
+                  name="Log Lines"
+                  parent="hubstaff_odoo_integration.hubstaff_instance_logs_root"
+                  action="hubstaff_log_line_action"
+                  sequence="3"/>
+
+
+    </data>
+</odoo>

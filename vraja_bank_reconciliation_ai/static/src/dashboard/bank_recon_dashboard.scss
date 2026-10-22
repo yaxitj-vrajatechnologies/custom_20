@@ -1,0 +1,755 @@
+// ─── Vraja Bank Reconciliation AI Dashboard — LIGHT THEME ────────────────────
+// Premium professional light design. No @import url() — Odoo's libsass
+// does not support external CSS imports. Use XML <link> for web fonts.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Design Tokens ─────────────────────────────────────────────────────────────
+$bg-page:         #f4f6f9;
+$bg-card:         #ffffff;
+$bg-card-alt:     #f8fafc;
+$bg-input:        #f1f5f9;
+
+$border-light:    #e2e8f0;
+$border-focus:    #4f8ef7;
+
+$text-dark:       #1e293b;
+$text-body:       #475569;
+$text-muted:      #94a3b8;
+
+$blue:            #1f5eda;
+$blue-light:      #dbeafe;
+$blue-mid:        #3b82f6;
+
+$green:           #16a34a;
+$green-light:     #dcfce7;
+$green-mid:       #22c55e;
+
+$amber:           #d97706;
+$amber-light:     #fef3c7;
+
+$teal:            #0891b2;
+$teal-light:      #cffafe;
+
+$purple:          #7c3aed;
+
+$step-pending-bg:   #e2e8f0;
+$step-pending-txt:  #94a3b8;
+$step-active-bg:    $blue-mid;
+$step-done-bg:      $green-mid;
+$step-error-bg:     #ef4444;
+
+$radius-sm:       6px;
+$radius-md:       10px;
+$radius-lg:       14px;
+$radius-xl:       18px;
+
+$shadow-xs:       0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+$shadow-sm:       0 4px 12px rgba(0, 0, 0, 0.07);
+$shadow-md:       0 8px 24px rgba(0, 0, 0, 0.09);
+
+// ── Keyframes ──────────────────────────────────────────────────────────────────
+@keyframes vrk-fade-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes vrk-pulse-dot {
+    0%, 100% { transform: scale(1);    opacity: 1; }
+    50%       { transform: scale(1.4); opacity: 0.6; }
+}
+@keyframes vrk-step-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+    50%       { box-shadow: 0 0 0 6px rgba(59, 130, 246, 0); }
+}
+@keyframes vrk-orbit {
+    from { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+}
+@keyframes vrk-slide-down {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+// ── Root Shell ─────────────────────────────────────────────────────────────────
+// Enable explicit scrolling since Odoo's action container restricts overflow
+.vrk-dashboard {
+    height: 100%;
+    overflow-y: auto;
+    background: $bg-page;
+    padding: 24px 28px 40px;
+    font-family: 'Inter', 'Roboto', system-ui, sans-serif;
+    color: $text-dark;
+    animation: vrk-fade-up 0.35s ease both;
+}
+
+// ── Header ─────────────────────────────────────────────────────────────────────
+.vrk-header {
+    background: $bg-card;
+    border: 1px solid $border-light;
+    border-radius: $radius-xl;
+    padding: 22px 26px 18px;
+    margin-bottom: 20px;
+    box-shadow: $shadow-sm;
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    &__icon-wrap {
+        width: 48px;
+        height: 48px;
+        border-radius: $radius-md;
+        background: linear-gradient(135deg, $blue-light, #e0e7ff);
+        border: 1px solid $border-focus;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: $blue;
+        box-shadow: $shadow-xs;
+        flex-shrink: 0;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 800;
+        color: $text-dark;
+        margin: 0;
+        letter-spacing: -0.2px;
+    }
+
+    &__subtitle {
+        font-size: 12px;
+        color: $text-muted;
+        margin: 2px 0 0;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+}
+
+// ── Agent Brief ────────────────────────────────────────────────────────────────
+.vrk-brief {
+    background: $blue-light;
+    border: 1px solid #bfdbfe;
+    border-radius: $radius-md;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    animation: vrk-slide-down 0.2s ease both;
+
+    &__title {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: $blue;
+        margin-bottom: 6px;
+    }
+
+    p {
+        font-size: 13px;
+        color: $text-body;
+        line-height: 1.65;
+        margin: 0;
+    }
+}
+
+// ── Inline badges ──────────────────────────────────────────────────────────────
+.vrk-badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+
+    &--matched { background: $green-light;  color: $green;  border: 1px solid #bbf7d0; }
+    &--rule    { background: $blue-light;   color: $blue;   border: 1px solid #bfdbfe; }
+    &--check   { background: $amber-light;  color: $amber;  border: 1px solid #fde68a; }
+}
+
+// ── KPI Row ────────────────────────────────────────────────────────────────────
+.vrk-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+
+    @media (max-width: 900px) { grid-template-columns: repeat(1, 1fr); }
+    @media (max-width: 560px) { grid-template-columns: 1fr; }
+}
+
+.vrk-kpi-card {
+    background: $bg-card-alt;
+    border: 1px solid $border-light;
+    border-radius: $radius-md;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &--clickable {
+        cursor: pointer;
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: $shadow-sm;
+            border-color: #fde68a;
+        }
+    }
+
+    &__value {
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 1.1;
+        &--green { color: $green; }
+        &--amber { color: $amber; }
+        &--blue  { color: $blue;  }
+        &--teal  { color: $teal;  }
+    }
+
+    &__label {
+        font-size: 11px;
+        font-weight: 600;
+        color: $text-muted;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+// ── Buttons ────────────────────────────────────────────────────────────────────
+.vrk-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    border-radius: $radius-sm;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all 0.18s;
+    border: none;
+    outline: none;
+
+    &--ghost {
+        background: $bg-card;
+        color: $text-body;
+        border: 1px solid $border-light;
+
+        &:hover {
+            background: $bg-input;
+            color: $text-dark;
+            border-color: #cbd5e1;
+        }
+    }
+}
+
+// ── Idle — Launch Panel ────────────────────────────────────────────────────────
+.vrk-launch-panel {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 20px;
+    animation: vrk-fade-up 0.35s ease both;
+
+    &__inner {
+        background: $bg-card;
+        border: 1px solid $border-light;
+        border-radius: $radius-xl;
+        padding: 40px 48px;
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+        box-shadow: $shadow-md;
+    }
+
+    &__glow {
+        display: none; // not needed on light theme
+    }
+
+    &__label {
+        font-size: 11.5px;
+        font-weight: 700;
+        color: $text-muted;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    &__hint {
+        font-size: 12.5px;
+        color: $text-muted;
+        margin-top: 20px;
+        line-height: 1.65;
+    }
+}
+
+.vrk-select {
+    width: 100%;
+    background: $bg-input;
+    border: 1px solid $border-light;
+    border-radius: $radius-sm;
+    color: $text-dark;
+    font-size: 14px;
+    font-family: inherit;
+    padding: 10px 14px;
+    margin-bottom: 22px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus {
+        border-color: $border-focus;
+        box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.12);
+    }
+}
+
+// ── Run Button ─────────────────────────────────────────────────────────────────
+.vrk-run-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 800;
+    font-family: inherit;
+    color: #fff;
+    background: linear-gradient(135deg, #1d4ed8 0%, #4f46e5 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 40px;
+    cursor: pointer;
+    outline: none;
+    overflow: visible;
+    transition: transform 0.22s, box-shadow 0.22s;
+    box-shadow: 0 4px 18px rgba(29, 78, 216, 0.35);
+
+    &:hover:not(:disabled) {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 28px rgba(29, 78, 216, 0.5);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0) scale(0.98);
+    }
+
+    &:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+    &__orbit {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.65);
+        animation: vrk-orbit 2.8s linear infinite;
+
+        &--2 {
+            animation-delay: -1.4s;
+            opacity: 0.35;
+        }
+    }
+}
+
+// ── Stepper Section ────────────────────────────────────────────────────────────
+.vrk-stepper-section {
+    background: $bg-card;
+    border: 1px solid $border-light;
+    border-radius: $radius-xl;
+    padding: 30px 28px;
+    box-shadow: $shadow-sm;
+    animation: vrk-fade-up 0.3s ease both;
+}
+
+.vrk-stepper-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+
+    &__pulse {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: $blue-mid;
+        animation: vrk-pulse-dot 1.4s ease-in-out infinite;
+        flex-shrink: 0;
+    }
+
+    &__text {
+        font-size: 14px;
+        font-weight: 700;
+        color: $blue;
+    }
+}
+
+.vrk-stepper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 22px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.vrk-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    min-width: 86px;
+
+    &__connector {
+        position: absolute;
+        top: 19px;
+        right: 50%;
+        width: 100%;
+        height: 2px;
+        background: $step-pending-bg;
+        z-index: 0;
+        transition: background 0.4s;
+    }
+
+    &__circle {
+        position: relative;
+        z-index: 1;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 800;
+        background: $step-pending-bg;
+        color: $step-pending-txt;
+        border: 2px solid $border-light;
+        transition: background 0.35s, box-shadow 0.35s, border-color 0.35s, color 0.35s;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 8px;
+        gap: 3px;
+    }
+
+    &__icon {
+        font-size: 16px;
+        line-height: 1;
+    }
+
+    &__label {
+        font-size: 10.5px;
+        font-weight: 600;
+        color: $text-muted;
+        text-align: center;
+        max-width: 78px;
+        line-height: 1.25;
+        transition: color 0.3s;
+    }
+
+    // ── States ─────────────────────────────────────────────────────
+
+    &--pending {
+        .vrk-step__circle { background: $step-pending-bg; color: $step-pending-txt; }
+    }
+
+    &--active {
+        .vrk-step__circle {
+            background: $step-active-bg;
+            color: #fff;
+            border-color: #93c5fd;
+            animation: vrk-step-pulse 1.4s ease-in-out infinite;
+        }
+        .vrk-step__label   { color: $blue; font-weight: 700; }
+        .vrk-step__connector { background: $step-active-bg; }
+    }
+
+    &--done {
+        .vrk-step__circle {
+            background: $step-done-bg;
+            color: #fff;
+            border-color: #86efac;
+        }
+        .vrk-step__label   { color: $green; }
+        .vrk-step__connector { background: $step-done-bg; }
+    }
+
+    &--error {
+        .vrk-step__circle { background: $step-error-bg; color: #fff; border-color: #fca5a5; }
+        .vrk-step__label  { color: #dc2626; }
+    }
+}
+
+.vrk-stepper-desc {
+    font-size: 13px;
+    color: $text-body;
+    text-align: center;
+    font-style: italic;
+    animation: vrk-slide-down 0.25s ease both;
+}
+
+// ── Results Section ────────────────────────────────────────────────────────────
+.vrk-results-section {
+    animation: vrk-fade-up 0.35s ease both;
+}
+
+.vrk-results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    &__title {
+        font-size: 18px;
+        font-weight: 800;
+        color: $green;
+        margin: 0;
+    }
+
+    &__sub {
+        font-size: 12px;
+        color: $text-muted;
+        margin: 3px 0 0;
+    }
+}
+
+// ── Accordions (7 Steps) ──────────────────────────────────────────────────────
+.vrk-accordions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.vrk-accordion {
+    background: $bg-card;
+    border: 1px solid $border-light;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-xs;
+    overflow: hidden;
+    transition: all 0.2s;
+
+    &--active {
+        border-color: #cbd5e1;
+        box-shadow: $shadow-sm;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        cursor: pointer;
+        user-select: none;
+        background: transparent;
+        transition: background 0.15s;
+
+        &:hover {
+            background: $bg-card-alt;
+        }
+    }
+
+    &__icon {
+        color: $text-muted;
+        font-size: 16px;
+        margin-right: 12px;
+    }
+
+    &__title {
+        font-size: 14px;
+        font-weight: 600;
+        color: $text-dark;
+        flex-grow: 1;
+    }
+
+    &__arrow {
+        color: $text-muted;
+        font-size: 12px;
+    }
+
+    &__content {
+        padding: 24px;
+        border-top: 1px solid $border-light;
+        background: $bg-card-alt;
+        animation: vrk-slide-down 0.2s ease both;
+    }
+}
+
+.vrk-step-desc {
+    font-size: 13px;
+    color: $text-body;
+    line-height: 1.5;
+    strong { color: $text-dark; }
+}
+
+.vrk-step7-tab {
+    padding: 10px;
+    border: 1px solid $border-light;
+    border-radius: $radius-md;
+    background: $bg-card-alt;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    
+    &:hover {
+        background: #e2e8f0;
+        transform: translateY(-1px);
+    }
+    
+    &.active {
+        background: $blue-light;
+        border-color: $blue;
+        color: $blue;
+        box-shadow: $shadow-xs;
+    }
+}
+
+.vrk-table-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+.vrk-table-responsive {
+    overflow-x: auto;
+    border: 1px solid $border-light;
+    border-radius: $radius-md;
+    background: #fff;
+    margin-bottom: 16px;
+    
+    // Custom scrollbar
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+    &::-webkit-scrollbar       { width: 5px; height: 5px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+}
+
+.vrk-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    white-space: nowrap;
+
+    thead th {
+        background: #f8fafc;
+        padding: 12px 14px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 11px;
+        color: $text-dark;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 1px solid $border-light;
+    }
+
+    tbody td {
+        padding: 12px 14px;
+        color: $text-body;
+        border-bottom: 1px solid #f1f5f9;
+        vertical-align: middle;
+    }
+    
+    tbody tr:hover td {
+        background: #f8fafc;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+}
+
+// ── Confirm & Review CTA ───────────────────────────────────────────────────────
+.vrk-confirm-cta {
+    background: $bg-card;
+    border: 1px solid $border-light;
+    border-radius: $radius-xl;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: $shadow-sm;
+
+    &__info {
+        font-size: 13px;
+        color: $text-body;
+        line-height: 1.65;
+        max-width: 520px;
+
+        strong { color: $text-dark; }
+        em     { color: $teal; font-style: normal; font-weight: 600; }
+    }
+}
+
+.vrk-confirm-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    font-family: inherit;
+    color: #fff;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 13px 30px;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.22s, box-shadow 0.22s;
+    box-shadow: 0 4px 16px rgba(8, 145, 178, 0.35);
+    white-space: nowrap;
+
+    &:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 7px 24px rgba(8, 145, 178, 0.5);
+    }
+
+    &:active { transform: translateY(0) scale(0.98); }
+
+    &__badge {
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 20px;
+        padding: 2px 9px;
+        font-size: 11.5px;
+        font-weight: 700;
+    }
+}
+
+// ── Scrollbar (for line tables) ────────────────────────────────────────────────
+.vrk-cat-card__lines {
+    scrollbar-width: thin;
+    scrollbar-color: $border-light transparent;
+
+    &::-webkit-scrollbar       { width: 4px; height: 4px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: $border-light; border-radius: 3px; }
+}

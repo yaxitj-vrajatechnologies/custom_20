@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_img_customize_view" model="ir.ui.view">
+        <field name="name">product.img.customize.form</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="website_sale.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='product_template_images']" position="after">
+                <group colspan="2">
+                    <button string="Update Images to All Size Variant" name="action_customize_image" type="object"
+                            class="oe_highlight"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

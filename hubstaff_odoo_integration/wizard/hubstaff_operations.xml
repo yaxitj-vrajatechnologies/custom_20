@@ -1,0 +1,59 @@
+<odoo>
+
+    <!-- Wizard Form View -->
+    <record id="view_hubstaff_operations_wizard_form" model="ir.ui.view">
+        <field name="name">hubstaff.operations.wizard.form</field>
+        <field name="model">hubstaff.operations</field>
+        <field name="arch" type="xml">
+            <form string="Hubstaff Operations" class="p-4">
+                <sheet>
+
+                    <group>
+                        <field name="instance_id" readonly="1"/>
+                        <!--                    <field name="hubstaff_operation" widget="radio"/>-->
+                    </group>
+
+
+                    <!--                <group string="Date Range">-->
+                    <!--                    <field name="from_date_order"/>-->
+                    <!--                    <field name="to_date_order"/>-->
+                    <!--                </group>-->
+
+
+                    <group string="Import Operations">
+                        <field name="import_operations" widget="radio"/>
+                    </group>
+
+
+                    <!--                <group string="Export Operations"-->
+                    <!--                       invisible="hubstaff_operation != 'export'">-->
+                    <!--                    <field name="export_operations" widget="radio"/>-->
+                    <!--                </group>-->
+
+                </sheet>
+                <footer>
+                    <button string="Submit" name="action_submit" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action -->
+    <record id="action_hubstaff_operations_wizard" model="ir.actions.act_window">
+        <field name="name">Hubstaff Operations</field>
+        <field name="res_model">hubstaff.operations</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Button to open wizard (Example: Add in instance form view) -->
+    <!-- Paste this inside hubstaff.instance.integration form view -->
+    <!--
+    <button string="Operations"
+            name="%(your_module_name.action_hubstaff_operations_wizard)d"
+            type="action"
+            class="btn-primary rounded-lg"/>
+    -->
+
+</odoo>

@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="vraja_cashflow_ai.CashflowDashboardTemplate" owl="1">
+        <div class="vraja-cashflow-wrap">
+
+            <!-- ═══ HEADER ══════════════════════════════════════════════════════ -->
+            <div class="cf-header">
+                <div class="cf-header-left">
+                    <div class="cf-header-icon"><i class="oi" data-icon="show_chart"/></div>
+                    <div>
+                        <h1>Cashflow Intelligence
+                            <span class="cf-ai-badge"><i class="oi" data-icon="auto_awesome"/>
+                                AI Powered</span>
+                        </h1>
+                        <p>Real-time CFO analytics · AR/AP aging · Cash forecasting · Liquidity insights</p>
+                    </div>
+                </div>
+                <div class="cf-header-stats" t-if="this.state.analysis and this.state.analysis.state === 'done'">
+                    <div class="cf-hstat">
+                        <div class="cf-hstat-label">Liquidity</div>
+                        <div t-attf-class="cf-hstat-badge liq-{{ this.state.analysis.kpis.liquidity_status }}">
+                            <t t-out="this.state.analysis.kpis.liquidity_status"/>
+                        </div>
+                    </div>
+                    <div class="cf-hstat">
+                        <div class="cf-hstat-label">Score</div>
+                        <div class="cf-hstat-value"><t t-out="this.state.analysis.kpis.liquidity_score"/>
+                            <small>/100</small></div>
+                    </div>
+                    <div class="cf-hstat">
+                        <div class="cf-hstat-label">Runway</div>
+                        <div class="cf-hstat-value">
+                            <t t-if="this.state.analysis.kpis.cash_runway_days &lt; 0">N/A</t>
+                            <t t-elif="this.state.analysis.kpis.cash_runway_days &gt;= 999">Indefinite</t>
+                            <t t-else="">
+                                <t t-out="this.state.analysis.kpis.cash_runway_days"/>
+                                <small>d</small>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ CONTROLS ═════════════════════════════════════════════════════ -->
+            <div class="cf-controls">
+                <div class="cf-quick-btns">
+                    <button class="cf-qbtn" t-on-click="() => this.setDateRange(1)">30 Days</button>
+                    <button class="cf-qbtn" t-on-click="() => this.setDateRange(3)">3 Months</button>
+                    <button class="cf-qbtn" t-on-click="() => this.setDateRange(6)">6 Months</button>
+                    <button class="cf-qbtn" t-on-click="() => this.setDateRange(12)">1 Year</button>
+                </div>
+                <div class="cf-date-row">
+                    <div class="cf-field-group" t-if="this.state.companiesList.length > 1">
+                        <label>Company</label>
+                        <select class="cf-input" t-model.proxy.number="this.state.companyId"
+                                t-att-disabled="this.state.isGenerating">
+
+                             <option t-foreach="this.state.companiesList" t-as="c" t-key="c.id" t-att-value="c.id">
+                                <t t-out="c.name"/>
+                            </option>
+                        </select>
+                    </div>
+                    <div class="cf-field-group">
+                        <label>From Date</label>
+                        <input type="date" class="cf-input" t-model.proxy="this.state.dateFrom"
+                               t-att-disabled="this.state.isGenerating"/>
+                    </div>
+                    <div class="cf-field-group">
+                        <label>To Date</label>
+                        <input type="date" class="cf-input" t-model.proxy="this.state.dateTo"
+                               t-att-disabled="this.state.isGenerating"/>
+                    </div>
+                    <button class="cf-btn-generate" t-on-click="() => this.onGenerate()"
+                            t-att-disabled="this.state.isGenerating">
+
+                        <t t-if="!this.state.isGenerating"><i class="oi" data-icon="auto_awesome"/>
+                            Generate Intelligence</t>
+                        <t t-else=""><i class="oi oi-spin" data-icon="progress_activity"/>
+                            Analyzing...</t>
+                    </button>
+                    <button class="cf-btn-print"
+                            t-if="this.state.analysis and this.state.analysis.state === 'done' and !this.state.isGenerating"
+                            t-on-click="() => this.onPrintReport()" title="Print Executive PDF Report">
+                        <i class="oi" data-icon="picture_as_pdf"/>
+                        Executive Report
+                    </button>
+                </div>
+
+                <!-- ═══ ADDITIONAL INFORMATION (extra AI context) ═══════════ -->
+                <div class="cf-extra-row">
+                    <div class="cf-field-group cf-extra-group">
+                        <label>
+                            Additional Information
+                            <span class="cf-extra-hint">optional — sent to the AI as extra context</span>
+                            <button class="cf-extra-clear" t-if="this.state.additionalInfo"
+                                    t-on-click="() => this.state.additionalInfo = ''"
+                                    t-att-disabled="this.state.isGenerating" title="Clear">
+                                <i class="oi" data-icon="close"/>
+                                Clear
+                            </button>
+                        </label>
+                        <textarea class="cf-input cf-textarea" rows="2"
+                                  t-model.proxy="this.state.additionalInfo"
+                                  t-att-disabled="this.state.isGenerating"
+                                  placeholder="e.g. Our business is seasonal; Q4 revenue is always low. Treat the Acme Corp receivable as secured, do not flag it as a risk."/>
+                    </div>
+                </div>
+
+                <!-- ═══ CFO REPORT SELECTOR ════════════════════════════════ -->
+                <div class="cf-cfo-row">
+                    <div class="cf-cfo-note">
+                        <i class="oi cf-cfo-note-icon" data-icon="info"/>
+                        <span>
+                            <strong>CFO Report:</strong>
+                            Select a user below — they will receive the Executive Report PDF
+                            automatically every night via scheduled email.
+                        </span>
+                    </div>
+                    <div class="cf-cfo-field">
+                        <label class="cf-cfo-label">
+                            <i class="oi" data-icon="account_circle"/>
+                            CFO Report Recipient
+                        </label>
+                        <select class="cf-input cf-cfo-select"
+                                t-model.proxy="this.state.cfoSelected"
+                                t-on-change="(ev) => this.onCfoUserChange(ev)"
+                                t-att-disabled="this.state.cfoLoading or this.state.isGenerating">
+                            <option value="">— Not Configured (Disabled) —</option>
+                            <t t-foreach="this.state.usersList" t-as="usr" t-key="usr.id">
+                                <option t-att-value="usr.id"
+                                        t-att-selected="usr.id === this.state.cfoUserId">
+                                    <t t-out="usr.name"/>
+                                </option>
+                            </t>
+                        </select>
+                        <span class="cf-cfo-status" t-if="this.state.cfoUserId">
+                            <i class="oi" data-icon="mail"/>
+                            <t t-out="this.state.cfoEmail or 'No email set on this user'"/>
+                            <span class="cf-cfo-active-badge">
+                                <i class="oi" data-icon="check_circle"/>
+                                Active
+                            </span>
+                        </span>
+                        <span class="cf-cfo-status cf-cfo-disabled" t-if="!this.state.cfoUserId">
+                            <i class="oi" data-icon="notifications_off"/>
+                            Report disabled
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ LOADER ════════════════════════════════════════════════════════ -->
+            <div class="cf-loader cf-animate" t-if="this.state.isGenerating">
+                <div class="cf-loader-orb">
+                    <div class="cf-orb-ring r1"/>
+                    <div class="cf-orb-ring r2"/>
+                    <div class="cf-orb-ring r3"/>
+                    <i class="oi cf-orb-icon" data-icon="auto_awesome"/>
+                </div>
+                <p><strong>Analyzing Cashflow Data...</strong></p>
+                <small>Querying Odoo ERP · Extracting AR/AP aging · Running AI inference</small>
+            </div>
+
+            <!-- ═══ EMPTY STATE ═══════════════════════════════════════════════════ -->
+            <div class="cf-empty cf-animate" t-if="!this.state.isGenerating and !this.state.analysis">
+                <div class="cf-empty-bg"/>
+                <i class="oi cf-empty-icon" data-icon="area_chart"/>
+                <h3>No Analysis Active</h3>
+                <p>Pick a date range and click <strong>Generate Intelligence</strong> to produce a full CFO-level
+                    cashflow report powered by AI.</p>
+                <div class="cf-empty-chips">
+                    <span><i class="oi" data-icon="check_circle"/>
+                        AR/AP Aging</span>
+                    <span><i class="oi" data-icon="check_circle"/>
+                        Monthly Trends</span>
+                    <span><i class="oi" data-icon="check_circle"/>
+                        Cash Runway</span>
+                    <span><i class="oi" data-icon="check_circle"/>
+                        Liquidity Score</span>
+                    <span><i class="oi" data-icon="check_circle"/>
+                        AI Insights</span>
+                </div>
+            </div>
+
+            <!-- ═══ ERROR ══════════════════════════════════════════════════════════ -->
+            <div class="cf-error cf-animate"
+                 t-if="this.state.analysis and this.state.analysis.state === 'error' and !this.state.isGenerating">
+                <i class="oi" data-icon="warning"/>
+                <div>
+                    <strong>Analysis Failed</strong>
+                    <span t-out="this.state.analysis.error"/>
+                </div>
+            </div>
+
+            <!-- ════════════════════════════════════════════════════════════════════
+                 EXECUTIVE DASHBOARD (1-Page Design)
+                 ════════════════════════════════════════════════════════════════════ -->
+            <t t-if="this.state.analysis and this.state.analysis.state === 'done' and !this.state.isGenerating">
+
+                <!-- Executive Summary Banner -->
+                <div class="cf-exec-banner cf-animate" t-if="this.state.analysis.executive_summary">
+                    <div class="cf-exec-icon"><i class="oi" data-icon="lightbulb"/></div>
+                    <div class="cf-exec-body">
+                        <div class="cf-exec-label">CFO Executive Summary</div>
+                        <div class="cf-exec-text" t-out="this.state.analysis.executive_summary"/>
+                    </div>
+                </div>
+
+                <!-- KPI GRID -->
+                <div class="cf-section-header-standalone cf-animate">
+                    <span><i class="oi" data-icon="dashboard"/>
+                        Key Performance Indicators</span>
+                    <button class="cf-fold-btn" t-on-click="() => this.toggleSection('kpiGrid')">
+                        <i class="oi"
+                           t-att-data-icon="this.state.foldedSections.kpiGrid ? 'expand_more' : 'expand_less'"/>
+                    </button>
+                </div>
+                <div class="cf-kpi-grid cf-animate" t-if="!this.state.foldedSections.kpiGrid">
+                    <div class="cf-kpi-card kpi-wc">
+                        <div class="cf-kpi-top-bar"/>
+                        <i class="oi cf-kpi-icon" data-icon="work"/>
+                        <div class="cf-kpi-label">Working Capital</div>
+                        <div class="cf-kpi-value" t-out="this.cfFmt.compact(this.state.analysis.kpis.working_capital)"/>
+                        <div class="cf-kpi-sub">Receivables − Payables</div>
+                    </div>
+                    <div class="cf-kpi-card kpi-bank">
+                        <div class="cf-kpi-top-bar"/>
+                        <i class="oi cf-kpi-icon" data-icon="account_balance"/>
+                        <div class="cf-kpi-label">Bank Balance</div>
+                        <div class="cf-kpi-value" t-out="this.cfFmt.compact(this.state.analysis.kpis.cash_balance)"/>
+                        <div class="cf-kpi-sub">Total Available Cash</div>
+                    </div>
+                    <div class="cf-kpi-card kpi-run">
+                        <div class="cf-kpi-top-bar"/>
+                        <i class="oi cf-kpi-icon" data-icon="schedule"/>
+                        <div class="cf-kpi-label">Cash Runway</div>
+                        <div class="cf-kpi-value">
+                            <t t-if="this.state.analysis.kpis.cash_runway_days &lt; 0">
+                                <span style="color:var(--cf-text-muted);font-size:1.1rem;">N/A</span>
+                            </t>
+                            <t t-elif="this.state.analysis.kpis.cash_runway_days >= 999">
+                                <span style="color:var(--cf-green);">Indefinite</span>
+                            </t>
+                            <t t-else="">
+                                <t t-out="this.state.analysis.kpis.cash_runway_days"/>
+                                <small> days</small>
+                            </t>
+                        </div>
+                        <t t-if="this.state.analysis.kpis.zero_cash_date">
+                            <div class="cf-kpi-sub">
+                                <i class="oi" data-icon="event_busy" style="color:var(--cf-amber)"/>
+                                Zero cash:
+                                <strong t-out="this.state.analysis.kpis.zero_cash_date"/>
+                            </div>
+                        </t>
+                        <t t-elif="this.state.analysis.kpis.runway_message">
+                            <div class="cf-kpi-sub"
+                                 style="color:var(--cf-green); font-size: 0.85rem; line-height: 1.2;">
+                                <t t-out="this.state.analysis.kpis.runway_message"/>
+                            </div>
+                        </t>
+                        <div class="cf-mini-bar-wrap"><div class="cf-mini-bar" t-attf-style="width:{{ Math.min(100,this.state.analysis.kpis.cash_runway_days/365*100) }}%"/></div>
+                    </div>
+                    <div class="cf-kpi-card kpi-liq">
+                        <div class="cf-kpi-top-bar"/>
+                        <i class="oi cf-kpi-icon" data-icon="monitor_heart"/>
+                        <div class="cf-kpi-label">Liquidity Status</div>
+                        <div class="cf-kpi-value" style="margin-top:4px;">
+                            <span t-attf-class="cf-liq-badge liq-{{ this.state.analysis.kpis.liquidity_status }}">
+                                <t t-out="this.state.analysis.kpis.liquidity_status"/>
+                            </span>
+                        </div>
+                        <div class="cf-kpi-sub" style="margin-top:6px;">Score: <strong
+                                t-out="this.state.analysis.kpis.liquidity_score"/>/100</div>
+                        <div class="cf-mini-bar-wrap"><div class="cf-mini-bar" t-attf-style="width:{{ this.state.analysis.kpis.liquidity_score }}%"/></div>
+                    </div>
+                    <div class="cf-kpi-card kpi-ar cf-drillable" t-on-click="() => this.drillDownAR()"
+                         title="Click to view all open invoices">
+                        <div class="cf-kpi-top-bar"/>
+                        <i class="oi cf-kpi-icon" data-icon="arrow_circle_down"/>
+                        <div class="cf-kpi-label">Total Open Receivables <i class="oi cf-drill-icon"
+                                                                            data-icon="open_in_new"/></div>
+                        <div class="cf-kpi-value" t-out="this.cfFmt.compact(this.state.analysis.kpis.total_ar)"/>
+                        <div class="cf-kpi-sub"><i class="oi" data-icon="warning" style="color:var(--cf-amber)"/>
+                            <t t-out="this.cfFmt.compact(this.state.analysis.kpis.overdue_ar)"/>
+                            overdue</div>
+                        <div class="cf-mini-bar-wrap"><div class="cf-mini-bar danger" t-attf-style="width:{{ this.state.analysis.kpis.total_ar ? this.state.analysis.kpis.overdue_ar/this.state.analysis.kpis.total_ar*100 : 0 }}%"/></div>
+                    </div>
+                    <div class="cf-kpi-card kpi-ap cf-drillable" t-on-click="() => this.drillDownAP()"
+                         title="Click to view all open vendor bills">
+                        <div class="cf-kpi-top-bar"/>
+                        <i class="oi cf-kpi-icon" data-icon="arrow_circle_up"/>
+                        <div class="cf-kpi-label">Total Open Payables <i class="oi cf-drill-icon"
+                                                                         data-icon="open_in_new"/></div>
+                        <div class="cf-kpi-value" t-out="this.cfFmt.compact(this.state.analysis.kpis.total_ap)"/>
+                        <div class="cf-kpi-sub"><i class="oi" data-icon="warning" style="color:var(--cf-amber)"/>
+                            <t t-out="this.cfFmt.compact(this.state.analysis.kpis.overdue_ap)"/>
+                            overdue</div>
+                        <div class="cf-mini-bar-wrap"><div class="cf-mini-bar danger" t-attf-style="width:{{ this.state.analysis.kpis.total_ap ? this.state.analysis.kpis.overdue_ap/this.state.analysis.kpis.total_ap*100 : 0 }}%"/></div>
+                    </div>
+
+                    <div class="cf-kpi-card kpi-fc">
+                        <div class="cf-kpi-top-bar"/>
+                        <i class="oi cf-kpi-icon" data-icon="show_chart"/>
+                        <div class="cf-kpi-label">30-Day Net Forecast</div>
+                        <div t-attf-class="cf-kpi-value {{ this.state.analysis.kpis.net_forecast_30d >= 0 ? 'text-green' : 'text-red' }}"
+                             t-out="this.cfFmt.compact(this.state.analysis.kpis.net_forecast_30d)"/>
+                        <div class="cf-kpi-sub">Expected Net Cash Position</div>
+                    </div>
+                    <div class="cf-kpi-card kpi-so cf-drillable" t-if="this.state.analysis.kpis.so_pipeline"
+                         t-on-click="() => this.drillDownSO()">
+                        <div class="cf-kpi-top-bar"/>
+                        <i class="oi cf-kpi-icon" data-icon="shopping_cart"/>
+                        <div class="cf-kpi-label">Sales Order Pipeline <i class="oi cf-drill-icon"
+                                                                          data-icon="open_in_new"/></div>
+                        <div class="cf-kpi-value" t-out="this.cfFmt.compact(this.state.analysis.kpis.so_pipeline)"/>
+                        <div class="cf-kpi-sub">Confirmed Orders — Pending Invoice</div>
+                    </div>
+                    <div class="cf-kpi-card kpi-po cf-drillable" t-if="this.state.analysis.kpis.po_pipeline"
+                         t-on-click="() => this.drillDownPO()">
+                        <div class="cf-kpi-top-bar"/>
+                        <i class="oi cf-kpi-icon" data-icon="local_shipping"/>
+                        <div class="cf-kpi-label">Purchase Order Pipeline <i class="oi cf-drill-icon"
+                                                                             data-icon="open_in_new"/></div>
+                        <div class="cf-kpi-value" t-out="this.cfFmt.compact(this.state.analysis.kpis.po_pipeline)"/>
+                        <div class="cf-kpi-sub">Committed POs — Pending Billing</div>
+                    </div>
+                    <div class="cf-kpi-card kpi-exp cf-drillable" t-if="this.state.analysis.kpis.expense_pipeline"
+                         t-on-click="() => this.drillDownExpenses()">
+                        <div class="cf-kpi-top-bar" style="background-color:var(--cf-amber);"/>
+                        <i class="oi cf-kpi-icon" data-icon="receipt_long"/>
+                        <div class="cf-kpi-label">Pending Expenses <i class="oi cf-drill-icon" data-icon="open_in_new"/></div>
+                        <div class="cf-kpi-value"
+                             t-out="this.cfFmt.compact(this.state.analysis.kpis.expense_pipeline)"/>
+                        <div class="cf-kpi-sub" style="color:var(--cf-red)"><i class="oi" data-icon="error"/>
+                            Approved — Pending Payout</div>
+                    </div>
+                </div>
+
+                <!-- Cash Position Summary Container -->
+                <div class="cf-p1-summary-row cf-animate">
+                    <!-- Cash Position Summary -->
+                    <div class="cf-pos-summary">
+                        <div class="cf-section-header">
+                            <i class="oi" data-icon="list_alt"/>
+                            <h3>Cash Position Summary</h3>
+                        </div>
+                        <div class="cf-pos-row">
+                            <span>Current Cash Balance (Bank)</span>
+                            <span t-out="this.cfFmt.compact(this.state.analysis.kpis.cash_balance)"/>
+                        </div>
+                        <div class="cf-pos-row">
+                            <span>Receivables (Open Invoices)</span>
+                            <span t-out="this.cfFmt.compact(this.state.analysis.kpis.total_ar)"/>
+                        </div>
+                        <div class="cf-pos-row">
+                            <span>Payables (Open Bills)</span>
+                            <span class="text-red" t-out="this.cfFmt.compact(this.state.analysis.kpis.total_ap)"/>
+                        </div>
+                        <div class="cf-pos-row" t-if="this.state.analysis.kpis.so_pipeline">
+                            <span>Committed (Sales Orders)</span>
+                            <span t-out="this.cfFmt.compact(this.state.analysis.kpis.so_pipeline)"/>
+                        </div>
+                        <div class="cf-pos-row" t-if="this.state.analysis.kpis.po_pipeline">
+                            <span>Committed (Purchase Orders)</span>
+                            <span class="text-red" t-out="this.cfFmt.compact(this.state.analysis.kpis.po_pipeline)"/>
+                        </div>
+                        <div class="cf-pos-row cf-pos-net">
+                            <span>Net Available Cash (Today)</span>
+                            <span t-attf-class="{{ this.state.analysis.kpis.working_capital >= 0 ? 'text-green' : 'text-red' }}"
+                                  t-out="this.cfFmt.compact(this.state.analysis.kpis.working_capital)"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What Needs Attention -->
+                <div class="cf-attention-section cf-animate"
+                     t-if="this.state.analysis.attention_needed and this.state.analysis.attention_needed.length">
+                    <div class="cf-attention-header">
+                        <span><i class="oi" data-icon="warning"/>
+                            What Needs Attention</span>
+                        <button class="cf-fold-btn" t-on-click="() => this.toggleSection('attention')">
+                            <i class="oi"
+                               t-att-data-icon="this.state.foldedSections.attention ? 'expand_more' : 'expand_less'"/>
+                        </button>
+                    </div>
+                    <div class="cf-attention-list" t-if="!this.state.foldedSections.attention">
+                        <div class="cf-attention-item" t-foreach="this.state.analysis.attention_needed" t-as="item"
+                             t-key="item.issue">
+                            <div class="cf-attention-issue"><strong>Issue:</strong>
+                                <t t-out="item.issue"/></div>
+                            <div class="cf-attention-impact"><strong>Impact:</strong>
+                                <t t-out="item.impact"/></div>
+                            <div class="cf-attention-action"><i class="oi" data-icon="arrow_forward"/>
+                                <t t-out="item.action"/></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AR + AP AGING BREAKDOWN -->
+                <div class="cf-two-col cf-animate" t-if="this.state.analysis.ar_aging or this.state.analysis.ap_aging">
+                    <div class="cf-aging-card">
+                        <div class="cf-section-header">
+                            <i class="oi" data-icon="arrow_circle_down" style="color:var(--cf-red)"/>
+                            <h3>Receivables Aging Breakdown</h3>
+                            <button class="cf-fold-btn" t-on-click="() => this.toggleSection('arAging')">
+                                <i class="oi"
+                                   t-att-data-icon="this.state.foldedSections.arAging ? 'expand_more' : 'expand_less'"/>
+                            </button>
+                        </div>
+                        <t t-if="this.state.analysis.ar_aging and !this.state.foldedSections.arAging">
+                            <t t-set="arTotal" t-value="this.agingTotal(this.state.analysis.ar_aging)"/>
+                            <div class="cf-aging-rows">
+                                <t t-foreach="[['current','Current','var(--cf-green)'],['d1_30','1–30 days','#8ee665'],['d31_60','31–60 days','var(--cf-amber)'],['d61_90','61–90 days','#e07d2a'],['d91_180','91–180 days','var(--cf-red)'],['d180_plus','180+ days','#8b1a1a']]"
+                                   t-as="row" t-key="row[0]">
+                                    <div class="cf-aging-row cf-drillable" t-on-click="() => this.drillDownAR(row[0])">
+                                        <span class="cf-aging-lbl"><t t-out="row[1]"/></span>
+                                        <div class="cf-aging-track"><div class="cf-aging-fill" t-attf-style="background:{{ row[2] }};width:{{ this.agingPct(this.state.analysis.ar_aging[row[0]], arTotal) }}%"/></div>
+                                        <span class="cf-aging-amt"
+                                              t-out="this.cfFmt.compact(this.state.analysis.ar_aging[row[0]])"/>
+                                        <span class="cf-aging-pct"><t t-out="this.agingPct(this.state.analysis.ar_aging[row[0]], arTotal)"/>
+                                            %</span>
+                                        <i class="oi cf-row-drill" data-icon="open_in_new"/>
+                                    </div>
+                                </t>
+                                <div class="cf-aging-total">
+                                    <span>Total</span>
+                                    <span/>
+                                    <span t-out="this.cfFmt.compact(arTotal)"/>
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <div class="cf-aging-card">
+                        <div class="cf-section-header">
+                            <i class="oi" data-icon="arrow_circle_up" style="color:var(--cf-amber)"/>
+                            <h3>Payables Aging Breakdown</h3>
+                            <button class="cf-fold-btn" t-on-click="() => this.toggleSection('apAging')">
+                                <i class="oi"
+                                   t-att-data-icon="this.state.foldedSections.apAging ? 'expand_more' : 'expand_less'"/>
+                            </button>
+                        </div>
+                        <t t-if="this.state.analysis.ap_aging and !this.state.foldedSections.apAging">
+                            <t t-set="apTotal" t-value="this.agingTotal(this.state.analysis.ap_aging)"/>
+                            <div class="cf-aging-rows">
+                                <t t-foreach="[['current','Current','var(--cf-green)'],['d1_30','1–30 days','#8ee665'],['d31_60','31–60 days','var(--cf-amber)'],['d61_90','61–90 days','#e07d2a'],['d91_180','91–180 days','var(--cf-red)'],['d180_plus','180+ days','#8b1a1a']]"
+                                   t-as="row" t-key="row[0]">
+                                    <div class="cf-aging-row cf-drillable" t-on-click="() => this.drillDownAP(row[0])">
+                                        <span class="cf-aging-lbl"><t t-out="row[1]"/></span>
+                                        <div class="cf-aging-track"><div class="cf-aging-fill" t-attf-style="background:{{ row[2] }};width:{{ this.agingPct(this.state.analysis.ap_aging[row[0]], apTotal) }}%"/></div>
+                                        <span class="cf-aging-amt"
+                                              t-out="this.cfFmt.compact(this.state.analysis.ap_aging[row[0]])"/>
+                                        <span class="cf-aging-pct"><t t-out="this.agingPct(this.state.analysis.ap_aging[row[0]], apTotal)"/>
+                                            %</span>
+                                        <i class="oi cf-row-drill" data-icon="open_in_new"/>
+                                    </div>
+                                </t>
+                                <div class="cf-aging-total">
+                                    <span>Total</span>
+                                    <span/>
+                                    <span t-out="this.cfFmt.compact(apTotal)"/>
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+
+                <!-- AI INSIGHTS -->
+                <div class="cf-insights-section cf-animate">
+                    <div class="cf-section-header">
+                        <i class="oi" data-icon="lightbulb"/>
+                        <h3>Strategic AI Insights &amp; Recommendations</h3>
+                        <span class="cf-section-tag"><t t-out="this.state.analysis.insights.length"/>
+                            Insights</span>
+                        <button class="cf-fold-btn" t-on-click="() => this.toggleSection('insights')">
+                            <i class="oi"
+                               t-att-data-icon="this.state.foldedSections.insights ? 'expand_more' : 'expand_less'"/>
+                        </button>
+                    </div>
+                    <div class="cf-insights-grid" t-if="!this.state.foldedSections.insights">
+                        <div t-foreach="this.state.analysis.insights" t-as="ins" t-key="ins.finding"
+                             t-attf-class="cf-insight-card sev-{{ ins.severity }}">
+                            <div class="cf-insight-head">
+                                <span t-attf-class="cf-sev-badge sev-{{ ins.severity }}" t-out="ins.severity"/>
+                                <span class="cf-cat-tag" t-out="ins.category"/>
+                            </div>
+                            <div class="cf-insight-finding" t-out="ins.finding"/>
+                            <div class="cf-insight-action"><i class="oi" data-icon="arrow_forward"/>
+                                <t t-out="ins.action"/></div>
+                        </div>
+                        <div t-if="!this.state.analysis.insights.length" class="cf-no-insights">No automated insights available for this period.</div>
+                    </div>
+                </div>
+
+                <!-- META FOOTER -->
+                <div class="cf-meta-bar cf-animate">
+                    <span><i class="oi" data-icon="tag"/>
+                        Analysis #
+                        <t t-out="this.state.analysis.analysis_id"/></span>
+                    <span><i class="oi" data-icon="schedule"/>
+                        Generated:
+                        <t t-out="this.state.analysis.generated_on"/></span>
+                    <span><i class="oi" data-icon="calendar_today"/>
+                        Period:
+                        <t t-out="this.state.analysis.date_from"/>
+                        →
+                        <t t-out="this.state.analysis.date_to"/></span>
+                    <span><i class="oi" data-icon="show_chart"/>
+                        30d Forecast:
+                        <strong t-attf-style="color:{{ this.state.analysis.kpis.net_forecast_30d >= 0 ? 'var(--cf-green)' : 'var(--cf-red)' }}"
+                                t-out="this.cfFmt.compact(this.state.analysis.kpis.net_forecast_30d)"/>
+                    </span>
+                </div>
+                <div style="height:40px;"/>
+            </t>
+
+        </div>
+    </t>
+
+</templates>
